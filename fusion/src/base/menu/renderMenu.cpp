@@ -27,7 +27,14 @@
 #include "../util/window/bind.hpp"
 #include "../extension/config.h"
 #include "../renderLoop.cpp"
+#include "../moduleManager/modules/player/blink.h"
 int currentTab = -1;
+int currentTab2 = 0;
+int currentTab3 = 0;
+int currentTab4 = 0;
+int currentTab5 = 0;
+int currentTab6 = 0;
+int currentTab7 = 0;
 inline static int style = 0;
 inline static const char* styleList[4]{ "Dark", "Light", "Classic", "Gold"};
 /*
@@ -94,7 +101,8 @@ void Menu::RenderMenu()
 	Menu::GlitchText("SKIDWARE", ImVec2(posX, posY), style == 1 ? ImColor(0, 0, 0) : ImColor(255, 255, 255));
 	ImGui::SetCursorPosY(textSize.y + 30);
 
-	if (Menu::TabButton("Settings", (currentTab == 5 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab = 5;
+	if (Menu::TabButton("Settings", (currentTab == 6 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab = 6;
+	if (Menu::TabButton("Player", (currentTab == 5 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab = 5;
 	if (Menu::TabButton("Blatent", (currentTab == 4 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab = 4;
 	if (Menu::TabButton("Misc", (currentTab == 3 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab = 3;
 	if (Menu::TabButton("Combat", (currentTab == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab = 1;
@@ -111,7 +119,13 @@ void Menu::RenderMenu()
 
 		if (currentTab == 0)
 		{
-			Esp::RenderMenu();
+			if (Menu::TabButton("ESP", (currentTab2 == 0 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab2 = 0;
+
+			if (currentTab2 == 0) {
+				Esp::RenderMenu();
+				keybind::key_bind(Esp::bind, 125, 25);
+
+			}
 
 			//Fullbright::RenderMenu();
 			//keybind::key_bind(Esp::bind, 150, 50);
@@ -120,13 +134,28 @@ void Menu::RenderMenu()
 
 		if (currentTab == 1)
 		{
-			AimAssist::RenderMenu();
-			//keybind::key_bind(AimAssist::bind, 150, 50);
+			if (Menu::TabButton("Aimassist", (currentTab3 == 0 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab3 = 0;
+			ImGui::SameLine();
+			if (Menu::TabButton("Reach", (currentTab3 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab3 = 1;
+			ImGui::SameLine();
+			if (Menu::TabButton("Velocity", (currentTab3 == 2 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab3 = 2;
+			
+			if (currentTab3 == 0) {
+				AimAssist::RenderMenu();
+				keybind::key_bind(AimAssist::bind, 125, 25);
 
-			Reach::RenderMenu();
+			}
+			//
+			if (currentTab3 == 1) {
+				Reach::RenderMenu();
+				keybind::key_bind(Reach::bind, 125, 25);
+			}
 			//keybind::key_bind(Reach::bind, 150, 50);
+			if (currentTab3 == 2) {
+				Velocity::RenderMenu();
+				keybind::key_bind(Velocity::bind, 125, 25);
+			}
 
-			Velocity::RenderMenu();
 			//keybind::key_bind(Velocity::bind, 150, 50);
 
 			ImGui::InvisibleButton("", ImVec2(1, 100));
@@ -134,25 +163,49 @@ void Menu::RenderMenu()
 
 		if (currentTab == 2)
 		{
-			LeftAutoClicker::RenderMenu();
-			//keybind::key_bind(LeftAutoClicker::bind, 150, 50);
-
-			RightAutoClicker::RenderMenu();
+			if (Menu::TabButton("LeftClicker", (currentTab4 == 0 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab4 = 0;
+			ImGui::SameLine();
+			if (Menu::TabButton("RightClicker", (currentTab4 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab4 = 1;
+			if (currentTab4 == 0) {
+				LeftAutoClicker::RenderMenu();
+				keybind::key_bind(LeftAutoClicker::bind, 125, 25);
+			}
+			if (currentTab4 == 1) {
+				RightAutoClicker::RenderMenu();
+				keybind::key_bind(RightAutoClicker::bind, 125, 25);
+			}
+			
 			//keybind::key_bind(RightAutoClicker::bind, 150, 50);
 
 			ImGui::InvisibleButton("", ImVec2(1, 100));
 		}
 		if (currentTab == 3) {
-			Fastplace::RenderMenu();
-			//keybind::key_bind(Fastplace::bind, 150, 50);
+			if (Menu::TabButton("FastPlace", (currentTab5 == 0 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab5 = 0;
+			ImGui::SameLine();
+			if (Menu::TabButton("Eagle", (currentTab5 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab5 = 1;
+			if (currentTab5 == 0) {
+				Fastplace::RenderMenu();
+				keybind::key_bind(Fastplace::bind, 125, 25);
+			}
 
-			Eagle::RenderMenu();
+			if (currentTab5 == 1) {
+				Eagle::RenderMenu();
+				keybind::key_bind(Eagle::bind, 125, 25);
+			}
 			//keybind::key_bind(Eagle::bind, 150, 50);
 
 			ImGui::InvisibleButton("", ImVec2(1, 100));
 
 		}
 		if (currentTab == 5) {
+			if (Menu::TabButton("Blink", (currentTab7 == 0 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab7 = 0;
+			if (currentTab7 == 0) {
+				Blink::RenderMenu();
+				keybind::key_bind(Blink::bind, 125, 25);
+			}
+
+		}
+		if (currentTab == 6) {
 			Config* cfg = new Config("Main.cfg");
 			if (ImGui::Button("Save Config")) {
 				set_config(cfg);
@@ -185,10 +238,17 @@ void Menu::RenderMenu()
 
 		}
 		if (currentTab == 4) {
-			Killaura::RenderMenu();
-			keybind::key_bind(Killaura::bind, 150, 50);
-
-			Strafe::RenderMenu();
+			if (Menu::TabButton("Killaura", (currentTab6 == 0 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 0;
+			ImGui::SameLine();
+			if (Menu::TabButton("Strafe", (currentTab6 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 1;
+			if (currentTab6 == 0) {
+				Killaura::RenderMenu();
+				keybind::key_bind(Killaura::bind, 125, 25);
+			}
+			if (currentTab6 == 1) {
+				Strafe::RenderMenu();
+				keybind::key_bind(Strafe::bind, 125, 25);
+			}
 			ImGui::InvisibleButton("", ImVec2(1, 100));
 		}
 

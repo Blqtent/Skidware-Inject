@@ -55,6 +55,12 @@ void CEntityLivingBase::swingItem()
 	Java::Env->CallVoidMethod(this->GetInstance(), StrayCache::entityLivingBase_swingItem);
 }
 
+void CEntityLivingBase::jump()
+{
+	Java::Env->CallVoidMethod(this->GetInstance(), StrayCache::entityLivingBase_jump);
+
+}
+
 void CEntityLivingBase::setMoveStrafe(float i)
 {
 	Java::Env->SetFloatField(this->GetInstance(), StrayCache::entityLivingBase_moveStrafe, i);

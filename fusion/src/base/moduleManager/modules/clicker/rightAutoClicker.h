@@ -1,8 +1,8 @@
 #pragma once
 #include "../../module.h"
-struct RightAutoClicker
+struct RightAutoClicker : public module
 {
-	inline static int bind;
+	inline static int bind = 0;
 
 
 	inline static bool Enabled = false;

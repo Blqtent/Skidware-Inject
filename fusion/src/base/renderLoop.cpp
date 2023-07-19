@@ -14,6 +14,7 @@
 #include "moduleManager/modules/combat/velocity.h"
 #include "moduleManager/modules/blatent/killaura.h"
 #include <cmath>
+#include "moduleManager/modules/player/blink.h"
 extern ImVec4 clear_col;
 void Base::RenderLoop() // Runs every frame
 {
@@ -36,6 +37,8 @@ void Base::RenderLoop() // Runs every frame
 
 	Esp::RenderUpdate();
 	AimAssist::RenderUpdate();
+	Blink::RenderUpdate();
+
 	//ImGuiIO& io = ImGui::GetIO(); (void)io;
 
 	ImDrawList* d = ImGui::GetWindowDrawList();

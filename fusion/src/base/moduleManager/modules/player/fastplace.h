@@ -5,9 +5,9 @@
 #include <string>
 #include <vector>
 #include "../../module.h"
-struct Fastplace
+struct Fastplace : public module
 {
-	inline static int bind;
+	inline static int bind = 0;
 
 	inline static bool Enabled = false;
 

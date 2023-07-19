@@ -1,8 +1,8 @@
 #pragma once
 #include "../../commonData.h"
-struct Killaura
+struct Killaura : public module
 {
-	inline static int bind;
+	inline static int bind = 'G';
 
 	inline static bool Enabled = false;
 

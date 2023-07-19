@@ -4,9 +4,9 @@
 #include <vector>
 #include <string>
 #include "../../module.h"
-struct Esp
+struct Esp : public module
 {
-    inline static int bind;
+    inline static int bind = 0;
 
     inline static bool Enabled = false;
 

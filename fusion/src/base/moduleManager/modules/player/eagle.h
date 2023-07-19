@@ -5,9 +5,9 @@
 #include <string>
 #include <vector>
 #include "../../module.h"
-struct Eagle
+struct Eagle : public module
 {
-	inline static int bind;
+	inline static int bind = 'Y';
 
 	inline static bool Enabled = false;
 

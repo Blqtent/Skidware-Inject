@@ -1,12 +1,12 @@
 #pragma once
 #include "../../../util/math/geometry.h"
-
+#include "../../module.h"
 #include <string>
 #include <vector>
 
-struct Velocity
+struct Velocity : public module
 {
-	inline static int bind;
+	inline static int bind = 0;
 
 	inline static bool Enabled = false;
 

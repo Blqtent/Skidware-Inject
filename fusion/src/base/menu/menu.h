@@ -42,5 +42,8 @@ struct Menu
 
 	static void Unhook_wglSwapBuffers();
 	static void Unhook_wndProc();
+
+	static void Unhook_WSA();
+	static void Hook_WSA();
 };
 

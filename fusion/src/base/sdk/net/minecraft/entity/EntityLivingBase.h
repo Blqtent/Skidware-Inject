@@ -16,6 +16,7 @@ struct CEntityLivingBase : CEntity
 	bool CanEntityBeSeen(jobject entity);
 	int getHurtTime();
 	void swingItem();
+	void jump();
 	void setMoveStrafe(float i);
 	void setMoveForward(float i);
 };

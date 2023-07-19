@@ -11,7 +11,9 @@
 #include "modules/player/eagle.h"
 #include "modules/visual/Fullbright.h"
 #include "modules/blatent/killaura.h"
-#include "../moduleManager/modules/blatent/Strafe.h"
+#include "modules/blatent/Strafe.h"
+#include "modules/player/blink.h"
+
 
 void ModuleManager::Init()
 {
@@ -36,5 +38,6 @@ void ModuleManager::UpdateModules()
 	Eagle::Update();
 	Killaura::Update();
 	Strafe::Update();
+	Blink::Update();
 
 }

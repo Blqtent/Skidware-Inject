@@ -4,9 +4,9 @@
 #include <string>
 #include <vector>
 #include "../../module.h"
-struct Reach
+struct Reach : public module
 {
-	inline static int bind;
+	inline static int bind = 0;
 
 	inline static bool Enabled = false;
 

@@ -2,7 +2,7 @@
 #include "../../module.h"
 struct LeftAutoClicker
 {
-	inline static int bind;
+	inline static int bind = 0;
 
 	inline static bool Enabled = false;
 

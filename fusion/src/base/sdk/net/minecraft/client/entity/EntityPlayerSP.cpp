@@ -78,7 +78,7 @@ double CEntityPlayerSP::get_motion_x()
 	if (GetClass() == NULL) return NULL;
 	jclass playerclass = JNIHelper::env->GetObjectClass(GetInstance());
 	jfieldID xfid = JNIHelper::env->GetFieldID(playerclass, JNIHelper::IsForge() ? "field_70159_w" : "motionX", "D");
-	double x = (double)JNIHelper::env->GetDoubleField(GetInstance(), xfid);
+	double x = (double)JNIHelper::env->GetDoubleField(GetInstance(), StrayCache::entity_motionX);
 	JNIHelper::env->DeleteLocalRef(playerclass);
 	return x;
 }
@@ -87,8 +87,7 @@ void CEntityPlayerSP::set_motion_x(double x)
 {
 	if (GetClass() == NULL) return;
 	jclass playerclass = JNIHelper::env->GetObjectClass(GetInstance());
-	jfieldID xfid = JNIHelper::env->GetFieldID(playerclass, JNIHelper::IsForge() ? "field_70159_w" : "motionX", "D");
-	JNIHelper::env->SetDoubleField(GetInstance(), xfid, (jdouble)x);
+	JNIHelper::env->SetDoubleField(GetInstance(), StrayCache::entity_motionX, (jdouble)x);
 	JNIHelper::env->DeleteLocalRef(playerclass);
 }
 
@@ -96,8 +95,7 @@ double CEntityPlayerSP::get_motion_y()
 {
 	if (GetClass() == NULL) return NULL;
 	jclass playerclass = JNIHelper::env->GetObjectClass(GetInstance());
-	jfieldID yfid = JNIHelper::env->GetFieldID(playerclass, JNIHelper::IsForge() ? "field_70181_x" : "motionY", "D");
-	double y = (double)JNIHelper::env->GetDoubleField(GetInstance(), yfid);
+	double y = (double)JNIHelper::env->GetDoubleField(GetInstance(), StrayCache::entity_motionY);
 	JNIHelper::env->DeleteLocalRef(playerclass);
 	return y;
 }
@@ -107,7 +105,7 @@ void CEntityPlayerSP::set_motion_y(double y)
 	if (GetClass() == NULL) return;
 	jclass playerclass = JNIHelper::env->GetObjectClass(GetInstance());
 	jfieldID yfid = JNIHelper::env->GetFieldID(playerclass, JNIHelper::IsForge() ? "field_70181_x" : "motionY", "D");
-	JNIHelper::env->SetDoubleField(GetInstance(), yfid, (jdouble)y);
+	JNIHelper::env->SetDoubleField(GetInstance(), StrayCache::entity_motionY, (jdouble)y);
 	JNIHelper::env->DeleteLocalRef(playerclass);
 }
 
@@ -116,7 +114,7 @@ double CEntityPlayerSP::get_motion_z()
 	if (GetClass() == NULL) return NULL;
 	jclass playerclass = JNIHelper::env->GetObjectClass(GetInstance());
 	jfieldID xfid = JNIHelper::env->GetFieldID(playerclass, JNIHelper::IsForge() ? "field_70179_y" : "motionZ", "D");
-	double z = (double)JNIHelper::env->GetDoubleField(GetInstance(), xfid);
+	double z = (double)JNIHelper::env->GetDoubleField(GetInstance(), StrayCache::entity_motionZ);
 	JNIHelper::env->DeleteLocalRef(playerclass);
 	return z;
 }
@@ -126,6 +124,6 @@ void CEntityPlayerSP::set_motion_z(double z)
 	if (GetClass() == NULL) return;
 	jclass playerclass = JNIHelper::env->GetObjectClass(GetInstance());
 	jfieldID xfid = JNIHelper::env->GetFieldID(playerclass, JNIHelper::IsForge() ? "field_70179_y" : "motionZ", "D");
-	JNIHelper::env->SetDoubleField(GetInstance(), xfid, (jdouble)z);
+	JNIHelper::env->SetDoubleField(GetInstance(), StrayCache::entity_motionZ, (jdouble)z);
 	JNIHelper::env->DeleteLocalRef(playerclass);
 }

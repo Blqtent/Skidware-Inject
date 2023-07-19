@@ -2,8 +2,14 @@
 #include "../../../../../ext/imgui/imgui.h"
 #include "../player/fastplace.h"
 #include "../../../menu/menu.h"
-#define M_PI 3.1415926
+#include "../../../java/java.h"
+#include <windows.h>
+#include <numbers>
 
+#define M_PI 3.1415926
+static uint64_t timer = GetTickCount64();
+static double playerSpeed = 0.0;
+static bool slowDown{ false };
 double toRadians(float degrees) {
 	return degrees * (M_PI / 180);
 }
@@ -54,25 +60,89 @@ bool isMovingForwardsOrBackwards() {
 
 void set_speed(const float speed)
 {
-	
-	if (isStrafing() || isMovingForwardsOrBackwards()) {
+
+	if (SDK::Minecraft->thePlayer->getMoveStrafe() != 0 && SDK::Minecraft->thePlayer->getMoveForward() != 0) {
 		double yaw = get_direction();
-		SDK::Minecraft->thePlayer->set_motion_x(-sin(yaw) * speed);
-		SDK::Minecraft->thePlayer->set_motion_z(cos(yaw) * speed);
+		float y = SDK::Minecraft->thePlayer->getMotion().y;
+		SDK::Minecraft->thePlayer->setMotion(Vector3((-sin(yaw) * speed), y, (cos(yaw) * speed)));
 	}
-	
+
 
 }
-
-
-
 
 void Strafe::Update()
 {
 	if (!Enabled) return;
 	if (!CommonData::SanityCheck()) return;
-	if (!SDK::Minecraft->thePlayer->isOnGround()) return;
-	set_speed(get_speed());
+	//if (!SDK::Minecraft->thePlayer->isOnGround()) return;
+	CEntityPlayerSP* p = SDK::Minecraft->thePlayer;
+	CTimer* t = SDK::Minecraft->timer;
+	if (mode == 0) {
+		if (p->isOnGround() && (p->getMoveForward() != 0 || p->getMoveStrafe() != 0) && GetTickCount64() - timer > 300) {
+			timer = GetTickCount64();
+			p->jump();
+			playerSpeed = ((Strafe::speed / 1.45) * 0.2873) * 1.90;
+			slowDown = true;
+		}
+		else {
+			if (playerSpeed != 0.0) {
+				if (slowDown) {
+					playerSpeed -= 0.7 * (playerSpeed = 0.2873);
+					slowDown = false;
+				}
+				else {
+					playerSpeed -= playerSpeed / 159.0;
+				}
+			}
+		}
+
+		playerSpeed = (((playerSpeed) > ((Strafe::speed / 1.45) * 0.2873)) ? (playerSpeed) : ((Strafe::speed / 1.45) * 0.2873));
+		JNIEnv* env = Java::Env;
+		auto forward = [&p, &t, &env](float speed)
+		{
+			float forward = p->getMoveForward();
+			float side = p->getMoveStrafe();
+			float yaw = p->GetPrevRotationYaw() + (p->GetRotationYaw() - p->GetPrevRotationYaw()) * t->GetRenderPartialTicks();
+			if (forward != 0.0f)
+			{
+				if (side > 0.0f) {
+					yaw += ((forward > 0.0f) ? -45 : 45);
+				}
+				else if (side < 0.0f) {
+					yaw += ((forward > 0.0f) ? 45 : -45);
+				}
+				side = 0.0f;
+				if (forward > 0.0f) {
+					forward = 1.0f;
+				}
+				else if (forward < 0.0f) {
+					forward = -1.0f;
+				}
+				float sin = sinf(((yaw + 90.f) * std::numbers::pi / 180.f));
+				float cos = cosf(((yaw + 90.f) * std::numbers::pi / 180.f));
+				double posX = (double)(forward * speed * cos + side * speed * sin);
+				double posZ = (double)(forward * speed * sin - side * speed * cos);
+				return Vector3(posX, 0, posZ);
+			}
+		};
+
+		Vector3 dir = forward((float)playerSpeed);
+		if (abs(dir.x) < 10.0 && abs(dir.z) < 10.0) { // lil check just incase
+			p->setMotion(Vector3(dir.x, p->getMotion().y, dir.z));
+		}
+	}
+	else if (mode == 1) {
+		if (p->isOnGround()) {
+			p->jump();
+		}
+	} 
+	else if (mode == 2) {
+		if (p->isOnGround()) {
+			set_speed(0.5);
+			p->jump();
+		}
+
+	}
 }
 
 void Strafe::RenderMenu()
@@ -87,8 +157,16 @@ void Strafe::RenderMenu()
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
 		Menu::DoToggleButtonStuff(23432423, "Toggle Strafe", &Strafe::Enabled);
 
+		Menu::DoSliderStuff(1734563, "Speed", &Strafe::speed, 0, 10);
+		ImGui::Text("BHop Mode");
+		ImGui::Combo("Mode", &Strafe::mode, Strafe::modes, 3);
+
 		ImGui::EndChild();
 	}
 	ImGui::PopStyleVar();
 	ImGui::PopStyleColor();
 }
+
+
+
+

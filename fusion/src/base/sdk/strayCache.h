@@ -38,6 +38,7 @@ struct StrayCache {
 	inline static jmethodID entityLivingBase_getMaxHealth;
 	inline static jmethodID entityLivingBase_canEntityBeSeen;
 	inline static jmethodID entityLivingBase_swingItem;
+	inline static jmethodID entityLivingBase_jump;
 	inline static jfieldID entityLivingBase_hurttime;
 	inline static jfieldID entityLivingBase_moveForward;
 	inline static jfieldID entityLivingBase_moveStrafe;
@@ -160,9 +161,10 @@ struct StrayCache {
 			entityLivingBase_getMaxHealth = Java::Env->GetMethodID(entityLivingBase_class, "func_110138_aP", "()F");
 			entityLivingBase_canEntityBeSeen = Java::Env->GetMethodID(entityLivingBase_class, "func_70685_l", "(Lnet/minecraft/entity/Entity;)Z");
 			entityLivingBase_hurttime = Java::Env->GetFieldID(entityLivingBase_class, "field_70737_aN", "I");
-			entityLivingBase_moveForward = Java::Env->GetFieldID(entityLivingBase_class, "field_70701_bs", "I");
-			entityLivingBase_moveStrafe = Java::Env->GetFieldID(entityLivingBase_class, "field_78902_a", "I");
+			entityLivingBase_moveForward = Java::Env->GetFieldID(entityLivingBase_class, "field_70701_bs", "F");
+			entityLivingBase_moveStrafe = Java::Env->GetFieldID(entityLivingBase_class, "field_70702_br", "F");
 			entityLivingBase_swingItem = Java::Env->GetMethodID(entityLivingBase_class, "func_71038_i", "()V");
+			entityLivingBase_jump = Java::Env->GetMethodID(entityLivingBase_class, "func_70664_aZ", "()V");
 
 			Java::AssignClass("net.minecraft.util.AxisAlignedBB", axisAlignedBB_class);
 			axisAlignedBB_minX = Java::Env->GetFieldID(axisAlignedBB_class, "field_72340_a", "D");
@@ -221,8 +223,9 @@ struct StrayCache {
 		entityLivingBase_canEntityBeSeen = Java::Env->GetMethodID(entityLivingBase_class, "canEntityBeSeen", "(Lnet/minecraft/entity/Entity;)Z");
 		entityLivingBase_hurttime = Java::Env->GetFieldID(entityLivingBase_class, "hurtTime", "I");
 		entityLivingBase_moveForward = Java::Env->GetFieldID(entityLivingBase_class, "moveForward", "I");
-		entityLivingBase_moveStrafe = Java::Env->GetFieldID(entityLivingBase_class, "moveStrafe", "I");
+		entityLivingBase_moveStrafe = Java::Env->GetFieldID(entityLivingBase_class, "moveStrafing", "I");
 		entityLivingBase_swingItem = Java::Env->GetMethodID(entityLivingBase_class, "swingItem", "()V");
+		entityLivingBase_jump = Java::Env->GetMethodID(entityLivingBase_class, "jump", "()V");
 
 		Java::AssignClass("net.minecraft.util.AxisAlignedBB", axisAlignedBB_class);
 		axisAlignedBB_minX = Java::Env->GetFieldID(axisAlignedBB_class, "minX", "D");

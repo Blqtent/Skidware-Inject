@@ -3,7 +3,7 @@
 #include "../util/math/geometry.h"
 #include "../sdk/sdk.h"
 #include "../util/logger.h"
-
+#include "module.h"
 /*
 This file is mainly for optimization purposes, instead of loading the data inside each module, we just load them here and then pass the data onto
 the modules that will eventually use them.
