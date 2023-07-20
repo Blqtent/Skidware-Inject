@@ -4,7 +4,6 @@ struct RightAutoClicker : public module
 {
 	inline static int bind = 0;
 
-
 	inline static bool Enabled = false;
 
 	inline static float rightMaxCps = 20;

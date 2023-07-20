@@ -8,7 +8,6 @@ struct AimAssist : public module
 {
 	inline static int bind = 0;
 
-
 	inline static Vector3 renderData;
 
 	inline static bool Enabled = false;

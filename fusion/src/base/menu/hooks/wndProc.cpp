@@ -25,7 +25,7 @@ LRESULT CALLBACK hook_WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 		if (wParam == Menu::Keybind)
 			Menu::Open = !Menu::Open;
 		if (wParam == VK_ESCAPE && Menu::Open)
-			Menu::Open = false;			
+			Menu::Open = false;
 		if (!SDK::Minecraft->IsInGuiState()) {
 			if (wParam == Eagle::bind)
 				Eagle::Enabled = !Eagle::Enabled;

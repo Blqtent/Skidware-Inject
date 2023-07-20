@@ -18,4 +18,3 @@ struct Blink
 	static void onPacketSend();
 	static void RenderUpdate();
 };
-

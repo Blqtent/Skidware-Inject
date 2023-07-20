@@ -8,6 +8,7 @@
 
 struct Menu
 {
+	inline static const ImColor watermarkColor = ImColor(0, 0, 200);
 	static void Init();
 	static void GlitchText(const char* text, ImVec2 pos, ImColor col);
 	static void Kill();

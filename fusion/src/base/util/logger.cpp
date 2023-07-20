@@ -12,6 +12,13 @@ void Logger::Init()
 	freopen_s(&out, "CONOUT$", "w", stdout);
 	freopen_s(&err, "CONOUT$", "w", stderr);
 
+	std::cout << "  ___________   .__    .___                               \n";
+	std::cout << " /   _____/  | _|__| __| _/_  _  _______ _______   ____   \n";\
+	std::cout << " \\_____  \\|  |/ /  |/ __ |\\ \\/ \\/ /\\__  \\\\_  __\\_/ __ \\  \n";
+	std::cout << " /        \\    <|  / /_/ | \\     /  / __ \\|  | \\/\\  ___/  \n";
+	std::cout << "/_______  /__|_ \\__\\____ |  \\/\\_/  (____  /__|	\\___  > \n";
+	std::cout << "        \\/     \\/       \\/              \\/          \\/  \n";
+		
 	Logger::Initialized = true;
 }
 

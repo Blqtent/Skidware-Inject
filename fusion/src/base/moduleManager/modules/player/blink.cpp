@@ -32,8 +32,6 @@ void Blink::RenderMenu()
 	ImGui::PopStyleColor();
 }
 
-
-
 void Blink::onPacketSend()
 {
 	if (!Blink::Enabled) {

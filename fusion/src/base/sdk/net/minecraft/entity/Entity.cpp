@@ -82,7 +82,6 @@ bool CEntity::isOnGround()
 float CEntity::fallDistance()
 {
 	return Java::Env->GetFloatField(this->GetInstance(), StrayCache::entity_fallDistance);
-
 }
 
 void CEntity::setOnGround(bool state)

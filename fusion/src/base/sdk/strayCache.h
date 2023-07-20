@@ -32,7 +32,6 @@ struct StrayCache {
 	inline static jfieldID entity_onGround;
 	inline static jfieldID entity_fallDistance;
 
-
 	// ENTITY LIVING BASE CLASS
 	inline static jclass entityLivingBase_class;
 	inline static jmethodID entityLivingBase_getHealth;

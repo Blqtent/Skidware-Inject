@@ -14,6 +14,7 @@
 #include "modules/blatent/Strafe.h"
 #include "modules/player/blink.h"
 #include "modules/blatent/nofall.h"
+#include "../extension/scripting.hpp"
 
 #include <Windows.h>
 void ModuleManager::Init()
@@ -26,7 +27,6 @@ void ModuleManager::UpdateModules()
 
 	CommonData::UpdateData();
 	Esp::Update();
-	Fullbright::Update();
 
 	AimAssist::Update();
 	Reach::Update();
@@ -37,8 +37,9 @@ void ModuleManager::UpdateModules()
 
 	Fastplace::Update();
 	Eagle::Update();
-	Killaura::Update();
+	Killaura::Update();	
 	Strafe::Update();
 	Blink::Update();
+
 	Nofall::Update();
 }

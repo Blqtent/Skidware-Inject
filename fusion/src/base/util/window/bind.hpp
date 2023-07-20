@@ -1,5 +1,4 @@
 #pragma once
-//hayden was here
 
 #include <unordered_map>
 #include <Windows.h>
@@ -97,6 +96,6 @@ namespace keybind
 		else if (!b_get && key == 0)
 			sz_text = xorstr("click to bind");
 		else if (!b_get && key != 0)
-			sz_text = xorstr("bounded to ") + get_key_name_by_id(key);
+			sz_text = xorstr("bound to: ") + get_key_name_by_id(key);
 	}
 }

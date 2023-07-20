@@ -11,4 +11,3 @@ struct Nofall
 	static void Update();
 	static void RenderMenu();
 };
-

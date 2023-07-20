@@ -15,6 +15,10 @@
 #include "moduleManager/modules/blatent/killaura.h"
 #include <cmath>
 #include "moduleManager/modules/player/blink.h"
+#include "extension/scripting.hpp"
+
+#include "menu/menu.h"
+
 extern ImVec4 clear_col;
 void Base::RenderLoop() // Runs every frame
 {
@@ -28,21 +32,31 @@ void Base::RenderLoop() // Runs every frame
 	ImVec2 textSize = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, watermark);
 	float posX = screenSize.x - textSize.x - margin;
 	float posY = screenSize.y - textSize.y - margin;
-	ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(posX + 1, posY), ImColor(255,255,255), watermark);
-	ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(posX - 1, posY), ImColor(255, 255, 255), watermark);
-	ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(posX, posY + 1), ImColor(255, 255, 255), watermark);
-	ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(posX, posY - 1), ImColor(255, 255, 255), watermark);
+	//ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(posX + 1, posY), ImColor(255,255,255), watermark);
+	//ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(posX - 1, posY), ImColor(255, 255, 255), watermark);
+	//ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(posX, posY + 1), ImColor(255, 255, 255), watermark);
+	//ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(posX, posY - 1), ImColor(255, 255, 255), watermark);
 
-	ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(posX, posY), ImColor(0, 0, 0), watermark);
+	//ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(posX, posY), ImColor(0, 0, 0), watermark);
 
 	Esp::RenderUpdate();
 	AimAssist::RenderUpdate();
 	Blink::RenderUpdate();
-
 	//ImGuiIO& io = ImGui::GetIO(); (void)io;
 
-	ImDrawList* d = ImGui::GetWindowDrawList();
-	d->AddText(Menu::Font, font_size, ImVec2(4, 4), ImColor(0, 0, 200), "Skidware V1.2");
+	ImDrawList* d = ImGui::GetWindowDrawList();	
+
+	std::string skid;
+	/*if (scripting::skidwareText == true) {
+		skid = "LUA Test - Skidware V1.2";
+	}
+	if (scripting::skidwareText == false) {
+		skid = "Skidware V1.2";
+	}*/
+
+	ImU32 watermarkCol = Menu::watermarkColor;
+
+	d->AddText(Menu::Font, font_size, ImVec2(4, 4), watermarkCol, "Skidware V1.2");
 	/*io.ConfigFlags = ImGuiConfigFlags_NoMouseCursorChange;
 	//ImGui::StyleColorsDark();
 

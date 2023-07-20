@@ -1,6 +1,8 @@
 #pragma once
 #include "../../../util/math/geometry.h"
+
 #include "../../module.h"
+
 #include <string>
 #include <vector>
 

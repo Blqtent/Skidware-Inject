@@ -5,6 +5,7 @@
 #include "../../../java/java.h"
 #include <windows.h>
 #include <numbers>
+#include "../../../extension/scripting.hpp"
 
 #define M_PI 3.1415926
 static uint64_t timer = GetTickCount64();
@@ -60,21 +61,19 @@ bool isMovingForwardsOrBackwards() {
 
 void set_speed(const float speed)
 {
-
 	if (SDK::Minecraft->thePlayer->getMoveStrafe() != 0 && SDK::Minecraft->thePlayer->getMoveForward() != 0) {
 		double yaw = get_direction();
+		SDK::Minecraft->thePlayer->set_motion_x(-sin(yaw) * speed);
+		SDK::Minecraft->thePlayer->set_motion_z(cos(yaw) * speed);
 		float y = SDK::Minecraft->thePlayer->getMotion().y;
 		SDK::Minecraft->thePlayer->setMotion(Vector3((-sin(yaw) * speed), y, (cos(yaw) * speed)));
 	}
-
-
 }
 
 void Strafe::Update()
 {
 	if (!Enabled) return;
 	if (!CommonData::SanityCheck()) return;
-
 	//if (!SDK::Minecraft->thePlayer->isOnGround()) return;
 	CEntityPlayerSP* p = SDK::Minecraft->thePlayer;
 	CTimer* t = SDK::Minecraft->timer;
@@ -127,7 +126,6 @@ void Strafe::Update()
 		}
 
 		playerSpeed = (((playerSpeed) > ((Strafe::speed / 1.45) * 0.2873)) ? (playerSpeed) : ((Strafe::speed / 1.45) * 0.2873));
-		
 
 		Vector3 dir = forward((float)playerSpeed);
 		if (abs(dir.x) < 10.0 && abs(dir.z) < 10.0) { // lil check just incase
@@ -138,7 +136,6 @@ void Strafe::Update()
 		if (p->isOnGround() && (p->getMoveForward() != 0 || p->getMoveStrafe() != 0) && GetTickCount64() - timer > 300) {
 			timer = GetTickCount64();
 			p->jump();
-
 		}
 	}
 }
@@ -159,12 +156,13 @@ void Strafe::RenderMenu()
 		ImGui::Text("BHop Mode");
 		ImGui::Combo("Mode", &Strafe::mode, Strafe::modes, 2);
 
+		/*if (ImGui::Button("Load Script"))
+		{
+			scripting::loadScript = true;
+		}*/
+
 		ImGui::EndChild();
 	}
 	ImGui::PopStyleVar();
 	ImGui::PopStyleColor();
 }
-
-
-
-

@@ -115,6 +115,7 @@ void Menu::Kill()
 void Menu::PlaceHooks()
 {
 	Menu::Hook_wglSwapBuffers();
+
 	Menu::Hook_WSA();
 	//Menu::Hook_tick();
 }
@@ -124,5 +125,4 @@ void Menu::RemoveHooks()
 	Menu::Unhook_wndProc();
 	Menu::Unhook_wglSwapBuffers();
 	Menu::Unhook_WSA();
-
 }

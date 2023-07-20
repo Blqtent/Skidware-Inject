@@ -1,5 +1,5 @@
 #pragma once
-#include <jni.h>
+#include "../../../ext/jni/jni.h"
 #include "../java/java.h"
 
 class JNIHelper

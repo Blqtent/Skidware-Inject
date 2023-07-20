@@ -13,6 +13,9 @@
 #include <thread>
 #include <unordered_map>
 
+// LUA import
+#include "extension/scripting.hpp"
+
 const char* GetWindowTitle(HWND hWnd)
 {
 	char windowTitle[128];
@@ -42,6 +45,7 @@ void Base::Init()
 	Menu::Init();
 	ModuleManager::Init();
 	//Logger::Init();
+	//scripting::luaThing();
 	Base::Running = true;
 	
 	SDK::Minecraft->gameSettings->SetFullscreenKeyToNull();
