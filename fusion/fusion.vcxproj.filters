@@ -261,6 +261,9 @@
     <ClInclude Include="src\base\moduleManager\modules\player\blink.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\base\moduleManager\modules\blatent\nofall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -441,6 +444,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\base\moduleManager\modules\player\blink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\moduleManager\modules\blatent\nofall.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

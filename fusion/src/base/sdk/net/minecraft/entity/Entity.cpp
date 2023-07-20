@@ -79,6 +79,12 @@ bool CEntity::isOnGround()
 	return Java::Env->GetBooleanField(this->GetInstance(), StrayCache::entity_onGround);
 }
 
+float CEntity::fallDistance()
+{
+	return Java::Env->GetFloatField(this->GetInstance(), StrayCache::entity_fallDistance);
+
+}
+
 void CEntity::setOnGround(bool state)
 {
 	Java::Env->SetBooleanField(this->GetInstance(), StrayCache::entity_onGround, state);

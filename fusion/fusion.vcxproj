@@ -160,6 +160,7 @@
     <ClInclude Include="src\base\menu\ImGuiUtils.h" />
     <ClInclude Include="src\base\moduleManager\module.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\killaura.h" />
+    <ClInclude Include="src\base\moduleManager\modules\blatent\nofall.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\Strafe.h" />
     <ClInclude Include="src\base\moduleManager\modules\combat\velocity.h" />
     <ClInclude Include="src\base\moduleManager\modules\player\blink.h" />
@@ -240,6 +241,7 @@
   <ItemGroup>
     <ClCompile Include="src\base\menu\hooks\WSA.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\killaura.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\blatent\nofall.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\Strafe.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\combat\velocity.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\player\blink.cpp" />

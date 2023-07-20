@@ -30,6 +30,7 @@ struct StrayCache {
 	inline static jfieldID entity_motionY;
 	inline static jfieldID entity_motionZ;
 	inline static jfieldID entity_onGround;
+	inline static jfieldID entity_fallDistance;
 
 
 	// ENTITY LIVING BASE CLASS
@@ -155,6 +156,7 @@ struct StrayCache {
 			entity_motionY = Java::Env->GetFieldID(entity_class, "field_70181_x", "D");
 			entity_motionZ = Java::Env->GetFieldID(entity_class, "field_70179_y", "D");
 			entity_onGround = Java::Env->GetFieldID(entity_class, "field_70122_E", "Z");
+			entity_fallDistance = Java::Env->GetFieldID(entity_class, "field_70143_R", "F");
 
 			Java::AssignClass("net.minecraft.entity.EntityLivingBase", entityLivingBase_class);
 			entityLivingBase_getHealth = Java::Env->GetMethodID(entityLivingBase_class, "func_110143_aJ", "()F");
@@ -216,6 +218,7 @@ struct StrayCache {
 		entity_motionY = Java::Env->GetFieldID(entity_class, "motionY", "D");
 		entity_motionZ = Java::Env->GetFieldID(entity_class, "motionZ", "D");
 		entity_onGround = Java::Env->GetFieldID(entity_class, "onGround", "Z");
+		entity_fallDistance = Java::Env->GetFieldID(entity_class, "fallDistance", "F");
 
 		Java::AssignClass("net.minecraft.entity.EntityLivingBase", entityLivingBase_class);
 		entityLivingBase_getHealth = Java::Env->GetMethodID(entityLivingBase_class, "getHealth", "()F");

@@ -74,9 +74,39 @@ void Strafe::Update()
 {
 	if (!Enabled) return;
 	if (!CommonData::SanityCheck()) return;
+
 	//if (!SDK::Minecraft->thePlayer->isOnGround()) return;
 	CEntityPlayerSP* p = SDK::Minecraft->thePlayer;
 	CTimer* t = SDK::Minecraft->timer;
+	JNIEnv* env = Java::Env;
+
+	auto forward = [&p, &t, &env](float speed)
+	{
+		float forward = p->getMoveForward();
+		float side = p->getMoveStrafe();
+		float yaw = p->GetPrevRotationYaw() + (p->GetRotationYaw() - p->GetPrevRotationYaw()) * t->GetRenderPartialTicks();
+		if (forward != 0.0f)
+		{
+			if (side > 0.0f) {
+				yaw += ((forward > 0.0f) ? -45 : 45);
+			}
+			else if (side < 0.0f) {
+				yaw += ((forward > 0.0f) ? 45 : -45);
+			}
+			side = 0.0f;
+			if (forward > 0.0f) {
+				forward = 1.0f;
+			}
+			else if (forward < 0.0f) {
+				forward = -1.0f;
+			}
+			float sin = sinf(((yaw + 90.f) * std::numbers::pi / 180.f));
+			float cos = cosf(((yaw + 90.f) * std::numbers::pi / 180.f));
+			double posX = (double)(forward * speed * cos + side * speed * sin);
+			double posZ = (double)(forward * speed * sin - side * speed * cos);
+			return Vector3(posX, 0, posZ);
+		}
+	};
 	if (mode == 0) {
 		if (p->isOnGround() && (p->getMoveForward() != 0 || p->getMoveStrafe() != 0) && GetTickCount64() - timer > 300) {
 			timer = GetTickCount64();
@@ -97,34 +127,7 @@ void Strafe::Update()
 		}
 
 		playerSpeed = (((playerSpeed) > ((Strafe::speed / 1.45) * 0.2873)) ? (playerSpeed) : ((Strafe::speed / 1.45) * 0.2873));
-		JNIEnv* env = Java::Env;
-		auto forward = [&p, &t, &env](float speed)
-		{
-			float forward = p->getMoveForward();
-			float side = p->getMoveStrafe();
-			float yaw = p->GetPrevRotationYaw() + (p->GetRotationYaw() - p->GetPrevRotationYaw()) * t->GetRenderPartialTicks();
-			if (forward != 0.0f)
-			{
-				if (side > 0.0f) {
-					yaw += ((forward > 0.0f) ? -45 : 45);
-				}
-				else if (side < 0.0f) {
-					yaw += ((forward > 0.0f) ? 45 : -45);
-				}
-				side = 0.0f;
-				if (forward > 0.0f) {
-					forward = 1.0f;
-				}
-				else if (forward < 0.0f) {
-					forward = -1.0f;
-				}
-				float sin = sinf(((yaw + 90.f) * std::numbers::pi / 180.f));
-				float cos = cosf(((yaw + 90.f) * std::numbers::pi / 180.f));
-				double posX = (double)(forward * speed * cos + side * speed * sin);
-				double posZ = (double)(forward * speed * sin - side * speed * cos);
-				return Vector3(posX, 0, posZ);
-			}
-		};
+		
 
 		Vector3 dir = forward((float)playerSpeed);
 		if (abs(dir.x) < 10.0 && abs(dir.z) < 10.0) { // lil check just incase
@@ -132,16 +135,11 @@ void Strafe::Update()
 		}
 	}
 	else if (mode == 1) {
-		if (p->isOnGround()) {
+		if (p->isOnGround() && (p->getMoveForward() != 0 || p->getMoveStrafe() != 0) && GetTickCount64() - timer > 300) {
+			timer = GetTickCount64();
 			p->jump();
-		}
-	} 
-	else if (mode == 2) {
-		if (p->isOnGround()) {
-			set_speed(0.5);
-			p->jump();
-		}
 
+		}
 	}
 }
 
@@ -159,7 +157,7 @@ void Strafe::RenderMenu()
 
 		Menu::DoSliderStuff(1734563, "Speed", &Strafe::speed, 0, 10);
 		ImGui::Text("BHop Mode");
-		ImGui::Combo("Mode", &Strafe::mode, Strafe::modes, 3);
+		ImGui::Combo("Mode", &Strafe::mode, Strafe::modes, 2);
 
 		ImGui::EndChild();
 	}

@@ -11,6 +11,7 @@
 #include "../../moduleManager/modules/player/eagle.h"
 #include "../../moduleManager/modules/blatent/killaura.h"
 #include "../../moduleManager/modules/blatent/Strafe.h"
+#include "../../moduleManager/modules/blatent/nofall.h"
 #include "../../moduleManager/modules/player/blink.h"
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -46,6 +47,8 @@ LRESULT CALLBACK hook_WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 				Reach::Enabled = !Reach::Enabled;
 			if (wParam == Esp::bind)
 				Esp::Enabled = !Esp::Enabled;
+			if (wParam == Nofall::bind)
+				Nofall::Enabled = !Nofall::Enabled;
 		}
 	}
 

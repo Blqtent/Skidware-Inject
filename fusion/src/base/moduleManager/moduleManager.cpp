@@ -13,8 +13,9 @@
 #include "modules/blatent/killaura.h"
 #include "modules/blatent/Strafe.h"
 #include "modules/player/blink.h"
+#include "modules/blatent/nofall.h"
 
-
+#include <Windows.h>
 void ModuleManager::Init()
 {
 }
@@ -39,5 +40,5 @@ void ModuleManager::UpdateModules()
 	Killaura::Update();
 	Strafe::Update();
 	Blink::Update();
-
+	Nofall::Update();
 }

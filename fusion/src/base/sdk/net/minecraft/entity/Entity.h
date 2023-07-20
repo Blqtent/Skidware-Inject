@@ -24,6 +24,7 @@ struct CEntity : IClass
 	Vector3 getMotion();
 
 	bool isOnGround();
+	float fallDistance();
 
 	void setOnGround(bool state);
 

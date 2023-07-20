@@ -28,6 +28,7 @@
 #include "../extension/config.h"
 #include "../renderLoop.cpp"
 #include "../moduleManager/modules/player/blink.h"
+#include "../moduleManager/modules/blatent/nofall.h"
 int currentTab = -1;
 int currentTab2 = 0;
 int currentTab3 = 0;
@@ -241,6 +242,8 @@ void Menu::RenderMenu()
 			if (Menu::TabButton("Killaura", (currentTab6 == 0 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 0;
 			ImGui::SameLine();
 			if (Menu::TabButton("Strafe", (currentTab6 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 1;
+			ImGui::SameLine();
+			if (Menu::TabButton("Nofall", (currentTab6 == 2 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 2;
 			if (currentTab6 == 0) {
 				Killaura::RenderMenu();
 				keybind::key_bind(Killaura::bind, 125, 25);
@@ -248,6 +251,11 @@ void Menu::RenderMenu()
 			if (currentTab6 == 1) {
 				Strafe::RenderMenu();
 				keybind::key_bind(Strafe::bind, 125, 25);
+			}
+			if (currentTab6 == 2) {
+				Nofall::RenderMenu();
+				keybind::key_bind(Nofall::bind, 125, 25);
+
 			}
 			ImGui::InvisibleButton("", ImVec2(1, 100));
 		}
