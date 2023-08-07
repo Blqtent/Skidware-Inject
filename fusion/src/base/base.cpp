@@ -12,9 +12,10 @@
 
 #include <thread>
 #include <unordered_map>
+#include "security/security.hpp"
 
 // LUA import
-#include "extension/scripting.hpp"
+//#include "extension/scripting.hpp"
 
 const char* GetWindowTitle(HWND hWnd)
 {
@@ -44,6 +45,7 @@ void Base::Init()
 	SDK::Init();
 	Menu::Init();
 	ModuleManager::Init();
+	
 	//Logger::Init();
 	//scripting::luaThing();
 	Base::Running = true;
@@ -51,6 +53,7 @@ void Base::Init()
 	SDK::Minecraft->gameSettings->SetFullscreenKeyToNull();
 	while (Base::Running)
 	{
+		
 		if (IsKeyReleased(VK_F11)) {
 			if (Borderless::Enabled)
 				Borderless::Restore(Menu::HandleWindow);
@@ -59,7 +62,13 @@ void Base::Init()
 		}
 
 		ModuleManager::UpdateModules();
-		std::this_thread::sleep_for(std::chrono::milliseconds(5));
+
+
+		//uc_SizeOfImage();
+		//HideFromDebugger();
+		std::this_thread::sleep_for(std::chrono::milliseconds(10));
+		
+		//Check();
 	}
 
 	Main::Kill();

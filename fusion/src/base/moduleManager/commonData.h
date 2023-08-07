@@ -5,6 +5,8 @@
 #include "../util/logger.h"
 #include "../../../ext/jni/jni.h"
 #include "module.h"
+#include <curl/curl.h>
+#define M_PI 3.1415926
 
 /*
 This file is mainly for optimization purposes, instead of loading the data inside each module, we just load them here and then pass the data onto
@@ -14,7 +16,10 @@ The modules that write data will still need to access required java objects to d
 */
 struct CommonData
 {
+
+
 	inline static bool dataUpdated = false;
+	inline static bool post = false;
 	inline static Matrix modelView;
 	inline static Matrix projection;
 	inline static Vector3 renderPos;

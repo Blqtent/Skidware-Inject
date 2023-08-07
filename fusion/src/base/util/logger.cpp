@@ -1,10 +1,39 @@
 #include <Windows.h>
 #include <thread>
-
+#include "../util/xorstr.h"
 #include "logger.h"
 
 FILE* out;
 FILE* err;
+
+std::string username;
+std::string password;
+
+static const char letters[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+bool check_license(const char* user, const char* users_license)
+{
+	std::string license;
+	size_t ll = strlen(users_license);
+	size_t l = strlen(user), lic_ctr = 0;
+	int add = 0;
+
+	for (size_t i = 0; i < ll; i++)
+		if (users_license[i] != '-')
+			license += users_license[i];
+
+	while (lic_ctr < license.length()) {
+		size_t i = lic_ctr;
+		i %= l;
+		int current = 0;
+		while (i < l) current += user[i++];
+		current += add;
+		add++;
+		if (license[lic_ctr] != letters[current % sizeof letters])
+			return false;
+		lic_ctr++;
+	}
+	return true;
+}
 
 void Logger::Init()
 {
@@ -18,7 +47,17 @@ void Logger::Init()
 	std::cout << " /        \\    <|  / /_/ | \\     /  / __ \\|  | \\/\\  ___/  \n";
 	std::cout << "/_______  /__|_ \\__\\____ |  \\/\\_/  (____  /__|	\\___  > \n";
 	std::cout << "        \\/     \\/       \\/              \\/          \\/  \n";
-		
+	std::cout << ("Best Client\n");
+	std::cout << ("https://discord.gg/zxkq88xcA6\n");
+
+	std::cout << "Loading Skidware...\n";
+
+	/*	Sleep(3000);
+	std::cout << "Done\n";
+	fclose(out);
+	fclose(err);
+	FreeConsole();
+	Logger::Initialized = false;*/
 	Logger::Initialized = true;
 }
 

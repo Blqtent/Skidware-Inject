@@ -10,6 +10,7 @@
 
 #include <chrono>
 #include <random>
+#include "antibot.h"
 
 /* 
 How this Aim Assist works :
@@ -34,7 +35,6 @@ void AimAssist::Update()
 {
 	if (!Enabled) return;
 	if (!CommonData::SanityCheck()) return;
-	if (SDK::Minecraft->IsInGuiState()) return;
 	if (Menu::Open) return;
 
 	if ((aimKey && (!GetAsyncKeyState(VK_LBUTTON) && 1))) {
@@ -70,31 +70,32 @@ void AimAssist::Update()
 
 	for (CommonData::PlayerData player : playerList)
 	{
+		if (Antibot::isBot(player) && Antibot::Enabled) {
+			continue;
+		}
+		if (player.name.length() < 0) return;
 		if (!Java::Env->IsSameObject(thePlayer->GetInstance(), player.obj.GetInstance())) {
 			if (!thePlayer->CanEntityBeSeen(player.obj.GetInstance())) continue;
-			Vector3 playerPos = player.pos;
+
 			float playerHeight = target.height - 0.1;
-			Vector3 playerHeadPos = playerPos + Vector3(0, playerHeight, 0);
 
-			Vector2 anglesFoot = Math::getAngles(headPos, playerPos);
-			Vector2 anglesHead = Math::getAngles(headPos, playerHeadPos);
 
-			Vector2 difference = Math::vec_wrapAngleTo180(currentLookAngles.Invert() - anglesHead.Invert());
+			Vector2 difference = Math::vec_wrapAngleTo180(currentLookAngles.Invert() - Math::getAngles(headPos, player.pos + Vector3(0, playerHeight, 0)).Invert());
 			if (difference.x < 0) difference.x = -difference.x;
 			if (difference.y < 0) difference.y = -difference.y;
-			Vector2 differenceFoot = Math::vec_wrapAngleTo180(currentLookAngles.Invert() - anglesFoot.Invert());
+			Vector2 differenceFoot = Math::vec_wrapAngleTo180(currentLookAngles.Invert() - Math::getAngles(headPos, player.pos).Invert());
 			if (differenceFoot.x < 0) differenceFoot.x = -differenceFoot.x;
 			if (differenceFoot.y < 0) differenceFoot.y = -differenceFoot.y;
 
 			float angleYaw = currentLookAngles.x - difference.x;
 
-			Vector3 diff = pos - playerPos;
+			Vector3 diff = thePlayer->GetPos() - player.pos;
 			float dist = sqrt(pow(diff.x, 2) + pow(diff.y, 2) + pow(diff.z, 2));
 
 			if ((abs(difference.x) <= fov) && dist <= realAimDistance)
 			{
 				float health = player.health;
-				switch(targetPriority) 
+				switch (targetPriority)
 				{
 				case 1:
 					if (finalHealth > health)
@@ -112,7 +113,7 @@ void AimAssist::Update()
 					}
 					break;
 				default:
-					if (finalDist > dist) 
+					if (finalDist > dist)
 					{
 						target = player;
 						finalDist = (float)dist;
@@ -188,6 +189,7 @@ void AimAssist::Update()
 		pitchInfluenced = false;
 		thePlayer->SetAngles(Vector2(targetYaw, currentLookAngles.y + randomFloat(-AimAssist::randomPitch, AimAssist::randomPitch)));
 	}
+
 }
 
 void AimAssist::RenderUpdate()
@@ -221,6 +223,7 @@ void AimAssist::RenderUpdate()
 			}
 		}
 	}
+
 }
 
 void AimAssist::RenderMenu()

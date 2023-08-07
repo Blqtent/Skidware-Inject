@@ -10,9 +10,17 @@ void Nofall::Update()
 	CEntityPlayerSP* p = SDK::Minecraft->thePlayer;
 	CTimer* t = SDK::Minecraft->timer;
 	JNIEnv* env = Java::Env;
-	if (p->isOnGround() && !(p->getHurtTime() > 0)) {
-		p->setMotion(Vector3(p->getMotion().x, -11, p->getMotion().z));
+	if (mode == 0) {
+		if (p->fallDistance() > 2.5 && !(p->getHurtTime() > 0)) {
+			p->setMotion(Vector3(p->getMotion().x, -11, p->getMotion().z));
+		}
 	}
+	else if (mode == 1) {
+		if (p->isOnGround() && !(p->getHurtTime() > 0)) {
+			p->setMotion(Vector3(p->getMotion().x, -11, p->getMotion().z));
+		}
+	}
+
 }
 
 void Nofall::RenderMenu()
@@ -29,7 +37,7 @@ void Nofall::RenderMenu()
 		Menu::DoToggleButtonStuff(23432423, "Toggle Nofall", &Nofall::Enabled);
 
 		ImGui::Text("Nofall Mode");
-		ImGui::Combo("Nofall Mode", &Nofall::mode, Nofall::modes, 1);
+		ImGui::Combo("Nofall Mode", &Nofall::mode, Nofall::modes, 2);
 
 		ImGui::EndChild();
 	}

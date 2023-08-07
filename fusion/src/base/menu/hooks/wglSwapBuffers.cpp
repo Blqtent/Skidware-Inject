@@ -11,7 +11,7 @@
 #include "../../util/logger.h"
 #include "../../util/trimmer.h"
 #include "../../../../ext/fonts/jetbrainsmono.h"
-
+#include "../../moduleManager/modules/visual/cavefinder.h"
 #include "../../base.h"
 
 std::once_flag setupFlag;
@@ -30,7 +30,10 @@ bool __stdcall hook_wglSwapBuffers(_In_ HDC hdc)
 		Menu::Hook_wndProc();
 		Menu::SetupImgui();
 	});
+	glDepthFunc(GL_LEQUAL);
 
+	if (Cavefinder::Enabled)
+		glDepthFunc(GL_ALWAYS);
 
 	wglMakeCurrent(Menu::HandleDeviceContext, Menu::MenuGLContext);
 	//glDepthFunc(GL_LEQUAL);

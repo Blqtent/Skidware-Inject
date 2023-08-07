@@ -149,10 +149,6 @@ void Esp::RenderUpdate()
 				break;
 			}
 
-			if (Esp::TestCircles == true) {
-				ImGui::GetWindowDrawList()->AddCircle(ImVec2(p.x, p.y), 3, ImColor(255, 255, 255, 255), 100, 2);
-			}
-
 			// This is a neat trick to get the top left and bottom right corners of all the box verticies quickly.
 			left = fmin(p.x, left);
 			top = fmin(p.y, top);
@@ -250,7 +246,7 @@ void Esp::RenderMenu()
 		Menu::DoToggleButtonStuff(7457, "Box Outline", &Esp::Outline);
 		Menu::DoToggleButtonStuff(23445, "Healthbar", &Esp::HealthBar);
 		Menu::DoToggleButtonStuff(34576, "Distance", &Esp::Text);
-		Menu::DoToggleButtonStuff(567567, "Test Circles", &Esp::TestCircles);
+		//Menu::DoToggleButtonStuff(567567, "Test Circles", &Esp::TestCircles);
 		Menu::DoToggleButtonStuff(1337, "Text Outline", &Esp::TextOutline);
 		ImGui::Separator();
 		Menu::DoSliderStuff(34875, "Fade Distance", &Esp::FadeDistance, 0, 10);

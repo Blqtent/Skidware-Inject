@@ -16,14 +16,18 @@
 #include "../util/window/borderless.h"
 #include "ImGuiUtils.h"
 #include "../moduleManager/modules/visual/esp.h"
-#include "../moduleManager/modules/visual/Fullbright.h"
+
 #include "../moduleManager/modules/combat/aimAssist.h"
 #include "../moduleManager/modules/combat/reach.h"
+#include "../moduleManager/modules/combat/antibot.h"
 #include "../moduleManager/modules/clicker/leftAutoClicker.h"
 #include "../moduleManager/modules/clicker/rightAutoClicker.h"
 #include "../moduleManager/modules/player/fastplace.h"
 #include "../moduleManager/modules/blatent/killaura.h"
-#include "../moduleManager/modules/blatent/Strafe.h"
+#include "../moduleManager/modules/blatent/longjump.h"
+#include "../moduleManager/modules/blatent/speed.h"
+#include "../moduleManager/modules/blatent/flight.h"
+
 //#include "../moduleManager/modules/other/config.h"
 
 #include "../sdk/net/minecraft/client/Minecraft.h"
@@ -34,8 +38,12 @@
 #include "../util/window/bind.hpp"
 #include "../extension/config.h"
 #include "../moduleManager/modules/player/blink.h"
+//#include "../moduleManager/modules/player/autotool.h"
+
 #include "../moduleManager/modules/blatent/nofall.h"
-#include "../../lua/lua.hpp"
+#include "../moduleManager/modules/visual/fullbright.h"
+#include "../moduleManager/modules/visual/cavefinder.h"
+
 
 int currentTab = -1;
 int currentTab2 = 0;
@@ -45,7 +53,7 @@ int currentTab5 = 0;
 int currentTab6 = 0;
 int currentTab7 = 0;
 inline static int style = 0;
-inline static const char* styleList[4]{ "Dark", "Light", "Classic", "Gold"};
+inline static const char* styleList[4]{ "Dark", "Light", "Classic", "Gold" };
 
 void set_config(Config* config) {
 
@@ -93,8 +101,8 @@ void set_config(Config* config) {
 
 	// Velocity
 	config->set<bool>("Velocity", Velocity::Enabled);
-	config->set<bool>("VelocityOnlyMoving", Velocity::onlyMoving);
-	config->set<float>("VelocityChance", Velocity::Chance);
+	//config->set<bool>("VelocityOnlyMoving", Velocity::onlyMoving);
+	//config->set<float>("VelocityChance", Velocity::Chance);
 	config->set<float>("VelocityHorizontal", Velocity::Horizontal);
 	config->set<float>("VelocityVertical", Velocity::Vertical);
 
@@ -109,9 +117,9 @@ void set_config(Config* config) {
 	config->set<bool>("Blink", Blink::Enabled);
 
 	// BHop
-	config->set<bool>("BHop", Strafe::Enabled);
-	config->set<int>("BHopMode", Strafe::mode);
-	config->set<float>("BHopSpeed", Strafe::speed);
+	config->set<bool>("BHop", Speed::Enabled);
+	config->set<int>("BHopMode", Speed::mode);
+	config->set<float>("BHopSpeed", Speed::speed);
 
 	// NoFall
 	config->set<bool>("NoFall", Nofall::Enabled);
@@ -164,8 +172,8 @@ void read_config(Config* config) {
 
 	// Velocity
 	Velocity::Enabled = config->get<bool>("Velocity");
-	Velocity::onlyMoving = config->get<bool>("VelocityOnlyMoving");
-	Velocity::Chance = config->get<float>("VelocityChance");
+	//Velocity::onlyMoving = config->get<bool>("VelocityOnlyMoving");
+	//Velocity::Chance = config->get<float>("VelocityChance");
 	Velocity::Horizontal = config->get<float>("VelocityHorizontal");
 	Velocity::Vertical = config->get<float>("VelocityVertical");
 
@@ -180,9 +188,9 @@ void read_config(Config* config) {
 	Blink::Enabled = config->get<bool>("Blink");
 
 	// BHop
-	Strafe::Enabled = config->get<bool>("BHop");
-	Strafe::mode = config->get<int>("BHopMode");
-	Strafe::speed = config->get<float>("BHopSpeed");
+	Speed::Enabled = config->get<bool>("BHop");
+	Speed::mode = config->get<int>("BHopMode");
+	Speed::speed = config->get<float>("BHopSpeed");
 
 	//NoFall
 	Nofall::Enabled = config->get<bool>("NoFall");
@@ -219,7 +227,7 @@ void Menu::RenderMenu()
 {
 
 
-	ImGui::SetNextWindowSize(ImVec2(650, 600));
+	ImGui::SetNextWindowSize(ImVec2(675, 600));
 	ImGui::Begin(Menu::Title.c_str(), nullptr, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
 	ImVec2 idk = ImGui::GetWindowSize();
 	if (style == 2)
@@ -230,7 +238,7 @@ void Menu::RenderMenu()
 		ImGui::StyleColorsDark();
 	else if (style == 3)
 		ImGuiUtils::styleColorsGold();
-		
+
 	int buttonAmount = 6;
 	int buttonHeight = 20;
 	ImGui::PushID("Start");
@@ -247,7 +255,7 @@ void Menu::RenderMenu()
 	ImGui::SetCursorPosY(textSize.y + 30);
 
 	if (Menu::TabButton("Settings", (currentTab == 6 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab = 6;
-	if (Menu::TabButton("Player", (currentTab == 5 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab = 5;
+	//if (Menu::TabButton("Player", (currentTab == 5 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab = 5;
 	if (Menu::TabButton("Blatent", (currentTab == 4 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab = 4;
 	if (Menu::TabButton("Misc", (currentTab == 3 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab = 3;
 	if (Menu::TabButton("Combat", (currentTab == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab = 1;
@@ -265,13 +273,26 @@ void Menu::RenderMenu()
 		if (currentTab == 0)
 		{
 			if (Menu::TabButton("ESP", (currentTab2 == 0 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab2 = 0;
+			ImGui::SameLine();
+			if (Menu::TabButton("Fullbright", (currentTab2 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab2 = 1;
+			ImGui::SameLine();
+			if (Menu::TabButton("Xray", (currentTab2 == 2 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab2 = 2;
 
 			if (currentTab2 == 0) {
 				Esp::RenderMenu();
 				keybind::key_bind(Esp::bind, 125, 25);
+			}
+			
+			if (currentTab2 == 1) {
+				Fulbright::RenderMenu();
+				keybind::key_bind(Fulbright::bind, 125, 25);
+			}
+			
+			if (currentTab2 == 2) {
+				Cavefinder::RenderMenu();
+				keybind::key_bind(Cavefinder::bind, 125, 25);
 
 			}
-
 			//Fullbright::RenderMenu();
 			//keybind::key_bind(Esp::bind, 150, 50);
 			ImGui::InvisibleButton("", ImVec2(1, 100));
@@ -284,12 +305,14 @@ void Menu::RenderMenu()
 			if (Menu::TabButton("Reach", (currentTab3 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab3 = 1;
 			ImGui::SameLine();
 			if (Menu::TabButton("Velocity", (currentTab3 == 2 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab3 = 2;
+			ImGui::SameLine();
+			if (Menu::TabButton("Antibot", (currentTab3 == 3 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab3 = 3;
 
 			if (currentTab3 == 0) {
 				AimAssist::RenderMenu();
 				keybind::key_bind(AimAssist::bind, 125, 25);
 			}
-			//
+			
 			if (currentTab3 == 1) {
 				Reach::RenderMenu();
 				keybind::key_bind(Reach::bind, 125, 25);
@@ -298,6 +321,10 @@ void Menu::RenderMenu()
 			if (currentTab3 == 2) {
 				Velocity::RenderMenu();
 				keybind::key_bind(Velocity::bind, 125, 25);
+			}
+			if (currentTab3 == 3) {
+				Antibot::RenderMenu();
+				keybind::key_bind(Antibot::bind, 125, 25);
 			}
 
 			//keybind::key_bind(Velocity::bind, 150, 50);
@@ -341,12 +368,18 @@ void Menu::RenderMenu()
 
 		}
 		if (currentTab == 5) {
-			if (Menu::TabButton("Blink", (currentTab7 == 0 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab7 = 0;
+			if (Menu::TabButton("Fakelag", (currentTab7 == 0 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab7 = 0;
+			//ImGui::SameLine();
+			//if (Menu::TabButton("Autotool", (currentTab7 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab7 = 1;
+
 			if (currentTab7 == 0) {
 				Blink::RenderMenu();
 				keybind::key_bind(Blink::bind, 125, 25);
 			}
-
+			/*else if (currentTab7 == 1) {
+				AutoTool::RenderMenu();
+				keybind::key_bind(AutoTool::bind, 125, 25);
+			}*/
 		}
 		if (currentTab == 6) {
 			Config* cfg = new Config("Main.cfg");
@@ -375,50 +408,7 @@ void Menu::RenderMenu()
 			ImGui::PopStyleVar();
 			ImGui::PopStyleVar();
 
-			// Creating the skidware folder so we can store LUAs there.
-			//CreateSkidwareFolder();
-
-			// Get the list of Lua script files from the desired folder
-			/*std::vector<std::string> scriptFiles = ListFilesInFolder("C:\\", "lua");
-
-			// Create a listbox to display the Lua script files
-			static int selectedItem = -1;
-			ImGui::ListBoxHeader("##script_listbox");
-			for (int i = 0; i < scriptFiles.size(); ++i)
-			{
-				bool isSelected = (selectedItem == i);
-				if (ImGui::Selectable(scriptFiles[i].c_str(), isSelected))
-				{
-					selectedItem = i;
-					// Implement the action you want to perform when a script is selected
-					// e.g., open or execute the selected script
-				}
-			}
-			ImGui::ListBoxFooter();
-
-			// Load selected script button
-			if (ImGui::Button("Load selected", { 160.0f, 25.0f }))
-			{
-				if (selectedItem >= 0 && selectedItem < scriptFiles.size())
-				{
-					// In your main function or where you initialize Lua
-					lua_State* L = luaL_newstate(); // Create a new Lua state
-					luaL_openlibs(L); // Open standard Lua libraries
-
-					//scripting::luaThing(L, scriptFiles[selectedItem]);
-
-					// After you're done with Lua, close the Lua state
-					lua_close(L);
-
-					// Clear the Lua stack after executing the script
-					//lua_settop(L, 0);
-				}
-				else
-				{
-					// Handle the case when no script is selected or the index is out of bounds
-					std::cout << "Error: No script selected or invalid index." << std::endl;
-				}
-			}*/
+		
 
 			ImGui::Text("ESP Colors");
 			ImGui::Separator();
@@ -442,20 +432,34 @@ void Menu::RenderMenu()
 		if (currentTab == 4) {
 			if (Menu::TabButton("Killaura", (currentTab6 == 0 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 0;
 			ImGui::SameLine();
-			if (Menu::TabButton("Strafe", (currentTab6 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 1;
+			if (Menu::TabButton("Speed", (currentTab6 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 1;
 			ImGui::SameLine();
 			if (Menu::TabButton("Nofall", (currentTab6 == 2 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 2;
+			ImGui::SameLine();
+			if (Menu::TabButton("Flight", (currentTab6 == 3 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 3;
+			ImGui::SameLine();
+			if (Menu::TabButton("LongJump", (currentTab6 == 4 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 4;
 			if (currentTab6 == 0) {
 				Killaura::RenderMenu();
 				keybind::key_bind(Killaura::bind, 125, 25);
 			}
 			if (currentTab6 == 1) {
-				Strafe::RenderMenu();
-				keybind::key_bind(Strafe::bind, 125, 25);
+				Speed::RenderMenu();
+				keybind::key_bind(Speed::bind, 125, 25);
 			}
 			if (currentTab6 == 2) {
 				Nofall::RenderMenu();
 				keybind::key_bind(Nofall::bind, 125, 25);
+
+			}
+			if (currentTab6 == 3) {
+				Flight::RenderMenu();
+				keybind::key_bind(Flight::bind, 125, 25);
+
+			}
+			if (currentTab6 == 4) {
+				LongJump::RenderMenu();
+				keybind::key_bind(LongJump::bind, 125, 25);
 
 			}
 			ImGui::InvisibleButton("", ImVec2(1, 100));
@@ -469,5 +473,5 @@ void Menu::RenderMenu()
 
 	ImGui::End();
 
-	
+
 }

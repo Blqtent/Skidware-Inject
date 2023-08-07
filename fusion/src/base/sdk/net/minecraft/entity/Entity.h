@@ -20,12 +20,18 @@ struct CEntity : IClass
 	Vector3 GetLastTickPos();
 
 	void setMotion(Vector3 motion);
+	void setSprint(bool state);
 
 	Vector3 getMotion();
 
 	bool isOnGround();
+	bool inWater();
+	bool isDead();
+	bool isInvisible();
 	float fallDistance();
-
+	void setFallDistance(float i);
+	int ticksExisted();
+	void setPos(double x, double y, double z);
 	void setOnGround(bool state);
 
 	bool IsSneaking();

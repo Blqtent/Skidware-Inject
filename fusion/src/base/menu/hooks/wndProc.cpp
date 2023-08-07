@@ -2,6 +2,8 @@
 
 #include "../../../../ext/imgui/imgui_impl_win32.h"
 #include "../../moduleManager/modules/visual/esp.h"
+#include "../../moduleManager/modules/visual/fullbright.h"
+#include "../../moduleManager/modules/visual/cavefinder.h"
 #include "../../moduleManager/modules/combat/aimAssist.h"
 #include "../../moduleManager/modules/combat/reach.h"
 #include "../../moduleManager/modules/clicker/leftAutoClicker.h"
@@ -10,9 +12,15 @@
 #include "../../moduleManager/modules/player/fastplace.h"
 #include "../../moduleManager/modules/player/eagle.h"
 #include "../../moduleManager/modules/blatent/killaura.h"
-#include "../../moduleManager/modules/blatent/Strafe.h"
+#include "../../moduleManager/modules/blatent/flight.h"
+#include "../../moduleManager/modules/blatent/speed.h"
 #include "../../moduleManager/modules/blatent/nofall.h"
 #include "../../moduleManager/modules/player/blink.h"
+//#include "../../moduleManager/modules/player/autotool.h"
+#include "../../moduleManager/modules/combat/antibot.h"
+#include "../../moduleManager/modules/blatent/longjump.h"
+
+#include "../../base.h"
 
 extern IMGUI_IMPL_API LRESULT ImGui_ImplWin32_WndProcHandler(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 
@@ -22,6 +30,7 @@ LRESULT CALLBACK hook_WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
 	if (msg == WM_KEYDOWN)
 	{
+		Base::justPressed = true;
 		if (wParam == Menu::Keybind)
 			Menu::Open = !Menu::Open;
 		if (wParam == VK_ESCAPE && Menu::Open)
@@ -31,8 +40,8 @@ LRESULT CALLBACK hook_WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 				Eagle::Enabled = !Eagle::Enabled;
 			if (wParam == Killaura::bind)
 				Killaura::Enabled = !Killaura::Enabled;
-			if (wParam == Strafe::bind)
-				Strafe::Enabled = !Strafe::Enabled;
+			if (wParam == Speed::bind)
+				Speed::Enabled = !Speed::Enabled;
 			if (wParam == Fastplace::bind)
 				Fastplace::Enabled = !Fastplace::Enabled;
 			if (wParam == LeftAutoClicker::bind)
@@ -49,6 +58,19 @@ LRESULT CALLBACK hook_WndProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 				Esp::Enabled = !Esp::Enabled;
 			if (wParam == Nofall::bind)
 				Nofall::Enabled = !Nofall::Enabled;
+			if (wParam == Fulbright::bind)
+				Fulbright::Enabled = !Fulbright::Enabled;
+			if (wParam == Antibot::bind)
+				Antibot::Enabled = !Antibot::Enabled;
+			if (wParam == Cavefinder::bind)
+				Cavefinder::Enabled = !Cavefinder::Enabled;
+			/*if (wParam == AutoTool::bind)
+				AutoTool::Enabled = !AutoTool::Enabled;*/
+			if (wParam == Flight::bind)
+				Flight::Enabled = !Flight::Enabled;
+			if (wParam == LongJump::bind)
+				LongJump::Enabled = !LongJump::Enabled;
+
 		}
 	}
 

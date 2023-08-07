@@ -74,6 +74,7 @@ CMinecraft::CMinecraft()
 
 		// not used lol
 		this->MethodIDs["clickMouse"] = Java::Env->GetMethodID(this->GetClass(), "func_147116_af", "()V");
+		this->MethodIDs["getDebugFPS"] = Java::Env->GetMethodID(this->GetClass(), "func_175610_ah", "()I");
 		return;
 	}
 	this->MethodIDs["getMinecraft"] = Java::Env->GetStaticMethodID(this->GetClass(), "getMinecraft", "()Lnet/minecraft/client/Minecraft;");
@@ -105,6 +106,7 @@ CMinecraft::CMinecraft()
 
 	// not used lol
 	this->MethodIDs["clickMouse"] = Java::Env->GetMethodID(this->GetClass(), "clickMouse", "()V");
+	this->MethodIDs["getDebugFPS"] = Java::Env->GetMethodID(this->GetClass(), "getDebugFPS", "()I");
 }
 
 jclass CMinecraft::GetClass()
@@ -126,6 +128,11 @@ bool CMinecraft::IsInGuiState()
 {
 	if (Java::Env->GetObjectField(this->GetInstance(), this->FieldIDs["currentScreen"]) != NULL) return true;
 	return false;
+}
+
+int CMinecraft::getDebugFPS()
+{
+	return Java::Env->CallIntMethod(this->GetInstance(), this->MethodIDs["getDebugFPS"]);
 }
 
 void CMinecraft::ClickMouse()

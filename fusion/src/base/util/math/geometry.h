@@ -22,6 +22,7 @@ public:
 	Vector3& operator -= (const Vector3& rhs) { return *this = *this - rhs; }
 	Vector3& operator *= (const float& rhs) { return *this = *this * rhs; }
 	Vector3& operator /= (const float& rhs) { return *this = *this / rhs; }
+	//Vector3 operator == (const Vector3& rhs) { return this == rhs; }
 	float Length() const { return sqrtf(x * x + y * y + z * z); }
 	Vector3 Normalize() const { return *this * (1 / Length()); }
 	Vector3 Invert() const { return Vector3{ -x, -y, -z }; }
@@ -40,6 +41,14 @@ struct Vector2i
 {
 	unsigned int x{ 0 };
 	unsigned int y{ 0 };
+};
+
+struct Vector3i {
+	Vector3i(const int x, const int y, const int z) : x(x), y(y), z(z) {}
+
+	unsigned int x{ 0 };
+	unsigned int y{ 0 };
+	unsigned int z{ 0 };
 };
 
 struct Vector4

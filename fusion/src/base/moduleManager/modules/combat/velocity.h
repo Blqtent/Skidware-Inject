@@ -16,9 +16,8 @@ struct Velocity : public module
 
 	inline static float Vertical = 1.0f;
 
-	inline static float Chance = 100;
-
-	inline static bool onlyMoving = false;
+	inline static int mode = 0;
+	inline static const char* modes[3]{ "Normal", "Intave", "Push"};
 
 	static void Update();
 

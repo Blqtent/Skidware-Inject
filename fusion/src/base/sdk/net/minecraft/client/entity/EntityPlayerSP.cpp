@@ -3,6 +3,7 @@
 #include "../../../../../java/java.h"
 
 #include "../../../../../util/logger.h"
+#include "../../../../../moduleManager/commonData.h"
 
 CEntityPlayerSP::CEntityPlayerSP() : CEntityPlayer()
 {
@@ -126,4 +127,86 @@ void CEntityPlayerSP::set_motion_z(double z)
 	jfieldID xfid = JNIHelper::env->GetFieldID(playerclass, JNIHelper::IsForge() ? "field_70179_y" : "motionZ", "D");
 	JNIHelper::env->SetDoubleField(GetInstance(), StrayCache::entity_motionZ, (jdouble)z);
 	JNIHelper::env->DeleteLocalRef(playerclass);
+}
+
+double CEntityPlayerSP::toRadians(float degrees) {
+	return degrees * (M_PI / 180);
+}
+
+float CEntityPlayerSP::get_direction()
+{
+	float yaw = SDK::Minecraft->thePlayer->GetRotationYaw();
+	float strafe = 45;
+	// add 180 to the yaw to strafe backwards
+	if (SDK::Minecraft->thePlayer->getMoveForward() < 0) {
+		// invert our strafe to -45
+		strafe = -45;
+		yaw += 180;
+	}
+	if (SDK::Minecraft->thePlayer->getMoveStrafe() > 0) {
+		// subtract 45 to strafe left forward
+		yaw -= strafe;
+		// subtract an additional 45 if we do not press W in order to get to -90
+		if (SDK::Minecraft->thePlayer->getMoveForward() == 0) {
+			yaw -= 45;
+		}
+	}
+	else if (SDK::Minecraft->thePlayer->getMoveStrafe() < 0) {
+		// add 45 to strafe right forward
+		yaw += strafe;
+		// add 45 if we do not press W in order to get to 90
+		if (SDK::Minecraft->thePlayer->getMoveForward() == 0) {
+			yaw += 45;
+		}
+	}
+	return yaw;
+}
+
+float CEntityPlayerSP::get_speed()
+{
+	Vector3 velocity_vector = SDK::Minecraft->thePlayer->getMotion();
+
+	return sqrt(velocity_vector.x * velocity_vector.x + velocity_vector.z * velocity_vector.z);
+}
+
+bool CEntityPlayerSP::isStrafing() {
+	return SDK::Minecraft->thePlayer->getMoveStrafe() != 0;
+}
+
+bool CEntityPlayerSP::isMovingForwardsOrBackwards() {
+	return SDK::Minecraft->thePlayer->getMoveForward() != 0;
+}
+
+void CEntityPlayerSP::set_speed(const float speed)
+{
+	if (getMotion().x != 0 && getMotion().y != 0) {
+		double yaw = toRadians(get_direction());
+		float y = SDK::Minecraft->thePlayer->getMotion().y;
+		float x = -sin(yaw) * speed;
+		float z = cos(yaw) * speed;
+		SDK::Minecraft->thePlayer->setMotion(Vector3(x, 100000000000, z));
+	}
+}
+
+jobject CEntityPlayerSP::get_abilities()
+{
+	if (JNIHelper::IsForge()) {
+		jfieldID abi = Java::Env->GetFieldID(this->GetClass(), "field_71075_bZ", "Lnet/minecraft/entity/player/PlayerAbilities;");
+		return Java::Env->GetObjectField(this->GetInstance(), abi);
+	}
+	jfieldID abi = Java::Env->GetFieldID(this->GetClass(), "abilities", "Lnet/minecraft/entity/player/PlayerAbilities;");
+	return Java::Env->GetObjectField(this->GetInstance(), abi);
+}
+
+void CEntityPlayerSP::setFly(bool state)
+{
+	jclass clazz;
+	Java::AssignClass("net.minecraft.entity.player.PlayerCapabilities", clazz);
+	if (JNIHelper::IsForge()) {
+		jfieldID abi = Java::Env->GetFieldID(clazz, "field_75100_b", "Z");
+		return Java::Env->SetBooleanField(get_abilities(), abi, state);
+	}
+	jfieldID abi = Java::Env->GetFieldID(clazz, "isFlying", "Z");
+	return Java::Env->SetBooleanField(get_abilities(), abi, state);
+
 }

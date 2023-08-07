@@ -5,7 +5,7 @@
 CGameSettings::CGameSettings()
 {
 	Java::AssignClass("net.minecraft.client.settings.GameSettings", this->Class);
-
+	/*
 	if (JNIHelper::IsVanilla()) {
 		this->FieldIDs["thirdPersonView"] = Java::Env->GetFieldID(this->Class, "aA", "I");
 		this->FieldIDs["fovSetting"] = Java::Env->GetFieldID(this->Class, "aH", "F");
@@ -14,7 +14,7 @@ CGameSettings::CGameSettings()
 		this->MethodIDs["setOptionKeyBinding"] = Java::Env->GetMethodID(this->Class, "a", "(Lavb;I)V");
 		return;
 	}
-
+	*/
 	if (JNIHelper::IsForge()) {
 		this->FieldIDs["thirdPersonView"] = Java::Env->GetFieldID(this->Class, "field_74320_O", "I");
 		this->FieldIDs["fovSetting"] = Java::Env->GetFieldID(this->Class, "field_74334_X", "F");

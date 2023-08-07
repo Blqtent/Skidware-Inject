@@ -26,3 +26,8 @@ jobject CItemStack::GetItem()
 {
 	return Java::Env->CallObjectMethod(this->GetInstance(), StrayCache::itemStack_getItem);
 }
+
+int CItemStack::GetItemID()
+{
+	return Java::Env->CallStaticIntMethod(this->GetClass(), StrayCache::itemStack_getItemID, this->GetItem());
+}

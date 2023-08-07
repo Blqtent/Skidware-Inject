@@ -25,4 +25,18 @@ struct CEntityPlayerSP : CEntityPlayer
 
 	void set_motion_z(double z);
 
+	double toRadians(float degrees);
+
+	float get_direction();
+
+	float get_speed();
+
+	bool isStrafing();
+
+	bool isMovingForwardsOrBackwards();
+
+	void set_speed(const float speed);
+	jobject get_abilities();
+	void setFly(bool state);
+
 };

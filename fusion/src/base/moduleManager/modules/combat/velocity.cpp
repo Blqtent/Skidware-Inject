@@ -1,25 +1,38 @@
 #include "velocity.h"
 #include "../../commonData.h"
 #include "../../../menu/menu.h"
-
+int counter;
 void Velocity::Update()
 {
 	if (!Enabled) return;
 	if (!CommonData::SanityCheck()) return;
 	if (SDK::Minecraft->IsInGuiState()) return;
-	//if (Menu::Open) return;
 	CEntityPlayerSP* thePlayer = SDK::Minecraft->thePlayer;
-	if (thePlayer->getHurtTime() > 7) {
-		Vector3 motion = thePlayer->getMotion();
-		
+	//if (Menu::Open) return;
+	if (mode == 0) {
+		if (thePlayer->getHurtTime() > 7) {
+			Vector3 motion = thePlayer->getMotion();
+			motion.x = motion.x * Velocity::Horizontal;
+			motion.y = motion.y * Velocity::Vertical;
+			motion.z = motion.z * Velocity::Horizontal;
 
-		motion.x = motion.x * Velocity::Horizontal;
-		motion.y = motion.y * Velocity::Vertical;
-		motion.z = motion.z * Velocity::Horizontal;
 
-
-		thePlayer->setMotion(motion);
+			thePlayer->setMotion(motion);
+		}
 	}
+	else if (mode == 1) {
+		if (thePlayer->getHurtTime() > 9 && thePlayer->isOnGround() && counter++ % 2 == 0) {
+			POINT pos_cursor;
+			GetCursorPos(&pos_cursor);
+			thePlayer->jump();
+		}
+	}
+	else if (mode == 2) {
+		if (thePlayer->getHurtTime() > 5) {
+			thePlayer->setOnGround(true);
+		}
+	}
+
 }
 
 void Velocity::RenderMenu()
@@ -38,6 +51,7 @@ void Velocity::RenderMenu()
 		ImGui::Separator();
 		Menu::DoSliderStuff(248913712347, "Horizontal", &Velocity::Horizontal, 0.f, 1.f);
 		Menu::DoSliderStuff(2489137, "Vertical", &Velocity::Vertical, 0.f, 1.f);
+		ImGui::Combo("Mode", &Velocity::mode, Velocity::modes, 3);
 
 		ImGui::EndChild();
 	}

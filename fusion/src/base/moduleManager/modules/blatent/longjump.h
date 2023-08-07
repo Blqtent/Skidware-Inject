@@ -1,13 +1,13 @@
 #pragma once
 #include "../../commonData.h"
-struct Nofall
+struct LongJump
 {
 	inline static int bind = 0;
 
 	inline static bool Enabled = false;
-	inline static float speed = 1.0f;
 	inline static int mode = 0;
-	inline static const char* modes[3]{ "Normal", "AAC3"};
+	inline static float speed = 2;
+	inline static const char* modes[5]{ "TNT"};
 	static void Update();
 	static void RenderMenu();
 };

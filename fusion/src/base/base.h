@@ -9,6 +9,7 @@ struct Base
 	static void RenderLoop();
 
 	static inline bool Running;
+	static inline bool justPressed;
 
 	//1 = Lunar, 2 = Forge, 3 = Vanilla/Badlion
 

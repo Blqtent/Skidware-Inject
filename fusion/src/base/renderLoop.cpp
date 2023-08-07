@@ -13,13 +13,22 @@
 #include "moduleManager/modules/player/fastplace.h"
 #include "moduleManager/modules/combat/velocity.h"
 #include "moduleManager/modules/blatent/killaura.h"
+#include "moduleManager/modules/blatent/flight.h"
+#include "moduleManager/modules/blatent/speed.h"
+#include "moduleManager/modules/player/blink.h"
+#include "moduleManager/modules/visual/cavefinder.h"
+#include "moduleManager/modules/visual/fullbright.h"
+#include "moduleManager/modules/blatent/nofall.h"
 #include <cmath>
 #include "moduleManager/modules/player/blink.h"
-#include "extension/scripting.hpp"
+//#include "extension/scripting.hpp"
 
 #include "menu/menu.h"
+#include "moduleManager/modules/combat/antibot.h"
+#include "moduleManager/modules/blatent/longjump.h"
 
 extern ImVec4 clear_col;
+static int y;
 void Base::RenderLoop() // Runs every frame
 {
 	if (!Base::Running) return;
@@ -27,6 +36,7 @@ void Base::RenderLoop() // Runs every frame
 	// goofy ahh css
 	float margin = 3;
 	float font_size = 24;
+	int m_iOffset = 0;
 
 	ImVec2 screenSize = ImGui::GetWindowSize();
 	ImVec2 textSize = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, watermark);
@@ -41,10 +51,10 @@ void Base::RenderLoop() // Runs every frame
 
 	Esp::RenderUpdate();
 	AimAssist::RenderUpdate();
-	Blink::RenderUpdate();
+	//Blink::RenderUpdate();
 	//ImGuiIO& io = ImGui::GetIO(); (void)io;
 
-	ImDrawList* d = ImGui::GetWindowDrawList();	
+	ImDrawList* d = ImGui::GetWindowDrawList();
 
 	std::string skid;
 	/*if (scripting::skidwareText == true) {
@@ -56,7 +66,9 @@ void Base::RenderLoop() // Runs every frame
 
 	ImU32 watermarkCol = Menu::watermarkColor;
 
-	d->AddText(Menu::Font, font_size, ImVec2(4, 4), watermarkCol, "Skidware V1.2");
+	d->AddText(Menu::Font, font_size, ImVec2(4, 4), watermarkCol, "Skidware V1.08");
+	//d->AddText(Menu::Font, font_size, ImVec2(4, 20), watermarkCol, ("FPS: " + std::to_string(static_cast<SDK::Minecraft->getDebugFPS())).c_str());
+
 	/*io.ConfigFlags = ImGuiConfigFlags_NoMouseCursorChange;
 	//ImGui::StyleColorsDark();
 
@@ -73,63 +85,84 @@ void Base::RenderLoop() // Runs every frame
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 
 	io.IniFilename = NULL; // GET RID OF IMGUI.INI
-	/*
-	if (AimAssist::Enabled)
-		d->AddText(Menu::Font, font_size, ImVec2(4, 4), ImColor(255, 255, 255), "Aimassist");
-	if (Esp::Enabled)
-		d->AddText(Menu::Font, font_size, ImVec2(4, 24), ImColor(255, 255, 255), "ESP");
-	if (LeftAutoClicker::Enabled)
-		d->AddText(Menu::Font, font_size, ImVec2(4, 44), ImColor(255, 255, 255), "LeftClicker");
-	if (RightAutoClicker::Enabled)
-		d->AddText(Menu::Font, font_size, ImVec2(4, 64), ImColor(255, 255, 255), "RightClicker");
-	if (Reach::Enabled)
-		d->AddText(Menu::Font, font_size, ImVec2(4, 84), ImColor(255, 255, 255), "Reach");
-	if (Velocity::Enabled)
-		d->AddText(Menu::Font, font_size, ImVec2(4, 104), ImColor(255, 255, 255), "Velocity");
-	if (Eagle::Enabled)
-		d->AddText(Menu::Font, font_size, ImVec2(4, 124), ImColor(255, 255, 255), "Eagle");
-	if (Fastplace::Enabled)
-		d->AddText(Menu::Font, font_size, ImVec2(4, 144), ImColor(255, 255, 255), "FastPlace");
-	*/
-	//Array List
-	/*
-	ImFont* mainfont = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Bahnschrift.ttf", 20);
-	ImGui::PushFont(mainfont);
-	ImGui::SetNextWindowPos(ImVec2(1640, 0));
-	ImGui::SetNextWindowSize(ImVec2(200, 250));
-	ImGui::SetNextWindowBgAlpha(0.25f);
 	
-	bool* info_open = (bool*)0;
-	ImGui::Begin("Info", info_open, ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoScrollbar | ImGuiWindowFlags_NoScrollWithMouse);
-	ImGui::Text(("Skidware V1.2"));
-	ImGui::Separator();
+	y = 24;
+
 	if (AimAssist::Enabled) {
-		ImGui::Text(("Aimassist - " + std::to_string(std::roundf(AimAssist::smooth))).c_str());
-	}
-	if (Reach::Enabled) {
-		ImGui::Text(("Reach - " + std::to_string(std::roundf(Reach::ReachDistance))).c_str());
-	}
-	if (LeftAutoClicker::Enabled) {
-		ImGui::Text("LeftClicker");
-	}
-	if (RightAutoClicker::Enabled) {
-		ImGui::Text("RightClicker");
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Aimassist");
+		y += 20;
 	}
 	if (Esp::Enabled) {
-		ImGui::Text("ESP");
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "ESP");
+		y += 20;
 	}
-	if (Eagle::Enabled) {
-		ImGui::Text("Eagle");
-
+	if (LeftAutoClicker::Enabled) {
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "LeftClicker");
+		y += 20;
 	}
-	if (Fastplace::Enabled) {
-		ImGui::Text(("Fastplace"));
-
+	if (RightAutoClicker::Enabled) {
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "RightClicker");
+		y += 20;
+	}
+	if (Reach::Enabled) {
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Reach");
+		y += 20;
 	}
 	if (Velocity::Enabled) {
-		ImGui::Text("Velocity");
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Velocity");
+		y += 20;
+	}
+	if (Eagle::Enabled) {
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Eagle");
+		y += 20;
+	}
+	if (Fastplace::Enabled) {
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "FastPlace");
+		y += 20;
+	}
+	if (Cavefinder::Enabled) {
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "XRay");
+		y += 20;
+	}
+	if (Antibot::Enabled) {
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Antibot");
+		y += 20;
+	}
+	if (Killaura::Enabled) {
+		if (Killaura::mode == 0) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Killaura - Legit");
+		}
+		else if (Killaura::mode == 1) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Killaura - Normal");
+
+		}
+		y += 20;
+	}
+	if (Blink::Enabled) {
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Fakelag");
+		y += 20;
+	}
+	if (Fulbright::Enabled) {
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Fulbright");
+		y += 20;
 
 	}
-	ImGui::PopFont();
-	*/
+	if (Speed::Enabled) {
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Speed");
+		y += 20;
+	}
+	if (Nofall::Enabled) {
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Nofall");
+		y += 20;
+	}
+	if (Flight::Enabled) {
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Flight");
+		y += 20;
+	}
+	
+	if (LongJump::Enabled) {
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "LongJump");
+		y += 20;
+	}
+	
 }

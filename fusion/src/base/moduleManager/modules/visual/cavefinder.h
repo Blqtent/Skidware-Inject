@@ -4,7 +4,7 @@
 #include <vector>
 #include <string>
 #include "../../commonData.h"
-struct Fulbright
+struct Cavefinder
 {
     inline static int bind = 0;
 

@@ -5,7 +5,6 @@
 struct SDK
 {
 	static inline CMinecraft* Minecraft;
-
 	static void Init();
 };
 

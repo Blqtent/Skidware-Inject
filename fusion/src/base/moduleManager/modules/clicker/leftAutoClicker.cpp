@@ -26,12 +26,14 @@ void LeftAutoClicker::Update()
 		GetCursorPos(&pos_cursor);
 		SendMessage(Menu::HandleWindow, WM_LBUTTONDOWN, MK_LBUTTON, MAKELPARAM(pos_cursor.x, pos_cursor.y));
 		SendMessage(Menu::HandleWindow, WM_LBUTTONUP, 0, MAKELPARAM(pos_cursor.x, pos_cursor.y));
+		
 		if (blockhit == true && count == blockHitChance) {
 			SendMessage(Menu::HandleWindow, WM_RBUTTONDOWN, MK_RBUTTON, MAKELPARAM(pos_cursor.x, pos_cursor.y));
 			SendMessage(Menu::HandleWindow, WM_RBUTTONUP, 0, MAKELPARAM(pos_cursor.x, pos_cursor.y));
 			count = 0;
 		}
-		else {
+		else if (blockhit == true) {
+			
 			count++;
 		}
 		lastClickTime = milli;
@@ -63,7 +65,7 @@ void LeftAutoClicker::RenderMenu()
 		Menu::DoToggleButtonStuff(2136, "Ignore Blocks", &LeftAutoClicker::ignoreBlocks);
 		Menu::DoToggleButtonStuff(13423, "Blockhit", &LeftAutoClicker::blockhit);
 		Menu::DoToggleButtonStuff(135315, "In Inventory", &LeftAutoClicker::inInventory);
-		Menu::DoSliderStuff(34508, "Max CPS", &LeftAutoClicker::blockHitChance, 1, 50);
+		Menu::DoSliderStuff(342, "Blockhit Chance", &LeftAutoClicker::blockHitChance, 1, 50);
 
 
 		ImGui::EndChild();

@@ -46,5 +46,8 @@ struct Menu
 
 	static void Unhook_WSA();
 	static void Hook_WSA();
+
+	static void UnhookUpdate();
+	static void HookUpdate();
 };
 

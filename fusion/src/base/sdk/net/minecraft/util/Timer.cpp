@@ -8,6 +8,7 @@ CTimer::CTimer()
 	Java::AssignClass("net.minecraft.util.Timer", this->Class);
 	if (JNIHelper::IsForge()) {
 		this->FieldIDs["renderPartialTicks"] = Java::Env->GetFieldID(this->Class, "field_74281_c", "F");
+		//this->FieldIDs["timerSpeed"] = Java::Env->GetFieldID(this->Class, "field_74281_c", "F");
 		return;
 	}
 	this->FieldIDs["renderPartialTicks"] = Java::Env->GetFieldID(this->Class, "renderPartialTicks", "F");

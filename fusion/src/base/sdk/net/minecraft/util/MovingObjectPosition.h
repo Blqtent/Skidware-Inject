@@ -1,6 +1,7 @@
 #pragma once
 #include "../../../java/IClass.h"
 #include "Vec3.h"
+#include "BlockPos.h"
 
 struct CMovingObjectPosition : IClass
 {
@@ -12,5 +13,7 @@ struct CMovingObjectPosition : IClass
 
 	CVec3 GetBlockPosition();
 	bool IsTypeOfBlock();
+	bool IsTypeOfEntity();
+	BlockPos getBlockPos();
 };
 

@@ -12,4 +12,6 @@ struct CInventoryPlayer : IClass
 	jobject GetInstance();
 
 	CItemStack GetCurrentItem();
+	void SetCurrentItem(int index);
+	CItemStack GetIndexItem(int index);
 };

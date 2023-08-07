@@ -11,6 +11,10 @@ struct StrayCache {
 	inline static jmethodID entity_getName;
 	inline static jmethodID entity_isSneaking;
 	inline static jmethodID entity_setSneaking;
+	inline static jmethodID entity_setPosition;
+	inline static jmethodID entity_setSprint;
+	inline static jmethodID entity_isInvisible;
+	inline static jmethodID entity_inWater;
 	inline static jfieldID entity_posX;
 	inline static jfieldID entity_posY;
 	inline static jfieldID entity_posZ;
@@ -31,6 +35,8 @@ struct StrayCache {
 	inline static jfieldID entity_motionZ;
 	inline static jfieldID entity_onGround;
 	inline static jfieldID entity_fallDistance;
+	inline static jfieldID entity_ticksExisted;
+	inline static jfieldID entity_isDead;
 
 	// ENTITY LIVING BASE CLASS
 	inline static jclass entityLivingBase_class;
@@ -57,6 +63,7 @@ struct StrayCache {
 	inline static jclass movingObjectPosition_class;
 	inline static jfieldID movingObjectPosition_hitVec;
 	inline static jfieldID movingObjectPosition_typeOfHit;
+	inline static jfieldID movingObjectPosition_blockPos;
 
 	inline static jclass vec3_class;
 	inline static jfieldID vec3_xCoord;
@@ -65,9 +72,16 @@ struct StrayCache {
 
 	inline static jclass inventoryPlayer_class;
 	inline static jmethodID inventoryPlayer_getCurrentItem;
+	inline static jfieldID inventoryPlayer_mainInv;
+	inline static jfieldID inventoryPlayer_currentItem;
 
 	inline static jclass itemStack_class;
 	inline static jmethodID itemStack_getItem;
+	inline static jmethodID itemStack_getItemID;
+	inline static jclass blockPos_class;
+	inline static jfieldID blockPos_x;
+	inline static jfieldID blockPos_y;
+	inline static jfieldID blockPos_z;
 
 	static void Initialize() {
 		/*
@@ -136,6 +150,7 @@ struct StrayCache {
 			entity_getName = Java::Env->GetMethodID(entity_class, "func_70005_c_", "()Ljava/lang/String;");
 			entity_isSneaking = Java::Env->GetMethodID(entity_class, "func_70093_af", "()Z");
 			entity_setSneaking = Java::Env->GetMethodID(entity_class, "func_70095_a", "(Z)V");
+			entity_setPosition = Java::Env->GetMethodID(entity_class, "func_70107_b", "(DDD)V");
 			entity_posX = Java::Env->GetFieldID(entity_class, "field_70165_t", "D");
 			entity_posY = Java::Env->GetFieldID(entity_class, "field_70163_u", "D");
 			entity_posZ = Java::Env->GetFieldID(entity_class, "field_70161_v", "D");
@@ -156,6 +171,11 @@ struct StrayCache {
 			entity_motionZ = Java::Env->GetFieldID(entity_class, "field_70179_y", "D");
 			entity_onGround = Java::Env->GetFieldID(entity_class, "field_70122_E", "Z");
 			entity_fallDistance = Java::Env->GetFieldID(entity_class, "field_70143_R", "F");
+			entity_ticksExisted = Java::Env->GetFieldID(entity_class, "field_70173_aa", "F");
+			entity_isDead = Java::Env->GetFieldID(entity_class, "field_70128_L", "Z");
+			entity_setSprint = Java::Env->GetMethodID(entity_class, "func_70031_b", "(Z)V");
+			entity_isInvisible = Java::Env->GetMethodID(entity_class, "func_82150_aj", "()Z");
+			entity_inWater = Java::Env->GetMethodID(entity_class, "func_70090_H", "()Z");
 
 			Java::AssignClass("net.minecraft.entity.EntityLivingBase", entityLivingBase_class);
 			entityLivingBase_getHealth = Java::Env->GetMethodID(entityLivingBase_class, "func_110143_aJ", "()F");
@@ -178,6 +198,7 @@ struct StrayCache {
 			Java::AssignClass("net.minecraft.util.MovingObjectPosition", movingObjectPosition_class);
 			movingObjectPosition_hitVec = Java::Env->GetFieldID(movingObjectPosition_class, "field_72307_f", "Lnet/minecraft/util/Vec3;");
 			movingObjectPosition_typeOfHit = Java::Env->GetFieldID(movingObjectPosition_class, "field_72313_a", "Lnet/minecraft/util/MovingObjectPosition$MovingObjectType;");
+			movingObjectPosition_blockPos = Java::Env->GetFieldID(movingObjectPosition_class, "field_178783_e", "Lnet/minecraft/util/MovingObjectPosition$MovingObjectType;");
 
 			Java::AssignClass("net.minecraft.util.Vec3", vec3_class);
 			vec3_xCoord = Java::Env->GetFieldID(vec3_class, "field_72450_a", "D");
@@ -186,9 +207,18 @@ struct StrayCache {
 
 			Java::AssignClass("net.minecraft.entity.player.InventoryPlayer", inventoryPlayer_class);
 			inventoryPlayer_getCurrentItem = Java::Env->GetMethodID(inventoryPlayer_class, "func_70448_g", "()Lnet/minecraft/item/ItemStack;");
+			inventoryPlayer_mainInv = Java::Env->GetFieldID(inventoryPlayer_class, "field_70462_a", "[Lnet/minecraft/item/ItemStack;");
+			inventoryPlayer_currentItem = Java::Env->GetFieldID(inventoryPlayer_class, "field_70461_c", "I");
 
 			Java::AssignClass("net.minecraft.item.ItemStack", itemStack_class);
 			itemStack_getItem = Java::Env->GetMethodID(itemStack_class, "func_77973_b", "()Lnet/minecraft/item/Item;");
+			itemStack_getItemID = Java::Env->GetMethodID(itemStack_class, "func_150891_b", "(Lnet/minecraft/item/Item;)I");
+
+			Java::AssignClass("net.minecraft.util.BlockPos", blockPos_class);
+			blockPos_x = Java::Env->GetFieldID(blockPos_class, "field_177962_a", "I");
+			blockPos_y = Java::Env->GetFieldID(blockPos_class, "field_177960_b", "I");
+			blockPos_z = Java::Env->GetFieldID(blockPos_class, "field_177961_c", "I");
+
 
 			initialized = true;
 			return;
@@ -197,6 +227,7 @@ struct StrayCache {
 		Java::AssignClass("net.minecraft.entity.Entity", entity_class);
 		entity_getName = Java::Env->GetMethodID(entity_class, "getName", "()Ljava/lang/String;");
 		entity_isSneaking = Java::Env->GetMethodID(entity_class, "isSneaking", "()Z");
+		entity_setPosition = Java::Env->GetMethodID(entity_class, "setPosition", "(DDD)V");
 		entity_setSneaking = Java::Env->GetMethodID(entity_class, "setSneaking", "(Z)V");
 		entity_posX = Java::Env->GetFieldID(entity_class, "posX", "D");
 		entity_posY = Java::Env->GetFieldID(entity_class, "posY", "D");
@@ -218,6 +249,10 @@ struct StrayCache {
 		entity_motionZ = Java::Env->GetFieldID(entity_class, "motionZ", "D");
 		entity_onGround = Java::Env->GetFieldID(entity_class, "onGround", "Z");
 		entity_fallDistance = Java::Env->GetFieldID(entity_class, "fallDistance", "F");
+		entity_isDead = Java::Env->GetFieldID(entity_class, "isDead", "Z");
+		entity_isInvisible = Java::Env->GetMethodID(entity_class, "isInvisible", "()Z");
+		entity_ticksExisted = Java::Env->GetFieldID(entity_class, "ticksExisted", "F");
+		entity_inWater = Java::Env->GetMethodID(entity_class, "inWater", "()Z");
 
 		Java::AssignClass("net.minecraft.entity.EntityLivingBase", entityLivingBase_class);
 		entityLivingBase_getHealth = Java::Env->GetMethodID(entityLivingBase_class, "getHealth", "()F");
@@ -240,6 +275,7 @@ struct StrayCache {
 		Java::AssignClass("net.minecraft.util.MovingObjectPosition", movingObjectPosition_class);
 		movingObjectPosition_hitVec = Java::Env->GetFieldID(movingObjectPosition_class, "hitVec", "Lnet/minecraft/util/Vec3;");
 		movingObjectPosition_typeOfHit = Java::Env->GetFieldID(movingObjectPosition_class, "typeOfHit", "Lnet/minecraft/util/MovingObjectPosition$MovingObjectType;");
+		movingObjectPosition_blockPos = Java::Env->GetFieldID(movingObjectPosition_class, "blockPos", "Lnet/minecraft/util/MovingObjectPosition$MovingObjectType;");
 
 		Java::AssignClass("net.minecraft.util.Vec3", vec3_class);
 		vec3_xCoord = Java::Env->GetFieldID(vec3_class, "xCoord", "D");
@@ -248,10 +284,17 @@ struct StrayCache {
 
 		Java::AssignClass("net.minecraft.entity.player.InventoryPlayer", inventoryPlayer_class);
 		inventoryPlayer_getCurrentItem = Java::Env->GetMethodID(inventoryPlayer_class, "getCurrentItem", "()Lnet/minecraft/item/ItemStack;");
+		inventoryPlayer_mainInv = Java::Env->GetFieldID(inventoryPlayer_class, "mainInventory", "[Lnet/minecraft/item/ItemStack;");
+		inventoryPlayer_currentItem = Java::Env->GetFieldID(inventoryPlayer_class, "currentItem", "I");
 
 		Java::AssignClass("net.minecraft.item.ItemStack", itemStack_class);
 		itemStack_getItem = Java::Env->GetMethodID(itemStack_class, "getItem", "()Lnet/minecraft/item/Item;");
+		itemStack_getItemID = Java::Env->GetStaticMethodID(itemStack_class, "getIdFromItem", "(Lnet/minecraft/item/Item;)I");
 
+		Java::AssignClass("net.minecraft.util.BlockPos", blockPos_class);
+		blockPos_x = Java::Env->GetFieldID(blockPos_class, "x", "I");
+		blockPos_y = Java::Env->GetFieldID(blockPos_class, "y", "I");
+		blockPos_z = Java::Env->GetFieldID(blockPos_class, "z", "I");
 		initialized = true;
 	}
 

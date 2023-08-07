@@ -11,4 +11,5 @@ struct CItemStack : IClass
 	jobject GetInstance();
 
 	jobject GetItem();
+	int GetItemID();
 };

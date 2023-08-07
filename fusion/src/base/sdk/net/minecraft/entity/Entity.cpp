@@ -61,9 +61,20 @@ Vector3 CEntity::GetLastTickPos()
 }
 
 void CEntity::setMotion(Vector3 motion) {
-	Java::Env->SetDoubleField(this->GetInstance(), StrayCache::entity_motionX, motion.x);
-	Java::Env->SetDoubleField(this->GetInstance(), StrayCache::entity_motionY, motion.y);
-	Java::Env->SetDoubleField(this->GetInstance(), StrayCache::entity_motionZ, motion.z);
+	if (motion.x != 100000000000) {
+		Java::Env->SetDoubleField(this->GetInstance(), StrayCache::entity_motionX, motion.x);
+	}
+	if (motion.y != 100000000000) {
+		Java::Env->SetDoubleField(this->GetInstance(), StrayCache::entity_motionY, motion.y);
+	}
+	if (motion.z != 100000000000) {
+		Java::Env->SetDoubleField(this->GetInstance(), StrayCache::entity_motionZ, motion.z);
+	}
+}
+
+void CEntity::setSprint(bool state)
+{
+	Java::Env->CallVoidMethod(this->GetInstance(), StrayCache::entity_setSprint, state);
 }
 
 Vector3 CEntity::getMotion() {
@@ -79,9 +90,43 @@ bool CEntity::isOnGround()
 	return Java::Env->GetBooleanField(this->GetInstance(), StrayCache::entity_onGround);
 }
 
+bool CEntity::inWater()
+{
+	return Java::Env->CallBooleanMethod(this->GetInstance(), StrayCache::entity_inWater);
+
+}
+
+bool CEntity::isDead()
+{
+	return Java::Env->GetBooleanField(this->GetInstance(), StrayCache::entity_isDead);
+}
+
+bool CEntity::isInvisible()
+{
+	return Java::Env->CallBooleanMethod(this->GetInstance(), StrayCache::entity_isInvisible);
+}
+
 float CEntity::fallDistance()
 {
 	return Java::Env->GetFloatField(this->GetInstance(), StrayCache::entity_fallDistance);
+}
+
+void CEntity::setFallDistance(float i)
+{
+	Java::Env->SetFloatField(this->GetInstance(), StrayCache::entity_fallDistance, i);
+
+}
+
+int CEntity::ticksExisted()
+{
+	return Java::Env->GetFloatField(this->GetInstance(), StrayCache::entity_ticksExisted);
+
+}
+
+void CEntity::setPos(double x, double y, double z)
+{
+	Java::Env->CallVoidMethod(this->GetInstance(), StrayCache::entity_setPosition, x, y, z);
+
 }
 
 void CEntity::setOnGround(bool state)

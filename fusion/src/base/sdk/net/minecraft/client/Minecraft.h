@@ -18,6 +18,7 @@ struct CMinecraft : IClass
 
 	CEntity GetRenderViewEntity();
 	bool IsInGuiState();
+	int getDebugFPS();
 	void ClickMouse();
 	void setRightClickDelayTimer(jint delay);
 	jobject getPlayerController();

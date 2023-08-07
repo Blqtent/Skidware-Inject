@@ -18,6 +18,7 @@ CWorld::CWorld()
 		this->MethodIDs["rayTraceBlocks"] = Java::Env->GetMethodID(this->Class, "func_147447_a", "(Lnet/minecraft/util/Vec3;Lnet/minecraft/util/Vec3;ZZZ)Lnet/minecraft/util/MovingObjectPosition;");
 
 		this->MethodIDs["isAirBlock"] = Java::Env->GetMethodID(this->Class, "func_175623_d", "(Lnet/minecraft/util/BlockPos;)Z");
+		this->MethodIDs["getChunkFromChunkCoords"] = Java::Env->GetMethodID(this->Class, "func_72964_e", "(II)Lnet/minecraft/world/chunk/Chunk;");
 		return;
 	}
 
@@ -25,6 +26,7 @@ CWorld::CWorld()
 
 	this->MethodIDs["rayTraceBlocks"] = Java::Env->GetMethodID(this->Class, "rayTraceBlocks", "(Lnet/minecraft/util/Vec3;Lnet/minecraft/util/Vec3;ZZZ)Lnet/minecraft/util/MovingObjectPosition;");
 
+	this->MethodIDs["getChunkFromChunkCoords"] = Java::Env->GetMethodID(this->Class, "getChunkFromChunkCoords", "(II)Lnet/minecraft/world/chunk/Chunk;");
 	this->MethodIDs["isAirBlock"] = Java::Env->GetMethodID(this->Class, "isAirBlock", "(Lnet/minecraft/util/BlockPos;)Z");
 }
 
@@ -93,6 +95,11 @@ Vector3 CWorld::rayTraceBlocks(Vector3 from, Vector3 to, bool stopOnLiquid, bool
 	Java::Env->DeleteLocalRef(j_from);
 	Java::Env->DeleteLocalRef(cls);
 	return blockPos;
+}
+
+CChunk CWorld::getChunkFromChunkCoords(jint chunkX, jint chunkZ)
+{
+	return CChunk(Java::Env->CallObjectMethod(this->GetInstance(), this->MethodIDs["getChunkFromChunkCoords"]));
 }
 
 bool CWorld::isAirBlock(double x, double y, double z)

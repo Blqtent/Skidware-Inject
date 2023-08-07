@@ -4,26 +4,23 @@
 #include "../../util/logger.h"
 #include "../../../../ext/minhook/minhook.h"
 #include "../../moduleManager/modules/player/blink.h"
-static ULONGLONG timer;
-static bool wasActive;
 
+//if (Blink::throttle && (GetTickCount64() - timer > Blink::Milliseonds)) {
+	//timer = GetTickCount64();
+
+	//return g_origWSASend(s, lpBuffers, dwBufferCount, lpNumberOfBytesSent, dwFlags, lpOverlapped, lpCompletionRoutine);
+//}
 int(__stdcall* g_origWSASend)(SOCKET, LPWSABUF, DWORD, LPDWORD, DWORD, LPWSAOVERLAPPED, LPWSAOVERLAPPED_COMPLETION_ROUTINE);
 int __stdcall WSASendHook(SOCKET s, LPWSABUF lpBuffers, DWORD dwBufferCount, LPDWORD lpNumberOfBytesSent, DWORD dwFlags, LPWSAOVERLAPPED lpOverlapped, LPWSAOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine)
 {
-	const bool isBindPress = GetAsyncKeyState(Blink::bind) & 0x8000;
+	/*
+	if (!Blink::Enabled)
+		return g_origWSASend(s, lpBuffers, dwBufferCount, lpNumberOfBytesSent, dwFlags, lpOverlapped, lpCompletionRoutine);;
 
-	if (!isBindPress)
-		wasActive = false;
-
-	if (timer == 0 && !wasActive && isBindPress) {
-		timer = GetTickCount64();
-		wasActive = true;
+	while (GetAsyncKeyState(Blink::bind) & 0x8000 && (GetTickCount64() - Blink::timer < Blink::Milliseonds * 1000)) {
+		Sleep(1);
 	}
-	if (Blink::Enabled) {
-		while ((GetAsyncKeyState(Blink::bind) & 0x8000) && (GetTickCount64() - timer < Blink::Milliseonds * 1000)) {
-			Sleep(1);
-		}
-	}
+	*/
 	return g_origWSASend(s, lpBuffers, dwBufferCount, lpNumberOfBytesSent, dwFlags, lpOverlapped, lpCompletionRoutine);
 }
 

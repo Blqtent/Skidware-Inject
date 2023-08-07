@@ -1,22 +1,14 @@
-#include "Fullbright.h"
-#include "../../commonData.h"
-#include <GL/glew.h>
-#include <GL/gl.h>
+#include "fullbright.h"
 #include "../../../../../ext/imgui/imgui.h"
 #include "../../../menu/menu.h"
-
-
-
-void Fullbright::Update()
+void Fulbright::Update()
 {
 	if (!Enabled) return;
 	if (!CommonData::SanityCheck()) return;
-
 	SDK::Minecraft->gameSettings->SetGamma(100.f);
-
 }
-//
-void Fullbright::RenderMenu()
+
+void Fulbright::RenderMenu()
 {
 	ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 
@@ -26,12 +18,11 @@ void Fullbright::RenderMenu()
 	if (ImGui::BeginChild("Fullbright", ImVec2(450, 100))) {
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
-		Menu::DoToggleButtonStuff(546345785, "Toggle Fullbright", &Fullbright::Enabled);
-
-		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
+		Menu::DoToggleButtonStuff(568, "Toggle Fullbright", &Fulbright::Enabled);
 
 		ImGui::EndChild();
 	}
 	ImGui::PopStyleVar();
 	ImGui::PopStyleColor();
 }
+
