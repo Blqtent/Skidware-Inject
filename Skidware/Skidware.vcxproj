@@ -172,6 +172,7 @@
     <ClInclude Include="src\base\moduleManager\modules\blatent\longjump.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\nofall.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\speed.h" />
+    <ClInclude Include="src\base\moduleManager\modules\blatent\timerhack.h" />
     <ClInclude Include="src\base\moduleManager\modules\clicker\leftAutoClicker.h" />
     <ClInclude Include="src\base\moduleManager\modules\clicker\rightAutoClicker.h" />
     <ClInclude Include="src\base\moduleManager\modules\combat\aimAssist.h" />
@@ -263,6 +264,7 @@
     <ClCompile Include="src\base\moduleManager\modules\blatent\longjump.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\nofall.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\speed.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\blatent\timerhack.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\clicker\leftAutoClicker.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\clicker\rightAutoClicker.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\combat\aimAssist.cpp" />

@@ -8,10 +8,11 @@ CTimer::CTimer()
 	Java::AssignClass("net.minecraft.util.Timer", this->Class);
 	if (JNIHelper::IsForge()) {
 		this->FieldIDs["renderPartialTicks"] = Java::Env->GetFieldID(this->Class, "field_74281_c", "F");
-		//this->FieldIDs["timerSpeed"] = Java::Env->GetFieldID(this->Class, "field_74281_c", "F");
+		this->FieldIDs["timerSpeed"] = Java::Env->GetFieldID(this->Class, "field_74278_d", "F");
 		return;
 	}
 	this->FieldIDs["renderPartialTicks"] = Java::Env->GetFieldID(this->Class, "renderPartialTicks", "F");
+	this->FieldIDs["timerSpeed"] = Java::Env->GetFieldID(this->Class, "timerSpeed", "F");
 
 }
 
@@ -28,4 +29,16 @@ jclass CTimer::GetClass()
 jobject CTimer::GetInstance()
 {
 	return Java::Env->GetObjectField(SDK::Minecraft->GetInstance(), SDK::Minecraft->FieldIDs["timer"]);
+}
+
+float CTimer::GetTimerSpeed()
+{
+	return Java::Env->GetFloatField(GetInstance(), this->FieldIDs["timerSpeed"]);
+
+}
+
+void CTimer::SetTimerSpeed(float speed)
+{
+	return Java::Env->SetFloatField(GetInstance(), this->FieldIDs["timerSpeed"], speed);
+
 }

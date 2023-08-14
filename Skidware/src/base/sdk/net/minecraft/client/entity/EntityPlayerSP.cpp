@@ -210,3 +210,64 @@ void CEntityPlayerSP::setFly(bool state)
 	return Java::Env->SetBooleanField(get_abilities(), abi, state);
 
 }
+
+
+void CEntityPlayerSP::sendGroundPacket(jobject Packet)
+{
+	jclass playerClass;
+	Java::AssignClass("net.minecraft.client.entity.EntityPlayerSP", playerClass);
+	jclass playerHandler;
+	Java::AssignClass("net.minecraft.client.network.NetHandlerPlayClient", playerHandler);
+	jfieldID fieldQueue;
+	if (JNIHelper::IsForge())
+		fieldQueue = Java::Env->GetFieldID(playerClass, "field_71174_a", "Lnet/minecraft/client/network/NetHandlerPlayClient;");
+	else
+		fieldQueue = Java::Env->GetFieldID(playerClass, "sendQueue", "Lnet/minecraft/client/network/NetHandlerPlayClient;");
+	jobject queueObject = Java::Env->GetObjectField(GetInstance(), fieldQueue);
+	if (fieldQueue == nullptr) {
+		//std::cout << "[!] Queue object not found !" << std::endl;
+		return;
+	}
+	jmethodID addToSendQueue;
+
+	if (JNIHelper::IsForge())
+		addToSendQueue = Java::Env->GetMethodID(playerHandler, "func_147297_a", "(Lnet/minecraft/network/Packet;)V");
+	else
+		addToSendQueue = Java::Env->GetMethodID(playerHandler, "addToSendQueue", "(Lnet/minecraft/network/Packet;)V");
+
+	if (addToSendQueue == nullptr) {
+		//std::cout << "[!] Method addToQueue not found !" << std::endl;
+		return;
+	}
+
+	Java::Env->CallVoidMethod(queueObject, addToSendQueue, Packet);
+
+	Java::Env->DeleteLocalRef(playerClass);
+
+	Java::Env->DeleteLocalRef(queueObject);
+
+	Java::Env->DeleteLocalRef(playerHandler);
+
+
+	return;
+}
+
+jobject CEntityPlayerSP::C03PacketPlayer(jboolean ground, float yaw, float pitch)
+{
+	jclass C03;
+	Java::AssignClass("net.minecraft.network.play.client.C03PacketPlayer", C03);
+	jmethodID c03Constructer = Java::Env->GetMethodID(C03, "<init>", "(Z)V");
+	jfieldID yawf, pitchf;
+	if (JNIHelper::IsForge()) {
+		yawf = Java::Env->GetFieldID(C03, "field_149476_e", "F");
+		pitchf = Java::Env->GetFieldID(C03, "field_149473_f", "F");
+	}
+	else {
+		yawf = Java::Env->GetFieldID(C03, "yaw", "F");
+		pitchf = Java::Env->GetFieldID(C03, "pitch", "F");
+	}
+	jobject Packet = Java::Env->NewObject(C03, c03Constructer, ground);
+	Java::Env->SetFloatField(Packet, yawf, yaw);
+	Java::Env->SetFloatField(Packet, pitchf, pitch);
+	return Packet;
+}

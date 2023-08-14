@@ -39,4 +39,8 @@ struct CEntityPlayerSP : CEntityPlayer
 	jobject get_abilities();
 	void setFly(bool state);
 
+	void sendGroundPacket(jobject Packet);
+
+	jobject C03PacketPlayer(jboolean ground, float yaw, float pitch);
+
 };

@@ -36,6 +36,7 @@
 #include "moduleManager/modules/visual/cavefinder.h"
 #include "moduleManager/modules/visual/esp.h"
 #include "moduleManager/modules/visual/fullbright.h"
+#include "moduleManager/modules/blatent/timerhack.h"
 
 
 
@@ -113,6 +114,7 @@ void Base::initModule() {
 		ModuleManager::getInstance().addModule<LongJump>(LongJump::getInstance());
 		ModuleManager::getInstance().addModule<Nofall>(Nofall::getInstance());
 		ModuleManager::getInstance().addModule<Speed>(Speed::getInstance());
+		ModuleManager::getInstance().addModule<TimerHack>(TimerHack::getInstance());
 	}
 	
 	{

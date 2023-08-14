@@ -20,7 +20,7 @@ public:
 	void onUpdate(const EventUpdate e);
 	void RenderMenu();
 
-	const char* modes[3]{ "Normal", "AAC3" };
+	const char* modes[5]{ "Normal", "AAC3", "AAC4", "Packet", "Reduce"};
 	float speed = 1.0f;
 private:
 	Nofall();

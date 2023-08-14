@@ -38,6 +38,24 @@ void Nofall::onUpdate(const EventUpdate e)
 			p->setMotion(Vector3(p->getMotion().x, -11, p->getMotion().z));
 		}
 	}
+	else if (this->getMode() == 2) {
+		if (p->fallDistance() > 2.5) {
+			p->setMotion(Vector3(p->getMotion().x, 0.01, p->getMotion().z));
+			p->setFallDistance(0);
+		}
+	}
+	else if (this->getMode() == 3) {
+		if (p->fallDistance() > 2) {
+			p->sendGroundPacket(p->C03PacketPlayer(true, p->GetRotationYaw(), p->GetRotationPitch()));
+		}
+	}
+	else if (this->getMode() == 4) {
+		if (p->fallDistance() > 4) {
+			p->sendGroundPacket(p->C03PacketPlayer(true, p->GetRotationYaw(), p->GetRotationPitch()));
+			//p->C03PacketPlayer(true);
+			p->setFallDistance(0);
+		}
+	}
 
 }
 
@@ -55,7 +73,7 @@ void Nofall::RenderMenu()
 		Menu::DoToggleButtonStuff(23432423, "Toggle Nofall", this);
 
 		ImGui::Text("Nofall Mode");
-		ImGui::Combo("Nofall Mode", &this->getMode(), this->modes, 2);
+		ImGui::Combo("Nofall Mode", &this->getMode(), this->modes, 5);
 
 		ImGui::EndChild();
 	}

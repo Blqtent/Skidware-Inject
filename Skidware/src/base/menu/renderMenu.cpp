@@ -27,6 +27,7 @@
 #include "../moduleManager/modules/blatent/longjump.h"
 #include "../moduleManager/modules/blatent/speed.h"
 #include "../moduleManager/modules/blatent/flight.h"
+#include "../moduleManager/modules/blatent/timerHack.h"
 
 //#include "../moduleManager/modules/other/config.h"
 
@@ -437,8 +438,12 @@ void Menu::RenderMenu()
 			if (Menu::TabButton("Nofall", (currentTab6 == 2 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 2;
 			ImGui::SameLine();
 			if (Menu::TabButton("Flight", (currentTab6 == 3 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 3;
-			ImGui::SameLine();
+			//ImGui::SameLine();
 			if (Menu::TabButton("LongJump", (currentTab6 == 4 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 4;
+			ImGui::SameLine();
+			if (Menu::TabButton("Timer", (currentTab6 == 5 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 5;
+			
+			
 			if (currentTab6 == 0) {
 				Killaura::getInstance()->RenderMenu();
 				keybind::key_bind(Killaura::getInstance()->getKey(), 125, 25);
@@ -460,6 +465,12 @@ void Menu::RenderMenu()
 			if (currentTab6 == 4) {
 				LongJump::getInstance()->RenderMenu();
 				keybind::key_bind(LongJump::getInstance()->getKey(), 125, 25);
+
+			}
+			if (currentTab6 == 5) {
+				TimerHack::getInstance()->RenderMenu();
+
+				keybind::key_bind(TimerHack::getInstance()->getKey(), 125, 25);
 
 			}
 			ImGui::InvisibleButton("", ImVec2(1, 100));
