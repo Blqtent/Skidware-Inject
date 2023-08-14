@@ -50,4 +50,9 @@ void ModuleManager::ProcessKeyEvent() {
     }
 }
 
+std::vector<HMOD> ModuleManager::getMods()
+{
+    return this->modules;
+}
+
 

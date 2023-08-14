@@ -18,7 +18,7 @@ public:
 
     template<class MODCLASS>
     void addModule(MODCLASS* mod);
-
+     
     template<typename MODCLASS>
     MODCLASS *getModule(std::string name);
 
@@ -35,6 +35,8 @@ public:
     ModuleManager(const ModuleManager &) = delete;
 
     ModuleManager &operator=(const ModuleManager &) = delete;
+    std::vector<HMOD> getMods();
+    
 };
 
 template<class MODCLASS>

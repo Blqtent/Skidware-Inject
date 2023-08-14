@@ -18,7 +18,7 @@ public:
 
 	float Horizontal = 0.f;
 	float Vertical = 1.0f;
-	const char* modes[3]{ "Normal", "Intave", "Push" };
+	const char* modes[4]{ "Normal", "Intave", "Push", "Strafe"};
 private:
 	Velocity();
 };

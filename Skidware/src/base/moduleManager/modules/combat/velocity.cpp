@@ -28,7 +28,7 @@ void Velocity::onUpdate(const EventUpdate e)
 	CEntityPlayerSP* thePlayer = SDK::Minecraft->thePlayer;
 	//if (Menu::Open) return;
 	if (this->getMode() == 0) {
-		if (thePlayer->getHurtTime() > 7) {
+		if (thePlayer->getHurtTime() > 3) {
 			Vector3 motion = thePlayer->getMotion();
 			motion.x = motion.x * Velocity::Horizontal;
 			motion.y = motion.y * Velocity::Vertical;
@@ -39,7 +39,7 @@ void Velocity::onUpdate(const EventUpdate e)
 		}
 	}
 	else if (this->getMode() == 1) {
-		if (thePlayer->getHurtTime() > 9 && thePlayer->isOnGround() && counter++ % 2 == 0) {
+		if (thePlayer->getHurtTime() > 7 && thePlayer->isOnGround() && counter++ % 2 == 0) {
 			POINT pos_cursor;
 			GetCursorPos(&pos_cursor);
 			thePlayer->jump();
@@ -48,6 +48,11 @@ void Velocity::onUpdate(const EventUpdate e)
 	else if (this->getMode() == 2) {
 		if (thePlayer->getHurtTime() > 5) {
 			thePlayer->setOnGround(true);
+		}
+	}
+	else if (this->getMode() == 3) {
+		if (thePlayer->getHurtTime() > 5) {
+			thePlayer->set_speed(thePlayer->get_speed());
 		}
 	}
 
@@ -69,7 +74,7 @@ void Velocity::RenderMenu()
 		ImGui::Separator();
 		Menu::DoSliderStuff(248913712347, "Horizontal", &this->Horizontal, 0.f, 1.f);
 		Menu::DoSliderStuff(2489137, "Vertical", &this->Vertical, 0.f, 1.f);
-		ImGui::Combo("Mode", &this->getMode(), this->modes, 3);
+		ImGui::Combo("Mode", &this->getMode(), this->modes, 4);
 
 		ImGui::EndChild();
 	}

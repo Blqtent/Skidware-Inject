@@ -73,7 +73,8 @@ void Flight::onUpdate(const EventUpdate e) {
 		p->setMotion(Vector3(100000000000, 0, 100000000000));
 	}
 	else if (this->getMode() == 1) {
-		p->setOnGround(true);
+		if (p->getMotion().y < 0)
+			p->setOnGround(true);
 	}
 
 

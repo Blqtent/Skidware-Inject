@@ -93,7 +93,7 @@ void Base::Init()
 
 		//uc_SizeOfImage();
 		//HideFromDebugger();
-		std::this_thread::sleep_for(std::chrono::milliseconds(10));
+		std::this_thread::sleep_for(std::chrono::milliseconds(5));
 		
 		//Check();
 	}
@@ -152,7 +152,6 @@ void Base::handleEventKey(const EventKey k) {
 
 void Base::Kill()
 {
-
 	SDK::Minecraft->gameSettings->RestoreFullscreenKey();
 	if (Borderless::Enabled)
 		Borderless::Restore(Menu::HandleWindow);

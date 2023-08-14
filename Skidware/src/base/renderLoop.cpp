@@ -19,6 +19,7 @@
 #include "moduleManager/modules/visual/cavefinder.h"
 #include "moduleManager/modules/visual/fullbright.h"
 #include "moduleManager/modules/blatent/nofall.h"
+#include "moduleManager/modules/blatent/timerhack.h"
 #include <cmath>
 #include "moduleManager/modules/player/blink.h"
 //#include "extension/scripting.hpp"
@@ -26,6 +27,7 @@
 #include "menu/menu.h"
 #include "moduleManager/modules/combat/antibot.h"
 #include "moduleManager/modules/blatent/longjump.h"
+#include "moduleManager/ModuleManager.h"
 
 extern ImVec4 clear_col;
 static int y;
@@ -138,8 +140,8 @@ void Base::RenderLoop() // Runs every frame
 		}
 		y += 20;
 	}
-	if (Blink::getInstance()->getToggle()) {
-		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Fakelag");
+	if (TimerHack::getInstance()->getToggle()) {
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Timer");
 		y += 20;
 	}
 	if (Fulbright::getInstance()->getToggle()) {
@@ -159,10 +161,13 @@ void Base::RenderLoop() // Runs every frame
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Flight");
 		y += 20;
 	}
-	
+
 	if (LongJump::getInstance()->getToggle()) {
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "LongJump");
 		y += 20;
 	}
-	
+	if (Blink::getInstance()->getToggle()) {
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Fakelag");
+		y += 20;
+	}
 }

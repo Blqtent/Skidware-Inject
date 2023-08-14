@@ -5,22 +5,14 @@
 #include "../../../../ext/minhook/minhook.h"
 #include "../../moduleManager/modules/player/blink.h"
 
-//if (Blink::throttle && (GetTickCount64() - timer > Blink::Milliseonds)) {
-	//timer = GetTickCount64();
-
-	//return g_origWSASend(s, lpBuffers, dwBufferCount, lpNumberOfBytesSent, dwFlags, lpOverlapped, lpCompletionRoutine);
-//}
 int(__stdcall* g_origWSASend)(SOCKET, LPWSABUF, DWORD, LPDWORD, DWORD, LPWSAOVERLAPPED, LPWSAOVERLAPPED_COMPLETION_ROUTINE);
 int __stdcall WSASendHook(SOCKET s, LPWSABUF lpBuffers, DWORD dwBufferCount, LPDWORD lpNumberOfBytesSent, DWORD dwFlags, LPWSAOVERLAPPED lpOverlapped, LPWSAOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine)
 {
-	/*
-	if (!Blink::Enabled)
-		return g_origWSASend(s, lpBuffers, dwBufferCount, lpNumberOfBytesSent, dwFlags, lpOverlapped, lpCompletionRoutine);;
-
-	while (GetAsyncKeyState(Blink::bind) & 0x8000 && (GetTickCount64() - Blink::timer < Blink::Milliseonds * 1000)) {
+	
+	while (Blink::getInstance()->getToggle()) {
+		
 		Sleep(1);
 	}
-	*/
 	return g_origWSASend(s, lpBuffers, dwBufferCount, lpNumberOfBytesSent, dwFlags, lpOverlapped, lpCompletionRoutine);
 }
 

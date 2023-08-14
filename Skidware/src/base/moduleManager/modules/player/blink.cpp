@@ -24,23 +24,7 @@ void Blink::onUpdate(const EventUpdate e)
 	if (!this->getToggle()) return;
 	if (!CommonData::getInstance()->SanityCheck()) return;
 
-	const bool isBindPress = IsKeyBeingDown(this->getKey());
 
-	if (!isBindPress || (timer != NULL && GetTickCount64() - timer > Milliseonds * 1000))
-	{
-		timer = NULL;
-	}
-
-	if (!isBindPress)
-		wasActive = false;
-
-	if (timer == 0 && !wasActive && isBindPress) {
-		timer = GetTickCount64();
-		wasActive = true;
-	}
-
-	if (timer == NULL)
-		return;
 }
 
 void Blink::RenderMenu()
@@ -58,7 +42,7 @@ void Blink::RenderMenu()
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
 		//Menu::DoToggleButtonStuff(566578, "Fakelag Throttle", &Blink::throttle);
-		Menu::DoSliderStuff(566578, "Fakelag Delay", &this->Milliseonds, 1, 10000);
+		//Menu::DoSliderStuff(566578, "Fakelag Delay", &this->Milliseonds, 1, 10000);
 
 		ImGui::EndChild();
 	}

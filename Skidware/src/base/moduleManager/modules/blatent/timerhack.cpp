@@ -14,9 +14,11 @@ TimerHack* TimerHack::getInstance() {
 }
 
 void TimerHack::onDisable() {
+	SDK::Minecraft->timer->SetTimerSpeed(1.0f);
 }
 
 void TimerHack::onEnable() {
+	timer = 0;
 }
 
 
