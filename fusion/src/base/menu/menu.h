@@ -5,6 +5,10 @@
 #include <vector>
 
 #include "../../../ext/imgui/imgui.h"
+#include "../moduleManager/AbstractModule.h"
+
+typedef void(*callback)();
+typedef bool(*callback2)();
 
 struct Menu
 {
@@ -24,9 +28,12 @@ struct Menu
 	static void RenderMenu();
 
 	static void ToggleButton(const char* format, bool* value);
+	static void ToggleButton(const char* format, AbstractModule* module);
 	static bool TabButton(const char* format, ImVec4 color);
 	static void DoSliderStuff(int id, const char* text, float* bruh, float min, float max);
 	static void DoToggleButtonStuff(int id, const char* text, bool* bruh);
+	static void DoToggleButtonStuff(int id, const char* text, AbstractModule* module);
+
 	//static void GlitchText(const char* text, ImVec2 pos);
 
 	static inline HWND HandleWindow;

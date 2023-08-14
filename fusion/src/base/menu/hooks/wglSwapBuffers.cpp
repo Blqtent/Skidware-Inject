@@ -32,7 +32,7 @@ bool __stdcall hook_wglSwapBuffers(_In_ HDC hdc)
 	});
 	glDepthFunc(GL_LEQUAL);
 
-	if (Cavefinder::Enabled)
+	if (Cavefinder::getInstance()->getToggle())
 		glDepthFunc(GL_ALWAYS);
 
 	wglMakeCurrent(Menu::HandleDeviceContext, Menu::MenuGLContext);

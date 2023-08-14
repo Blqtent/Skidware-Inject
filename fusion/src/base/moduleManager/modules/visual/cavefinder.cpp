@@ -1,6 +1,22 @@
 #include "cavefinder.h"
 #include "../../../menu/menu.h"
 
+
+
+Cavefinder::Cavefinder() : AbstractModule("Cavefinder", Category::VISUAL) {
+}
+
+Cavefinder* Cavefinder::getInstance() {
+	static auto* inst = new Cavefinder();
+	return inst;
+}
+
+void Cavefinder::onDisable() {
+}
+
+void Cavefinder::onEnable() {
+}
+
 void Cavefinder::RenderMenu()
 {
 	ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
@@ -11,7 +27,7 @@ void Cavefinder::RenderMenu()
 	if (ImGui::BeginChild("Xray", ImVec2(450, 100))) {
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
-		Menu::DoToggleButtonStuff(3465, "Toggle Xray", &Cavefinder::Enabled);
+		Menu::DoToggleButtonStuff(3465, "Toggle Xray", this);
 
 		ImGui::EndChild();
 	}

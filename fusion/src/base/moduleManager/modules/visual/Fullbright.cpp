@@ -1,10 +1,26 @@
 #include "fullbright.h"
 #include "../../../../../ext/imgui/imgui.h"
 #include "../../../menu/menu.h"
-void Fulbright::Update()
+
+Fulbright::Fulbright() : AbstractModule("Fulbright", Category::VISUAL) {
+	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
+}
+
+Fulbright* Fulbright::getInstance() {
+	static auto* inst = new Fulbright();
+	return inst;
+}
+
+void Fulbright::onDisable() {
+}
+
+void Fulbright::onEnable() {
+}
+
+void Fulbright::onUpdate(const EventUpdate e)
 {
-	if (!Enabled) return;
-	if (!CommonData::SanityCheck()) return;
+	if (!this->getToggle()) return;
+	if (!CommonData::getInstance()->SanityCheck()) return;
 	SDK::Minecraft->gameSettings->SetGamma(100.f);
 }
 
@@ -18,7 +34,7 @@ void Fulbright::RenderMenu()
 	if (ImGui::BeginChild("Fullbright", ImVec2(450, 100))) {
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
-		Menu::DoToggleButtonStuff(568, "Toggle Fullbright", &Fulbright::Enabled);
+		Menu::DoToggleButtonStuff(568, "Toggle Fullbright", this);
 
 		ImGui::EndChild();
 	}

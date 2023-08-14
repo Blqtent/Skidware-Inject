@@ -6,13 +6,29 @@
 
 #include <chrono>
 #include <random>
-
+#include "../../../eventManager/EventManager.hpp"
 long lastClickTime = 0;
 int nextCps = 10;
 int count = 0;
-void LeftAutoClicker::Update()
+LeftAutoClicker::LeftAutoClicker() : AbstractModule("LeftAutoClicker", Category::CLICKER) {
+	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
+}
+LeftAutoClicker* LeftAutoClicker::getInstance() {
+	static auto* inst = new LeftAutoClicker();
+	return inst;
+}
+
+void LeftAutoClicker::onDisable() {
+}
+
+void LeftAutoClicker::onEnable() {
+}
+
+
+
+void LeftAutoClicker::onUpdate(const EventUpdate e)
 {
-	if (!Enabled) return;
+	if (!this->getToggle()) return;
 	if (Menu::Open) return;
 	if (SDK::Minecraft->IsInGuiState() && !inInventory) return;
 	if (ignoreBlocks && SDK::Minecraft->GetMouseOver().IsTypeOfBlock()) return;
@@ -54,18 +70,18 @@ void LeftAutoClicker::RenderMenu()
 	ImGui::PushStyleVar(ImGuiStyleVar_ChildRounding, 10);
 	if (ImGui::BeginChild("autoclicker", ImVec2(450, 130))) {
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
-		Menu::DoToggleButtonStuff(857834, "Toggle Left Auto Clicker", &LeftAutoClicker::Enabled);
+		Menu::DoToggleButtonStuff(857834, "Toggle Left Auto Clicker",this);
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
-		Menu::DoSliderStuff(3280, "Min CPS", &LeftAutoClicker::leftMinCps, 1, 20);
-		Menu::DoSliderStuff(675, "Max CPS", &LeftAutoClicker::leftMaxCps, 1, 20);
+		Menu::DoSliderStuff(3280, "Min CPS", &this->leftMinCps, 1, 20);
+		Menu::DoSliderStuff(675, "Max CPS", &this->leftMaxCps, 1, 20);
 		if (leftMinCps > leftMaxCps) {
 			leftMinCps = leftMaxCps;
 		}
-		Menu::DoToggleButtonStuff(2136, "Ignore Blocks", &LeftAutoClicker::ignoreBlocks);
-		Menu::DoToggleButtonStuff(13423, "Blockhit", &LeftAutoClicker::blockhit);
-		Menu::DoToggleButtonStuff(135315, "In Inventory", &LeftAutoClicker::inInventory);
-		Menu::DoSliderStuff(342, "Blockhit Chance", &LeftAutoClicker::blockHitChance, 1, 50);
+		Menu::DoToggleButtonStuff(2136, "Ignore Blocks", &this->ignoreBlocks);
+		Menu::DoToggleButtonStuff(13423, "Blockhit", &this->blockhit);
+		Menu::DoToggleButtonStuff(135315, "In Inventory", &this->inInventory);
+		Menu::DoSliderStuff(342, "Blockhit Chance", &this->blockHitChance, 1, 50);
 
 
 		ImGui::EndChild();

@@ -4,8 +4,11 @@
 #include "../sdk/sdk.h"
 #include "../util/logger.h"
 #include "../../../ext/jni/jni.h"
-#include "module.h"
-#include <curl/curl.h>
+#include "AbstractModule.h"
+#include "../eventManager/EventManager.hpp"
+#include "../eventManager/events/EventUpdate.hpp"
+
+//#include <curl/curl.h>
 #define M_PI 3.1415926
 
 /*
@@ -14,18 +17,26 @@ the modules that will eventually use them.
 
 The modules that write data will still need to access required java objects to do so.
 */
-struct CommonData
+
+class CommonData
 {
+public:
+	CommonData() {
+		EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { UpdateData(std::forward<decltype(PH1)>(PH1)); });
+	}
 
-
-	inline static bool dataUpdated = false;
-	inline static bool post = false;
-	inline static Matrix modelView;
-	inline static Matrix projection;
-	inline static Vector3 renderPos;
-	inline static float renderPartialTicks;
-	inline static float fov;
-	inline static int thirdPersonView;
+	static CommonData* getInstance() {
+		static auto* inst = new CommonData();
+		return inst;
+	}
+	bool dataUpdated = false;
+	bool post = false;
+	Matrix modelView;
+	Matrix projection;
+	Vector3 renderPos;
+	float renderPartialTicks; 
+	float fov;
+	int thirdPersonView;
 	
 	struct PlayerData{
 		CEntityPlayer obj;
@@ -38,9 +49,9 @@ struct CommonData
 		float maxHealth;
 	};
 
-	inline static std::vector<PlayerData> nativePlayerList;
+	std::vector<PlayerData> nativePlayerList;
 
-	static void UpdateData()
+	void UpdateData(const EventUpdate e)
 	{
 		if (!SanityCheck()) return;
 		modelView = SDK::Minecraft->activeRenderInfo->ModelViewMatrix();
@@ -79,7 +90,7 @@ struct CommonData
 	}
 
 	// Return false if sanity check failed
-	static bool SanityCheck() {
+	bool SanityCheck() {
 		if (!SDK::Minecraft->thePlayer->GetInstance() || !SDK::Minecraft->theWorld->GetInstance())
 		{
 			CommonData::dataUpdated = false;

@@ -1,26 +1,24 @@
 #pragma once
 #include "../../../util/math/geometry.h"
+#include "../../../eventManager/events/EventUpdate.hpp"
+#include "../../AbstractModule.h"
 
-#include "../../module.h"
 
 #include <string>
 #include <vector>
 
-struct Velocity : public module
-{
-	inline static int bind = 0;
 
-	inline static bool Enabled = false;
+class Velocity :public AbstractModule {
+public:
+	static Velocity* getInstance();
+	void onEnable();
+	void onDisable();
+	void onUpdate(const EventUpdate e);
+	void RenderMenu();
 
-	inline static float Horizontal = 0.f;
-
-	inline static float Vertical = 1.0f;
-
-	inline static int mode = 0;
-	inline static const char* modes[3]{ "Normal", "Intave", "Push"};
-
-	static void Update();
-
-	static void RenderMenu();
+	float Horizontal = 0.f;
+	float Vertical = 1.0f;
+	const char* modes[3]{ "Normal", "Intave", "Push" };
+private:
+	Velocity();
 };
-

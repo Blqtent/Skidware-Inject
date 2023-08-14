@@ -1,14 +1,15 @@
 #pragma once
 #include "../../commonData.h"
-struct Flight
-{
-	inline static int bind = 0;
 
-	inline static bool Enabled = false;
-	inline static bool antikick = false;
-	inline static int mode = 0;
-	inline static float glideSpeed = 0;
-	inline static const char* modes[5]{"MotionY", "Airjump"};
-	static void Update();
-	static void RenderMenu();
+class Flight : public AbstractModule {
+public:
+	static Flight* getInstance();
+	void onEnable();
+	void onDisable();
+	void onUpdate(const EventUpdate e);
+	void RenderMenu();
+	float glideSpeed = 0;
+	const char* modes[5]{ "MotionY", "Airjump" };
+private:
+	Flight();
 };

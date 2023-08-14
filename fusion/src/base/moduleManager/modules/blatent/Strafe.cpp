@@ -73,7 +73,7 @@ void set_speed(const float speed)
 void Strafe::Update()
 {
 	if (!Enabled) return;
-	if (!CommonData::SanityCheck()) return;
+	if (!CommonData::getInstance()->SanityCheck()) return;
 	//if (!SDK::Minecraft->thePlayer->isOnGround()) return;
 	CEntityPlayerSP* p = SDK::Minecraft->thePlayer;
 	CTimer* t = SDK::Minecraft->timer;

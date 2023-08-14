@@ -60,71 +60,71 @@ void set_config(Config* config) {
 	config->open();
 
 	// AimAssist
-	config->set<bool>("AimAssist", AimAssist::Enabled);
-	config->set<bool>("AimAssistAdaptive", AimAssist::adaptive);
-	config->set<float>("AimAssistAdaptiveOffset", AimAssist::adaptiveOffset);
-	config->set<float>("AimAssistDistance", AimAssist::aimDistance);
-	config->set<bool>("AimAssistFeedback", AimAssist::aimAssistFeedback);
-	config->set<float>("AimAssistFOV", AimAssist::fov);
-	config->set<bool>("AimAssistPitchInfluenced", AimAssist::pitchInfluenced);
-	config->set<float>("AimAssistRandomPitch", AimAssist::randomPitch);
-	config->set<float>("AimAssistRandomYaw", AimAssist::randomYaw);
-	config->set<bool>("AimAssistFOVCircle", AimAssist::fovCircle);
-	config->set<bool>("AimAssistVisibilityCheck", AimAssist::visibilityCheck);
+	config->set<bool>("AimAssist", AimAssist::getInstance()->getToggle());
+	config->set<bool>("AimAssistAdaptive", AimAssist::getInstance()->adaptive);
+	config->set<float>("AimAssistAdaptiveOffset", AimAssist::getInstance()->adaptiveOffset);
+	config->set<float>("AimAssistDistance", AimAssist::getInstance()->aimDistance);
+	config->set<bool>("AimAssistFeedback", AimAssist::getInstance()->aimAssistFeedback);
+	config->set<float>("AimAssistFOV", AimAssist::getInstance()->fov);
+	config->set<bool>("AimAssistPitchInfluenced", AimAssist::getInstance()->pitchInfluenced);
+	config->set<float>("AimAssistRandomPitch", AimAssist::getInstance()->randomPitch);
+	config->set<float>("AimAssistRandomYaw", AimAssist::getInstance()->randomYaw);
+	config->set<bool>("AimAssistFOVCircle", AimAssist::getInstance()->fovCircle);
+	config->set<bool>("AimAssistVisibilityCheck", AimAssist::getInstance()->visibilityCheck);
 
 
 	// AutoClicker
-	config->set<bool>("LeftClicker", LeftAutoClicker::Enabled);
-	config->set<bool>("RightClicker", RightAutoClicker::Enabled);
-	config->set<float>("LeftMinCPS", LeftAutoClicker::leftMinCps);
-	config->set<float>("LeftMaxCPS", LeftAutoClicker::leftMaxCps);
-	config->set<float>("RightMinCPS", RightAutoClicker::rightMinCps);
-	config->set<float>("RightMaxCPS", RightAutoClicker::rightMaxCps);
-	config->set<bool>("BreakBlocks", LeftAutoClicker::ignoreBlocks);
-	config->set<bool>("BlockHit", LeftAutoClicker::blockhit);
-	config->set<float>("BlockHitChance", LeftAutoClicker::blockHitChance);
+	config->set<bool>("LeftClicker", LeftAutoClicker::getInstance()->getToggle());
+	config->set<bool>("RightClicker", RightAutoClicker::getInstance()->getToggle());
+	config->set<float>("LeftMinCPS", LeftAutoClicker::getInstance()->leftMinCps);
+	config->set<float>("LeftMaxCPS", LeftAutoClicker::getInstance()->leftMaxCps);
+	config->set<float>("RightMinCPS", RightAutoClicker::getInstance()->rightMinCps);
+	config->set<float>("RightMaxCPS", RightAutoClicker::getInstance()->rightMaxCps);
+	config->set<bool>("BreakBlocks", LeftAutoClicker::getInstance()->ignoreBlocks);
+	config->set<bool>("BlockHit", LeftAutoClicker::getInstance()->blockhit);
+	config->set<float>("BlockHitChance", LeftAutoClicker::getInstance()->blockHitChance);
 
 	// ESP
-	config->set<bool>("ESP", Esp::Enabled);
-	config->set<bool>("ESPBox", Esp::Box);
-	config->set<bool>("ESPFilledBox", Esp::FilledBox);
-	config->set<float>("ESPFilledBoxOpacity", Esp::FilledBoxOpacity);
-	config->set<bool>("ESPHealthbar", Esp::HealthBar);
-	config->set<bool>("ESPOutline", Esp::Outline);
-	config->set<bool>("ESPTestCircles", Esp::TestCircles);
-	config->set<bool>("ESPText", Esp::Text);
-	config->set<bool>("ESPTextOutline", Esp::TextOutline);
+	config->set<bool>("ESP", Esp::getInstance()->getToggle());
+	config->set<bool>("ESPBox", Esp::getInstance()->Box);
+	config->set<bool>("ESPFilledBox", Esp::getInstance()->FilledBox);
+	config->set<float>("ESPFilledBoxOpacity", Esp::getInstance()->FilledBoxOpacity);
+	config->set<bool>("ESPHealthbar", Esp::getInstance()->HealthBar);
+	config->set<bool>("ESPOutline", Esp::getInstance()->Outline);
+	config->set<bool>("ESPTestCircles", Esp::getInstance()->TestCircles);
+	config->set<bool>("ESPText", Esp::getInstance()->Text);
+	config->set<bool>("ESPTextOutline", Esp::getInstance()->TextOutline);
 
 	// Reach
-	config->set<bool>("Reach", Reach::Enabled);
-	config->set<bool>("ReachDistance", Reach::ReachDistance);
+	config->set<bool>("Reach", Reach::getInstance()->getToggle());
+	config->set<bool>("ReachDistance", Reach::getInstance()->ReachDistance);
 
 	// Velocity
-	config->set<bool>("Velocity", Velocity::Enabled);
-	//config->set<bool>("VelocityOnlyMoving", Velocity::onlyMoving);
-	//config->set<float>("VelocityChance", Velocity::Chance);
-	config->set<float>("VelocityHorizontal", Velocity::Horizontal);
-	config->set<float>("VelocityVertical", Velocity::Vertical);
+	config->set<bool>("Velocity", Velocity::getInstance()->getToggle());
+	//config->set<bool>("VelocityOnlyMoving", Velocity::getInstance()->onlyMoving);
+	//config->set<float>("VelocityChance", Velocity::getInstance()->Chance);
+	config->set<float>("VelocityHorizontal", Velocity::getInstance()->Horizontal);
+	config->set<float>("VelocityVertical", Velocity::getInstance()->Vertical);
 
 	// Eagle
-	config->set<bool>("Eagle", Eagle::Enabled);
+	config->set<bool>("Eagle", Eagle::getInstance()->getToggle());
 
 	// FastPlace
-	config->set<bool>("FastPlace", Fastplace::Enabled);
-	config->set<float>("FastPlaceDelay", Fastplace::delay);
+	config->set<bool>("FastPlace", Fastplace::getInstance()->getToggle());
+	config->set<float>("FastPlaceDelay", Fastplace::getInstance()->delay);
 
 	// Blink
-	config->set<bool>("Blink", Blink::Enabled);
+	config->set<bool>("Blink", Blink::getInstance()->getToggle());
 
 	// BHop
-	config->set<bool>("BHop", Speed::Enabled);
-	config->set<int>("BHopMode", Speed::mode);
-	config->set<float>("BHopSpeed", Speed::speed);
+	config->set<bool>("BHop", Speed::getInstance()->getToggle());
+	config->set<int>("BHopMode", Speed::getInstance()->getMode());
+	config->set<float>("BHopSpeed", Speed::getInstance()->speed);
 
 	// NoFall
-	config->set<bool>("NoFall", Nofall::Enabled);
-	config->set<int>("NoFallMode", Nofall::mode);
-	config->set<float>("NoFallSpeed", Nofall::speed);
+	config->set<bool>("NoFall", Nofall::getInstance()->getToggle());
+	config->set<int>("NoFallMode", Nofall::getInstance()->getMode());
+	config->set<float>("NoFallSpeed", Nofall::getInstance()->speed);
 
 	config->close();
 }
@@ -132,70 +132,70 @@ void set_config(Config* config) {
 void read_config(Config* config) {
 
 	// AimAssist
-	AimAssist::Enabled = config->get<bool>("AimAssist");
-	AimAssist::adaptive = config->get<bool>("AimAssistAdaptive");
-	AimAssist::adaptiveOffset = config->get<float>("AimAssistAdaptiveOffset");
-	AimAssist::aimDistance = config->get<float>("AimAssistDistance");
-	AimAssist::aimAssistFeedback = config->get<bool>("AimAssistFeedback");
-	AimAssist::fov = config->get<float>("AimAssistFOV");
-	AimAssist::pitchInfluenced = config->get<float>("AimAssistPitchInfluenced");
-	AimAssist::randomPitch = config->get<float>("AimAssistRandomPitch");
-	AimAssist::randomYaw = config->get<float>("AimAssistRandomYaw");
-	AimAssist::fovCircle = config->get<bool>("AimAssistFOVCircle");
-	AimAssist::visibilityCheck = config->get<bool>("AimAssistVisibilityCheck");
+	AimAssist::getInstance()->setToggle( config->get<bool>("AimAssist"));
+	AimAssist::getInstance()->adaptive = config->get<bool>("AimAssistAdaptive");
+	AimAssist::getInstance()->adaptiveOffset = config->get<float>("AimAssistAdaptiveOffset");
+	AimAssist::getInstance()->aimDistance = config->get<float>("AimAssistDistance");
+	AimAssist::getInstance()->aimAssistFeedback = config->get<bool>("AimAssistFeedback");
+	AimAssist::getInstance()->fov = config->get<float>("AimAssistFOV");
+	AimAssist::getInstance()->pitchInfluenced = config->get<float>("AimAssistPitchInfluenced");
+	AimAssist::getInstance()->randomPitch = config->get<float>("AimAssistRandomPitch");
+	AimAssist::getInstance()->randomYaw = config->get<float>("AimAssistRandomYaw");
+	AimAssist::getInstance()->fovCircle = config->get<bool>("AimAssistFOVCircle");
+	AimAssist::getInstance()->visibilityCheck = config->get<bool>("AimAssistVisibilityCheck");
 
 	// AutoClicker
-	LeftAutoClicker::Enabled = config->get<bool>("LeftClicker");
-	RightAutoClicker::Enabled = config->get<bool>("RightClicker");
-	LeftAutoClicker::leftMinCps = config->get<float>("LeftMinCPS");
-	LeftAutoClicker::leftMaxCps = config->get<float>("LeftMaxCPS");
-	RightAutoClicker::rightMinCps = config->get<float>("RightMinCPS");
-	RightAutoClicker::rightMaxCps = config->get<float>("RightMaxCPS");
-	LeftAutoClicker::ignoreBlocks = config->get<float>("BreakBlocks");
-	LeftAutoClicker::blockhit = config->get<float>("BlockHit");
-	LeftAutoClicker::blockHitChance = config->get<float>("BlockHitChance");
+	LeftAutoClicker::getInstance()->setToggle(config->get<bool>("LeftClicker"));
+	RightAutoClicker::getInstance()->setToggle( config->get<bool>("RightClicker"));
+	LeftAutoClicker::getInstance()->leftMinCps = config->get<float>("LeftMinCPS");
+	LeftAutoClicker::getInstance()->leftMaxCps = config->get<float>("LeftMaxCPS");
+	RightAutoClicker::getInstance()->rightMinCps = config->get<float>("RightMinCPS");
+	RightAutoClicker::getInstance()->rightMaxCps = config->get<float>("RightMaxCPS");
+	LeftAutoClicker::getInstance()->ignoreBlocks = config->get<float>("BreakBlocks");
+	LeftAutoClicker::getInstance()->blockhit = config->get<float>("BlockHit");
+	LeftAutoClicker::getInstance()->blockHitChance = config->get<float>("BlockHitChance");
 
 	// ESP
-	Esp::Enabled = config->get<bool>("ESP");
-	Esp::Box = config->get<bool>("ESPBox");
-	Esp::FilledBox = config->get<bool>("ESPFilledBox");
-	Esp::FilledBoxOpacity = config->get<float>("ESPFilledBoxOpacity");
-	Esp::HealthBar = config->get<bool>("ESPHealthbar");
-	Esp::Outline = config->get<bool>("ESPOutline");
-	Esp::TestCircles = config->get<bool>("ESPTestCircles");
-	Esp::Text = config->get<bool>("ESPText");
-	Esp::TextOutline = config->get<bool>("ESPTextOutline");
+	Esp::getInstance()->setToggle( config->get<bool>("ESP"));
+	Esp::getInstance()->Box = config->get<bool>("ESPBox");
+	Esp::getInstance()->FilledBox = config->get<bool>("ESPFilledBox");
+	Esp::getInstance()->FilledBoxOpacity = config->get<float>("ESPFilledBoxOpacity");
+	Esp::getInstance()->HealthBar = config->get<bool>("ESPHealthbar");
+	Esp::getInstance()->Outline = config->get<bool>("ESPOutline");
+	Esp::getInstance()->TestCircles = config->get<bool>("ESPTestCircles");
+	Esp::getInstance()->Text = config->get<bool>("ESPText");
+	Esp::getInstance()->TextOutline = config->get<bool>("ESPTextOutline");
 
 	// Reach
-	Reach::Enabled = config->get<bool>("Reach");
-	Reach::ReachDistance = config->get<float>("ReachDistance");
+	Reach::getInstance()->setToggle( config->get<bool>("Reach"));
+	Reach::getInstance()->ReachDistance = config->get<float>("ReachDistance");
 
 	// Velocity
-	Velocity::Enabled = config->get<bool>("Velocity");
-	//Velocity::onlyMoving = config->get<bool>("VelocityOnlyMoving");
-	//Velocity::Chance = config->get<float>("VelocityChance");
-	Velocity::Horizontal = config->get<float>("VelocityHorizontal");
-	Velocity::Vertical = config->get<float>("VelocityVertical");
+	Velocity::getInstance()->setToggle( config->get<bool>("Velocity"));
+	//Velocity::getInstance()->onlyMoving = config->get<bool>("VelocityOnlyMoving");
+	//Velocity::getInstance()->Chance = config->get<float>("VelocityChance");
+	Velocity::getInstance()->Horizontal = config->get<float>("VelocityHorizontal");
+	Velocity::getInstance()->Vertical = config->get<float>("VelocityVertical");
 
 	// Eagle
-	Eagle::Enabled = config->get<bool>("Eagle");
+	Eagle::getInstance()->setToggle( config->get<bool>("Eagle"));
 
 	// FastPlace
-	Fastplace::Enabled = config->get<bool>("FastPlace");
-	Fastplace::delay = config->get<float>("FastPlaceDelay");
+	Fastplace::getInstance()->setToggle( config->get<bool>("FastPlace"));
+	Fastplace::getInstance()->delay = config->get<float>("FastPlaceDelay");
 
 	// Blink
-	Blink::Enabled = config->get<bool>("Blink");
+	Blink::getInstance()->setToggle( config->get<bool>("Blink"));
 
 	// BHop
-	Speed::Enabled = config->get<bool>("BHop");
-	Speed::mode = config->get<int>("BHopMode");
-	Speed::speed = config->get<float>("BHopSpeed");
+	Speed::getInstance()->setToggle( config->get<bool>("BHop"));
+	Speed::getInstance()->getMode() = config->get<int>("BHopMode");
+	Speed::getInstance()->speed = config->get<float>("BHopSpeed");
 
 	//NoFall
-	Nofall::Enabled = config->get<bool>("NoFall");
-	Nofall::mode = config->get<int>("NoFallMode");
-	Nofall::speed = config->get<float>("NoFallSpeed");
+	Nofall::getInstance()->setToggle( config->get<bool>("NoFall"));
+	Nofall::getInstance()->getMode() = config->get<int>("NoFallMode");
+	Nofall::getInstance()->speed = config->get<float>("NoFallSpeed");
 }
 
 // Function to list all files in a folder (platform-specific)
@@ -279,22 +279,22 @@ void Menu::RenderMenu()
 			if (Menu::TabButton("Xray", (currentTab2 == 2 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab2 = 2;
 
 			if (currentTab2 == 0) {
-				Esp::RenderMenu();
-				keybind::key_bind(Esp::bind, 125, 25);
+				Esp::getInstance()->getInstance()->RenderMenu();
+				keybind::key_bind(Esp::getInstance()->getInstance()->getKey(), 125, 25);
 			}
 			
 			if (currentTab2 == 1) {
-				Fulbright::RenderMenu();
-				keybind::key_bind(Fulbright::bind, 125, 25);
+				Fulbright::getInstance()->RenderMenu();
+				keybind::key_bind(Fulbright::getInstance()->getKey(), 125, 25);
 			}
 			
 			if (currentTab2 == 2) {
-				Cavefinder::RenderMenu();
-				keybind::key_bind(Cavefinder::bind, 125, 25);
+				Cavefinder::getInstance()->RenderMenu();
+				keybind::key_bind(Cavefinder::getInstance()->getKey(), 125, 25);
 
 			}
-			//Fullbright::RenderMenu();
-			//keybind::key_bind(Esp::bind, 150, 50);
+			//Fullbright::getInstance()->RenderMenu();
+			//keybind::key_bind(Esp::getInstance()->getInstance()->getKey(), 150, 50);
 			ImGui::InvisibleButton("", ImVec2(1, 100));
 		}
 
@@ -309,25 +309,25 @@ void Menu::RenderMenu()
 			if (Menu::TabButton("Antibot", (currentTab3 == 3 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab3 = 3;
 
 			if (currentTab3 == 0) {
-				AimAssist::RenderMenu();
-				keybind::key_bind(AimAssist::bind, 125, 25);
+				AimAssist::getInstance()->RenderMenu();
+				keybind::key_bind(AimAssist::getInstance()->getKey(), 125, 25);
 			}
 			
 			if (currentTab3 == 1) {
-				Reach::RenderMenu();
-				keybind::key_bind(Reach::bind, 125, 25);
+				Reach::getInstance()->RenderMenu();
+				keybind::key_bind(Reach::getInstance()->getKey(), 125, 25);
 			}
-			//keybind::key_bind(Reach::bind, 150, 50);
+			//keybind::key_bind(Reach::getInstance()->getKey(), 150, 50);
 			if (currentTab3 == 2) {
-				Velocity::RenderMenu();
-				keybind::key_bind(Velocity::bind, 125, 25);
+				Velocity::getInstance()->RenderMenu();
+				keybind::key_bind(Velocity::getInstance()->getKey(), 125, 25);
 			}
 			if (currentTab3 == 3) {
-				Antibot::RenderMenu();
-				keybind::key_bind(Antibot::bind, 125, 25);
+				Antibot::getInstance()->RenderMenu();
+				keybind::key_bind(Antibot::getInstance()->getKey(), 125, 25);
 			}
 
-			//keybind::key_bind(Velocity::bind, 150, 50);
+			//keybind::key_bind(Velocity::getInstance()->getKey(), 150, 50);
 
 			ImGui::InvisibleButton("", ImVec2(1, 100));
 		}
@@ -338,14 +338,14 @@ void Menu::RenderMenu()
 			ImGui::SameLine();
 			if (Menu::TabButton("RightClicker", (currentTab4 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab4 = 1;
 			if (currentTab4 == 0) {
-				LeftAutoClicker::RenderMenu();
-				keybind::key_bind(LeftAutoClicker::bind, 125, 25);
+				LeftAutoClicker::getInstance()->RenderMenu();
+				keybind::key_bind(LeftAutoClicker::getInstance()->getKey(), 125, 25);
 			}
 			if (currentTab4 == 1) {
-				RightAutoClicker::RenderMenu();
-				keybind::key_bind(RightAutoClicker::bind, 125, 25);
+				RightAutoClicker::getInstance()->RenderMenu();
+				keybind::key_bind(RightAutoClicker::getInstance()->getKey(), 125, 25);
 			}
-			//keybind::key_bind(RightAutoClicker::bind, 150, 50);
+			//keybind::key_bind(RightAutoClicker::getInstance()->getKey(), 150, 50);
 
 			ImGui::InvisibleButton("", ImVec2(1, 100));
 		}
@@ -354,15 +354,15 @@ void Menu::RenderMenu()
 			ImGui::SameLine();
 			if (Menu::TabButton("Eagle", (currentTab5 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab5 = 1;
 			if (currentTab5 == 0) {
-				Fastplace::RenderMenu();
-				keybind::key_bind(Fastplace::bind, 125, 25);
+				Fastplace::getInstance()->RenderMenu();
+				keybind::key_bind(Fastplace::getInstance()->getKey(), 125, 25);
 			}
 
 			if (currentTab5 == 1) {
-				Eagle::RenderMenu();
-				keybind::key_bind(Eagle::bind, 125, 25);
+				Eagle::getInstance()->RenderMenu();
+				keybind::key_bind(Eagle::getInstance()->getKey(), 125, 25);
 			}
-			//keybind::key_bind(Eagle::bind, 150, 50);
+			//keybind::key_bind(Eagle::getInstance()->getKey(), 150, 50);
 
 			ImGui::InvisibleButton("", ImVec2(1, 100));
 
@@ -373,12 +373,12 @@ void Menu::RenderMenu()
 			//if (Menu::TabButton("Autotool", (currentTab7 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab7 = 1;
 
 			if (currentTab7 == 0) {
-				Blink::RenderMenu();
-				keybind::key_bind(Blink::bind, 125, 25);
+				Blink::getInstance()->RenderMenu();
+				keybind::key_bind(Blink::getInstance()->getKey(), 125, 25);
 			}
 			/*else if (currentTab7 == 1) {
-				AutoTool::RenderMenu();
-				keybind::key_bind(AutoTool::bind, 125, 25);
+				AutoTool::getInstance()->RenderMenu();
+				keybind::key_bind(AutoTool::getInstance()->getKey(), 125, 25);
 			}*/
 		}
 		if (currentTab == 6) {
@@ -412,13 +412,13 @@ void Menu::RenderMenu()
 
 			ImGui::Text("ESP Colors");
 			ImGui::Separator();
-			ImGui::ColorEdit4("ESP Box", Esp::BoxColor);
-			ImGui::ColorEdit4("ESP Box Outline", Esp::OutlineColor);
-			ImGui::ColorEdit4("ESP Filled Box", Esp::FilledBoxColor);
-			ImGui::ColorEdit4("ESP Second Filled Box", Esp::SecondFilledBoxColor);
-			ImGui::ColorEdit4("ESP Circles", Esp::TestCirclesColor);
-			ImGui::ColorEdit4("ESP Text", Esp::TextColor);
-			ImGui::ColorEdit4("ESP Text Outline", Esp::TextOutlineColor);
+			ImGui::ColorEdit4("ESP Box", Esp::getInstance()->BoxColor);
+			ImGui::ColorEdit4("ESP Box Outline", Esp::getInstance()->OutlineColor);
+			ImGui::ColorEdit4("ESP Filled Box", Esp::getInstance()->FilledBoxColor);
+			ImGui::ColorEdit4("ESP Second Filled Box", Esp::getInstance()->SecondFilledBoxColor);
+			ImGui::ColorEdit4("ESP Circles", Esp::getInstance()->TestCirclesColor);
+			ImGui::ColorEdit4("ESP Text", Esp::getInstance()->TextColor);
+			ImGui::ColorEdit4("ESP Text Outline", Esp::getInstance()->TextOutlineColor);
 			ImGui::Separator();
 			ImGui::Text("Menu Colors");
 			ImGui::Separator();
@@ -440,26 +440,26 @@ void Menu::RenderMenu()
 			ImGui::SameLine();
 			if (Menu::TabButton("LongJump", (currentTab6 == 4 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 4;
 			if (currentTab6 == 0) {
-				Killaura::RenderMenu();
-				keybind::key_bind(Killaura::bind, 125, 25);
+				Killaura::getInstance()->RenderMenu();
+				keybind::key_bind(Killaura::getInstance()->getKey(), 125, 25);
 			}
 			if (currentTab6 == 1) {
-				Speed::RenderMenu();
-				keybind::key_bind(Speed::bind, 125, 25);
+				Speed::getInstance()->RenderMenu();
+				keybind::key_bind(Speed::getInstance()->getKey(), 125, 25);
 			}
 			if (currentTab6 == 2) {
-				Nofall::RenderMenu();
-				keybind::key_bind(Nofall::bind, 125, 25);
+				Nofall::getInstance()->RenderMenu();
+				keybind::key_bind(Nofall::getInstance()->getKey(), 125, 25);
 
 			}
 			if (currentTab6 == 3) {
-				Flight::RenderMenu();
-				keybind::key_bind(Flight::bind, 125, 25);
+				Flight::getInstance()->RenderMenu();
+				keybind::key_bind(Flight::getInstance()->getKey(), 125, 25);
 
 			}
 			if (currentTab6 == 4) {
-				LongJump::RenderMenu();
-				keybind::key_bind(LongJump::bind, 125, 25);
+				LongJump::getInstance()->RenderMenu();
+				keybind::key_bind(LongJump::getInstance()->getKey(), 125, 25);
 
 			}
 			ImGui::InvisibleButton("", ImVec2(1, 100));

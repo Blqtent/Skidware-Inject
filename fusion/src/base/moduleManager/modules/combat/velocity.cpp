@@ -1,15 +1,33 @@
 #include "velocity.h"
 #include "../../commonData.h"
 #include "../../../menu/menu.h"
+
+Velocity::Velocity() : AbstractModule("Velocity", Category::COMBAT) {
+	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
+}
+
+Velocity* Velocity::getInstance() {
+	static auto* inst = new Velocity();
+	return inst;
+}
+
+void Velocity::onDisable() {
+}
+
+void Velocity::onEnable() {
+}
+
+
+
 int counter;
-void Velocity::Update()
+void Velocity::onUpdate(const EventUpdate e)
 {
-	if (!Enabled) return;
-	if (!CommonData::SanityCheck()) return;
+	if (!this->getToggle()) return;
+	if (!CommonData::getInstance()->SanityCheck()) return;
 	if (SDK::Minecraft->IsInGuiState()) return;
 	CEntityPlayerSP* thePlayer = SDK::Minecraft->thePlayer;
 	//if (Menu::Open) return;
-	if (mode == 0) {
+	if (this->getMode() == 0) {
 		if (thePlayer->getHurtTime() > 7) {
 			Vector3 motion = thePlayer->getMotion();
 			motion.x = motion.x * Velocity::Horizontal;
@@ -20,14 +38,14 @@ void Velocity::Update()
 			thePlayer->setMotion(motion);
 		}
 	}
-	else if (mode == 1) {
+	else if (this->getMode() == 1) {
 		if (thePlayer->getHurtTime() > 9 && thePlayer->isOnGround() && counter++ % 2 == 0) {
 			POINT pos_cursor;
 			GetCursorPos(&pos_cursor);
 			thePlayer->jump();
 		}
 	}
-	else if (mode == 2) {
+	else if (this->getMode() == 2) {
 		if (thePlayer->getHurtTime() > 5) {
 			thePlayer->setOnGround(true);
 		}
@@ -45,13 +63,13 @@ void Velocity::RenderMenu()
 	if (ImGui::BeginChild("velocity", ImVec2(450, 100))) {
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
-		Menu::DoToggleButtonStuff(2134078, "Toggle Velocity", &Velocity::Enabled);
+		Menu::DoToggleButtonStuff(2134078, "Toggle Velocity", this);
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
-		Menu::DoSliderStuff(248913712347, "Horizontal", &Velocity::Horizontal, 0.f, 1.f);
-		Menu::DoSliderStuff(2489137, "Vertical", &Velocity::Vertical, 0.f, 1.f);
-		ImGui::Combo("Mode", &Velocity::mode, Velocity::modes, 3);
+		Menu::DoSliderStuff(248913712347, "Horizontal", &this->Horizontal, 0.f, 1.f);
+		Menu::DoSliderStuff(2489137, "Vertical", &this->Vertical, 0.f, 1.f);
+		ImGui::Combo("Mode", &this->getMode(), this->modes, 3);
 
 		ImGui::EndChild();
 	}

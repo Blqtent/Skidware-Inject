@@ -120,12 +120,6 @@
     <ClInclude Include="src\base\sdk\net\minecraft\client\entity\EntityPlayerSP.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\base\moduleManager\moduleManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\visual\esp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\base\sdk\net\minecraft\world\World.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -165,19 +159,10 @@
     <ClInclude Include="src\base\util\math\worldToScreen.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\base\moduleManager\commonData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\combat\aimAssist.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\base\util\window\borderless.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\base\sdk\net\minecraft\client\settings\GameSettings.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\combat\reach.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\base\sdk\net\minecraft\util\AxisAlignedBB.h">
@@ -201,25 +186,10 @@
     <ClInclude Include="ext\fonts\jetbrainsmono.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\clicker\leftAutoClicker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\clicker\rightAutoClicker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\base\sdk\net\minecraft\entity\player\InventoryPlayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\base\sdk\net\minecraft\item\ItemStack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\combat\velocity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\player\fastplace.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\player\eagle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\base\util\window\bind.hpp">
@@ -234,16 +204,7 @@
     <ClInclude Include="src\base\extension\config.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\base\moduleManager\module.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\blatent\killaura.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\base\extension\hook.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\blatent\speed.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\base\menu\ImGuiUtils.h">
@@ -252,16 +213,7 @@
     <ClInclude Include="src\base\menu\hooks\WSA.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\player\blink.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\blatent\nofall.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="src\base\security\lazy_importer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\visual\fullbright.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\base\sdk\net\minecraft\util\BlockPos.h">
@@ -270,19 +222,76 @@
     <ClInclude Include="src\base\sdk\net\minecraft\world\chunk\Chunk.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\combat\antibot.h">
+    <ClInclude Include="src\base\security\security.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\eventManager\EventManager.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\eventManager\AbstractEvent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\eventManager\events\EventKey.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\moduleManager\AbstractModule.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\moduleManager\ModuleManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\base\moduleManager\modules\blatent\flight.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\visual\cavefinder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\security\security.hpp">
+    <ClInclude Include="src\base\moduleManager\modules\blatent\killaura.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\base\moduleManager\modules\blatent\longjump.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\moduleManager\modules\blatent\nofall.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\moduleManager\modules\blatent\speed.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\moduleManager\modules\clicker\leftAutoClicker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\moduleManager\modules\clicker\rightAutoClicker.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\moduleManager\modules\combat\aimAssist.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\moduleManager\modules\combat\antibot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\moduleManager\modules\combat\reach.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\moduleManager\modules\combat\velocity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\moduleManager\modules\player\blink.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\moduleManager\modules\player\eagle.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\moduleManager\modules\player\fastplace.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\moduleManager\modules\visual\cavefinder.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\moduleManager\modules\visual\esp.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\moduleManager\modules\visual\fullbright.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\moduleManager\commonData.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -365,9 +374,6 @@
     <ClCompile Include="src\base\renderLoop.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\base\moduleManager\moduleManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\base\sdk\net\minecraft\world\World.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -404,19 +410,10 @@
     <ClCompile Include="src\base\util\math\worldToScreen.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\visual\esp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\combat\aimAssist.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\base\util\window\borderless.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\base\sdk\net\minecraft\client\settings\GameSettings.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\combat\reach.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\base\sdk\net\minecraft\util\AxisAlignedBB.cpp">
@@ -428,49 +425,19 @@
     <ClCompile Include="src\base\sdk\net\minecraft\util\Vec3.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\clicker\leftAutoClicker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\clicker\rightAutoClicker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\base\sdk\net\minecraft\entity\player\InventoryPlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\base\sdk\net\minecraft\item\ItemStack.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\combat\velocity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\player\fastplace.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\player\eagle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\base\sdk\JNIHelper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\blatent\killaura.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\blatent\speed.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\base\menu\hooks\WSA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\player\blink.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\blatent\nofall.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="src\base\menu\hooks\WalkingUpdate.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\visual\fullbright.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\base\sdk\net\minecraft\util\BlockPos.cpp">
@@ -479,17 +446,68 @@
     <ClCompile Include="src\base\sdk\net\minecraft\world\chunk\Chunk.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\combat\antibot.cpp">
+    <ClCompile Include="src\base\eventManager\events\EventUpdate.hpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\visual\cavefinder.cpp">
+    <ClCompile Include="src\base\moduleManager\ModuleManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\moduleManager\AbstractModule.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\base\moduleManager\modules\blatent\flight.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\base\moduleManager\modules\blatent\killaura.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="src\base\moduleManager\modules\blatent\longjump.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\base\moduleManager\modules\blatent\nofall.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\moduleManager\modules\blatent\speed.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\moduleManager\modules\clicker\leftAutoClicker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\moduleManager\modules\clicker\rightAutoClicker.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\moduleManager\modules\combat\aimAssist.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\moduleManager\modules\combat\antibot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\moduleManager\modules\combat\reach.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\moduleManager\modules\combat\velocity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\moduleManager\modules\player\blink.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\moduleManager\modules\player\eagle.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\moduleManager\modules\player\fastplace.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\moduleManager\modules\visual\cavefinder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\moduleManager\modules\visual\esp.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\moduleManager\modules\visual\fullbright.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

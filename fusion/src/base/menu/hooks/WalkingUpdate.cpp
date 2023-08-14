@@ -7,7 +7,7 @@ OnUpdate originalOnUpdate;
 OnUpdate patchedOnUpdate;
 void OnUpdatePatch(void** p1, void** p2)
 {
-	CommonData::post = true;
+	CommonData::getInstance()->post = true;
 	originalOnUpdate(p1, p2);
 }
 

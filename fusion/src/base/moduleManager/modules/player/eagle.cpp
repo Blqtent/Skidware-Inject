@@ -3,10 +3,27 @@
 #include "../../../../../ext/imgui/imgui.h"
 #include "../../../menu/menu.h"
 
-void Eagle::Update()
+
+Eagle::Eagle() : AbstractModule("Eagle", Category::PLAYER) {
+	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
+}
+
+Eagle* Eagle::getInstance() {
+	static auto* inst = new Eagle();
+	return inst;
+}
+
+void Eagle::onDisable() {
+}
+
+void Eagle::onEnable() {
+}
+
+
+void Eagle::onUpdate(const EventUpdate e)
 {
-	if (!Enabled) return;
-	if (!CommonData::SanityCheck()) return;
+	if (!this->getToggle()) return;
+	if (!CommonData::getInstance()->SanityCheck()) return;
 
 	if (SDK::Minecraft->theWorld->isAirBlock(SDK::Minecraft->thePlayer->GetPos().x, SDK::Minecraft->thePlayer->GetPos().y - 1, SDK::Minecraft->thePlayer->GetPos().z)) {
 		SDK::Minecraft->thePlayer->setSneak(true);
@@ -26,7 +43,7 @@ void Eagle::RenderMenu()
 	if (ImGui::BeginChild("Eagle", ImVec2(450, 100))) {
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
-		Menu::DoToggleButtonStuff(245309786, "Toggle Eagle", &Eagle::Enabled);
+		Menu::DoToggleButtonStuff(245309786, "Toggle Eagle", this);
 		ImGui::EndChild();
 	}
 	ImGui::PopStyleVar();

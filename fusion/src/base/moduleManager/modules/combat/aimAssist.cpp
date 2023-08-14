@@ -12,6 +12,22 @@
 #include <random>
 #include "antibot.h"
 
+AimAssist::AimAssist() : AbstractModule("AimAssist", Category::COMBAT) {
+	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
+}
+
+AimAssist* AimAssist::getInstance() {
+	static auto* inst = new AimAssist();
+	return inst;
+}
+
+void AimAssist::onDisable() {
+}
+
+void AimAssist::onEnable() {
+}
+
+
 /* 
 How this Aim Assist works :
 
@@ -31,10 +47,10 @@ Suggested settings:
 15-30 Smooth
 3.5 - 4 Locking Distance
 */
-void AimAssist::Update()
+void AimAssist::onUpdate(const EventUpdate e)
 {
-	if (!Enabled) return;
-	if (!CommonData::SanityCheck()) return;
+	if (!getToggle()) return;
+	if (!CommonData::getInstance()->SanityCheck()) return;
 	if (Menu::Open) return;
 
 	if ((aimKey && (!GetAsyncKeyState(VK_LBUTTON) && 1))) {
@@ -48,7 +64,7 @@ void AimAssist::Update()
 	Vector3 headPos = thePlayer->GetEyePos();
 	Vector2 currentLookAngles = thePlayer->GetAngles();
 
-	std::vector<CommonData::PlayerData> playerList = CommonData::nativePlayerList;
+	std::vector<CommonData::PlayerData> playerList = CommonData::getInstance()->nativePlayerList;
 	if (playerList.empty()) return;
 
 	CommonData::PlayerData target;
@@ -70,7 +86,7 @@ void AimAssist::Update()
 
 	for (CommonData::PlayerData player : playerList)
 	{
-		if (Antibot::isBot(player) && Antibot::Enabled) {
+		if (Antibot::getInstance()->isBot(player) && Antibot::getInstance()->getToggle()) {
 			continue;
 		}
 		if (player.name.length() < 0) return;
@@ -157,8 +173,8 @@ void AimAssist::Update()
 
 	float targetYaw = currentLookAngles.x + ((difference.x + offset) / smooth);
 
-	Vector3 renderPos = CommonData::renderPos;
-	float renderPartialTicks = CommonData::renderPartialTicks;
+	Vector3 renderPos = CommonData::getInstance()->renderPos;
+	float renderPartialTicks = CommonData::getInstance()->renderPartialTicks;
 
 	if (currentLookAngles.y > anglesFoot.y || currentLookAngles.y < anglesHead.y) {
 		float targetPitchFoot = currentLookAngles.y + (differenceFoot.y / smooth);
@@ -194,12 +210,12 @@ void AimAssist::Update()
 
 void AimAssist::RenderUpdate()
 {
-	if (!Enabled || !CommonData::dataUpdated) return;
+	if (!this->getToggle() || !CommonData::getInstance()->dataUpdated) return;
 	if (fovCircle) {
 
 		ImVec2 screenSize = ImGui::GetWindowSize();
-		float radAimbotFov = (float)(AimAssist::fov * PI / 180);
-		float radViewFov = (float)(CommonData::fov * PI / 180);
+		float radAimbotFov = (float)(this->fov * PI / 180);
+		float radViewFov = (float)(CommonData::getInstance()->fov * PI / 180);
 		float circleRadius = tanf(radAimbotFov / 2) / tanf(radViewFov / 2) * screenSize.x / 1.7325;
 
 		ImGui::GetWindowDrawList()->AddCircle(ImVec2(screenSize.x / 2, screenSize.y / 2), circleRadius, ImColor(25, 255, 255, 75), circleRadius / 3, 1);
@@ -210,7 +226,7 @@ void AimAssist::RenderUpdate()
 		ImVec2 screenSize = ImGui::GetWindowSize();
 
 		Vector2 w2s;
-		if (CWorldToScreen::WorldToScreen(data, CommonData::modelView, CommonData::projection, screenSize.x, screenSize.y, w2s))
+		if (CWorldToScreen::WorldToScreen(data, CommonData::getInstance()->modelView, CommonData::getInstance()->projection, screenSize.x, screenSize.y, w2s))
 		{
 			if (w2s.x == NAN) return;
 
@@ -236,15 +252,15 @@ void AimAssist::RenderMenu()
 
 	if (ImGui::BeginChild("", ImVec2(450, 381))) {
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
-		Menu::DoToggleButtonStuff(234402345634000, "Toggle Aim Assist", &AimAssist::Enabled);
+		Menu::DoToggleButtonStuff(234402345634000, "Toggle Aim Assist", this);
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
-		Menu::DoSliderStuff(23084562545, "FOV", &AimAssist::fov, 5.0f, 180.0f);
-		Menu::DoSliderStuff(869765007, "Lock Distance", &AimAssist::aimDistance, 1.0f, 8.0f);
-		Menu::DoSliderStuff(2314057445345, "Smoothness", &AimAssist::smooth, 1.0f, 90.0f);
-		Menu::DoToggleButtonStuff(22645342, "Visbility Check", &AimAssist::visibilityCheck);
-		Menu::DoToggleButtonStuff(206573465433442, "Left Button To Aim", &AimAssist::aimKey);
+		Menu::DoSliderStuff(23084562545, "FOV", &this->fov, 5.0f, 180.0f);
+		Menu::DoSliderStuff(869765007, "Lock Distance", &this->aimDistance, 1.0f, 8.0f);
+		Menu::DoSliderStuff(2314057445345, "Smoothness", &this->smooth, 1.0f, 90.0f);
+		Menu::DoToggleButtonStuff(22645342, "Visbility Check", &this->visibilityCheck);
+		Menu::DoToggleButtonStuff(206573465433442, "Left Button To Aim", &this->aimKey);
 
 		ImGui::SetCursorPos(ImVec2(20, ImGui::GetCursorPosY() + 5));
 		ImGui::Text("Target Priority");
@@ -256,25 +272,25 @@ void AimAssist::RenderMenu()
 		ImGui::PushStyleColor(ImGuiCol_ButtonHovered, ImVec4(0, 0.65, 0.65, 1));
 		ImGui::PushStyleColor(ImGuiCol_ButtonActive, ImVec4(0, 0.8, 0.8, 1));
 
-		ImGui::Combo("tp", &AimAssist::targetPriority, AimAssist::targetPriorityList, 3);
+		ImGui::Combo("tp", &this->targetPriority, this->targetPriorityList, 3);
 
 		ImGui::PopStyleColor(3);
 		ImGui::PopStyleVar();
 
 		ImGui::Separator();
 
-		Menu::DoToggleButtonStuff(5635678756247, "Adapt to strafing", &AimAssist::adaptive);
-		Menu::DoSliderStuff(457323434, "Adaptive strafing offset", &AimAssist::adaptiveOffset, 0.1f, 15.f);
+		Menu::DoToggleButtonStuff(5635678756247, "Adapt to strafing", &this->adaptive);
+		Menu::DoSliderStuff(457323434, "Adaptive strafing offset", &this->adaptiveOffset, 0.1f, 15.f);
 		ImGui::SetCursorPos(ImVec2(20, ImGui::GetCursorPosY() + 5));
 
 		ImGui::Separator();
-		Menu::DoSliderStuff(3464340056, "Yaw Randomness", &AimAssist::randomYaw, 0.0f, 10.0f);
-		Menu::DoSliderStuff(54034352347, "Pitch Randomness", &AimAssist::randomPitch, 0.0f, 1);
+		Menu::DoSliderStuff(3464340056, "Yaw Randomness", &this->randomYaw, 0.0f, 10.0f);
+		Menu::DoSliderStuff(54034352347, "Pitch Randomness", &this->randomPitch, 0.0f, 1);
 		ImGui::SetCursorPos(ImVec2(20, ImGui::GetCursorPosY() + 5));
 
 		ImGui::Separator();
-		Menu::DoToggleButtonStuff(76523436400, "FOV Circle", &AimAssist::fovCircle);
-		Menu::DoToggleButtonStuff(230476545677654654, "Feedback Line", &AimAssist::aimAssistFeedback);
+		Menu::DoToggleButtonStuff(76523436400, "FOV Circle", &this->fovCircle);
+		Menu::DoToggleButtonStuff(230476545677654654, "Feedback Line", &this->aimAssistFeedback);
 
 		ImGui::EndChild();
 	}

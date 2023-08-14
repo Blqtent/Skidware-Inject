@@ -3,28 +3,21 @@
 
 #include <string>
 #include <vector>
-#include "../../module.h"
 #include "../../../sdk/sdk.h"
 #include "../../commonData.h"
-struct Antibot
-{
-	inline static int bind = 0;
 
-	inline static bool Enabled = false;
-	
-	inline static std::vector<CEntityPlayer> bots;
-
-	static void Update();
-
-	static void RenderMenu();
-
-	static bool isBot(CommonData::PlayerData p) {
-		if (p.obj.GetName().contains("§c")) {
+class Antibot :public AbstractModule {
+public:
+	static Antibot* getInstance();
+	void onEnable();
+	void onDisable();
+	bool isBot(CommonData::PlayerData p) {
+		if (p.obj.GetName().find("§c") ) {
 
 			bots.push_back(p.obj);
 			return true;
 		}
-		else if (p.obj.GetName().contains("[NPC] ")) {
+		else if (p.obj.GetName().find("[NPC] ") != -1) {
 			bots.push_back(p.obj);
 
 			return true;
@@ -37,7 +30,7 @@ struct Antibot
 			bots.push_back(p.obj);
 			return true;
 		}
-		else if (p.obj.GetName().contains("-")) {
+		else if (p.obj.GetName().find("-") != -1) {
 			bots.push_back(p.obj);
 			return true;
 		}
@@ -48,5 +41,8 @@ struct Antibot
 		}
 		return false;
 	}
+	void RenderMenu();
+private:
+	std::vector<CEntityPlayer> bots;
+	Antibot();
 };
-

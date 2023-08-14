@@ -4,7 +4,7 @@
 #include "java/java.h"
 #include "util/logger.h"
 #include "menu/menu.h"
-#include "moduleManager/moduleManager.h"
+#include "moduleManager/ModuleManager.h"
 #include "sdk/sdk.h"
 #include "util/window/borderless.h"
 
@@ -13,6 +13,32 @@
 #include <thread>
 #include <unordered_map>
 #include "security/security.hpp"
+#include "eventManager/events/EventKey.hpp"
+
+#include "moduleManager/modules/blatent/flight.h"
+#include "moduleManager/modules/blatent/killaura.h"
+#include "moduleManager/modules/blatent/longjump.h"
+#include "moduleManager/modules/blatent/nofall.h"
+#include "moduleManager/modules/blatent/speed.h"
+
+#include "moduleManager/modules/clicker/leftAutoClicker.h"
+#include "moduleManager/modules/clicker/rightAutoClicker.h"
+
+#include "moduleManager/modules/combat/aimAssist.h"
+#include "moduleManager/modules/combat/antibot.h"
+#include "moduleManager/modules/combat/reach.h"
+#include "moduleManager/modules/combat/velocity.h"
+
+#include "moduleManager/modules/player/blink.h"
+#include "moduleManager/modules/player/eagle.h"
+#include "moduleManager/modules/player/fastplace.h"
+
+#include "moduleManager/modules/visual/cavefinder.h"
+#include "moduleManager/modules/visual/esp.h"
+#include "moduleManager/modules/visual/fullbright.h"
+
+
+
 
 // LUA import
 //#include "extension/scripting.hpp"
@@ -44,8 +70,9 @@ void Base::Init()
 	Java::Init();
 	SDK::Init();
 	Menu::Init();
-	ModuleManager::Init();
-	
+
+	Base::initModule();
+	Base::initEvent();
 	//Logger::Init();
 	//scripting::luaThing();
 	Base::Running = true;
@@ -61,8 +88,7 @@ void Base::Init()
 				Borderless::Enable(Menu::HandleWindow);
 		}
 
-		ModuleManager::UpdateModules();
-
+		EventManager::getInstance().call(EventUpdate());
 
 		//uc_SizeOfImage();
 		//HideFromDebugger();
@@ -72,7 +98,55 @@ void Base::Init()
 	}
 
 	Main::Kill();
-}	
+}
+void Base::initEvent() {
+	//EventManager::getInstance().reg(Events::EventUpdate, test);
+	EventManager::getInstance().reg<EventKey>(handleEventKey);
+	//EventManager::getInstance().reg<EventUpdate>(test);
+}
+
+void Base::initModule() {
+
+	{
+		ModuleManager::getInstance().addModule<Flight>(Flight::getInstance());
+		ModuleManager::getInstance().addModule<Killaura>(Killaura::getInstance());
+		ModuleManager::getInstance().addModule<LongJump>(LongJump::getInstance());
+		ModuleManager::getInstance().addModule<Nofall>(Nofall::getInstance());
+		ModuleManager::getInstance().addModule<Speed>(Speed::getInstance());
+	}
+	
+	{
+		ModuleManager::getInstance().addModule<LeftAutoClicker>(LeftAutoClicker::getInstance());
+		ModuleManager::getInstance().addModule<RightAutoClicker>(RightAutoClicker::getInstance());
+	}
+
+	{
+		ModuleManager::getInstance().addModule<AimAssist>(AimAssist::getInstance());
+		ModuleManager::getInstance().addModule<Antibot>(Antibot::getInstance());
+		ModuleManager::getInstance().addModule<Reach>(Reach::getInstance());
+		ModuleManager::getInstance().addModule<Velocity>(Velocity::getInstance());
+	}
+
+	{
+		ModuleManager::getInstance().addModule<Blink>(Blink::getInstance());
+		ModuleManager::getInstance().addModule<Eagle>(Eagle::getInstance());
+		ModuleManager::getInstance().addModule<Fastplace>(Fastplace::getInstance());
+	}
+
+	{
+		ModuleManager::getInstance().addModule<Cavefinder>(Cavefinder::getInstance());
+		ModuleManager::getInstance().addModule<Esp>(Esp::getInstance());
+		ModuleManager::getInstance().addModule<Fulbright>(Fulbright::getInstance());
+	}
+
+
+
+}
+
+
+void Base::handleEventKey(const EventKey k) {
+	ModuleManager::getInstance().ProcessKeyEvent();
+}
 
 void Base::Kill()
 {

@@ -157,33 +157,40 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\base\eventManager\AbstractEvent.h" />
+    <ClInclude Include="src\base\eventManager\EventManager.hpp" />
+    <ClInclude Include="src\base\eventManager\events\EventKey.hpp" />
     <ClInclude Include="src\base\extension\config.h" />
     <ClInclude Include="src\base\extension\hook.h" />
     <ClInclude Include="src\base\menu\hooks\WSA.h" />
     <ClInclude Include="src\base\menu\ImGuiUtils.h" />
-    <ClInclude Include="src\base\moduleManager\module.h" />
+    <ClInclude Include="src\base\moduleManager\AbstractModule.h" />
+    <ClInclude Include="src\base\moduleManager\commonData.h" />
+    <ClInclude Include="src\base\moduleManager\ModuleManager.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\flight.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\killaura.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\longjump.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\nofall.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\speed.h" />
+    <ClInclude Include="src\base\moduleManager\modules\clicker\leftAutoClicker.h" />
+    <ClInclude Include="src\base\moduleManager\modules\clicker\rightAutoClicker.h" />
+    <ClInclude Include="src\base\moduleManager\modules\combat\aimAssist.h" />
     <ClInclude Include="src\base\moduleManager\modules\combat\antibot.h" />
+    <ClInclude Include="src\base\moduleManager\modules\combat\reach.h" />
     <ClInclude Include="src\base\moduleManager\modules\combat\velocity.h" />
     <ClInclude Include="src\base\moduleManager\modules\player\blink.h" />
     <ClInclude Include="src\base\moduleManager\modules\player\eagle.h" />
     <ClInclude Include="src\base\moduleManager\modules\player\fastplace.h" />
     <ClInclude Include="src\base\moduleManager\modules\visual\cavefinder.h" />
+    <ClInclude Include="src\base\moduleManager\modules\visual\esp.h" />
     <ClInclude Include="src\base\moduleManager\modules\visual\fullbright.h" />
     <ClInclude Include="src\base\sdk\JNIHelper.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\item\ItemStack.h" />
-    <ClInclude Include="src\base\moduleManager\modules\clicker\rightAutoClicker.h" />
-    <ClInclude Include="src\base\moduleManager\modules\clicker\leftAutoClicker.h" />
     <ClInclude Include="ext\fonts\jetbrainsmono.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\entity\player\InventoryPlayer.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\util\BlockPos.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\util\MovingObjectPosition.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\util\AxisAlignedBB.h" />
-    <ClInclude Include="src\base\moduleManager\modules\combat\reach.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\client\settings\GameSettings.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\world\chunk\Chunk.h" />
     <ClInclude Include="src\base\sdk\strayCache.h" />
@@ -192,8 +199,6 @@
     <ClInclude Include="src\base\util\render\renderqolf.h" />
     <ClInclude Include="src\base\util\window\bind.hpp" />
     <ClInclude Include="src\base\util\window\borderless.h" />
-    <ClInclude Include="src\base\moduleManager\modules\combat\aimAssist.h" />
-    <ClInclude Include="src\base\moduleManager\commonData.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\client\renderer\entity\RenderManager.h" />
     <ClInclude Include="src\base\sdk\java\nio\FloatBuffer.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\client\renderer\ActiveRenderInfo.h" />
@@ -201,8 +206,6 @@
     <ClInclude Include="src\base\sdk\net\minecraft\entity\EntityLivingBase.h" />
     <ClInclude Include="src\base\sdk\java\util\List.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\entity\player\EntityPlayer.h" />
-    <ClInclude Include="src\base\moduleManager\moduleManager.h" />
-    <ClInclude Include="src\base\moduleManager\modules\visual\esp.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\client\entity\EntityPlayerSP.h" />
     <ClInclude Include="src\base\sdk\sdk.h" />
     <ClInclude Include="src\base\sdk\java\IClass.h" />
@@ -249,34 +252,37 @@
     <ClInclude Include="src\base\sdk\net\minecraft\util\Vec3.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\base\eventManager\events\EventUpdate.hpp" />
     <ClCompile Include="src\base\menu\hooks\WalkingUpdate.cpp" />
     <ClCompile Include="src\base\menu\hooks\WSA.cpp" />
+    <ClCompile Include="src\base\moduleManager\AbstractModule.cpp" />
+    <ClCompile Include="src\base\moduleManager\ModuleManager.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\flight.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\killaura.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\longjump.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\nofall.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\speed.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\clicker\leftAutoClicker.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\clicker\rightAutoClicker.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\combat\aimAssist.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\combat\antibot.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\combat\reach.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\combat\velocity.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\player\blink.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\player\eagle.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\player\fastplace.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\visual\cavefinder.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\visual\esp.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\visual\fullbright.cpp" />
     <ClCompile Include="src\base\sdk\JNIHelper.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\item\ItemStack.cpp" />
-    <ClCompile Include="src\base\moduleManager\modules\clicker\rightAutoClicker.cpp" />
-    <ClCompile Include="src\base\moduleManager\modules\clicker\leftAutoClicker.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\entity\player\InventoryPlayer.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\util\BlockPos.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\util\MovingObjectPosition.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\util\AxisAlignedBB.cpp" />
-    <ClCompile Include="src\base\moduleManager\modules\combat\reach.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\client\settings\GameSettings.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\world\chunk\Chunk.cpp" />
     <ClCompile Include="src\base\util\window\borderless.cpp" />
-    <ClCompile Include="src\base\moduleManager\modules\combat\aimAssist.cpp" />
-    <ClCompile Include="src\base\moduleManager\modules\visual\esp.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\client\renderer\entity\RenderManager.cpp" />
     <ClCompile Include="src\base\sdk\java\nio\FloatBuffer.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\client\renderer\ActiveRenderInfo.cpp" />
@@ -284,7 +290,6 @@
     <ClCompile Include="src\base\sdk\net\minecraft\entity\EntityLivingBase.cpp" />
     <ClCompile Include="src\base\sdk\java\util\List.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\entity\player\EntityPlayer.cpp" />
-    <ClCompile Include="src\base\moduleManager\moduleManager.cpp" />
     <ClCompile Include="ext\imgui\imgui.cpp" />
     <ClCompile Include="ext\imgui\imgui_demo.cpp" />
     <ClCompile Include="ext\imgui\imgui_draw.cpp" />
@@ -317,6 +322,9 @@
     <ClCompile Include="src\base\sdk\net\minecraft\client\multiplayer\WorldClient.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\util\Timer.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\util\Vec3.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -3,39 +3,33 @@
 
 #include <string>
 #include <vector>
-#include "../../module.h"
-struct AimAssist : public module
-{
-	inline static int bind = 0;
+#include "../../../eventManager/events/EventUpdate.hpp"
+#include "../../AbstractModule.h"
 
-	inline static Vector3 renderData;
-
-	inline static bool Enabled = false;
-
-	inline static bool visibilityCheck = true;
-	inline static bool aimAssistFeedback = true;
-	inline static bool fovCircle = true;
-
-	inline static Vector3 data;
-	inline static bool pitchInfluenced = false;
-	inline static bool aimKey = true;
-
-	inline static bool adaptive = true;
-	inline static float adaptiveOffset = 3;
-
-	inline static float fov = 35.0f;
-	inline static float smooth = 15.f;
-	inline static float aimDistance = 4.f;
-	inline static float randomYaw = 2;
-	inline static float randomPitch = .075f;
-
-	inline static int targetPriority = 2;
-	inline static const char* targetPriorityList[3] { "Distance", "Health", "Closest to Crosshair"};
-
-
-	static void Update();
-
-	static void RenderUpdate();
-	static void RenderMenu();
+class AimAssist :public AbstractModule {
+public:
+	static AimAssist* getInstance();
+	void onEnable();
+	void onDisable();
+	void onUpdate(const EventUpdate e);
+	void RenderUpdate();
+	void RenderMenu();
+	Vector3 renderData;
+	bool visibilityCheck = true;
+	bool aimAssistFeedback = true;
+	bool fovCircle = true;
+	Vector3 data;
+	bool pitchInfluenced = false;
+	bool aimKey = true;
+	bool adaptive = true;
+	float adaptiveOffset = 3;
+	float fov = 35.0f;
+	float smooth = 15.f;
+	float aimDistance = 4.f;
+	float randomYaw = 2;
+	float randomPitch = .075f;
+	int targetPriority = 2;
+	const char* targetPriorityList[3]{ "Distance", "Health", "Closest to Crosshair" };
+private:
+	AimAssist();
 };
-

@@ -4,13 +4,13 @@
 #include <vector>
 #include <string>
 #include "../../commonData.h"
-struct Cavefinder
+class Cavefinder : public AbstractModule
 {
-    inline static int bind = 0;
-
-    inline static bool Enabled = false;
-
-    static void Update();
-
-    static void RenderMenu();
+public:
+    static Cavefinder* getInstance();
+    void onEnable();
+    void onDisable();
+    void RenderMenu();
+private:
+    Cavefinder();
 };

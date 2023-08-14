@@ -3,13 +3,28 @@
 #include "../../../menu/menu.h"
 #include "../../commonData.h"
 
+Blink::Blink() : AbstractModule("Blink", Category::PLAYER,'H') {
+	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
+}
 
-void Blink::Update()
+Blink* Blink::getInstance() {
+	static auto* inst = new Blink();
+	return inst;
+}
+
+void Blink::onDisable() {
+}
+
+void Blink::onEnable() {
+}
+
+
+void Blink::onUpdate(const EventUpdate e)
 {
-	if (!Enabled) return;
-	if (!CommonData::SanityCheck()) return;
+	if (!this->getToggle()) return;
+	if (!CommonData::getInstance()->SanityCheck()) return;
 
-	const bool isBindPress = GetAsyncKeyState(bind) & 0x8000;
+	const bool isBindPress = IsKeyBeingDown(this->getKey());
 
 	if (!isBindPress || (timer != NULL && GetTickCount64() - timer > Milliseonds * 1000))
 	{
@@ -38,12 +53,12 @@ void Blink::RenderMenu()
 	if (ImGui::BeginChild("Blink", ImVec2(450, 75))) {
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
-		Menu::DoToggleButtonStuff(6890, "Toggle Fakelag", &Blink::Enabled);
+		Menu::DoToggleButtonStuff(6890, "Toggle Fakelag", this);
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
 		//Menu::DoToggleButtonStuff(566578, "Fakelag Throttle", &Blink::throttle);
-		Menu::DoSliderStuff(566578, "Fakelag Delay", &Blink::Milliseonds, 1, 10000);
+		Menu::DoSliderStuff(566578, "Fakelag Delay", &this->Milliseonds, 1, 10000);
 
 		ImGui::EndChild();
 	}
@@ -54,10 +69,10 @@ void Blink::RenderMenu()
 void Blink::OnReceiveData()
 {
 
-	if (!Enabled)
+	if (!this->getToggle())
 		return;
 
-	while (GetAsyncKeyState(bind) & 0x8000 && (GetTickCount64() - timer < Milliseonds * 1000)) {
+	while (IsKeyBeingDown(this->getKey()) && (GetTickCount64() - timer < Milliseonds * 1000)) {
 		Sleep(1);
 	}
 }

@@ -1,18 +1,36 @@
 #include "longjump.h"
 #include "../../../menu/menu.h"
 
-void LongJump::Update()
+
+LongJump::LongJump() : AbstractModule("LongJump", Category::BLATENT) {
+	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
+}
+
+LongJump* LongJump::getInstance() {
+	static auto* inst = new LongJump();
+	return inst;
+}
+
+void LongJump::onDisable() {
+}
+
+void LongJump::onEnable() {
+}
+
+void LongJump::onUpdate(const EventUpdate e)
 {
+
 	if (Menu::Open) return;
-	if (!CommonData::SanityCheck()) return;
-	if (!Enabled) {
+	if (!CommonData::getInstance()->SanityCheck()) return;
+	if (!this->getToggle()) {
 		return;
 	}
-	if (mode == 0) {
+	if (getMode() == 0) {
 		if (SDK::Minecraft->thePlayer->getHurtTime() > 0)
 			SDK::Minecraft->thePlayer->set_speed(speed);
 	}
 }
+
 
 void LongJump::RenderMenu()
 {
@@ -24,12 +42,12 @@ void LongJump::RenderMenu()
 	if (ImGui::BeginChild("Longjump", ImVec2(450, 100))) {
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
-		Menu::DoToggleButtonStuff(34565464, "Toggle Longjump", &LongJump::Enabled);
-		//Menu::DoToggleButtonStuff(124343343, "Antikick", &Flight::antikick);
+		Menu::DoToggleButtonStuff(34565464, "Toggle Longjump", this);
+		//Menu::DoToggleButtonStuff(124343343, "Antikick", &this->antikick);
 
 		ImGui::Text("Longjump Mode");
-		ImGui::Combo("Longjump Mode", &LongJump::mode, LongJump::modes, 1);
-		Menu::DoSliderStuff(69420666, "Longjump Speed", &LongJump::speed, 0, 5);
+		ImGui::Combo("Longjump Mode", &this->getMode(), this->modes, 1);
+		Menu::DoSliderStuff(69420666, "Longjump Speed", &this->speed, 0, 5);
 
 		ImGui::EndChild();
 	}

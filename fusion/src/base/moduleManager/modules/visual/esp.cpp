@@ -8,26 +8,40 @@
 #include "../../../util/render/renderqolf.h"
 #include "../../../menu/menu.h"
 #include <gl/GL.h>
+Esp::Esp() : AbstractModule("Esp", Category::VISUAL) {
+	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
+}
 
-void Esp::Update()
+Esp* Esp::getInstance() {
+	static auto* inst = new Esp();
+	return inst;
+}
+
+void Esp::onDisable() {
+}
+
+void Esp::onEnable() {
+}
+
+void Esp::onUpdate(const EventUpdate e)
 {
-	if (!Enabled) return;
-	if (!CommonData::SanityCheck()) return;
+	if (!this->getToggle()) return;
+	if (!CommonData::getInstance()->SanityCheck()) return;
 
 	CEntityPlayerSP* player = SDK::Minecraft->thePlayer;
 	CWorld* world = SDK::Minecraft->theWorld;
-	std::vector<CommonData::PlayerData> playerList = CommonData::nativePlayerList;
+	std::vector<CommonData::PlayerData> playerList = CommonData::getInstance()->nativePlayerList;
 	if (playerList.empty()) return;
 
-	Vector3 renderPos = CommonData::renderPos;
+	Vector3 renderPos = CommonData::getInstance()->renderPos;
 	Vector3 pos = player->GetPos();
 
 	// This is to fix the third person issue, there is still one issue with it.
 	// When the camera collides in the wall or the ground, or something like that, the calculation fails entirely because the position is obviously not the same.
-	if (CommonData::thirdPersonView != 0) {
+	if (CommonData::getInstance()->thirdPersonView != 0) {
 		Vector2 angles = player->GetAngles();
 		float distance = 8;
-		if (CommonData::thirdPersonView == 2) {
+		if (CommonData::getInstance()->thirdPersonView == 2) {
 			distance = -distance;
 		}
 
@@ -51,7 +65,7 @@ void Esp::Update()
 
 	std::vector<Data> newData;
 
-	float renderPartialTicks = CommonData::renderPartialTicks;
+	float renderPartialTicks = CommonData::getInstance()->renderPartialTicks;
 
 	for (CommonData::PlayerData entity : playerList)
 	{
@@ -125,7 +139,7 @@ void Esp::Update()
 
 void Esp::RenderUpdate()
 {
-	if (!Enabled || !CommonData::dataUpdated) return;
+	if (!this->getToggle() || !CommonData::getInstance()->dataUpdated) return;
 
 	for (Data data : renderData)
 	{
@@ -143,7 +157,7 @@ void Esp::RenderUpdate()
 		{
 			Vector2 p;
 
-			if (!CWorldToScreen::WorldToScreen(position, CommonData::modelView, CommonData::projection, (int)screenSize.x, (int)screenSize.y, p))
+			if (!CWorldToScreen::WorldToScreen(position, CommonData::getInstance()->modelView, CommonData::getInstance()->projection, (int)screenSize.x, (int)screenSize.y, p))
 			{
 				skip = true;
 				break;
@@ -238,27 +252,27 @@ void Esp::RenderMenu()
 	ImGui::PushStyleVar(ImGuiStyleVar_ChildRounding, 10);
 	if (ImGui::BeginChild("esp", ImVec2(450, 381))) {
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
-		Menu::DoToggleButtonStuff(28374, "ESP", &Esp::Enabled);
+		Menu::DoToggleButtonStuff(28374, "ESP", this);
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
-		Menu::DoToggleButtonStuff(45678, "Box", &Esp::Box);
-		Menu::DoToggleButtonStuff(111123, "Fill Box", &Esp::FilledBox);
-		Menu::DoToggleButtonStuff(7457, "Box Outline", &Esp::Outline);
-		Menu::DoToggleButtonStuff(23445, "Healthbar", &Esp::HealthBar);
-		Menu::DoToggleButtonStuff(34576, "Distance", &Esp::Text);
-		//Menu::DoToggleButtonStuff(567567, "Test Circles", &Esp::TestCircles);
-		Menu::DoToggleButtonStuff(1337, "Text Outline", &Esp::TextOutline);
+		Menu::DoToggleButtonStuff(45678, "Box", &this->Box);
+		Menu::DoToggleButtonStuff(111123, "Fill Box", &this->FilledBox);
+		Menu::DoToggleButtonStuff(7457, "Box Outline", &this->Outline);
+		Menu::DoToggleButtonStuff(23445, "Healthbar", &this->HealthBar);
+		Menu::DoToggleButtonStuff(34576, "Distance", &this->Text);
+		//Menu::DoToggleButtonStuff(567567, "Test Circles", &this->TestCircles);
+		Menu::DoToggleButtonStuff(1337, "Text Outline", &this->TextOutline);
 		ImGui::Separator();
-		Menu::DoSliderStuff(34875, "Fade Distance", &Esp::FadeDistance, 0, 10);
-		Menu::DoSliderStuff(128763, "Distance Size", &Esp::TextSize, 12, 24);
+		Menu::DoSliderStuff(34875, "Fade Distance", &this->FadeDistance, 0, 10);
+		Menu::DoSliderStuff(128763, "Distance Size", &this->TextSize, 12, 24);
 		ImGui::Separator();
-		//ImGui::ColorPicker3("Box Color", Esp::BoxColor);
-		//ImGui::ColorPicker3("Fill Color", Esp::FilledBoxColor);
-		//ImGui::ColorPicker3("Fill Opacity", &Esp::FilledBoxOpacity);
-		//ImGui::ColorPicker3("Box Outline Color", Esp::OutlineColor);
-		//ImGui::ColorPicker3("Text Color", Esp::TextColor);
-		//ImGui::ColorPicker3("Text Outline Color", Esp::TextOutlineColor);
-		//ImGui::ColorPicker3("Test Circles Color", Esp::TestCirclesColor);
+		//ImGui::ColorPicker3("Box Color",this->BoxColor);
+		//ImGui::ColorPicker3("Fill Color",this->FilledBoxColor);
+		//ImGui::ColorPicker3("Fill Opacity", &this->FilledBoxOpacity);
+		//ImGui::ColorPicker3("Box Outline Color",this->OutlineColor);
+		//ImGui::ColorPicker3("Text Color",this->TextColor);
+		//ImGui::ColorPicker3("Text Outline Color",this->TextOutlineColor);
+		//ImGui::ColorPicker3("Test Circles Color",this->TestCirclesColor);
 
 		ImGui::EndChild();
 	}

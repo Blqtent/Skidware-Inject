@@ -4,6 +4,7 @@
 #include "../../../ext/imgui/imgui_internal.h"
 #include "../../../ext/imgui/imgui_impl_win32.h"
 #include "../../../ext/imgui/imgui_impl_opengl2.h"
+#include "../moduleManager/AbstractModule.h"
 
 void Menu::Init()
 {
@@ -45,6 +46,36 @@ void Menu::ToggleButton(const char* format, bool* value)
 	draw_list->AddCircleFilled(ImVec2(*value ? (p.x + width - radius + offsetX) : (p.x + radius + offsetX), p.y + radius + offsetY), radius - 1.5f, col_circle);
 }
 
+void Menu::ToggleButton(const char* format, AbstractModule* module)
+{
+	ImVec2 p = ImGui::GetCursorScreenPos();
+	ImDrawList* draw_list = ImGui::GetWindowDrawList();
+	float height = ImGui::GetFrameHeight() - 5;
+	float width = height * 1.65f;
+	float radius = height * 0.50f;
+
+	if (ImGui::InvisibleButton(format, ImVec2(width, height)))
+		module->toggle();
+	ImU32 col_circle;
+	ImU32 col_bg;
+	if (ImGui::IsItemHovered()) 
+	{
+		col_circle = module->getToggle() ? IM_COL32(255, 255, 255, 255) : IM_COL32(230, 230, 230, 255);
+		col_bg = module->getToggle() ? IM_COL32(0, 255, 255, 255) : IM_COL32(0, 100, 100, 255);
+	}
+	else 
+	{
+		col_circle = module->getToggle() ? IM_COL32(230, 230, 230, 255) : IM_COL32(175, 175, 175, 255);
+		col_bg = module->getToggle() ? IM_COL32(0, 120, 120, 255) : IM_COL32(0, 50, 50, 255);
+	}
+
+	float offsetX = 8;
+	float offsetY = 3;
+
+	draw_list->AddRectFilled(ImVec2(p.x + offsetX, p.y + offsetY), ImVec2(p.x + width + offsetX, p.y + height + offsetY), col_bg, height * 0.5f);
+	draw_list->AddCircleFilled(ImVec2(module->getToggle() ? (p.x + width - radius + offsetX) : (p.x + radius + offsetX), p.y + radius + offsetY), radius - 1.5f, col_circle);
+}
+
 bool Menu::TabButton(const char* format, ImVec4 color)
 {
 	ImGui::PushStyleColor(ImGuiCol_Button, color);
@@ -84,6 +115,19 @@ void Menu::DoToggleButtonStuff(int id, const char* text, bool* bruh) {
 	ImGui::SameLine();
 	ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 340 - textSize.x);
 	Menu::ToggleButton(text, bruh);
+	ImGui::PopID();
+}
+
+
+
+void Menu::DoToggleButtonStuff(int id, const char* text, AbstractModule* module){
+	ImVec2 textSize = Menu::Font->CalcTextSizeA(Menu::Font->FontSize, FLT_MAX, 0.0f, text);
+	ImGui::SetCursorPos(ImVec2(20, ImGui::GetCursorPosY() + 5));
+	ImGui::PushID(id);
+	ImGui::Text(text);
+	ImGui::SameLine();
+	ImGui::SetCursorPosX(ImGui::GetCursorPosX() + 340 - textSize.x);
+	Menu::ToggleButton(text, module);
 	ImGui::PopID();
 }
 

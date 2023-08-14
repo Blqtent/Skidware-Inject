@@ -3,23 +3,40 @@
 #include "../../../menu/menu.h"
 #include "../../../util/logger.h"
 #include "../../../menu/menu.h"
-
+#include "../../../eventManager/EventManager.hpp"
 #include <chrono>
 #include <random>
 
 long rightLastClickTime = 0;
 int rightNextCps = 10;
 
-void RightAutoClicker::Update()
+RightAutoClicker::RightAutoClicker() : AbstractModule("RightAutoClicker", Category::CLICKER) {
+	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
+}
+
+RightAutoClicker* RightAutoClicker::getInstance() {
+	static auto* inst = new RightAutoClicker();
+	return inst;
+}
+
+void RightAutoClicker::onDisable() {
+}
+
+void RightAutoClicker::onEnable() {
+}
+
+
+
+void RightAutoClicker::onUpdate(const EventUpdate e)
 {
-	if (!Enabled) return;
+	if (!getToggle()) return;
 	if (Menu::Open) return;
 	if (SDK::Minecraft->IsInGuiState()) return;
 
 	jclass blockClass;
 	Java::AssignClass("net.minecraft.item.ItemBlock", blockClass);
 	if (SDK::Minecraft->thePlayer->GetInventory().GetCurrentItem().GetInstance() == NULL) return;
-	if (blocksOnly && !Java::Env->IsInstanceOf(SDK::Minecraft->thePlayer->GetInventory().GetCurrentItem().GetItem(), blockClass)) return;
+	if (this->blocksOnly && !Java::Env->IsInstanceOf(SDK::Minecraft->thePlayer->GetInventory().GetCurrentItem().GetItem(), blockClass)) return;
 
 	long milli = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	if (rightLastClickTime == 0) rightLastClickTime = milli;
@@ -35,7 +52,7 @@ void RightAutoClicker::Update()
 
 		std::random_device rd;
 		std::mt19937 gen(rd());
-		std::uniform_int_distribution<> distrib(rightMinCps, rightMaxCps);
+		std::uniform_int_distribution<> distrib(this->rightMinCps, this->rightMaxCps);
 		rightNextCps = distrib(gen);
 	}
 }
@@ -48,15 +65,15 @@ void RightAutoClicker::RenderMenu()
 	ImGui::PushStyleVar(ImGuiStyleVar_ChildRounding, 10);
 	if (ImGui::BeginChild("rightautoclicker", ImVec2(450, 130))) {
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
-		Menu::DoToggleButtonStuff(2344, "Toggle Right Auto Clicker", &RightAutoClicker::Enabled);
+		Menu::DoToggleButtonStuff(2344, "Toggle Right Auto Clicker", this);
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
-		Menu::DoSliderStuff(3280, "Min CPS", &RightAutoClicker::rightMinCps, 1, 20);
-		Menu::DoSliderStuff(675, "Max CPS", &RightAutoClicker::rightMaxCps, 1, 20);
+		Menu::DoSliderStuff(3280, "Min CPS", &this->rightMinCps, 1, 20);
+		Menu::DoSliderStuff(675, "Max CPS", &this->rightMaxCps, 1, 20);
 		if (rightMinCps > rightMaxCps) {
 			rightMinCps = rightMaxCps;
 		}
-		Menu::DoToggleButtonStuff(73451, "Blocks Only", &RightAutoClicker::blocksOnly);
+		Menu::DoToggleButtonStuff(73451, "Blocks Only", &this->blocksOnly);
 
 		ImGui::EndChild();
 	}

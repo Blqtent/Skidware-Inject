@@ -49,9 +49,9 @@ void Base::RenderLoop() // Runs every frame
 
 	//ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(posX, posY), ImColor(0, 0, 0), watermark);
 
-	Esp::RenderUpdate();
-	AimAssist::RenderUpdate();
-	//Blink::RenderUpdate();
+	Esp::getInstance()->RenderUpdate();
+	AimAssist::getInstance()->RenderUpdate();
+	//Blink::getInstance()->RenderUpdate();
 	//ImGuiIO& io = ImGui::GetIO(); (void)io;
 
 	ImDrawList* d = ImGui::GetWindowDrawList();
@@ -88,79 +88,79 @@ void Base::RenderLoop() // Runs every frame
 	
 	y = 24;
 
-	if (AimAssist::Enabled) {
+	if (AimAssist::getInstance()->getToggle()) {
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Aimassist");
 		y += 20;
 	}
-	if (Esp::Enabled) {
+	if (Esp::getInstance()->getToggle()) {
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "ESP");
 		y += 20;
 	}
-	if (LeftAutoClicker::Enabled) {
+	if (LeftAutoClicker::getInstance()->getToggle()) {
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "LeftClicker");
 		y += 20;
 	}
-	if (RightAutoClicker::Enabled) {
+	if (RightAutoClicker::getInstance()->getToggle()) {
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "RightClicker");
 		y += 20;
 	}
-	if (Reach::Enabled) {
+	if (Reach::getInstance()->getToggle()) {
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Reach");
 		y += 20;
 	}
-	if (Velocity::Enabled) {
+	if (Velocity::getInstance()->getToggle()) {
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Velocity");
 		y += 20;
 	}
-	if (Eagle::Enabled) {
+	if (Eagle::getInstance()->getToggle()) {
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Eagle");
 		y += 20;
 	}
-	if (Fastplace::Enabled) {
+	if (Fastplace::getInstance()->getToggle()) {
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "FastPlace");
 		y += 20;
 	}
-	if (Cavefinder::Enabled) {
+	if (Cavefinder::getInstance()->getToggle()) {
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "XRay");
 		y += 20;
 	}
-	if (Antibot::Enabled) {
+	if (Antibot::getInstance()->getToggle()) {
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Antibot");
 		y += 20;
 	}
-	if (Killaura::Enabled) {
-		if (Killaura::mode == 0) {
+	if (Killaura::getInstance()->getToggle()) {
+		if (Killaura::getInstance()->getMode() == 0) {
 			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Killaura - Legit");
 		}
-		else if (Killaura::mode == 1) {
+		else if (Killaura::getInstance()->getMode() == 1) {
 			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Killaura - Normal");
 
 		}
 		y += 20;
 	}
-	if (Blink::Enabled) {
+	if (Blink::getInstance()->getToggle()) {
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Fakelag");
 		y += 20;
 	}
-	if (Fulbright::Enabled) {
+	if (Fulbright::getInstance()->getToggle()) {
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Fulbright");
 		y += 20;
 
 	}
-	if (Speed::Enabled) {
+	if (Speed::getInstance()->getToggle()) {
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Speed");
 		y += 20;
 	}
-	if (Nofall::Enabled) {
+	if (Nofall::getInstance()->getToggle()) {
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Nofall");
 		y += 20;
 	}
-	if (Flight::Enabled) {
+	if (Flight::getInstance()->getToggle()) {
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Flight");
 		y += 20;
 	}
 	
-	if (LongJump::Enabled) {
+	if (LongJump::getInstance()->getToggle()) {
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "LongJump");
 		y += 20;
 	}

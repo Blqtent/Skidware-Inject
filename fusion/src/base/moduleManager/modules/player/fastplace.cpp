@@ -2,10 +2,27 @@
 #include "../../commonData.h"
 #include "../../../menu/menu.h"
 
-void Fastplace::Update()
+
+
+Fastplace::Fastplace() : AbstractModule("Fastplace", Category::PLAYER) {
+	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
+}
+
+Fastplace* Fastplace::getInstance() {
+	static auto* inst = new Fastplace();
+	return inst;
+}
+
+void Fastplace::onDisable() {
+}
+
+void Fastplace::onEnable() {
+}
+
+void Fastplace::onUpdate(const EventUpdate e)
 {
-	if (!Enabled) return;
-	if (!CommonData::SanityCheck()) return;
+	if (!this->getToggle()) return;
+	if (!CommonData::getInstance()->SanityCheck()) return;
 
 	SDK::Minecraft->setRightClickDelayTimer((int)delay);
 }
@@ -20,11 +37,11 @@ void Fastplace::RenderMenu()
 	if (ImGui::BeginChild("fastplace", ImVec2(450, 100))) {
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
-		Menu::DoToggleButtonStuff(2134078, "Toggle Fastplace", &Fastplace::Enabled);
+		Menu::DoToggleButtonStuff(2134078, "Toggle Fastplace", this);
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
-		Menu::DoSliderStuff(124124123, "Delay", &Fastplace::delay, 0.f, 6.f);
+		Menu::DoSliderStuff(124124123, "Delay", &this->delay, 0.f, 6.f);
 
 		ImGui::EndChild();
 	}

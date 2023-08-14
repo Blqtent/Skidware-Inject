@@ -19,11 +19,27 @@
 //
 //
 
+Reach::Reach() : AbstractModule("Reach", Category::COMBAT) {
+	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
+}
+
+Reach* Reach::getInstance() {
+	static auto* inst = new Reach();
+	return inst;
+}
+
+void Reach::onDisable() {
+}
+
+void Reach::onEnable() {
+}
+
+
 std::chrono::steady_clock::time_point lastUpdate;
-void Reach::Update()
+void Reach::onUpdate(const EventUpdate e)
 {
-	if (!Enabled) return;
-	if (!CommonData::SanityCheck()) return;
+	if (!this->getToggle()) return;
+	if (!CommonData::getInstance()->SanityCheck()) return;
 
 	std::chrono::steady_clock::time_point nanoTime = std::chrono::high_resolution_clock::now();
 
@@ -35,7 +51,7 @@ void Reach::Update()
 		lastUpdate = nanoTime;
 
 	CEntityPlayerSP* thePlayer = SDK::Minecraft->thePlayer;
-	std::vector<CommonData::PlayerData> playerList = CommonData::nativePlayerList;
+	std::vector<CommonData::PlayerData> playerList = CommonData::getInstance()->nativePlayerList;
 	if (playerList.empty()) return;
 
 	Vector2 playerAngles = thePlayer->GetAngles();
@@ -120,11 +136,11 @@ void Reach::RenderMenu()
 	if (ImGui::BeginChild("reach", ImVec2(450, 75))) {
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
-		Menu::DoToggleButtonStuff(230044, "Toggle Reach", &Reach::Enabled);
+		Menu::DoToggleButtonStuff(230044, "Toggle Reach", this);
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
-		Menu::DoSliderStuff(560117, "Reach Distance", &Reach::ReachDistance, 0, 4);
+		Menu::DoSliderStuff(560117, "Reach Distance", &this->ReachDistance, 0, 4);
 
 		ImGui::EndChild();
 	}

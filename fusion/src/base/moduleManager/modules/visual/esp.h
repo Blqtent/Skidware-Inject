@@ -1,14 +1,17 @@
 #pragma once
 #include "../../../util/math/geometry.h"
-
+#include "../../../eventManager/events/EventUpdate.hpp"
+#include "../../AbstractModule.h"
 #include <vector>
 #include <string>
-#include "../../module.h"
-struct Esp : public module
-{
-    inline static int bind = 0;
-
-    inline static bool Enabled = false;
+class Esp :public AbstractModule {
+public:
+    static Esp* getInstance();
+    void onEnable();
+    void onDisable();
+    void onUpdate(const EventUpdate e);
+    void RenderUpdate();
+    void RenderMenu();
 
     struct Data {
         std::vector<Vector3> boxVerticies;
@@ -19,38 +22,34 @@ struct Esp : public module
         float health;
         float maxHealth;
     };
+    std::vector<Data> renderData;
+    
+    bool Box = true;
+    float BoxColor[4]{ 255, 255, 255, 1 };
 
-    inline static std::vector<Data> renderData;
+    bool FilledBox = true;
+    float FilledBoxColor[3]{ 0, 0, 0 };
+    float SecondFilledBoxColor[3]{ 0, 0, 0 };
+    float FilledBoxOpacity = 0.15f;
 
-    inline static bool Box = true;
-    inline static float BoxColor[4]{ 255, 255, 255, 1 };
+    bool Outline = true;
+    float OutlineColor[4]{ 0, 0, 0, 0.25 };
 
-    inline static bool FilledBox = true;
-    inline static float FilledBoxColor[3]{ 0, 0, 0 };
-    inline static float SecondFilledBoxColor[3]{ 0, 0, 0 };
-    inline static float FilledBoxOpacity = 0.15f;
+    bool Text = true;
+    float TextSize = 18;
+    float TextColor[4]{ 1.0f, 1.0f, 1.0f, 1.0f };
 
-    inline static bool Outline = true;
-    inline static float OutlineColor[4]{ 0, 0, 0, 0.25 };
+    bool TestCircles = false;
+    float TestCirclesColor[4]{ 1.0f, 1.0f, 1.0f, 1.0f };
 
-    inline static bool Text = true;
-    inline static float TextSize = 18;
-    inline static float TextColor[4]{ 1.0f, 1.0f, 1.0f, 1.0f };
+    bool TextOutline = true;
+    float TextOutlineColor[4]{ 0, 0, 0, 1.0f };
+    float TextUnrenderDistance = 14.0f;
 
-    inline static bool TestCircles = false;
-    inline static float TestCirclesColor[4]{ 1.0f, 1.0f, 1.0f, 1.0f };
+    float FadeDistance = 3.0f;
 
-    inline static bool TextOutline = true;
-    inline static float TextOutlineColor[4]{ 0, 0, 0, 1.0f };
-    inline static float TextUnrenderDistance = 14.0f;
+    bool HealthBar = true;
 
-    inline static float FadeDistance = 3.0f;
-
-    inline static bool HealthBar = true;
-
-
-    static void Update();
-
-    static void RenderUpdate();
-    static void RenderMenu();
+private:
+    Esp();
 };
