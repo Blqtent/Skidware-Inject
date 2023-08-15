@@ -7,6 +7,7 @@
 #include "../../../util/math/worldToScreen.h"
 #include "../../../util/render/renderqolf.h"
 #include "../../../menu/menu.h"
+#include "../combat/antibot.h"
 #include <gl/GL.h>
 Esp::Esp() : AbstractModule("Esp", Category::VISUAL) {
 	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
@@ -69,6 +70,9 @@ void Esp::onUpdate(const EventUpdate e)
 
 	for (CommonData::PlayerData entity : playerList)
 	{
+		if (Antibot::getInstance()->isBot(entity) && Antibot::getInstance()->getToggle()) {
+			continue;
+		}
 		Vector3 entityPos = entity.pos;
 		Vector3 entityLastPos = entity.lastPos;
 
