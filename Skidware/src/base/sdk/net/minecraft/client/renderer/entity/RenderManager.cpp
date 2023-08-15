@@ -6,6 +6,12 @@
 CRenderManager::CRenderManager()
 {
 	Java::AssignClass("net.minecraft.client.renderer.entity.RenderManager", this->Class);
+
+	if (this->Class == nullptr)
+	{
+		if (!StrayCache::initialized) StrayCache::Initialize();
+		this->Class = StrayCache::entityPlayer_class;
+	}
 	/*
 	if (JNIHelper::IsVanilla()) {
 		this->FieldIDs["renderPosX"] = Java::Env->GetFieldID(this->Class, "o", "D");

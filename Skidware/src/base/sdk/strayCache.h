@@ -52,6 +52,28 @@ struct StrayCache {
 	//Entity Player
 	inline static jclass entityPlayer_class;
 
+	//Entity Player SP
+	inline static jclass entityPlayerSP_class;
+
+	//Game Settings
+	inline static jclass gamesettings_class;
+
+	//World Client
+	inline static jclass worldClient_class;
+
+	//ActiveRenderInfo
+	inline static jclass activeRenderInfo_class;
+	
+	//RenderManager
+	inline static jclass renderManager_class;
+	
+	//Timer
+	inline static jclass timer_class;
+
+
+	
+	
+
 	// AXIS ALIGNED BB CLASS
 	inline static jclass axisAlignedBB_class;
 	inline static jfieldID axisAlignedBB_minX;
@@ -190,6 +212,18 @@ struct StrayCache {
 			entityLivingBase_jump = Java::Env->GetMethodID(entityLivingBase_class, "func_70664_aZ", "()V");
 
 			Java::AssignClass("net.minecraft.entity.player.EntityPlayer", entityPlayer_class);
+
+			Java::AssignClass("net.minecraft.client.settings.GameSettings", gamesettings_class);
+
+			Java::AssignClass("net.minecraft.client.entity.EntityPlayerSP", entityPlayerSP_class);
+
+			Java::AssignClass("net.minecraft.client.multiplayer.WorldClient", worldClient_class);
+
+			Java::AssignClass("net.minecraft.client.renderer.ActiveRenderInfo", activeRenderInfo_class);
+
+			Java::AssignClass("net.minecraft.client.renderer.entity.RenderManager", renderManager_class);
+
+			Java::AssignClass("net.minecraft.util.Timer", timer_class);
 
 			Java::AssignClass("net.minecraft.util.AxisAlignedBB", axisAlignedBB_class);
 			axisAlignedBB_minX = Java::Env->GetFieldID(axisAlignedBB_class, "field_72340_a", "D");

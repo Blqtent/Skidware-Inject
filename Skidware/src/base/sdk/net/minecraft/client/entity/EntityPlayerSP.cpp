@@ -8,6 +8,11 @@
 CEntityPlayerSP::CEntityPlayerSP() : CEntityPlayer()
 {
 	Java::AssignClass("net.minecraft.client.entity.EntityPlayerSP", this->Class);
+	if (this->Class = nullptr)
+	{
+		if (!StrayCache::initialized) StrayCache::Initialize();
+		this->Class = StrayCache::gamesettings_class;
+	}
 }
 
 jclass CEntityPlayerSP::GetClass()

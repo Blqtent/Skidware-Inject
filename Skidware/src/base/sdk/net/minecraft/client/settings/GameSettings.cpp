@@ -5,6 +5,11 @@
 CGameSettings::CGameSettings()
 {
 	Java::AssignClass("net.minecraft.client.settings.GameSettings", this->Class);
+	if (this->Class == nullptr)
+	{
+		if (!StrayCache::initialized) StrayCache::Initialize();
+		this->Class = StrayCache::gamesettings_class;
+	}
 	/*
 	if (JNIHelper::IsVanilla()) {
 		this->FieldIDs["thirdPersonView"] = Java::Env->GetFieldID(this->Class, "aA", "I");

@@ -6,6 +6,11 @@
 CTimer::CTimer()
 {
 	Java::AssignClass("net.minecraft.util.Timer", this->Class);
+	if (this->Class == nullptr)
+	{
+		if (!StrayCache::initialized) StrayCache::Initialize();
+		this->Class = StrayCache::timer_class;
+	}
 	if (JNIHelper::IsForge()) {
 		this->FieldIDs["renderPartialTicks"] = Java::Env->GetFieldID(this->Class, "field_74281_c", "F");
 		this->FieldIDs["timerSpeed"] = Java::Env->GetFieldID(this->Class, "field_74278_d", "F");

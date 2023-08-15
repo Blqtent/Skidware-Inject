@@ -8,6 +8,16 @@
 CActiveRenderInfo::CActiveRenderInfo()
 {
 	Java::AssignClass("net.minecraft.client.renderer.ActiveRenderInfo", this->Class);
+
+
+	if (this->Class == nullptr)
+	{
+		if (!StrayCache::initialized) StrayCache::Initialize();
+		this->Class = StrayCache::activeRenderInfo_class;
+	}
+
+
+
 	if (JNIHelper::IsVanilla()) {
 		this->FieldIDs["PROJECTION"] = Java::Env->GetStaticFieldID(this->Class, "c", "Ljava/nio/FloatBuffer;");
 		this->FieldIDs["MODELVIEW"] = Java::Env->GetStaticFieldID(this->Class, "b", "Ljava/nio/FloatBuffer;");

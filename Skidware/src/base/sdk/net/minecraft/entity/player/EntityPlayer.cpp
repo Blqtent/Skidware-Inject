@@ -5,11 +5,12 @@
 CEntityPlayer::CEntityPlayer()
 {
 	Java::AssignClass("net.minecraft.entity.player.EntityPlayer", this->Class);
+	if (this->Class == nullptr)
+	{
+		if (!StrayCache::initialized) StrayCache::Initialize();
+		this->Class = StrayCache::entityPlayer_class;
+	}
 	if (JNIHelper::IsForge()) {
-		if (this->Class == nullptr)
-		{
-			this->Class = StrayCache::entityPlayer_class;
-		}
 		this->FieldIDs["inventory"] = Java::Env->GetFieldID(this->Class, "field_71071_by", "Lnet/minecraft/entity/player/InventoryPlayer;");
 		return;
 	}
