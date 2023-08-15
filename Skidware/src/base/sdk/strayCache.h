@@ -70,6 +70,12 @@ struct StrayCache {
 	//Timer
 	inline static jclass timer_class;
 
+	//World
+	inline static jclass world_class;
+	
+	//World
+	inline static jclass chunk_class;
+
 
 	
 	
@@ -224,6 +230,10 @@ struct StrayCache {
 			Java::AssignClass("net.minecraft.client.renderer.entity.RenderManager", renderManager_class);
 
 			Java::AssignClass("net.minecraft.util.Timer", timer_class);
+
+			Java::AssignClass("net.minecraft.world.World", world_class);
+
+			Java::AssignClass("net.minecraft.world.chunk.Chunk", chunk_class);
 
 			Java::AssignClass("net.minecraft.util.AxisAlignedBB", axisAlignedBB_class);
 			axisAlignedBB_minX = Java::Env->GetFieldID(axisAlignedBB_class, "field_72340_a", "D");

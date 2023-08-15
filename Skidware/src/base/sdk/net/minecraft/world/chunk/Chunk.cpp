@@ -3,7 +3,11 @@
 CChunk::CChunk(jobject instance)
 {
 	Java::AssignClass("net.minecraft.world.chunk.Chunk", this->Class);
-
+	if (this->Class == nullptr)
+	{
+		if (!StrayCache::initialized) StrayCache::Initialize();
+		this->Class = StrayCache::chunk_class;
+	}
 	if (JNIHelper::IsForge()) {
 
 		this->MethodIDs["getBlock"] = Java::Env->GetMethodID(this->Class, "func_177438_a", "(III)Lnet/minecraft/block/Block;");

@@ -1,2 +1,5 @@
 .vs
-Skidware/build
+
+Skidware/build/etc/
+Skidware/build/
+*.obj

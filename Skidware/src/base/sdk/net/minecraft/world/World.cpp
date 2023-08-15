@@ -11,7 +11,11 @@
 CWorld::CWorld() 
 {
 	Java::AssignClass("net.minecraft.world.World", this->Class);
-
+	if (this->Class == nullptr)
+	{
+		if (!StrayCache::initialized) StrayCache::Initialize();
+		this->Class = StrayCache::world_class;
+	}
 	if (JNIHelper::IsForge()) {
 		this->FieldIDs["playerEntities"] = Java::Env->GetFieldID(this->Class, "field_73010_i", "Ljava/util/List;");
 
@@ -43,7 +47,12 @@ jobject CWorld::GetInstance()
 std::vector<CEntityPlayer> CWorld::GetPlayerList()
 {
 	std::vector<CEntityPlayer> finalList;
+	if (this->GetInstance() == nullptr)
+	{
+
+	}
 	jobject playerEntitiesList = Java::Env->GetObjectField(this->GetInstance(), this->FieldIDs["playerEntities"]);
+
 	jobjectArray playerEntities = List::List(playerEntitiesList).toArray();
 	int size = Java::Env->GetArrayLength(playerEntities);
 	
