@@ -29,18 +29,18 @@ int __stdcall WSARecevHook(SOCKET s, LPWSABUF lpBuffers, DWORD dwBufferCount, LP
 }
 
 void Menu::Hook_WSA() {
-<<<<<<< Updated upstream
+
 	//MH_CreateHookApi(L"Ws2_32.dll", "WSASend", WSASendHook, (void**)&g_origWSASend);
 	//MH_CreateHookApi(L"Ws2_32.dll", "WSARecv", WSARecevHook, (void**)&g_origWSARecev);
 	//MH_EnableHook(MH_ALL_HOOKS);
-=======
+
 	MH_CreateHookApi(L"Ws2_32.dll", "WSASend", WSASendHook, (void**)&g_origWSASend);
 	//MH_CreateHookApi(L"Ws2_32.dll", "WSARecv", WSARecevHook, (void**)&g_origWSARecev);
 	MH_EnableHook(MH_ALL_HOOKS);
->>>>>>> Stashed changes
+
 }
 
 void Menu::Unhook_WSA() {
-	//MH_DisableHook(MH_ALL_HOOKS);
-	//MH_RemoveHook(MH_ALL_HOOKS);
+	MH_DisableHook(MH_ALL_HOOKS);
+	MH_RemoveHook(MH_ALL_HOOKS);
 }
