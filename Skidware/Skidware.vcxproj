@@ -160,6 +160,8 @@
     <ClInclude Include="src\base\eventManager\AbstractEvent.h" />
     <ClInclude Include="src\base\eventManager\EventManager.hpp" />
     <ClInclude Include="src\base\eventManager\events\EventKey.hpp" />
+    <ClInclude Include="src\base\eventManager\events\EventPacketReceive.h" />
+    <ClInclude Include="src\base\eventManager\events\EventPacketSend.h" />
     <ClInclude Include="src\base\extension\config.h" />
     <ClInclude Include="src\base\extension\hook.h" />
     <ClInclude Include="src\base\menu\hooks\WSA.h" />
