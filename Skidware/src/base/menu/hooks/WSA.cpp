@@ -9,7 +9,7 @@
 int(__stdcall* g_origWSASend)(SOCKET, LPWSABUF, DWORD, LPDWORD, DWORD, LPWSAOVERLAPPED, LPWSAOVERLAPPED_COMPLETION_ROUTINE);
 int __stdcall WSASendHook(SOCKET s, LPWSABUF lpBuffers, DWORD dwBufferCount, LPDWORD lpNumberOfBytesSent, DWORD dwFlags, LPWSAOVERLAPPED lpOverlapped, LPWSAOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine)
 {
-	EventManager::getInstance().call(EventPacketSend((const char*)lpBuffers));
+	//EventManager::getInstance().call(EventPacketSend((const char*)lpBuffers));
 	while (Blink::getInstance()->getToggle()) {
 		
 		Sleep(1);
@@ -29,9 +29,15 @@ int __stdcall WSARecevHook(SOCKET s, LPWSABUF lpBuffers, DWORD dwBufferCount, LP
 }
 
 void Menu::Hook_WSA() {
+<<<<<<< Updated upstream
 	//MH_CreateHookApi(L"Ws2_32.dll", "WSASend", WSASendHook, (void**)&g_origWSASend);
 	//MH_CreateHookApi(L"Ws2_32.dll", "WSARecv", WSARecevHook, (void**)&g_origWSARecev);
 	//MH_EnableHook(MH_ALL_HOOKS);
+=======
+	MH_CreateHookApi(L"Ws2_32.dll", "WSASend", WSASendHook, (void**)&g_origWSASend);
+	//MH_CreateHookApi(L"Ws2_32.dll", "WSARecv", WSARecevHook, (void**)&g_origWSARecev);
+	MH_EnableHook(MH_ALL_HOOKS);
+>>>>>>> Stashed changes
 }
 
 void Menu::Unhook_WSA() {
