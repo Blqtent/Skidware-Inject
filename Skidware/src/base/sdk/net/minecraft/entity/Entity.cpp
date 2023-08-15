@@ -28,7 +28,17 @@ jobject CEntity::GetInstance()
 
 std::string CEntity::GetName()
 {
+	return "Crash Below";
+	if (this->GetInstance() == nullptr)
+	{
+		return "";
+	}
 	String str = String(Java::Env->CallObjectMethod(this->GetInstance(), StrayCache::entity_getName));
+	if (str.GetInstance() == nullptr)
+	{
+		return "";
+	}
+	//TODO:fix crashes here(idk why crash
 	return str.ToString();
 }
 

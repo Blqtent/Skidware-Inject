@@ -43,6 +43,7 @@ struct StrayCache {
 	inline static jmethodID entityLivingBase_getHealth;
 	inline static jmethodID entityLivingBase_getMaxHealth;
 	inline static jmethodID entityLivingBase_canEntityBeSeen;
+	inline static jmethodID entityLivingBase_isPlayerSleeping;
 	inline static jmethodID entityLivingBase_swingItem;
 	inline static jmethodID entityLivingBase_jump;
 	inline static jfieldID entityLivingBase_hurttime;
@@ -103,6 +104,7 @@ struct StrayCache {
 	inline static jclass inventoryPlayer_class;
 	inline static jmethodID inventoryPlayer_getCurrentItem;
 	inline static jfieldID inventoryPlayer_mainInv;
+	inline static jfieldID inventoryPlayer_armorInv;
 	inline static jfieldID inventoryPlayer_currentItem;
 
 	inline static jclass itemStack_class;
@@ -112,6 +114,11 @@ struct StrayCache {
 	inline static jfieldID blockPos_x;
 	inline static jfieldID blockPos_y;
 	inline static jfieldID blockPos_z;
+
+	inline static jclass item_class;
+
+	inline static jclass itemArmor_Class;
+	inline static jmethodID itemArmor_getColor;
 
 	static void Initialize() {
 		/*
@@ -211,6 +218,7 @@ struct StrayCache {
 			entityLivingBase_getHealth = Java::Env->GetMethodID(entityLivingBase_class, "func_110143_aJ", "()F");
 			entityLivingBase_getMaxHealth = Java::Env->GetMethodID(entityLivingBase_class, "func_110138_aP", "()F");
 			entityLivingBase_canEntityBeSeen = Java::Env->GetMethodID(entityLivingBase_class, "func_70685_l", "(Lnet/minecraft/entity/Entity;)Z");
+			entityLivingBase_isPlayerSleeping = Java::Env->GetMethodID(entityLivingBase_class, "func_70608_bn", "()Z");
 			entityLivingBase_hurttime = Java::Env->GetFieldID(entityLivingBase_class, "field_70737_aN", "I");
 			entityLivingBase_moveForward = Java::Env->GetFieldID(entityLivingBase_class, "field_70701_bs", "F");
 			entityLivingBase_moveStrafe = Java::Env->GetFieldID(entityLivingBase_class, "field_70702_br", "F");
@@ -256,11 +264,17 @@ struct StrayCache {
 			Java::AssignClass("net.minecraft.entity.player.InventoryPlayer", inventoryPlayer_class);
 			inventoryPlayer_getCurrentItem = Java::Env->GetMethodID(inventoryPlayer_class, "func_70448_g", "()Lnet/minecraft/item/ItemStack;");
 			inventoryPlayer_mainInv = Java::Env->GetFieldID(inventoryPlayer_class, "field_70462_a", "[Lnet/minecraft/item/ItemStack;");
+			inventoryPlayer_armorInv = Java::Env->GetFieldID(inventoryPlayer_class, "field_70460_b", "[Lnet/minecraft/item/ItemStack;");
 			inventoryPlayer_currentItem = Java::Env->GetFieldID(inventoryPlayer_class, "field_70461_c", "I");
 
 			Java::AssignClass("net.minecraft.item.ItemStack", itemStack_class);
 			itemStack_getItem = Java::Env->GetMethodID(itemStack_class, "func_77973_b", "()Lnet/minecraft/item/Item;");
 			itemStack_getItemID = Java::Env->GetMethodID(itemStack_class, "func_150891_b", "(Lnet/minecraft/item/Item;)I");
+
+			Java::AssignClass("net.minecraft.item.Item", item_class);
+
+			Java::AssignClass("net.minecraft.item.ItemArmor", itemArmor_Class);
+			itemArmor_getColor = Java::Env->GetMethodID(itemArmor_Class, "func_82814_b", "(Lnet/minecraft/item/ItemStack;)I");
 
 			Java::AssignClass("net.minecraft.util.BlockPos", blockPos_class);
 			blockPos_x = Java::Env->GetFieldID(blockPos_class, "field_177962_a", "I");
@@ -306,6 +320,7 @@ struct StrayCache {
 		entityLivingBase_getHealth = Java::Env->GetMethodID(entityLivingBase_class, "getHealth", "()F");
 		entityLivingBase_getMaxHealth = Java::Env->GetMethodID(entityLivingBase_class, "getMaxHealth", "()F");
 		entityLivingBase_canEntityBeSeen = Java::Env->GetMethodID(entityLivingBase_class, "canEntityBeSeen", "(Lnet/minecraft/entity/Entity;)Z");
+		entityLivingBase_isPlayerSleeping = Java::Env->GetMethodID(entityLivingBase_class, "isPlayerSleeping", "()Z");
 		entityLivingBase_hurttime = Java::Env->GetFieldID(entityLivingBase_class, "hurtTime", "I");
 		entityLivingBase_moveForward = Java::Env->GetFieldID(entityLivingBase_class, "moveForward", "I");
 		entityLivingBase_moveStrafe = Java::Env->GetFieldID(entityLivingBase_class, "moveStrafing", "I");
@@ -333,11 +348,17 @@ struct StrayCache {
 		Java::AssignClass("net.minecraft.entity.player.InventoryPlayer", inventoryPlayer_class);
 		inventoryPlayer_getCurrentItem = Java::Env->GetMethodID(inventoryPlayer_class, "getCurrentItem", "()Lnet/minecraft/item/ItemStack;");
 		inventoryPlayer_mainInv = Java::Env->GetFieldID(inventoryPlayer_class, "mainInventory", "[Lnet/minecraft/item/ItemStack;");
+		inventoryPlayer_armorInv = Java::Env->GetFieldID(inventoryPlayer_class, "armorInventory", "[Lnet/minecraft/item/ItemStack;");
 		inventoryPlayer_currentItem = Java::Env->GetFieldID(inventoryPlayer_class, "currentItem", "I");
 
 		Java::AssignClass("net.minecraft.item.ItemStack", itemStack_class);
 		itemStack_getItem = Java::Env->GetMethodID(itemStack_class, "getItem", "()Lnet/minecraft/item/Item;");
 		itemStack_getItemID = Java::Env->GetStaticMethodID(itemStack_class, "getIdFromItem", "(Lnet/minecraft/item/Item;)I");
+
+		Java::AssignClass("net.minecraft.item.Item", item_class);
+
+		Java::AssignClass("net.minecraft.item.ItemArmor", itemArmor_Class);
+		itemArmor_getColor = Java::Env->GetMethodID(itemArmor_Class, "getColor", "(Lnet/minecraft/item/ItemStack;)I");
 
 		Java::AssignClass("net.minecraft.util.BlockPos", blockPos_class);
 		blockPos_x = Java::Env->GetFieldID(blockPos_class, "x", "I");

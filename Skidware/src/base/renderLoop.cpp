@@ -26,6 +26,7 @@
 
 #include "menu/menu.h"
 #include "moduleManager/modules/combat/antibot.h"
+#include "moduleManager/modules/combat/teams.h"
 #include "moduleManager/modules/blatent/longjump.h"
 #include "moduleManager/ModuleManager.h"
 
@@ -130,6 +131,12 @@ void Base::RenderLoop() // Runs every frame
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Antibot");
 		y += 20;
 	}
+	
+	if (Teams::getInstance()->getToggle()) {
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Teams");
+		y += 20;
+	}
+
 	if (Killaura::getInstance()->getToggle()) {
 		if (Killaura::getInstance()->getMode() == 0) {
 			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Killaura - Legit");

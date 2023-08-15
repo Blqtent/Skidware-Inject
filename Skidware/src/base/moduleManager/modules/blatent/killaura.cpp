@@ -6,6 +6,7 @@
 #include "../../../menu/menu.h"
 #include "../../../util/math/math.h"
 #include "../combat/antibot.h"
+#include "../combat/teams.h"
 long lastClickTime = 0;
 int nextCps = 10;
 double distance(double x, double y) {
@@ -70,6 +71,11 @@ void Killaura::onUpdate(const EventUpdate e) {
 		if (Antibot::getInstance()->getToggle() && Antibot::getInstance()->isBot(player)  ) {
 			continue;
 		}
+		
+		if (Teams::getInstance()->getToggle() && Teams::getInstance()->isTeam(player)  ) {
+			continue;
+		}
+
 		if (player.name.length() < 0) return;
 		if (!Java::Env->IsSameObject(thePlayer->GetInstance(), player.obj.GetInstance())) {
 			if (!thePlayer->CanEntityBeSeen(player.obj.GetInstance())) continue;

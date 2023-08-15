@@ -26,6 +26,7 @@
 
 #include "moduleManager/modules/combat/aimAssist.h"
 #include "moduleManager/modules/combat/antibot.h"
+#include "moduleManager/modules/combat/teams.h"
 #include "moduleManager/modules/combat/reach.h"
 #include "moduleManager/modules/combat/velocity.h"
 
@@ -67,13 +68,13 @@ void Base::Init()
 {
 
 	MH_Initialize();
-
+	
 	Java::Init();
 	SDK::Init();
 	Menu::Init();
-
-	Base::initModule();
-	Base::initEvent();
+	initConsole();
+	initModule();
+	initEvent();
 	//Logger::Init();
 	//scripting::luaThing();
 	Base::Running = true;
@@ -100,6 +101,10 @@ void Base::Init()
 
 	Main::Kill();
 }
+void Base::initConsole() {
+	AllocConsole();
+	freopen("CONOUT$", "w", stdout);
+}
 void Base::initEvent() {
 	//EventManager::getInstance().reg(Events::EventUpdate, test);
 	EventManager::getInstance().reg<EventKey>(handleEventKey);
@@ -125,6 +130,7 @@ void Base::initModule() {
 	{
 		ModuleManager::getInstance().addModule<AimAssist>(AimAssist::getInstance());
 		ModuleManager::getInstance().addModule<Antibot>(Antibot::getInstance());
+		ModuleManager::getInstance().addModule<Teams>(Teams::getInstance());
 		ModuleManager::getInstance().addModule<Reach>(Reach::getInstance());
 		ModuleManager::getInstance().addModule<Velocity>(Velocity::getInstance());
 	}

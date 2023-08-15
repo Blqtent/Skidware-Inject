@@ -14,6 +14,7 @@ struct CEntityLivingBase : CEntity
 	float getMoveStrafe();
 	float getMoveForward();
 	bool CanEntityBeSeen(jobject entity);
+	bool isPlayerSleeping();
 	int getHurtTime();
 	void swingItem();
 	void jump();

@@ -1,8 +1,7 @@
 #pragma once
 #include "../../../util/math/geometry.h"
-
+#include "../../../util/type/ArrayList.h"
 #include <string>
-#include <vector>
 #include "../../../sdk/sdk.h"
 #include "../../commonData.h"
 
@@ -12,37 +11,45 @@ public:
 	void onEnable();
 	void onDisable();
 	bool isBot(CommonData::PlayerData p) {
-		if (p.obj.GetName().find("§c") ) {
+		if (p.obj == nullptr || p.pos.x == NULL) 
+		{
+			return true;
+		}
 
-			bots.push_back(p.obj);
-			return true;
+		if (p.height <= 0.5f)
+		{
+			HeightBots.add(p.obj);
+			std::cout << p.obj.GetName() << " is Bot[1]" << std::endl;
 		}
-		else if (p.obj.GetName().find("[NPC] ") != -1) {
-			bots.push_back(p.obj);
+		else {
+			HeightBots.remove(p.obj);
+		}
 
-			return true;
+		if (p.obj.isPlayerSleeping())
+		{
+			std::cout << p.obj.GetName() << " is Bot[2]" << std::endl;
+			sleepingEntities.add(p.obj);
 		}
-		else if (p.obj.GetName().length() < 3) {
-			bots.push_back(p.obj);
-			return true;
+		else {
+			sleepingEntities.remove(p.obj);
 		}
-		else if ((p.obj.isInvisible() && !p.obj.isOnGround())) {
-			bots.push_back(p.obj);
-			return true;
+
+		/*if (p.obj.ticksExisted() < 100.f)
+		{
+			std::cout << p.obj.GetName() << " is Bot[2]" << std::endl;
+			ticksExistedEntities.add(p.obj);
 		}
-		else if (p.obj.GetName().find("-") != -1) {
-			bots.push_back(p.obj);
-			return true;
-		}
-		std::string DisplayName = p.obj.GetName();
-		bool ContainsIllegalChars = DisplayName.find_first_not_of("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_") != std::string::npos;
-		if (ContainsIllegalChars) {
-			return true;
-		}
-		return false;
+		else {
+			ticksExistedEntities.remove(p.obj);
+		}*/
+
+		return /*ticksExistedEntities.contains(p.obj) ||*/ HeightBots.contains(p.obj) || sleepingEntities.contains(p.obj);
 	}
 	void RenderMenu();
 private:
 	std::vector<CEntityPlayer> bots;
 	Antibot();
+	ArrayList<CEntityPlayer> HeightBots;
+	/*ArrayList<CEntityPlayer> ticksExistedEntities;*/
+	ArrayList<CEntityPlayer> sleepingEntities;
 };

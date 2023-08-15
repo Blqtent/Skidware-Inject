@@ -9,6 +9,10 @@ FloatBuffer::FloatBuffer(jobject obj)
 {
 	this->Instance = obj;
 	this->Class = Java::Env->FindClass("java/nio/FloatBuffer");
+	if (this->Class == nullptr)
+	{
+		this->Class = Java::Env->GetObjectClass(this->Instance);
+	}
 	this->MethodIDs["get"] = Java::Env->GetMethodID(this->Class, "get", "(I)F");
 }
 

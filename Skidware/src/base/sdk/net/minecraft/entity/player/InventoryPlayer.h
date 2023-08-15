@@ -14,4 +14,5 @@ struct CInventoryPlayer : IClass
 	CItemStack GetCurrentItem();
 	void SetCurrentItem(int index);
 	CItemStack GetIndexItem(int index);
+	CItemStack GetArmorItem(int index);
 };

@@ -123,7 +123,7 @@
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
@@ -141,7 +141,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
@@ -157,6 +157,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="src\base\sdk\net\minecraft\item\ItemArmor.h" />
     <ClInclude Include="src\base\eventManager\AbstractEvent.h" />
     <ClInclude Include="src\base\eventManager\EventManager.hpp" />
     <ClInclude Include="src\base\eventManager\events\EventKey.hpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="src\base\moduleManager\modules\combat\aimAssist.h" />
     <ClInclude Include="src\base\moduleManager\modules\combat\antibot.h" />
     <ClInclude Include="src\base\moduleManager\modules\combat\reach.h" />
+    <ClInclude Include="src\base\moduleManager\modules\combat\teams.h" />
     <ClInclude Include="src\base\moduleManager\modules\combat\velocity.h" />
     <ClInclude Include="src\base\moduleManager\modules\player\blink.h" />
     <ClInclude Include="src\base\moduleManager\modules\player\eagle.h" />
@@ -188,6 +190,7 @@
     <ClInclude Include="src\base\moduleManager\modules\visual\esp.h" />
     <ClInclude Include="src\base\moduleManager\modules\visual\fullbright.h" />
     <ClInclude Include="src\base\sdk\JNIHelper.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\item\item.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\item\ItemStack.h" />
     <ClInclude Include="ext\fonts\jetbrainsmono.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\entity\player\InventoryPlayer.h" />
@@ -256,6 +259,7 @@
     <ClInclude Include="src\base\sdk\net\minecraft\util\Vec3.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\base\sdk\net\minecraft\item\ItemArmor.cpp" />
     <ClCompile Include="src\base\eventManager\events\EventUpdate.hpp" />
     <ClCompile Include="src\base\menu\hooks\WalkingUpdate.cpp" />
     <ClCompile Include="src\base\menu\hooks\WSA.cpp" />
@@ -272,6 +276,7 @@
     <ClCompile Include="src\base\moduleManager\modules\combat\aimAssist.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\combat\antibot.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\combat\reach.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\combat\teams.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\combat\velocity.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\player\blink.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\player\eagle.cpp" />
@@ -280,6 +285,7 @@
     <ClCompile Include="src\base\moduleManager\modules\visual\esp.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\visual\fullbright.cpp" />
     <ClCompile Include="src\base\sdk\JNIHelper.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\item\item.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\item\ItemStack.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\entity\player\InventoryPlayer.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\util\BlockPos.cpp" />

@@ -46,6 +46,12 @@ bool CEntityLivingBase::CanEntityBeSeen(jobject entity)
 	return Java::Env->CallBooleanMethod(this->GetInstance(), StrayCache::entityLivingBase_canEntityBeSeen, entity);
 }
 
+
+bool CEntityLivingBase::isPlayerSleeping()
+{
+	return Java::Env->CallBooleanMethod(this->GetInstance(), StrayCache::entityLivingBase_isPlayerSleeping);
+}
+
 int CEntityLivingBase::getHurtTime() {
 	return Java::Env->GetIntField(this->GetInstance(), StrayCache::entityLivingBase_hurttime);
 }

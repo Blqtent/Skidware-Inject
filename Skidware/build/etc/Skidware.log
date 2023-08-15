@@ -1,1 +1,69 @@
-﻿
+﻿  EventUpdate.hpp
+  killaura.cpp
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: “初始化”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(83,23): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(96,15): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(139,17): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(170,44): warning C4305: “参数”: 从“double”到“const float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(175,44): warning C4305: “参数”: 从“double”到“const float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(195,13): warning C4244: “初始化”: 从“_Rep”转换到“long”，可能丢失数据
+          with
+          [
+              _Rep=__int64
+          ]
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(215,30): warning C4305: “参数”: 从“double”到“const float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(230,64): warning C4244: “参数”: 从“float”转换到“_Ty”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(230,46): warning C4244: “参数”: 从“float”转换到“_Ty”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+  aimAssist.cpp
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: “初始化”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(102,23): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(115,15): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(158,16): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(198,43): warning C4305: “参数”: 从“double”到“const float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(203,43): warning C4305: “参数”: 从“double”到“const float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(225,22): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(227,139): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(235,144): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(235,130): warning C4244: “参数”: 从“float”转换到“int”，可能丢失数据
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(261,71): warning C4305: “参数”: 从“__int64”到“int”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(261,29): warning C4309: “参数”: 截断常量值
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(265,67): warning C4305: “参数”: 从“__int64”到“int”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(265,23): warning C4309: “参数”: 截断常量值
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(267,78): warning C4305: “参数”: 从“__int64”到“int”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(267,23): warning C4309: “参数”: 截断常量值
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(269,81): warning C4305: “参数”: 从“__int64”到“int”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(269,29): warning C4309: “参数”: 截断常量值
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(277,66): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(278,73): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(279,70): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(288,80): warning C4305: “参数”: 从“__int64”到“int”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(288,29): warning C4309: “参数”: 截断常量值
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(293,23): warning C4309: “参数”: 截断常量值
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(294,83): warning C4305: “参数”: 从“__int64”到“int”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(294,23): warning C4309: “参数”: 截断常量值
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(298,72): warning C4305: “参数”: 从“__int64”到“int”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(298,29): warning C4309: “参数”: 截断常量值
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(299,90): warning C4305: “参数”: 从“__int64”到“int”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(299,29): warning C4309: “参数”: 截断常量值
+  teams.cpp
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: “初始化”: 从“double”到“float”截断
+leftAutoClicker.obj : warning LNK4006: "long lastClickTime" (?lastClickTime@@3JA) 已在 killaura.obj 中定义；已忽略第二个定义
+leftAutoClicker.obj : warning LNK4006: "int nextCps" (?nextCps@@3HA) 已在 killaura.obj 中定义；已忽略第二个定义
+E:\Dev\Skidware-Inject\Skidware\build\Skidware 1.08.dll : warning LNK4088: 因 /FORCE 选项生成了映像；映像可能不能运行
+  正在生成代码
+  2 of 4348 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    47 functions had inline decision re-evaluated but remain unchanged
+  已完成代码的生成
+* CIL library *(* CIL module *) : warning LNK4006: "int nextCps" (?nextCps@@3HA) 已在 * CIL library *(* CIL module *) 中定义；已忽略第二个定义
+* CIL library *(* CIL module *) : warning LNK4006: "long lastClickTime" (?lastClickTime@@3JA) 已在 * CIL library *(* CIL module *) 中定义；已忽略第二个定义
+E:\Dev\Skidware-Inject\Skidware\build\Skidware 1.08.dll : warning LNK4088: 因 /FORCE 选项生成了映像；映像可能不能运行
+  Skidware.vcxproj -> E:\Dev\Skidware-Inject\Skidware\build\Skidware 1.08.dll

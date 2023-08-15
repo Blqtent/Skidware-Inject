@@ -20,6 +20,7 @@
 #include "../moduleManager/modules/combat/aimAssist.h"
 #include "../moduleManager/modules/combat/reach.h"
 #include "../moduleManager/modules/combat/antibot.h"
+#include "../moduleManager/modules/combat/teams.h"
 #include "../moduleManager/modules/clicker/leftAutoClicker.h"
 #include "../moduleManager/modules/clicker/rightAutoClicker.h"
 #include "../moduleManager/modules/player/fastplace.h"
@@ -308,6 +309,8 @@ void Menu::RenderMenu()
 			if (Menu::TabButton("Velocity", (currentTab3 == 2 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab3 = 2;
 			ImGui::SameLine();
 			if (Menu::TabButton("Antibot", (currentTab3 == 3 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab3 = 3;
+			
+			if (Menu::TabButton("Teams", (currentTab3 == 4 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab3 = 4;
 
 			if (currentTab3 == 0) {
 				AimAssist::getInstance()->RenderMenu();
@@ -326,6 +329,12 @@ void Menu::RenderMenu()
 			if (currentTab3 == 3) {
 				Antibot::getInstance()->RenderMenu();
 				keybind::key_bind(Antibot::getInstance()->getKey(), 125, 25);
+			}
+
+			if (currentTab3 == 4 )
+			{
+				Teams::getInstance()->RenderMenu();
+				keybind::key_bind(Teams::getInstance()->getKey(), 125, 25);
 			}
 
 			//keybind::key_bind(Velocity::getInstance()->getKey(), 150, 50);

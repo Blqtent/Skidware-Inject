@@ -40,3 +40,11 @@ CItemStack CInventoryPlayer::GetIndexItem(int index)
 	return CItemStack(itemstack);
 
 }
+
+CItemStack CInventoryPlayer::GetArmorItem(int index)
+{
+	jobject armorInventory = Java::Env->GetObjectField(this->Instance, StrayCache::inventoryPlayer_armorInv);
+	jobject itemstack = Java::Env->GetObjectArrayElement((jobjectArray)armorInventory, index);
+	return CItemStack(itemstack);
+
+}

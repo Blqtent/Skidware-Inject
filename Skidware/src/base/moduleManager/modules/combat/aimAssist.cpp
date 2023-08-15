@@ -11,6 +11,7 @@
 #include <chrono>
 #include <random>
 #include "antibot.h"
+#include "teams.h"
 
 AimAssist::AimAssist() : AbstractModule("AimAssist", Category::COMBAT) {
 	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
@@ -86,9 +87,14 @@ void AimAssist::onUpdate(const EventUpdate e)
 
 	for (CommonData::PlayerData player : playerList)
 	{
-		if (Antibot::getInstance()->isBot(player) && Antibot::getInstance()->getToggle()) {
+		if (Antibot::getInstance()->getToggle() && Antibot::getInstance()->isBot(player)) {
 			continue;
 		}
+		
+		if (Teams::getInstance()->getToggle() && Teams::getInstance()->isTeam(player)) {
+			continue;
+		}
+
 		if (player.name.length() < 0) return;
 		if (!Java::Env->IsSameObject(thePlayer->GetInstance(), player.obj.GetInstance())) {
 			if (!thePlayer->CanEntityBeSeen(player.obj.GetInstance())) continue;
