@@ -19,7 +19,7 @@ public:
 		if (p.height <= 0.5f)
 		{
 			HeightBots.add(p.obj);
-			std::cout << p.obj.GetName() << " is Bot[1]" << std::endl;
+			//std::cout << p.obj.GetName() << " is Bot[1]" << std::endl;
 		}
 		else {
 			HeightBots.remove(p.obj);
@@ -27,7 +27,7 @@ public:
 
 		if (p.obj.isPlayerSleeping())
 		{
-			std::cout << p.obj.GetName() << " is Bot[2]" << std::endl;
+			//std::cout << p.obj.GetName() << " is Bot[2]" << std::endl;
 			sleepingEntities.add(p.obj);
 		}
 		else {

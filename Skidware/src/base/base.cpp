@@ -102,8 +102,8 @@ void Base::Init()
 	Main::Kill();
 }
 void Base::initConsole() {
-	AllocConsole();
-	freopen("CONOUT$", "w", stdout);
+	//AllocConsole();
+	//freopen("CONOUT$", "w", stdout);
 }
 void Base::initEvent() {
 	//EventManager::getInstance().reg(Events::EventUpdate, test);
