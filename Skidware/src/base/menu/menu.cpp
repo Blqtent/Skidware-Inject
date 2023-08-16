@@ -161,6 +161,7 @@ void Menu::PlaceHooks()
 	Menu::Hook_wglSwapBuffers();
 
 	Menu::Hook_WSA();
+	Menu::Hook_glTexEnvi();
 	Menu::HookUpdate();
 }
 
@@ -169,5 +170,6 @@ void Menu::RemoveHooks()
 	Menu::Unhook_wndProc();
 	Menu::Unhook_wglSwapBuffers();
 	Menu::Unhook_WSA();
+	Menu::UnHook_glTexEnvi();
 	Menu::UnhookUpdate();
 }

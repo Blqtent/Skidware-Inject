@@ -68,11 +68,11 @@ void Base::Init()
 {
 
 	MH_Initialize();
-	
+	initConsole();
 	Java::Init();
 	SDK::Init();
 	Menu::Init();
-	initConsole();
+	
 	initModule();
 	initEvent();
 	//Logger::Init();

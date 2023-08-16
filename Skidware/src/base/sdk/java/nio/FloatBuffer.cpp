@@ -7,6 +7,10 @@
 
 FloatBuffer::FloatBuffer(jobject obj)
 {
+	if (obj == nullptr)
+	{
+		return;
+	}
 	this->Instance = obj;
 	this->Class = Java::Env->FindClass("java/nio/FloatBuffer");
 	if (this->Class == nullptr)
@@ -18,6 +22,11 @@ FloatBuffer::FloatBuffer(jobject obj)
 
 Matrix FloatBuffer::GetMatrix()
 {
+
+	if (this->GetClass() == nullptr)
+	{
+		return Matrix{};
+	}
 	std::vector<float> arr;
 	for (int i = 0; i < 16; i++)
 	{

@@ -315,6 +315,12 @@
     <ClInclude Include="src\base\sdk\net\minecraft\item\ItemArmor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\base\menu\hooks\glTexEnviHook.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\base\eventManager\events\EventChams.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">
@@ -537,6 +543,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="src\base\sdk\net\minecraft\item\ItemArmor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\base\menu\hooks\glTexEnviHook.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
