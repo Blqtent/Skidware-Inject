@@ -27,6 +27,7 @@ public:
 	Vector3 Normalize() const { return *this * (1 / Length()); }
 	Vector3 Invert() const { return Vector3{ -x, -y, -z }; }
 	float Distance(const Vector3& rhs) const { return (*this - rhs).Length(); }
+	float Dist() { return std::sqrt(x * x + y * y); }
 };
 
 struct Vector2

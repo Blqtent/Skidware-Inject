@@ -1,7 +1,7 @@
 #include "velocity.h"
 #include "../../commonData.h"
 #include "../../../menu/menu.h"
-
+#include "../../../util/math/math.h"
 Velocity::Velocity() : AbstractModule("Velocity", Category::COMBAT) {
 	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
 }
@@ -26,35 +26,59 @@ void Velocity::onUpdate(const EventUpdate e)
 	if (!CommonData::getInstance()->SanityCheck()) return;
 	if (SDK::Minecraft->IsInGuiState()) return;
 	CEntityPlayerSP* thePlayer = SDK::Minecraft->thePlayer;
-	//if (Menu::Open) return;
-	if (this->getMode() == 0) {
-		if (thePlayer->getHurtTime() > 3) {
-			Vector3 motion = thePlayer->getMotion();
-			motion.x = motion.x * Velocity::Horizontal;
-			motion.y = motion.y * Velocity::Vertical;
-			motion.z = motion.z * Velocity::Horizontal;
+
+	Vector3 pos = thePlayer->GetPos();
+	Vector2 rot = Vector2(thePlayer->GetRotationYaw(), thePlayer->GetRotationPitch());
+	float clamped_yaw = Math::wrapAngleTo180(rot.x);
+	float yawToAdd = 0;
+
+	for (CommonData::PlayerData& p : CommonData::getInstance()->nativePlayerList) {
+		if (Java::Env->IsSameObject(p.obj.GetInstance(), thePlayer->GetInstance())) {
+			continue;
+		}
+
+		Vector3 targetPos = p.pos;
+
+		if (onlyTargeting && (targetPos - pos).Dist() >= 5.0f) {
+			continue;
+		}
+		Vector2 target_required_rotation = Math::getAngles(pos, targetPos);
+
+		yawToAdd = target_required_rotation.x - clamped_yaw;
+
+		yawToAdd = Math::wrapAngleTo180(yawToAdd);
+		if (!onlyTargeting || std::abs(yawToAdd) < 60) {
+			if (this->getMode() == 0) {
+				if (thePlayer->getHurtTime() > 3) {
+					Vector3 motion = thePlayer->getMotion();
+					motion.x = motion.x * Velocity::Horizontal;
+					motion.y = motion.y * Velocity::Vertical;
+					motion.z = motion.z * Velocity::Horizontal;
 
 
-			thePlayer->setMotion(motion);
+					thePlayer->setMotion(motion);
+				}
+			}
+			else if (this->getMode() == 1) {
+				if (thePlayer->getHurtTime() > 7 && thePlayer->isOnGround() && counter++ % 2 == 0) {
+					POINT pos_cursor;
+					GetCursorPos(&pos_cursor);
+					thePlayer->jump();
+				}
+			}
+			else if (this->getMode() == 2) {
+				if (thePlayer->getHurtTime() > 5) {
+					thePlayer->setOnGround(true);
+				}
+			}
+			else if (this->getMode() == 3) {
+				if (thePlayer->getHurtTime() > 5) {
+					thePlayer->set_speed(thePlayer->get_speed());
+				}
+			}
 		}
 	}
-	else if (this->getMode() == 1) {
-		if (thePlayer->getHurtTime() > 7 && thePlayer->isOnGround() && counter++ % 2 == 0) {
-			POINT pos_cursor;
-			GetCursorPos(&pos_cursor);
-			thePlayer->jump();
-		}
-	}
-	else if (this->getMode() == 2) {
-		if (thePlayer->getHurtTime() > 5) {
-			thePlayer->setOnGround(true);
-		}
-	}
-	else if (this->getMode() == 3) {
-		if (thePlayer->getHurtTime() > 5) {
-			thePlayer->set_speed(thePlayer->get_speed());
-		}
-	}
+	
 
 }
 
@@ -69,13 +93,15 @@ void Velocity::RenderMenu()
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
 		Menu::DoToggleButtonStuff(2134078, "Toggle Velocity", this);
+		Menu::DoToggleButtonStuff(3456411312, "Only While Targeting", &this->onlyTargeting);
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
-		Menu::DoSliderStuff(248913712347, "Horizontal", &this->Horizontal, 0.f, 1.f);
-		Menu::DoSliderStuff(2489137, "Vertical", &this->Vertical, 0.f, 1.f);
+		if (this->getMode() == 0) {
+			Menu::DoSliderStuff(248913712347, "Horizontal", &this->Horizontal, 0.f, 1.f);
+			Menu::DoSliderStuff(2489137, "Vertical", &this->Vertical, 0.f, 1.f);
+		}
 		ImGui::Combo("Mode", &this->getMode(), this->modes, 4);
-
 		ImGui::EndChild();
 	}
 	ImGui::PopStyleVar();
