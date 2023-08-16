@@ -38,4 +38,4 @@ void Menu::Hook_WSA() {
 void Menu::Unhook_WSA() {
 	MH_DisableHook(MH_ALL_HOOKS);
 	MH_RemoveHook(MH_ALL_HOOKS);
-}
+} 
