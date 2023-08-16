@@ -67,7 +67,7 @@ void TimerHack::RenderMenu()
 	if (ImGui::BeginChild("Timer", ImVec2(450, 100))) {
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
-		Menu::DoToggleButtonStuff(23432423, "Toggle Nofall", this);
+		Menu::DoToggleButtonStuff(23432423, "Toggle Timer", this);
 		if (mode == 0 || mode == 3) {
 			Menu::DoSliderStuff(756374, "Speed", &speed, 0.1, 5);
 		}

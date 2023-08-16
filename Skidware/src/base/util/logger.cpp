@@ -74,7 +74,13 @@ void Logger::Kill()
 void Logger::Log(std::string message)
 {
 	if (!Logger::Initialized) Logger::Init();
-	std::cout << "[ LOG ] :: " + message << std::endl;
+	std::cout << "[ LOG ] :: " + message << "\n";
+}
+
+void Logger::Log(double message)
+{
+	if (!Logger::Initialized) Logger::Init();
+	std::cout << message << "\n";
 }
 
 

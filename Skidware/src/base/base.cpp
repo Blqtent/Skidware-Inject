@@ -38,6 +38,7 @@
 #include "moduleManager/modules/visual/esp.h"
 #include "moduleManager/modules/visual/fullbright.h"
 #include "moduleManager/modules/blatent/timerhack.h"
+#include "moduleManager/modules/blatent/tower.h"
 
 
 
@@ -68,14 +69,14 @@ void Base::Init()
 {
 
 	MH_Initialize();
-	initConsole();
+	//();
 	Java::Init();
 	SDK::Init();
 	Menu::Init();
 	
 	initModule();
 	initEvent();
-	//Logger::Init();
+	Logger::Init();
 	//scripting::luaThing();
 	Base::Running = true;
 	
@@ -94,6 +95,10 @@ void Base::Init()
 
 		//uc_SizeOfImage();
 		//HideFromDebugger();
+
+		Logger::Log(SDK::Minecraft->thePlayer->GetRotationYaw());
+		std::cout << SDK::Minecraft->thePlayer->GetRotationPitch() << "\n";
+
 		std::this_thread::sleep_for(std::chrono::milliseconds(5));
 		
 		//Check();
@@ -112,7 +117,7 @@ void Base::initEvent() {
 }
 
 void Base::initModule() {
-
+	
 	{
 		ModuleManager::getInstance().addModule<Flight>(Flight::getInstance());
 		ModuleManager::getInstance().addModule<Killaura>(Killaura::getInstance());
@@ -120,6 +125,7 @@ void Base::initModule() {
 		ModuleManager::getInstance().addModule<Nofall>(Nofall::getInstance());
 		ModuleManager::getInstance().addModule<Speed>(Speed::getInstance());
 		ModuleManager::getInstance().addModule<TimerHack>(TimerHack::getInstance());
+		ModuleManager::getInstance().addModule<Tower>(Tower::getInstance());
 	}
 	
 	{

@@ -7,6 +7,7 @@
 #include <chrono>
 #include <random>
 #include "../../../eventManager/EventManager.hpp"
+#include "../../../util/logger.h"
 long lastClickTime = 0;
 int nextCps = 10;
 int count = 0;
@@ -32,6 +33,9 @@ void LeftAutoClicker::onUpdate(const EventUpdate e)
 	if (Menu::Open) return;
 	if (SDK::Minecraft->IsInGuiState() && !inInventory) return;
 	if (ignoreBlocks && SDK::Minecraft->GetMouseOver().IsTypeOfBlock()) return;
+
+	Logger::Log(SDK::Minecraft->thePlayer->GetRotationYaw());
+	Logger::Log(SDK::Minecraft->thePlayer->GetRotationPitch());
 
 	long milli = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	if (lastClickTime == 0) lastClickTime = milli;

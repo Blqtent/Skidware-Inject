@@ -40,13 +40,15 @@ void Nofall::onUpdate(const EventUpdate e)
 	}
 	else if (this->getMode() == 2) {
 		if (p->fallDistance() > 2.5) {
-			p->setMotion(Vector3(p->getMotion().x, 0.01, p->getMotion().z));
+			p->setMotion(Vector3(p->getMotion().x, 0.1, p->getMotion().z));
 			p->setFallDistance(0);
 		}
 	}
 	else if (this->getMode() == 3) {
-		if (p->fallDistance() > 2) {
+		if (p->fallDistance() > 1) {
 			p->sendGroundPacket(p->C03PacketPlayer(true, p->GetRotationYaw(), p->GetRotationPitch()));
+			p->setFallDistance(0);
+
 		}
 	}
 	else if (this->getMode() == 4) {

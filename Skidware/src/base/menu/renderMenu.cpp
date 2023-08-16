@@ -29,6 +29,7 @@
 #include "../moduleManager/modules/blatent/speed.h"
 #include "../moduleManager/modules/blatent/flight.h"
 #include "../moduleManager/modules/blatent/timerHack.h"
+#include "../moduleManager/modules/blatent/tower.h"
 
 //#include "../moduleManager/modules/other/config.h"
 
@@ -451,6 +452,8 @@ void Menu::RenderMenu()
 			if (Menu::TabButton("LongJump", (currentTab6 == 4 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 4;
 			ImGui::SameLine();
 			if (Menu::TabButton("Timer", (currentTab6 == 5 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 5;
+			ImGui::SameLine();
+			if (Menu::TabButton("Tower", (currentTab6 == 6 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 6;
 			
 			
 			if (currentTab6 == 0) {
@@ -480,6 +483,12 @@ void Menu::RenderMenu()
 				TimerHack::getInstance()->RenderMenu();
 
 				keybind::key_bind(TimerHack::getInstance()->getKey(), 125, 25);
+
+			}
+			if (currentTab6 == 6) {
+				Tower::getInstance()->RenderMenu();
+
+				keybind::key_bind(Tower::getInstance()->getKey(), 125, 25);
 
 			}
 			ImGui::InvisibleButton("", ImVec2(1, 100));

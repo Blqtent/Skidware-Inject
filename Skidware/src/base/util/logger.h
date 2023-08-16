@@ -9,7 +9,7 @@ struct Logger
 	static void Kill();
 
 	static void Log(std::string message);
-	void Log(double message);
+	static void Log(double message);
 	static void LogPosition(Vector3 message);
 	static void Err(std::string message);
 

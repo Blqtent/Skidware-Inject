@@ -1,10 +1,46 @@
-﻿  ItemArmor.cpp
+﻿  base.cpp
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
   EventUpdate.hpp
+  WSA.cpp
   WalkingUpdate.cpp
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-  WSA.cpp
-  AbstractModule.cpp
-  ModuleManager.cpp
+  wglSwapBuffers.cpp
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(130,66): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(135,65): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(136,72): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(137,71): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(138,65): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(139,71): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(140,74): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(147,61): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(155,63): warning C4305: 'argument': truncation from 'double' to 'float'
+  menu.cpp
+  renderMenu.cpp
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\menu\renderMenu.cpp(406,70): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\menu\renderMenu.cpp(407,75): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\menu\renderMenu.cpp(408,71): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\extension\config.h(42,16): warning C4244: 'return': conversion from 'double' to 'tg', possible loss of data
+          with
+          [
+              tg=float
+          ]
+E:\Repos\Skidware-Inject\Skidware\src\base\menu\renderMenu.cpp(140,89): message : see reference to function template instantiation 'tg Config::get<float>(std::string)' being compiled
+          with
+          [
+              tg=float
+          ]
+E:\Repos\Skidware-Inject\Skidware\src\base\extension\config.h(42,16): warning C4244: 'return': conversion from 'double' to 'tg', possible loss of data
+          with
+          [
+              tg=int
+          ]
+E:\Repos\Skidware-Inject\Skidware\src\base\menu\renderMenu.cpp(195,63): message : see reference to function template instantiation 'tg Config::get<int>(std::string)' being compiled
+          with
+          [
+              tg=int
+          ]
   flight.cpp
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\flight.cpp(73,54): warning C4305: 'argument': truncation from '__int64' to 'const float'
@@ -35,7 +71,7 @@ E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaur
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
   nofall.cpp
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\nofall.cpp(43,66): warning C4305: 'argument': truncation from 'double' to 'const float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\nofall.cpp(43,65): warning C4305: 'argument': truncation from 'double' to 'const float'
   speed.cpp
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(47,44): warning C4305: 'argument': truncation from '__int64' to 'const float'
@@ -55,224 +91,84 @@ E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerha
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(79,55): warning C4305: 'argument': truncation from 'double' to 'float'
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(80,73): warning C4305: 'argument': truncation from '__int64' to 'int'
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(80,24): warning C4309: 'argument': truncation of constant value
+  tower.cpp
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\tower.cpp(33,46): warning C4305: 'argument': truncation from 'double' to 'const float'
   leftAutoClicker.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\clicker\leftAutoClicker.cpp(36,13): warning C4244: 'initializing': conversion from '_Rep' to 'long', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\clicker\leftAutoClicker.cpp(40,13): warning C4244: 'initializing': conversion from '_Rep' to 'long', possible loss of data
           with
           [
               _Rep=__int64
           ]
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\clicker\leftAutoClicker.cpp(59,90): warning C4244: 'argument': conversion from 'float' to '_Ty', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\clicker\leftAutoClicker.cpp(63,90): warning C4244: 'argument': conversion from 'float' to '_Ty', possible loss of data
           with
           [
               _Ty=int
           ]
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\clicker\leftAutoClicker.cpp(59,60): warning C4244: 'argument': conversion from 'float' to '_Ty', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\clicker\leftAutoClicker.cpp(63,60): warning C4244: 'argument': conversion from 'float' to '_Ty', possible loss of data
           with
           [
               _Ty=int
           ]
-  rightAutoClicker.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\clicker\rightAutoClicker.cpp(41,13): warning C4244: 'initializing': conversion from '_Rep' to 'long', possible loss of data
-          with
-          [
-              _Rep=__int64
-          ]
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\clicker\rightAutoClicker.cpp(55,66): warning C4244: 'argument': conversion from 'float' to '_Ty', possible loss of data
-          with
-          [
-              _Ty=int
-          ]
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\clicker\rightAutoClicker.cpp(55,47): warning C4244: 'argument': conversion from 'float' to '_Ty', possible loss of data
-          with
-          [
-              _Ty=int
-          ]
-  aimAssist.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(102,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(115,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(158,16): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(198,43): warning C4305: 'argument': truncation from 'double' to 'const float'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(203,43): warning C4305: 'argument': truncation from 'double' to 'const float'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(225,22): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(227,139): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(235,144): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(235,130): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(261,71): warning C4305: 'argument': truncation from '__int64' to 'int'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(261,29): warning C4309: 'argument': truncation of constant value
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(265,67): warning C4305: 'argument': truncation from '__int64' to 'int'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(265,23): warning C4309: 'argument': truncation of constant value
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(267,78): warning C4305: 'argument': truncation from '__int64' to 'int'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(267,23): warning C4309: 'argument': truncation of constant value
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(269,81): warning C4305: 'argument': truncation from '__int64' to 'int'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(269,29): warning C4309: 'argument': truncation of constant value
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(277,66): warning C4305: 'argument': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(278,73): warning C4305: 'argument': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(279,70): warning C4305: 'argument': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(288,80): warning C4305: 'argument': truncation from '__int64' to 'int'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(288,29): warning C4309: 'argument': truncation of constant value
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(293,23): warning C4309: 'argument': truncation of constant value
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(294,83): warning C4305: 'argument': truncation from '__int64' to 'int'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(294,23): warning C4309: 'argument': truncation of constant value
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(298,72): warning C4305: 'argument': truncation from '__int64' to 'int'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(298,29): warning C4309: 'argument': truncation of constant value
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(299,90): warning C4305: 'argument': truncation from '__int64' to 'int'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\aimAssist.cpp(299,29): warning C4309: 'argument': truncation of constant value
   antibot.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-  reach.cpp
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
   teams.cpp
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-  velocity.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\velocity.cpp(75,78): warning C4305: 'argument': truncation from '__int64' to 'int'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\combat\velocity.cpp(75,23): warning C4309: 'argument': truncation of constant value
-  blink.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-  Generating Code...
-  Compiling...
-  eagle.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-  fastplace.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
   cavefinder.cpp
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-  esp.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\visual\esp.cpp(83,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\visual\esp.cpp(103,26): warning C4305: '/=': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\visual\esp.cpp(235,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   fullbright.cpp
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-  JNIHelper.cpp
-  item.cpp
-  ItemStack.cpp
-  InventoryPlayer.cpp
-  BlockPos.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\util\BlockPos.cpp(35,26): warning C4244: 'argument': conversion from 'jint' to 'const float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\util\BlockPos.cpp(35,23): warning C4244: 'argument': conversion from 'jint' to 'const float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\util\BlockPos.cpp(35,20): warning C4244: 'argument': conversion from 'jint' to 'const float', possible loss of data
-  MovingObjectPosition.cpp
-  AxisAlignedBB.cpp
-  GameSettings.cpp
-  Chunk.cpp
-  borderless.cpp
-  RenderManager.cpp
-  FloatBuffer.cpp
-  ActiveRenderInfo.cpp
-  Set.cpp
-  EntityLivingBase.cpp
-  Generating Code...
-  Compiling...
-  List.cpp
-  EntityPlayer.cpp
-  imgui.cpp
-  imgui_demo.cpp
-  imgui_draw.cpp
-  imgui_impl_opengl2.cpp
-  imgui_impl_win32.cpp
-  imgui_tables.cpp
-  imgui_widgets.cpp
-E:\Repos\Skidware-Inject\Skidware\ext\imgui\imgui_widgets.cpp(3048,167): warning C4244: 'argument': conversion from 'const float' to 'ImDrawFlags', possible loss of data
-  buffer.cpp
-  hde32.cpp
-  hde64.cpp
-  hook.cpp
-  trampoline.cpp
-  wglSwapBuffers.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(130,66): warning C4305: 'argument': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(135,65): warning C4305: 'argument': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(136,72): warning C4305: 'argument': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(137,71): warning C4305: 'argument': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(138,65): warning C4305: 'argument': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(139,71): warning C4305: 'argument': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(140,74): warning C4305: 'argument': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(147,61): warning C4305: 'argument': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(155,63): warning C4305: 'argument': truncation from 'double' to 'float'
-  wndProc.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wndProc.cpp(42,46): warning C4244: 'argument': conversion from 'WPARAM' to 'int', possible loss of data
-  renderMenu.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\renderMenu.cpp(405,70): warning C4305: 'argument': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\renderMenu.cpp(406,75): warning C4305: 'argument': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\renderMenu.cpp(407,71): warning C4305: 'argument': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\extension\config.h(42,16): warning C4244: 'return': conversion from 'double' to 'tg', possible loss of data
-          with
-          [
-              tg=float
-          ]
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\renderMenu.cpp(139,89): message : see reference to function template instantiation 'tg Config::get<float>(std::string)' being compiled
-          with
-          [
-              tg=float
-          ]
-E:\Repos\Skidware-Inject\Skidware\src\base\extension\config.h(42,16): warning C4244: 'return': conversion from 'double' to 'tg', possible loss of data
-          with
-          [
-              tg=int
-          ]
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\renderMenu.cpp(194,63): message : see reference to function template instantiation 'tg Config::get<int>(std::string)' being compiled
-          with
-          [
-              tg=int
-          ]
-  menu.cpp
   renderLoop.cpp
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(95,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(99,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(103,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(107,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(111,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(115,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(119,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(123,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(127,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(131,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(136,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(142,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(145,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(151,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(155,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(160,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(164,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(168,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(96,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(100,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(104,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(108,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(112,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(116,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(120,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(124,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(128,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(132,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(137,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(143,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(146,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(152,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(156,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(161,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(165,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(169,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(173,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(177,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  String.cpp
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(178,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(182,47): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   Generating Code...
 E:\Repos\Skidware-Inject\Skidware\src\base\extension\config.h(45): warning C4715: 'Config::get<bool>': not all control paths return a value
 E:\Repos\Skidware-Inject\Skidware\src\base\extension\config.h(45): warning C4715: 'Config::get<float>': not all control paths return a value
 E:\Repos\Skidware-Inject\Skidware\src\base\extension\config.h(45): warning C4715: 'Config::get<int>': not all control paths return a value
+E:\Repos\Skidware-Inject\Skidware\src\base\base.cpp(54): warning C4172: returning address of local variable or temporary: windowTitle
   Compiling...
+  FloatBuffer.cpp
+  Minecraft.cpp
   EntityPlayerSP.cpp
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
 E:\Repos\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\client\entity\EntityPlayerSP.cpp(190,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 E:\Repos\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\client\entity\EntityPlayerSP.cpp(191,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 E:\Repos\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\client\entity\EntityPlayerSP.cpp(192,67): warning C4305: 'argument': truncation from '__int64' to 'const float'
-  Minecraft.cpp
+  WorldClient.cpp
+  ActiveRenderInfo.cpp
   Entity.cpp
 E:\Repos\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\entity\Entity.cpp(132,33): warning C4244: 'return': conversion from 'jfloat' to 'int', possible loss of data
+  AxisAlignedBB.cpp
+  BlockPos.cpp
+E:\Repos\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\util\BlockPos.cpp(35,26): warning C4244: 'argument': conversion from 'jint' to 'const float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\util\BlockPos.cpp(35,23): warning C4244: 'argument': conversion from 'jint' to 'const float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\util\BlockPos.cpp(35,20): warning C4244: 'argument': conversion from 'jint' to 'const float', possible loss of data
+  Vec3.cpp
+  World.cpp
   sdk.cpp
   logger.cpp
-  java.cpp
-  base.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-  math.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\util\math\math.cpp(65,33): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\util\math\math.cpp(66,30): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\util\math\math.cpp(73,19): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\util\math\math.cpp(78,16): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
   worldToScreen.cpp
-  main.cpp
-  World.cpp
-  WorldClient.cpp
-  Timer.cpp
-  Vec3.cpp
   Generating Code...
-E:\Repos\Skidware-Inject\Skidware\src\base\base.cpp(53): warning C4172: returning address of local variable or temporary: windowTitle
 LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
 leftAutoClicker.obj : warning LNK4006: "long lastClickTime" (?lastClickTime@@3JA) already defined in killaura.obj; second definition ignored
 leftAutoClicker.obj : warning LNK4006: "int nextCps" (?nextCps@@3HA) already defined in killaura.obj; second definition ignored

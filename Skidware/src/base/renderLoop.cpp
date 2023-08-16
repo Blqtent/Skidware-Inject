@@ -29,6 +29,7 @@
 #include "moduleManager/modules/combat/teams.h"
 #include "moduleManager/modules/blatent/longjump.h"
 #include "moduleManager/ModuleManager.h"
+#include "moduleManager/modules/blatent/tower.h"
 
 extern ImVec4 clear_col;
 static int y;
@@ -166,6 +167,10 @@ void Base::RenderLoop() // Runs every frame
 	}
 	if (Flight::getInstance()->getToggle()) {
 		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Flight");
+		y += 20;
+	}
+	if (Tower::getInstance()->getToggle()) {
+		d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Tower");
 		y += 20;
 	}
 
