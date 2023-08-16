@@ -68,7 +68,7 @@ void Base::Init()
 {
 
 	MH_Initialize();
-	initConsole();
+	/*initConsole();*/
 	Java::Init();
 	SDK::Init();
 	Menu::Init();

@@ -19,7 +19,7 @@ __int64 hknglTexEnvi(void** env, void** clazz, GLenum target, GLenum pname, GLin
 	{
 		std::cout << "onRender" << std::endl;
 	}
-	original_glTexEnvi(env,clazz,target,pname, param,functionpointer);
+	return original_glTexEnvi(env,clazz,target,pname, param,functionpointer);
 }
 
 //This is not work.

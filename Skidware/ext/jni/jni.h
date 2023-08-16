@@ -1021,7 +1021,7 @@ struct JNIEnv_ {
         result = functions->CallFloatMethodV(this,obj,methodID,args);
         va_end(args);
         return result;
-    }
+       }
     jfloat CallFloatMethodV(jobject obj, jmethodID methodID,
                             va_list args) {
         return functions->CallFloatMethodV(this,obj,methodID,args);
