@@ -49,11 +49,26 @@ std::vector<CEntityPlayer> CWorld::GetPlayerList()
 	std::vector<CEntityPlayer> finalList;
 	if (this->GetInstance() == nullptr)
 	{
-
+		return std::vector<CEntityPlayer>{};
 	}
-	jobject playerEntitiesList = Java::Env->GetObjectField(this->GetInstance(), this->FieldIDs["playerEntities"]);
+	jobject playerEntitiesObj = Java::Env->GetObjectField(this->GetInstance(), this->FieldIDs["playerEntities"]);
 
-	jobjectArray playerEntities = List::List(playerEntitiesList).toArray();
+	if (playerEntitiesObj == nullptr)
+	{
+		return std::vector<CEntityPlayer>{};
+	}
+
+	List playerEntitiesList =  List::List(playerEntitiesObj);
+	if (playerEntitiesList.GetClass() == nullptr)
+	{
+		return std::vector<CEntityPlayer>{};
+	}
+	jobjectArray playerEntities = playerEntitiesList.toArray();
+
+	if (playerEntities == nullptr)
+	{
+		return std::vector<CEntityPlayer>{};
+	}
 	int size = Java::Env->GetArrayLength(playerEntities);
 	
 	for (int i = 0; i < size; i++)
@@ -65,7 +80,7 @@ std::vector<CEntityPlayer> CWorld::GetPlayerList()
 		finalList.push_back(player);
 	}
 
-	Java::Env->DeleteLocalRef(playerEntitiesList);
+	Java::Env->DeleteLocalRef(playerEntitiesObj);
 	Java::Env->DeleteLocalRef(playerEntities);
 
 	return finalList;

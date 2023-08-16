@@ -3,9 +3,19 @@
 
 List::List(jobject jlist)
 {
+	if (jlist == nullptr)
+	{
+		return;
+	}
+	
+	this->Class = Java::Env->FindClass("java/util/List");
+	if (this->Class == nullptr)
+	{
+		return;
+	}
+
 	this->Instance = jlist;
 
-	this->Class = Java::Env->FindClass("java/util/List");
 	this->MethodIDs["toArray"] = Java::Env->GetMethodID(this->Class, "toArray", "()[Ljava/lang/Object;");
 }
 
@@ -21,5 +31,10 @@ jobject List::GetInstance()
 
 jobjectArray List::toArray()
 {
+	if (this->Instance == nullptr)
+	{
+		return NULL;
+	}
+
 	return (jobjectArray) Java::Env->CallObjectMethod(this->GetInstance(), this->MethodIDs["toArray"]);
 }

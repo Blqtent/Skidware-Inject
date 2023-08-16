@@ -41,7 +41,7 @@ public:
 			return true;
 		}
 
-		std::cout << "4" << std::endl;
+		/*std::cout << "4" << std::endl;*/
 		auto colorMe = CItemArmor(myHead.GetItem()).getColor(myHead.GetInstance());
 		auto colorU = CItemArmor(entityHead.GetItem()).getColor(entityHead.GetInstance());
 	/*	std::cout << colorMe << " " << colorU << std::endl;*/

@@ -53,6 +53,9 @@ struct Menu
 
 	static void Unhook_WSA();
 	static void Hook_WSA();
+	
+	static void UnHook_glTexEnvi();
+	static void Hook_glTexEnvi();
 
 	static void UnhookUpdate();
 	static void HookUpdate();

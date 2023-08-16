@@ -7,6 +7,10 @@
 
 FloatBuffer::FloatBuffer(jobject obj)
 {
+	if (obj == nullptr)
+	{
+		return;
+	}
 	this->Instance = obj;
 	this->Class = Java::Env->FindClass("java/nio/FloatBuffer");
 	if (this->Class == nullptr)
@@ -18,9 +22,26 @@ FloatBuffer::FloatBuffer(jobject obj)
 
 Matrix FloatBuffer::GetMatrix()
 {
+
+	if (this->GetClass() == nullptr)
+	{
+		return Matrix{};
+	}
+	if (this->GetInstance() == nullptr)
+	{
+		return Matrix{};
+	}
 	std::vector<float> arr;
 	for (int i = 0; i < 16; i++)
 	{
+		// I think we should cache it.(class and methodID.but i am lazzzzyyy)
+		if (this->MethodIDs["get"] == nullptr)
+		{
+			this->MethodIDs["get"] = Java::Env->GetMethodID(this->Class, "get", "(I)F");
+			if (this->MethodIDs["get"] == nullptr)
+				return Matrix{};
+			
+		}
 		arr.push_back(Java::Env->CallFloatMethod(this->GetInstance(), this->MethodIDs["get"], i));
 	}
 
