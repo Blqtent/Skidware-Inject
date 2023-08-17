@@ -51,5 +51,6 @@ void LongJump::RenderMenu()
 
 		ImGui::EndChild();
 	}
+	ImGui::PopStyleVar();
 	ImGui::PopStyleColor();
 }

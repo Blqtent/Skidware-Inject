@@ -49,6 +49,10 @@ public:
 		float maxHealth;
 	};
 
+	enum Direction {
+		NONE, LEFT, RIGHT, BACKWARDS, FORWARDS
+	};
+
 	std::vector<PlayerData> nativePlayerList;
 
 	void UpdateData(const EventUpdate e)

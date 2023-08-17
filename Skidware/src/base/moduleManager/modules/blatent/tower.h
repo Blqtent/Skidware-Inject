@@ -8,8 +8,10 @@ public:
 	void onDisable();
 	void onUpdate(const EventUpdate e);
 	void RenderMenu();
+	bool tower = false;
 private:
 	Tower();
-	float orYaw;
-	float orPitch;
+	float orYaw = 0;
+	float orPitch = 0;
+	float reverseYaw = 0;
 };

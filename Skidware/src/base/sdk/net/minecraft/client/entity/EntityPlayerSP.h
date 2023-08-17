@@ -35,6 +35,10 @@ struct CEntityPlayerSP : CEntityPlayer
 
 	bool isMovingForwardsOrBackwards();
 
+	bool isMovingForwards();
+
+	bool isMovingBackwards();
+
 	void set_speed(const float speed);
 	jobject get_abilities();
 	void setFly(bool state);

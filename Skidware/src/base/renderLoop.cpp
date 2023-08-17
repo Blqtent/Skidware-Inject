@@ -46,13 +46,7 @@ void Base::RenderLoop() // Runs every frame
 	ImVec2 textSize = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, watermark);
 	float posX = screenSize.x - textSize.x - margin;
 	float posY = screenSize.y - textSize.y - margin;
-	//ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(posX + 1, posY), ImColor(255,255,255), watermark);
-	//ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(posX - 1, posY), ImColor(255, 255, 255), watermark);
-	//ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(posX, posY + 1), ImColor(255, 255, 255), watermark);
-	//ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(posX, posY - 1), ImColor(255, 255, 255), watermark);
-
-	//ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(posX, posY), ImColor(0, 0, 0), watermark);
-
+	
 	Esp::getInstance()->RenderUpdate();
 	AimAssist::getInstance()->RenderUpdate();
 	//Blink::getInstance()->RenderUpdate();
@@ -70,26 +64,13 @@ void Base::RenderLoop() // Runs every frame
 
 	ImU32 watermarkCol = Menu::watermarkColor;
 
-	d->AddText(Menu::Font, font_size, ImVec2(4, 4), watermarkCol, "Skidware V1.08");
-	//d->AddText(Menu::Font, font_size, ImVec2(4, 20), watermarkCol, ("FPS: " + std::to_string(static_cast<SDK::Minecraft->getDebugFPS())).c_str());
-
-	/*io.ConfigFlags = ImGuiConfigFlags_NoMouseCursorChange;
-	//ImGui::StyleColorsDark();
-
-
-	ImGuiStyle* Style = &ImGui::GetStyle();
-	ImGui::StyleColorsDark();
-	ImFont* mainfont = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\Bahnschrift.ttf", 20);
-	ImVec4 clear_color = ImVec4(0.45f, 0.55f, 0.60f, 1.00f);
-	Style->WindowRounding = 0;
-	Style->WindowBorderSize = 0;
-
-	ImGui::GetStyle().ScrollbarRounding = 5.0f;*/
+	d->AddText(Menu::Font, font_size, ImVec2(4, 4), watermarkCol, "Skidware V1.09");
 
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 
 	io.IniFilename = NULL; // GET RID OF IMGUI.INI
 	
+<<<<<<< Updated upstream
 	y = 35;
 
 	if (AimAssist::getInstance()->getToggle()) {
@@ -149,8 +130,102 @@ void Base::RenderLoop() // Runs every frame
 	if (Fulbright::getInstance()->getToggle()) {
 		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Fulbright");
 		y += 20;
+=======
+	y = 24;
+	/*
+	if (Menu::useMCFont) {
+		if (AimAssist::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Aimassist");
+			y += 20;
+		}
+		if (Esp::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "ESP");
+			y += 20;
+		}
+		if (LeftAutoClicker::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "LeftClicker");
+			y += 20;
+		}
+		if (RightAutoClicker::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "RightClicker");
+			y += 20;
+		}
+		if (Reach::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Reach");
+			y += 20;
+		}
+		if (Velocity::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Velocity");
+			y += 20;
+		}
+		if (Eagle::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Eagle");
+			y += 20;
+		}
+		if (Fastplace::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "FastPlace");
+			y += 20;
+		}
+		if (Cavefinder::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "XRay");
+			y += 20;
+		}
+		if (Antibot::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Antibot");
+			y += 20;
+		}
 
+		if (Teams::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Teams");
+			y += 20;
+		}
+
+		if (Killaura::getInstance()->getToggle()) {
+			if (Killaura::getInstance()->getMode() == 0) {
+				d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Killaura - Legit");
+			}
+			else if (Killaura::getInstance()->getMode() == 1) {
+				d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Killaura - Normal");
+			}
+			y += 20;
+		}
+		if (TimerHack::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Timer");
+			y += 20;
+		}
+		if (Fulbright::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Fulbright");
+			y += 20;
+
+		}
+		if (Speed::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Speed");
+			y += 20;
+		}
+		if (Nofall::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Nofall");
+			y += 20;
+		}
+		if (Flight::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Flight");
+			y += 20;
+		}
+		if (Tower::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Scaffold");
+			y += 20;
+		}
+>>>>>>> Stashed changes
+
+		if (LongJump::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "LongJump");
+			y += 20;
+		}
+		if (Blink::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Fakelag");
+			y += 20;
+		}
 	}
+<<<<<<< Updated upstream
 	if (Speed::getInstance()->getToggle()) {
 		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Speed");
 		y += 20;
@@ -168,4 +243,99 @@ void Base::RenderLoop() // Runs every frame
 		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "LongJump");
 		y += 20;
 	}
+=======
+	*/
+	//else {
+		if (AimAssist::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Aimassist");
+			y += 20;
+		}
+		if (Esp::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "ESP");
+			y += 20;
+		}
+		if (LeftAutoClicker::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "LeftClicker");
+			y += 20;
+		}
+		if (RightAutoClicker::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "RightClicker");
+			y += 20;
+		}
+		if (Reach::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Reach");
+			y += 20;
+		}
+		if (Velocity::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Velocity");
+			y += 20;
+		}
+		if (Eagle::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Eagle");
+			y += 20;
+		}
+		if (Fastplace::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "FastPlace");
+			y += 20;
+		}
+		if (Cavefinder::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "XRay");
+			y += 20;
+		}
+		if (Antibot::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Antibot");
+			y += 20;
+		}
+
+		if (Teams::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Teams");
+			y += 20;
+		}
+
+		if (Killaura::getInstance()->getToggle()) {
+			if (Killaura::getInstance()->getMode() == 0) {
+				d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Killaura - Legit");
+			}
+			else if (Killaura::getInstance()->getMode() == 1) {
+				d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Killaura - Normal");
+
+			}
+			y += 20;
+		}
+		if (TimerHack::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Timer");
+			y += 20;
+		}
+		if (Fulbright::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Fulbright");
+			y += 20;
+
+		}
+		if (Speed::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Speed");
+			y += 20;
+		}
+		if (Nofall::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Nofall");
+			y += 20;
+		}
+		if (Flight::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Flight");
+			y += 20;
+		}
+		if (Tower::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Scaffold");
+			y += 20;
+		}
+
+		if (LongJump::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "LongJump");
+			y += 20;
+		}
+		if (Blink::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Fakelag");
+			y += 20;
+		}
+	//}
+>>>>>>> Stashed changes
 }

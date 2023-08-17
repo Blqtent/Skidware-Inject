@@ -159,10 +159,9 @@ void Menu::Kill()
 void Menu::PlaceHooks()
 {
 	Menu::Hook_wglSwapBuffers();
-
 	Menu::Hook_WSA();
 	Menu::Hook_glTexEnvi();
-	Menu::HookUpdate();
+	//Menu::HookUpdate();
 }
 
 void Menu::RemoveHooks()
@@ -171,5 +170,5 @@ void Menu::RemoveHooks()
 	Menu::Unhook_wglSwapBuffers();
 	Menu::Unhook_WSA();
 	Menu::UnHook_glTexEnvi();
-	Menu::UnhookUpdate();
+	//Menu::UnhookUpdate();
 }

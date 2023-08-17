@@ -33,10 +33,7 @@ void LeftAutoClicker::onUpdate(const EventUpdate e)
 	if (Menu::Open) return;
 	if (SDK::Minecraft->IsInGuiState() && !inInventory) return;
 
-	Logger::Log("Yaw");
-	Logger::Log(SDK::Minecraft->thePlayer->GetRotationYaw());
-	Logger::Log("Pitch");
-	Logger::Log(SDK::Minecraft->thePlayer->GetRotationPitch());
+
 
 	if (ignoreBlocks && SDK::Minecraft->GetMouseOver().IsTypeOfBlock()) return;
 

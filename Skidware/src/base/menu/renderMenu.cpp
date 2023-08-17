@@ -395,11 +395,13 @@ void Menu::RenderMenu()
 		if (currentTab == 6) {
 			Config* cfg = new Config("Main.cfg");
 			if (ImGui::Button("Save Config")) {
-				set_config(cfg);
+				//set_config(cfg);
 			}
 			if (ImGui::Button("Load Config")) {
-				read_config(cfg);
+				//read_config(cfg);
 			}
+
+			ImGui::Checkbox("Use Minecraft Font", &Menu::useMCFont);
 
 			ImGui::PushStyleVar(ImGuiStyleVar_FramePadding, ImVec2(20, 5));
 			ImGui::PushStyleVar(ImGuiStyleVar_FrameRounding, 3);
@@ -453,7 +455,7 @@ void Menu::RenderMenu()
 			ImGui::SameLine();
 			if (Menu::TabButton("Timer", (currentTab6 == 5 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 5;
 			ImGui::SameLine();
-			if (Menu::TabButton("Tower", (currentTab6 == 6 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 6;
+			if (Menu::TabButton("Scaffold", (currentTab6 == 6 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 6;
 			
 			
 			if (currentTab6 == 0) {

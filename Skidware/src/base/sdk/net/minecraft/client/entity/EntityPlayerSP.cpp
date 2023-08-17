@@ -182,6 +182,18 @@ bool CEntityPlayerSP::isMovingForwardsOrBackwards() {
 	return SDK::Minecraft->thePlayer->getMoveForward() != 0;
 }
 
+bool CEntityPlayerSP::isMovingForwards()
+{
+	return SDK::Minecraft->thePlayer->getMoveForward() > 0;
+
+}
+
+bool CEntityPlayerSP::isMovingBackwards()
+{
+	return SDK::Minecraft->thePlayer->getMoveForward() < 0;
+
+}
+
 void CEntityPlayerSP::set_speed(const float speed)
 {
 	if (getMotion().x != 0 && getMotion().y != 0) {

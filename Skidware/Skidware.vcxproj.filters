@@ -324,7 +324,11 @@
     <ClInclude Include="src\base\moduleManager\modules\blatent\tower.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+<<<<<<< Updated upstream
     <ClInclude Include="ext\fonts\Minecraft.h">
+=======
+    <ClInclude Include="src\base\menu\hooks\moncraftfont.h">
+>>>>>>> Stashed changes
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
