@@ -1,8 +1,0 @@
-﻿  tower.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(62,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\tower.cpp(15,65): warning C4305: 'initializing': truncation from 'double' to 'float'
-LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
-leftAutoClicker.obj : warning LNK4006: "long lastClickTime" (?lastClickTime@@3JA) already defined in killaura.obj; second definition ignored
-leftAutoClicker.obj : warning LNK4006: "int nextCps" (?nextCps@@3HA) already defined in killaura.obj; second definition ignored
-E:\Repos\Skidware-Inject\Skidware\build\Skidware 1.08.dll : warning LNK4088: image being generated due to /FORCE option; image may not run
-  Skidware.vcxproj -> E:\Repos\Skidware-Inject\Skidware\build\Skidware 1.08.dll

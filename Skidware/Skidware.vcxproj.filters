@@ -324,6 +324,9 @@
     <ClInclude Include="src\base\moduleManager\modules\blatent\tower.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="ext\fonts\Minecraft.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp">

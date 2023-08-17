@@ -22,6 +22,7 @@ struct Menu
 	static inline int Keybind;
 	static inline ImFont* Font;
 	static inline ImFont* FontBold;
+	static inline ImFont* Minecraft;
 	static inline bool Initialized;
 
 	static void SetupImgui();

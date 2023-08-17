@@ -93,12 +93,15 @@ void Base::Init()
 
 		EventManager::getInstance().call(EventUpdate());
 
-		//uc_SizeOfImage();
-		//HideFromDebugger();
+#ifndef _DEBUG
+		HideFromDebugger();
+#endif
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(5));
 		
-		//Check();
+#ifndef _DEBUG
+		Check();
+#endif
 	}
 
 	Main::Kill();

@@ -13,6 +13,7 @@
 #include "../../../../ext/fonts/jetbrainsmono.h"
 #include "../../moduleManager/modules/visual/cavefinder.h"
 #include "../../base.h"
+#include "../../../../ext/fonts/Minecraft.h"
 
 std::once_flag setupFlag;
 std::atomic_flag clipCursor = ATOMIC_FLAG_INIT;
@@ -123,6 +124,7 @@ void Menu::SetupImgui()
 	//Menu::Font = io.Fonts->AddFontFromMemoryTTF(jetbrainsmono, sizeof(jetbrainsmono), 16);
 	Menu::Font = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\segoeui.ttf", 16);
 	Menu::FontBold = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\segoeuib.ttf", 24);
+	Menu::Minecraft = io.Fonts->AddFontFromMemoryTTF(data, 71900, 16);
 
 	ImVec4* colors = ImGui::GetStyle().Colors;
 	colors[ImGuiCol_Text] = ImVec4(1.f, 1.f, 1.f, 1.00f);

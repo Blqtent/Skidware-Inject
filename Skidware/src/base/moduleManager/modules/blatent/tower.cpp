@@ -12,13 +12,17 @@ Tower* Tower::getInstance()
 
 void Tower::onEnable()
 {
-	SDK::Minecraft->thePlayer->SetAngles(Vector2(-404.581, 76.6119));
+	if (CommonData::getInstance()->SanityCheck()) {
+		SDK::Minecraft->thePlayer->SetAngles(Vector2(-404.581, 76.6119));
+	}
 
 }
 
 void Tower::onDisable()
 {
-	SDK::Minecraft->thePlayer->SetAngles(Vector2(orYaw, orPitch));
+	if (CommonData::getInstance()->SanityCheck()) {
+		SDK::Minecraft->thePlayer->SetAngles(Vector2(orYaw, orPitch));
+	}
 }
 
 void Tower::onUpdate(const EventUpdate e)
@@ -29,9 +33,6 @@ void Tower::onUpdate(const EventUpdate e)
 	CMinecraft* mc = SDK::Minecraft;
 	POINT pos_cursor;
 	GetCursorPos(&pos_cursor);
-/*	if (GetAsyncKeyState('W') & 0x8000) {
-
-	}*/
 	if (SDK::Minecraft->theWorld->isAirBlock(SDK::Minecraft->thePlayer->GetPos().x, SDK::Minecraft->thePlayer->GetPos().y - 1, SDK::Minecraft->thePlayer->GetPos().z)) {
 		SDK::Minecraft->thePlayer->setSneak(true);
 	}

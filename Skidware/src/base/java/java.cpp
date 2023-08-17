@@ -71,7 +71,7 @@ void Java::Init()
         return;
 
 
-    jint res = vm->GetEnv((void**)&Java::Env, JNI_VERSION_1_6);
+    jint res = vm->GetEnv((void**)&Java::Env, JNI_VERSION_1_8);
 
     if (res == JNI_EDETACHED)
         res = vm->AttachCurrentThreadAsDaemon((void**)&Java::Env, nullptr);
