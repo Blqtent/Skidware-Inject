@@ -10,4 +10,6 @@ public:
 	void RenderMenu();
 private:
 	Tower();
+	float orYaw;
+	float orPitch;
 };

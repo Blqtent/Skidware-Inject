@@ -32,10 +32,15 @@ void LeftAutoClicker::onUpdate(const EventUpdate e)
 	if (!this->getToggle()) return;
 	if (Menu::Open) return;
 	if (SDK::Minecraft->IsInGuiState() && !inInventory) return;
+
+	Logger::Log("Yaw");
+	Logger::Log(SDK::Minecraft->thePlayer->GetRotationYaw());
+	Logger::Log("Pitch");
+	Logger::Log(SDK::Minecraft->thePlayer->GetRotationPitch());
+
 	if (ignoreBlocks && SDK::Minecraft->GetMouseOver().IsTypeOfBlock()) return;
 
-	Logger::Log(SDK::Minecraft->thePlayer->GetRotationYaw());
-	Logger::Log(SDK::Minecraft->thePlayer->GetRotationPitch());
+
 
 	long milli = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	if (lastClickTime == 0) lastClickTime = milli;

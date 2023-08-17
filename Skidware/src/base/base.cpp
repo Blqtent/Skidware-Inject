@@ -96,9 +96,6 @@ void Base::Init()
 		//uc_SizeOfImage();
 		//HideFromDebugger();
 
-		Logger::Log(SDK::Minecraft->thePlayer->GetRotationYaw());
-		std::cout << SDK::Minecraft->thePlayer->GetRotationPitch() << "\n";
-
 		std::this_thread::sleep_for(std::chrono::milliseconds(5));
 		
 		//Check();
