@@ -13,6 +13,7 @@ build/etc/Skidware 1.08.tlog
 *.user
 *.userosscache
 *.sln.docstates
+*.dll
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

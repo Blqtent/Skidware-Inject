@@ -34,6 +34,8 @@ void AutoTool::onUpdate(const EventUpdate e)
 		float bestSpeed = 1.f;
 		int bestSlot = -1;
 		CMovingObjectPosition mouseover = SDK::Minecraft->GetMouseOver();
+		if (mouseover.IsTypeOfEntity())
+			return;
 		//Logger::LogWait("hI", 1);
 
 		if (!mouseover)
