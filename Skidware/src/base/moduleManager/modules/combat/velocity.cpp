@@ -63,8 +63,6 @@ void Velocity::onUpdate(const EventUpdate e)
 			}
 			else if (this->getMode() == 1) {
 				if (thePlayer->getHurtTime() > 7 && thePlayer->isOnGround() && counter++ % 2 == 0) {
-					POINT pos_cursor;
-					GetCursorPos(&pos_cursor);
 					thePlayer->jump();
 				}
 			}
