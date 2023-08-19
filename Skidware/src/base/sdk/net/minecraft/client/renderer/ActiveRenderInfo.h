@@ -1,17 +1,13 @@
 #pragma once
 
-#include "../../../../java/IClass.h"
+#include "../../../../Object.h"
 #include "../../../../../util/math/geometry.h"
 
 
-struct CActiveRenderInfo : IClass
+class CActiveRenderInfo
 {
-	CActiveRenderInfo();
-
-	jclass GetClass();
-	jobject GetInstance();
-
-	Matrix ProjectionMatrix();
-	Matrix ModelViewMatrix();
+public:
+	static Matrix ProjectionMatrix();
+	static Matrix ModelViewMatrix();
 };
 

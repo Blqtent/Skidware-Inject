@@ -1,14 +1,11 @@
 #pragma once
 
-#include "../IClass.h"
+#include "Collection.h"
 
-struct List : IClass
+class List : public Collection
 {
-	List(jobject jlist);
-
-	jclass GetClass();
-	jobject GetInstance();
-
+public:
+	using Collection::Collection;
 	jobjectArray toArray();
 };
 

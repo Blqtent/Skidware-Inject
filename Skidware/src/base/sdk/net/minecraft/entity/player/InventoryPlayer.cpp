@@ -2,40 +2,40 @@
 
 #include "../../../../strayCache.h"
 
-CInventoryPlayer::CInventoryPlayer()
-{
-	if (!StrayCache::initialized) StrayCache::Initialize();
-	this->Class = StrayCache::inventoryPlayer_class;
-}
-
-CInventoryPlayer::CInventoryPlayer(jobject instance) : CInventoryPlayer()
-{
-	this->Instance = instance;
-}
-
-jclass CInventoryPlayer::GetClass()
-{
-	return this->Class;
-}
-
-jobject CInventoryPlayer::GetInstance()
-{
-	return this->Instance;
-}
+//CInventoryPlayer::CInventoryPlayer()
+//{
+//	if (!StrayCache::initialized) StrayCache::Initialize();
+//	this->Class = StrayCache::inventoryPlayer_class;
+//}
+//
+//CInventoryPlayer::CInventoryPlayer(jobject instance) : CInventoryPlayer()
+//{
+//	this->Instance = instance;
+//}
+//
+//jclass CInventoryPlayer::getClass()
+//{
+//	return this->Class;
+//}
+//
+//jobject CInventoryPlayer::getInstance()
+//{
+//	return this->Instance;
+//}
 
 CItemStack CInventoryPlayer::GetCurrentItem()
 {
-	return CItemStack(Java::Env->CallObjectMethod(this->GetInstance(), StrayCache::inventoryPlayer_getCurrentItem));
+	return CItemStack(Java::Env->CallObjectMethod(this->getInstance(), StrayCache::inventoryPlayer_getCurrentItem));
 }
 
 void CInventoryPlayer::SetCurrentItem(int index)
 {
-	Java::Env->SetIntField(this->Instance, StrayCache::inventoryPlayer_currentItem, index);
+	Java::Env->SetIntField(this->getInstance(), StrayCache::inventoryPlayer_currentItem, index);
 }
 
 CItemStack CInventoryPlayer::GetIndexItem(int index)
 {
-	jobject mainInventory = Java::Env->GetObjectField(this->Instance, StrayCache::inventoryPlayer_mainInv);
+	jobject mainInventory = Java::Env->GetObjectField(this->getInstance(), StrayCache::inventoryPlayer_mainInv);
 	jobject itemstack = Java::Env->GetObjectArrayElement((jobjectArray)mainInventory, index);
 	return CItemStack(itemstack);
 
@@ -43,7 +43,11 @@ CItemStack CInventoryPlayer::GetIndexItem(int index)
 
 CItemStack CInventoryPlayer::GetArmorItem(int index)
 {
-	jobject armorInventory = Java::Env->GetObjectField(this->Instance, StrayCache::inventoryPlayer_armorInv);
+	if (!isValid() || isNULL())
+	{
+		return CItemStack{};
+	}
+	jobject armorInventory = Java::Env->GetObjectField(this->getInstance(), StrayCache::inventoryPlayer_armorInv);
 	jobject itemstack = Java::Env->GetObjectArrayElement((jobjectArray)armorInventory, index);
 	return CItemStack(itemstack);
 

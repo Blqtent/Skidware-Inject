@@ -1,13 +1,11 @@
 #pragma once
 
-#include "../../../java/IClass.h"
+#include "../../../Object.h"
 
-struct CTimer : IClass
+class CTimer : public Object
 {
-	CTimer();
-
-	jclass GetClass();
-	jobject GetInstance();
+public:
+	using Object::Object;
 
 	float GetTimerSpeed();
 

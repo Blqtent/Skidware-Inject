@@ -3,47 +3,47 @@
 #include "../../../../java/java.h"
 #include "../../../sdk.h"
 
-CTimer::CTimer()
-{
-	Java::AssignClass("net.minecraft.util.Timer", this->Class);
-	if (this->Class == nullptr)
-	{
-		if (!StrayCache::initialized) StrayCache::Initialize();
-		this->Class = StrayCache::timer_class;
-	}
-	if (JNIHelper::IsForge()) {
-		this->FieldIDs["renderPartialTicks"] = Java::Env->GetFieldID(this->Class, "field_74281_c", "F");
-		this->FieldIDs["timerSpeed"] = Java::Env->GetFieldID(this->Class, "field_74278_d", "F");
-		return;
-	}
-	this->FieldIDs["renderPartialTicks"] = Java::Env->GetFieldID(this->Class, "renderPartialTicks", "F");
-	this->FieldIDs["timerSpeed"] = Java::Env->GetFieldID(this->Class, "timerSpeed", "F");
-
-}
+//CTimer::CTimer()
+//{
+//	Java::AssignClass("net.minecraft.util.Timer", StrayCache::timer_class);
+//	if (StrayCache::timer_class == nullptr)
+//	{
+//		if (!StrayCache::initialized) StrayCache::Initialize();
+//		StrayCache::timer_class = StrayCache::timer_class;
+//	}
+//	if (JNIHelper::IsForge()) {
+//		this->FieldIDs["renderPartialTicks"] = Java::Env->GetFieldID(StrayCache::timer_class, "field_74281_c", "F");
+//		StrayCache::timer_timerSpeed = Java::Env->GetFieldID(StrayCache::timer_class, "field_74278_d", "F");
+//		return;
+//	}
+//	this->FieldIDs["renderPartialTicks"] = Java::Env->GetFieldID(StrayCache::timer_class, "renderPartialTicks", "F");
+//	StrayCache::timer_timerSpeed = Java::Env->GetFieldID(StrayCache::timer_class, "timerSpeed", "F");
+//
+//}
 
 float CTimer::GetRenderPartialTicks()
 {
-	return Java::Env->GetFloatField(this->GetInstance(), this->FieldIDs["renderPartialTicks"]);
+	return Java::Env->GetFloatField(this->getInstance(), StrayCache::timer_renderPartialTicks);
 }
 
-jclass CTimer::GetClass()
-{
-	return this->Class;
-}
-
-jobject CTimer::GetInstance()
-{
-	return Java::Env->GetObjectField(SDK::Minecraft->GetInstance(), SDK::Minecraft->FieldIDs["timer"]);
-}
+//jclass CTimer::getClass()
+//{
+//	return StrayCache::timer_class;
+//}
+//
+//jobject CTimer::getInstance()
+//{
+//	return Java::Env->GetObjectField(SDK::Minecraft->getInstance(), SDK::Minecraft->FieldIDs["timer"]);
+//}
 
 float CTimer::GetTimerSpeed()
 {
-	return Java::Env->GetFloatField(GetInstance(), this->FieldIDs["timerSpeed"]);
+	return Java::Env->GetFloatField(getInstance(), StrayCache::timer_timerSpeed);
 
 }
 
 void CTimer::SetTimerSpeed(float speed)
 {
-	return Java::Env->SetFloatField(GetInstance(), this->FieldIDs["timerSpeed"], speed);
+	return Java::Env->SetFloatField(getInstance(), StrayCache::timer_timerSpeed, speed);
 
 }

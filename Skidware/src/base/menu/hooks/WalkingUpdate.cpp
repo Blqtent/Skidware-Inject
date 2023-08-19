@@ -18,9 +18,9 @@ void Menu::HookUpdate()
 	{
 		if (JNIHelper::IsForge()) {
 			CMinecraft* minecraftInstance = SDK::Minecraft;
-			if (minecraftInstance->GetClass() == NULL) return;
+			if (minecraftInstance->getClass() == NULL) return;
 
-			jmethodID OnUpdateMethod = Java::Env->GetMethodID(minecraftInstance->GetClass(), "func_175161_p", "()V"); // maybe i should use func_71411_J instead?
+			jmethodID OnUpdateMethod = Java::Env->GetMethodID(minecraftInstance->getClass(), "func_175161_p", "()V"); // maybe i should use func_71411_J instead?
 			if (OnUpdateMethod == NULL) return;
 
 			patchedOnUpdate = OnUpdate(*(unsigned __int64*)(*(unsigned __int64*)OnUpdateMethod + 0x40));
@@ -30,9 +30,9 @@ void Menu::HookUpdate()
 			else return;
 		}
 		CMinecraft* minecraftInstance = SDK::Minecraft;
-		if (minecraftInstance->GetClass() == NULL) return;
+		if (minecraftInstance->getClass() == NULL) return;
 
-		jmethodID OnUpdateMethod = Java::Env->GetMethodID(minecraftInstance->GetClass(), "onUpdateWalkingPlayer", "()V"); // maybe i should use func_71411_J instead?
+		jmethodID OnUpdateMethod = Java::Env->GetMethodID(minecraftInstance->getClass(), "onUpdateWalkingPlayer", "()V"); // maybe i should use func_71411_J instead?
 		if (OnUpdateMethod == NULL) return;
 
 		patchedOnUpdate = OnUpdate(*(unsigned __int64*)(*(unsigned __int64*)OnUpdateMethod + 0x40));

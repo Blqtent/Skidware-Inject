@@ -1,17 +1,13 @@
 #pragma once
 
-#include "../../../java/IClass.h"
+#include "../../../Object.h"
 #include "../../../../util/math/geometry.h"
 #include "../util/AxisAlignedBB.h"
-
-struct CEntity : IClass
+#include "../../../../util/logger.h"
+class CEntity : public Object
 {
-	CEntity();
-
-	CEntity(jobject instance);
-
-	jclass GetClass();
-	jobject GetInstance();
+public:
+	using Object::Object;
 
 	std::string GetName();
 

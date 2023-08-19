@@ -31,13 +31,15 @@ void Velocity::onUpdate(const EventUpdate e)
 	Vector2 rot = Vector2(thePlayer->GetRotationYaw(), thePlayer->GetRotationPitch());
 	float clamped_yaw = Math::wrapAngleTo180(rot.x);
 	float yawToAdd = 0;
+	for (CEntityPlayer& p : CommonData::getInstance()->playerEntities.toVector<CEntityPlayer>()) {
 
-	for (CommonData::PlayerData& p : CommonData::getInstance()->nativePlayerList) {
-		if (Java::Env->IsSameObject(p.obj.GetInstance(), thePlayer->GetInstance())) {
+		if (!p.isValid() || p.isNULL()) continue;
+
+		if (Java::Env->IsSameObject(p.getInstance(), thePlayer->getInstance())) {
 			continue;
 		}
 
-		Vector3 targetPos = p.pos;
+		Vector3 targetPos = p.GetPos();
 
 		if (onlyTargeting && (targetPos - pos).Dist() >= 5.0f) {
 			continue;

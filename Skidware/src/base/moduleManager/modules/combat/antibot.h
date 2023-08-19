@@ -10,40 +10,30 @@ public:
 	static Antibot* getInstance();
 	void onEnable();
 	void onDisable();
-	bool isBot(CommonData::PlayerData p) {
-		if (p.obj == nullptr || p.pos.x == NULL) 
-		{
+	bool isBot(CEntityPlayer p) {
+
+		if (Java::Env->IsSameObject(p.getInstance(), NULL)) {
 			return true;
 		}
 
-		if (p.height <= 0.5f)
+		if (p.GetHeight() <= 0.5f)
 		{
-			HeightBots.add(p.obj);
-			//std::cout << p.obj.GetName() << " is Bot[1]" << std::endl;
+			HeightBots.add(p);
 		}
 		else {
-			HeightBots.remove(p.obj);
+			HeightBots.remove(p);
 		}
 
-		if (p.obj.isPlayerSleeping())
+		if (p.isPlayerSleeping())
 		{
-			//std::cout << p.obj.GetName() << " is Bot[2]" << std::endl;
-			sleepingEntities.add(p.obj);
+			sleepingEntities.add(p);
 		}
 		else {
-			sleepingEntities.remove(p.obj);
+			sleepingEntities.remove(p);
 		}
 
-		/*if (p.obj.ticksExisted() < 100.f)
-		{
-			std::cout << p.obj.GetName() << " is Bot[2]" << std::endl;
-			ticksExistedEntities.add(p.obj);
-		}
-		else {
-			ticksExistedEntities.remove(p.obj);
-		}*/
 
-		return /*ticksExistedEntities.contains(p.obj) ||*/ HeightBots.contains(p.obj) || sleepingEntities.contains(p.obj);
+		return HeightBots.contains(p) || sleepingEntities.contains(p);
 	}
 	void RenderMenu();
 private:

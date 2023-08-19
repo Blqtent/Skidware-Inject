@@ -1,16 +1,10 @@
 #pragma once
 #include "item.h"
-#include "../../../java/IClass.h"
+#include "../../../Object.h"
 #include "ItemStack.h"
-struct CItemArmor : CItem
+class CItemArmor : public CItem
 {
-	CItemArmor();
-
-	CItemArmor(jobject instance);
-	jclass GetClass();
-	jobject GetInstance();
-
+public:
+	using CItem::CItem;
 	int getColor(jobject stack);
-
-
 };

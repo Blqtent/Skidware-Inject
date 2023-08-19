@@ -1,15 +1,16 @@
 #pragma once
 
-#include "../../../../../java/IClass.h"
+#include "../../../../../Object.h"
 #include "../../../../../../util/math/geometry.h"
 
-struct CRenderManager : IClass
+class CRenderManager :public Object
 {
-	CRenderManager();
+	//CRenderManager();
 
-	jclass GetClass();
-	jobject GetInstance();
-
+	//jclass getClass();
+	//jobject getInstance();
+public:
+	using Object::Object;
 	Vector3 RenderPos();
 	Vector3 ViewerPos();
 };
