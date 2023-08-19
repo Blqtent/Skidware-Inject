@@ -46,7 +46,7 @@ void Base::RenderLoop() // Runs every frame
 	ImVec2 textSize = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, watermark);
 	float posX = screenSize.x - textSize.x - margin;
 	float posY = screenSize.y - textSize.y - margin;
-	
+
 	Esp::getInstance()->RenderUpdate();
 	AimAssist::getInstance()->RenderUpdate();
 	//Blink::getInstance()->RenderUpdate();
@@ -69,7 +69,7 @@ void Base::RenderLoop() // Runs every frame
 	ImGuiIO& io = ImGui::GetIO(); (void)io;
 
 	io.IniFilename = NULL; // GET RID OF IMGUI.INI
-	
+
 	y = 24;
 	/*
 	if (Menu::useMCFont) {
@@ -153,7 +153,6 @@ void Base::RenderLoop() // Runs every frame
 			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Scaffold");
 			y += 20;
 		}
->>>>>>> Stashed changes
 
 		if (LongJump::getInstance()->getToggle()) {
 			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "LongJump");
@@ -163,26 +162,25 @@ void Base::RenderLoop() // Runs every frame
 			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Fakelag");
 			y += 20;
 		}
-	}
-<<<<<<< Updated upstream
-	if (Speed::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Speed");
-		y += 20;
-	}
-	if (Nofall::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Nofall");
-		y += 20;
-	}
-	if (Flight::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Flight");
-		y += 20;
-	}
 
-	if (LongJump::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "LongJump");
-		y += 20;
-	}
+		if (Speed::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Speed");
+			y += 20;
+		}
+		if (Nofall::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Nofall");
+			y += 20;
+		}
+		if (Flight::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Flight");
+			y += 20;
+		}
 
+		if (LongJump::getInstance()->getToggle()) {
+			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "LongJump");
+			y += 20;
+		}
+	}
 	*/
 	//else {
 		if (AimAssist::getInstance()->getToggle()) {

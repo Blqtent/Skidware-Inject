@@ -9,33 +9,29 @@ E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(142,71)
 E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(143,74): warning C4305: 'argument': truncation from 'double' to 'float'
 E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(150,61): warning C4305: 'argument': truncation from 'double' to 'float'
 E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(158,63): warning C4305: 'argument': truncation from 'double' to 'float'
-  wndProc.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\wndProc.cpp(42,46): warning C4244: 'argument': conversion from 'WPARAM' to 'int', possible loss of data
   renderLoop.cpp
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(66,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(189,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(193,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(197,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(201,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(205,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(209,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(213,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(217,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(221,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(225,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(230,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(236,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(239,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(245,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(249,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(254,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(258,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(262,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(266,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(271,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(275,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  base.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(66,1): warning C4305: 'initializing': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(187,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(191,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(195,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(199,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(203,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(207,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(211,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(215,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(219,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(223,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(228,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(234,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(237,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(243,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(247,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(252,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(256,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(260,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(264,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(269,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(273,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 leftAutoClicker.obj : warning LNK4006: "long lastClickTime" (?lastClickTime@@3JA) already defined in killaura.obj; second definition ignored
 leftAutoClicker.obj : warning LNK4006: "int nextCps" (?nextCps@@3HA) already defined in killaura.obj; second definition ignored
 leftAutoClicker.obj : warning LNK4006: "int count" (?count@@3HA) already defined in tower.obj; second definition ignored
@@ -43,9 +39,9 @@ rightAutoClicker.obj : warning LNK4006: "int rightNextCps" (?rightNextCps@@3HA) 
 rightAutoClicker.obj : warning LNK4006: "long rightLastClickTime" (?rightLastClickTime@@3JA) already defined in tower.obj; second definition ignored
 E:\Repos\Skidware-Inject\Skidware\build\Skidware 1.08.dll : warning LNK4088: image being generated due to /FORCE option; image may not run
   Generating code
-  458 of 4385 functions (10.4%) were compiled, the rest were copied from previous compilation.
-    361 functions were new in current compilation
-    52 functions had inline decision re-evaluated but remain unchanged
+  29 of 4385 functions ( 0.7%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    80 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
 * CIL library *(* CIL module *) : warning LNK4006: "int count" (?count@@3HA) already defined in * CIL library *(* CIL module *); second definition ignored
 * CIL library *(* CIL module *) : warning LNK4006: "int nextCps" (?nextCps@@3HA) already defined in * CIL library *(* CIL module *); second definition ignored

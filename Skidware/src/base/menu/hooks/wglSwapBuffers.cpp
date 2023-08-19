@@ -124,7 +124,7 @@ void Menu::SetupImgui()
 	//Menu::Font = io.Fonts->AddFontFromMemoryTTF(jetbrainsmono, sizeof(jetbrainsmono), 16);
 	Menu::Font = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\segoeui.ttf", 16);
 	Menu::FontBold = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\segoeuib.ttf", 24);
-	Menu::Minecraft = io.Fonts->AddFontFromMemoryTTF(data, 71900, 16);
+	//Menu::Minecraft = io.Fonts->AddFontFromMemoryTTF(&data, sizeof(data), 16);
 
 
 	ImVec4* colors = ImGui::GetStyle().Colors;
