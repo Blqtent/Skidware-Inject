@@ -80,6 +80,11 @@
     <ClCompile Include="src\base\sdk\net\minecraft\util\Vec3.cpp" />
     <ClCompile Include="src\base\util\utils.cpp" />
     <ClCompile Include="src\base\sdk\java\util\Collection.h" />
+    <ClCompile Include="src\base\sdk\net\minecraft\block\Block.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\block\state\BlockState.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\player\autotool.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\item\ItemTool.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\block\state\IBlockState.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ext\fonts\Minecraft.h" />
@@ -187,6 +192,11 @@
     <ClInclude Include="src\base\sdk\net\minecraft\util\Vec3.h" />
     <ClInclude Include="src\base\sdk\Object.h" />
     <ClInclude Include="src\base\util\utils.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\block\Block.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\block\state\BlockState.h" />
+    <ClInclude Include="src\base\moduleManager\modules\player\autotool.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\item\ItemTool.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\block\state\IBlockState.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

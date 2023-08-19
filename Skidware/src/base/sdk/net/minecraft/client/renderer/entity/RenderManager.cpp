@@ -46,7 +46,7 @@
 
 Vector3 CRenderManager::RenderPos()
 {
-	jobject instance = this->getInstance();
+	//jobject instance = this->getInstance();
 	return Vector3{
 		(float)(double) Java::Env->GetDoubleField(instance, StrayCache::renderManager_renderPosX),
 		(float)(double) Java::Env->GetDoubleField(instance, StrayCache::renderManager_renderPosY),
@@ -56,7 +56,7 @@ Vector3 CRenderManager::RenderPos()
 
 Vector3 CRenderManager::ViewerPos()
 {
-	jobject instance = this->getInstance();
+	//jobject instance = this->getInstance();
 	return Vector3{
 		(float)(double)Java::Env->GetDoubleField(instance, StrayCache::renderManager_viewerPosX),
 		(float)(double)Java::Env->GetDoubleField(instance, StrayCache::renderManager_viewerPosY),

@@ -197,11 +197,13 @@ void Killaura::onUpdate(const EventUpdate e) {
 	if (this->getMode() == 0) {
 		POINT pos_cursor;
 		GetCursorPos(&pos_cursor);
+		CommonData::getInstance()->isCombat = true;
 		SendMessage(Menu::HandleWindow, WM_LBUTTONDOWN, MK_LBUTTON, MAKELPARAM(pos_cursor.x, pos_cursor.y));
 		SendMessage(Menu::HandleWindow, WM_LBUTTONUP, 0, MAKELPARAM(pos_cursor.x, pos_cursor.y));
 	}
 	else if (this->getMode() == 1) {
 		thePlayer.swingItem();
+		CommonData::getInstance()->isCombat = true;
 		thePlayer.attackEntity(&thePlayer, target.getInstance());
 	}
 	if (autoblock == true && this->getMode() == 0) {

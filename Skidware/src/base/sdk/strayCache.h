@@ -122,11 +122,14 @@ struct StrayCache {
 
 	//World
 	inline static jclass world_class;
+	inline static jmethodID world_getBlockState;
 	inline static jmethodID world_rayTraceBlocks;
 	inline static jmethodID world_getChunkFromChunkCoords;
 	inline static jmethodID world_isAirBlock;
 	inline static jfieldID world_playerEntities;
-	//World
+
+
+	//Chunk
 	inline static jclass chunk_class;
 	inline static jmethodID chunk_getBlock;
 
@@ -168,23 +171,45 @@ struct StrayCache {
 
 	inline static jclass inventoryPlayer_class;
 	inline static jmethodID inventoryPlayer_getCurrentItem;
+	inline static jmethodID inventoryPlayer_getStackInSlot;
 	inline static jfieldID inventoryPlayer_mainInv;
 	inline static jfieldID inventoryPlayer_armorInv;
 	inline static jfieldID inventoryPlayer_currentItem;
 
 	inline static jclass itemStack_class;
 	inline static jmethodID itemStack_getItem;
-	inline static jmethodID itemStack_getIdFromItem;
+	inline static jmethodID itemStack_getStrVsBlock;
 
 	inline static jclass blockPos_class;
 	inline static jfieldID blockPos_x;
 	inline static jfieldID blockPos_y;
 	inline static jfieldID blockPos_z;
 
-	inline static jclass item_class;
+	//Block Class
+	inline static jclass block_class;
 
+	//BlockState Class
+	inline static jclass blockState_class;
+	inline static jfieldID blockState_block;
+
+	//IBlockState Class
+	inline static jclass iBlockState_class;
+	inline static jmethodID iBlockState_getBlock;
+
+	//BlockAir Clss
+	inline static jclass blockAir_class;
+
+	//Item Class
+	inline static jclass item_class;
+	inline static jmethodID item_getIdFromItem;
+
+	//ItemArmor Class
 	inline static jclass itemArmor_Class;
 	inline static jmethodID itemArmor_getColor;
+
+	//ItemTool Class
+	inline static jclass itemTool_class;
+	inline static jmethodID itemTool_getStrVsBlock;
 
 	static void Initialize() {
 
@@ -388,7 +413,7 @@ struct StrayCache {
 				world_class = (jclass)Java::Env->NewGlobalRef(world_class);
 
 				world_rayTraceBlocks = Java::Env->GetMethodID(StrayCache::world_class, "func_147447_a", "(Lnet/minecraft/util/Vec3;Lnet/minecraft/util/Vec3;ZZZ)Lnet/minecraft/util/MovingObjectPosition;");
-
+				world_getBlockState = Java::Env->GetMethodID(StrayCache::world_class, "func_180495_p", "(Lnet/minecraft/util/BlockPos;)Lnet/minecraft/block/state/IBlockState;");
 				world_isAirBlock = Java::Env->GetMethodID(StrayCache::world_class, "func_175623_d", "(Lnet/minecraft/util/BlockPos;)Z");
 				world_getChunkFromChunkCoords = Java::Env->GetMethodID(StrayCache::world_class, "func_72964_e", "(II)Lnet/minecraft/world/chunk/Chunk;");
 
@@ -432,7 +457,7 @@ struct StrayCache {
 
 				movingObjectPosition_hitVec = Java::Env->GetFieldID(movingObjectPosition_class, "field_72307_f", "Lnet/minecraft/util/Vec3;");
 				movingObjectPosition_typeOfHit = Java::Env->GetFieldID(movingObjectPosition_class, "field_72313_a", "Lnet/minecraft/util/MovingObjectPosition$MovingObjectType;");
-				movingObjectPosition_blockPos = Java::Env->GetFieldID(movingObjectPosition_class, "field_178783_e", "Lnet/minecraft/util/MovingObjectPosition$MovingObjectType;");
+				movingObjectPosition_blockPos = Java::Env->GetFieldID(movingObjectPosition_class, "field_178783_e", "Lnet/minecraft/util/BlockPos;");
 			}
 			
 			{
@@ -451,6 +476,8 @@ struct StrayCache {
 				inventoryPlayer_class = (jclass)Java::Env->NewGlobalRef(inventoryPlayer_class);
 
 				inventoryPlayer_getCurrentItem = Java::Env->GetMethodID(inventoryPlayer_class, "func_70448_g", "()Lnet/minecraft/item/ItemStack;");
+				inventoryPlayer_getStackInSlot = Java::Env->GetMethodID(inventoryPlayer_class, "func_70301_a", "(I)Lnet/minecraft/item/ItemStack;");
+
 
 				inventoryPlayer_mainInv = Java::Env->GetFieldID(inventoryPlayer_class, "field_70462_a", "[Lnet/minecraft/item/ItemStack;");
 				inventoryPlayer_armorInv = Java::Env->GetFieldID(inventoryPlayer_class, "field_70460_b", "[Lnet/minecraft/item/ItemStack;");
@@ -462,27 +489,66 @@ struct StrayCache {
 				itemStack_class = (jclass)Java::Env->NewGlobalRef(itemStack_class);
 
 				itemStack_getItem = Java::Env->GetMethodID(itemStack_class, "func_77973_b", "()Lnet/minecraft/item/Item;");
-				itemStack_getIdFromItem = Java::Env->GetMethodID(itemStack_class, "func_150891_b", "(Lnet/minecraft/item/Item;)I");
+				itemStack_getStrVsBlock = Java::Env->GetMethodID(itemStack_class, "func_150997_a", "(Lnet/minecraft/block/Block;)F");
 			}
 
 
-			Java::AssignClass("net.minecraft.item.Item", item_class);
-			item_class = (jclass)Java::Env->NewGlobalRef(item_class);
+			
+			{
+				Java::AssignClass("net.minecraft.item.Item", item_class);
 
+				item_class = (jclass)Java::Env->NewGlobalRef(item_class);
+				item_getIdFromItem = Java::Env->GetMethodID(item_class, "func_150891_b", "(Lnet/minecraft/item/Item;)I");
+			}
 
-			Java::AssignClass("net.minecraft.item.ItemArmor", itemArmor_Class);
-			itemArmor_Class = (jclass)Java::Env->NewGlobalRef(itemArmor_Class);
+			{
+				Java::AssignClass("net.minecraft.item.ItemArmor", itemArmor_Class);
+				itemArmor_Class = (jclass)Java::Env->NewGlobalRef(itemArmor_Class);
 
-			itemArmor_getColor = Java::Env->GetMethodID(itemArmor_Class, "func_82814_b", "(Lnet/minecraft/item/ItemStack;)I");
+				itemArmor_getColor = Java::Env->GetMethodID(itemArmor_Class, "func_82814_b", "(Lnet/minecraft/item/ItemStack;)I");
+			}
+			
+			{
+				Java::AssignClass("net.minecraft.item.ItemTool", itemTool_class);
+				itemTool_class = (jclass)Java::Env->NewGlobalRef(itemTool_class);
 
-			Java::AssignClass("net.minecraft.util.BlockPos", blockPos_class);
-			blockPos_class = (jclass)Java::Env->NewGlobalRef(blockPos_class);
+				itemTool_getStrVsBlock = Java::Env->GetMethodID(itemTool_class, "func_150893_a", "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/block/Block;)F");
+			}
 
-			blockPos_x = Java::Env->GetFieldID(blockPos_class, "field_177962_a", "I");
-			blockPos_y = Java::Env->GetFieldID(blockPos_class, "field_177960_b", "I");
-			blockPos_z = Java::Env->GetFieldID(blockPos_class, "field_177961_c", "I");
+			{
+				Java::AssignClass("net.minecraft.util.BlockPos", blockPos_class);
+				blockPos_class = (jclass)Java::Env->NewGlobalRef(blockPos_class);
 
+				blockPos_x = Java::Env->GetFieldID(blockPos_class, "field_177962_a", "I");
+				blockPos_y = Java::Env->GetFieldID(blockPos_class, "field_177960_b", "I");
+				blockPos_z = Java::Env->GetFieldID(blockPos_class, "field_177961_c", "I");
+			}
+			
+			{
+				Java::AssignClass("net.minecraft.block.Block", block_class);
+				block_class = (jclass)Java::Env->NewGlobalRef(block_class);
+			}
 
+			{
+				Java::AssignClass("net.minecraft.block.state.BlockState", blockState_class);
+				blockState_class = (jclass)Java::Env->NewGlobalRef(blockState_class);
+
+				blockState_block = Java::Env->GetFieldID(blockState_class,"field_177627_c", "Lnet/minecraft/block/Block;");
+
+			}
+			
+			{
+				Java::AssignClass("net.minecraft.block.state.IBlockState", iBlockState_class);
+				iBlockState_class = (jclass)Java::Env->NewGlobalRef(iBlockState_class);
+
+				iBlockState_getBlock = Java::Env->GetMethodID(iBlockState_class,"func_177230_c", "()Lnet/minecraft/block/Block;");
+
+			}
+
+			{
+				Java::AssignClass("net.minecraft.block.BlockAir", blockAir_class);
+				blockAir_class = (jclass)Java::Env->NewGlobalRef(blockAir_class);
+			}
 			goto End;
 		}
 
@@ -626,6 +692,7 @@ struct StrayCache {
 
 			world_rayTraceBlocks = Java::Env->GetMethodID(StrayCache::world_class, "rayTraceBlocks", "(Lnet/minecraft/util/Vec3;Lnet/minecraft/util/Vec3;ZZZ)Lnet/minecraft/util/MovingObjectPosition;");
 			world_getChunkFromChunkCoords = Java::Env->GetMethodID(StrayCache::world_class, "getChunkFromChunkCoords", "(II)Lnet/minecraft/world/chunk/Chunk;");
+			world_getBlockState = Java::Env->GetMethodID(StrayCache::world_class, "getBlockState", "(Lnet/minecraft/util/BlockPos;)Lnet/minecraft/block/state/IBlockState;");
 			world_isAirBlock = Java::Env->GetMethodID(StrayCache::world_class, "isAirBlock", "(Lnet/minecraft/util/BlockPos;)Z");
 
 			world_playerEntities = Java::Env->GetFieldID(StrayCache::world_class, "playerEntities", "Ljava/util/List;");
@@ -668,7 +735,7 @@ struct StrayCache {
 
 			movingObjectPosition_hitVec = Java::Env->GetFieldID(movingObjectPosition_class, "hitVec", "Lnet/minecraft/util/Vec3;");
 			movingObjectPosition_typeOfHit = Java::Env->GetFieldID(movingObjectPosition_class, "typeOfHit", "Lnet/minecraft/util/MovingObjectPosition$MovingObjectType;");
-			movingObjectPosition_blockPos = Java::Env->GetFieldID(movingObjectPosition_class, "blockPos", "Lnet/minecraft/util/MovingObjectPosition$MovingObjectType;");
+			movingObjectPosition_blockPos = Java::Env->GetFieldID(movingObjectPosition_class, "blockPos", "Lnet/minecraft/util/BlockPos;");
 		}
 
 
@@ -687,6 +754,7 @@ struct StrayCache {
 			inventoryPlayer_class = (jclass)Java::Env->NewGlobalRef(inventoryPlayer_class);
 
 			inventoryPlayer_getCurrentItem = Java::Env->GetMethodID(inventoryPlayer_class, "getCurrentItem", "()Lnet/minecraft/item/ItemStack;");
+			inventoryPlayer_getStackInSlot = Java::Env->GetMethodID(inventoryPlayer_class, "getStackInSlot", "(I)Lnet/minecraft/item/ItemStack;");
 
 			inventoryPlayer_mainInv = Java::Env->GetFieldID(inventoryPlayer_class, "mainInventory", "[Lnet/minecraft/item/ItemStack;");
 			inventoryPlayer_armorInv = Java::Env->GetFieldID(inventoryPlayer_class, "armorInventory", "[Lnet/minecraft/item/ItemStack;");
@@ -699,13 +767,13 @@ struct StrayCache {
 			itemStack_class = (jclass)Java::Env->NewGlobalRef(itemStack_class);
 
 			itemStack_getItem = Java::Env->GetMethodID(itemStack_class, "getItem", "()Lnet/minecraft/item/Item;");
-			itemStack_getIdFromItem = Java::Env->GetStaticMethodID(itemStack_class, "getIdFromItem", "(Lnet/minecraft/item/Item;)I");
+			itemStack_getStrVsBlock = Java::Env->GetMethodID(itemStack_class, "getStrVsBlock", "(Lnet/minecraft/block/Block;)F");
 		}
-
 		{
 			Java::AssignClass("net.minecraft.item.Item", item_class);
 			item_class = (jclass)Java::Env->NewGlobalRef(item_class);
 
+			item_getIdFromItem = Java::Env->GetMethodID(item_class, "getIdFromItem", "(Lnet/minecraft/item/Item;)I");
 		}
 
 		{
@@ -716,12 +784,45 @@ struct StrayCache {
 		}
 
 		{
+			Java::AssignClass("net.minecraft.item.ItemTool", itemTool_class);
+			itemTool_class = (jclass)Java::Env->NewGlobalRef(itemTool_class);
+
+			itemTool_getStrVsBlock = Java::Env->GetMethodID(itemTool_class, "getStrVsBlock", "(Lnet/minecraft/item/ItemStack;Lnet/minecraft/block/Block;)F");
+		}
+
+
+		{
 			Java::AssignClass("net.minecraft.util.BlockPos", blockPos_class);
 			blockPos_x = Java::Env->GetFieldID(blockPos_class, "x", "I");
 			blockPos_y = Java::Env->GetFieldID(blockPos_class, "y", "I");
 			blockPos_z = Java::Env->GetFieldID(blockPos_class, "z", "I");
 		}
 
+		{
+			Java::AssignClass("net.minecraft.block.Block", block_class);
+			block_class = (jclass)Java::Env->NewGlobalRef(block_class);
+		}
+
+		{
+			Java::AssignClass("net.minecraft.block.state.BlockState", blockState_class);
+			blockState_class = (jclass)Java::Env->NewGlobalRef(blockState_class);
+
+			blockState_block = Java::Env->GetFieldID(blockState_class, "block", "Lnet/minecraft/block/Block;");
+
+		}
+
+		{
+			Java::AssignClass("net.minecraft.block.state.IBlockState", iBlockState_class);
+			iBlockState_class = (jclass)Java::Env->NewGlobalRef(iBlockState_class);
+
+			iBlockState_getBlock = Java::Env->GetMethodID(iBlockState_class, "getBlock", "()Lnet/minecraft/block/Block;");
+
+		}
+
+		{
+			Java::AssignClass("net.minecraft.block.BlockAir", blockAir_class);
+			blockAir_class = (jclass)Java::Env->NewGlobalRef(blockAir_class);
+		}
 	End:
 
 		conllection_class = (jclass)Java::Env->NewGlobalRef(Java::Env->FindClass("java/util/Collection"));

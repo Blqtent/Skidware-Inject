@@ -31,6 +31,7 @@
 #include "moduleManager/modules/combat/velocity.h"
 
 #include "moduleManager/modules/player/blink.h"
+#include "moduleManager/modules/player/autotool.h"
 #include "moduleManager/modules/player/eagle.h"
 #include "moduleManager/modules/player/fastplace.h"
 
@@ -143,6 +144,7 @@ void Base::initModule() {
 
 	{
 		ModuleManager::getInstance().addModule<Blink>(Blink::getInstance());
+		ModuleManager::getInstance().addModule<AutoTool>(AutoTool::getInstance());
 		ModuleManager::getInstance().addModule<Eagle>(Eagle::getInstance());
 		ModuleManager::getInstance().addModule<Fastplace>(Fastplace::getInstance());
 	}

@@ -161,6 +161,11 @@
     <ClInclude Include="src\base\eventManager\events\EventChams.hpp" />
     <ClInclude Include="src\base\menu\hooks\glTexEnviHook.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\tower.h" />
+    <ClInclude Include="src\base\moduleManager\modules\player\autotool.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\block\Block.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\block\state\BlockState.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\block\state\IBlockState.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\item\ItemTool.h" />
     <ClInclude Include="src\base\sdk\Object.h">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
@@ -271,7 +276,12 @@
   <ItemGroup>
     <ClCompile Include="src\base\menu\hooks\glTexEnviHook.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\tower.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\player\autotool.cpp" />
     <ClCompile Include="src\base\sdk\java\util\Collection.h" />
+    <ClCompile Include="src\base\sdk\net\minecraft\block\Block.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\block\state\BlockState.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\block\state\IBlockState.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\item\ItemTool.cpp" />
     <ClCompile Include="src\base\sdk\Object.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>

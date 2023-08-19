@@ -39,13 +39,13 @@ void CEntityPlayerSP::attackEntity(CEntityPlayerSP* player, jobject entity)
 	jclass playerControllerClazz;
 	Java::AssignClass("net.minecraft.client.multiplayer.PlayerControllerMP", playerControllerClazz);
 	if (JNIHelper::IsForge()) {
-		jobject playerControllerObj = SDK::Minecraft->getPlayerController();
+		Object playerControllerObj = SDK::Minecraft->getPlayerController();
 		jmethodID attackMid = Java::Env->GetMethodID(playerControllerClazz, "func_78764_a", "(Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/entity/Entity;)V");
-		return Java::Env->CallVoidMethod(playerControllerObj, attackMid, player->getInstance(), entity);
+		return Java::Env->CallVoidMethod(playerControllerObj.getInstance(), attackMid, player->getInstance(), entity);
 	}
-	jobject playerControllerObj = SDK::Minecraft->getPlayerController();
-	jmethodID attackMid = Java::Env->GetMethodID(playerControllerClazz, "attackEntity", "(Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/entity /Entity;)V");
-	return Java::Env->CallVoidMethod(playerControllerObj, attackMid, player->getInstance(), entity);
+	Object playerControllerObj = SDK::Minecraft->getPlayerController();
+	jmethodID attackMid = Java::Env->GetMethodID(playerControllerClazz, "attackEntity", "(Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/entity/Entity;)V");
+	return Java::Env->CallVoidMethod(playerControllerObj.getInstance(), attackMid, player->getInstance(), entity);
 }
 
 bool CEntityPlayerSP::sendUseItem(CEntityPlayer* player, CWorld* world, CItemStack item)
@@ -53,13 +53,13 @@ bool CEntityPlayerSP::sendUseItem(CEntityPlayer* player, CWorld* world, CItemSta
 	jclass playerControllerClazz;
 	Java::AssignClass("net.minecraft.client.multiplayer.PlayerControllerMP", playerControllerClazz);
 	if (JNIHelper::IsForge()) {
-		jobject playerControllerObj = SDK::Minecraft->getPlayerController();
+		Object playerControllerObj = SDK::Minecraft->getPlayerController();
 		jmethodID attackMid = Java::Env->GetMethodID(playerControllerClazz, "func_78769_a", "(Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/world/World;Lnet/minecraft/item/ItemStack;)Z");
-		return Java::Env->CallBooleanMethod(playerControllerObj, attackMid, player->getInstance(), world, item.getInstance());
+		return Java::Env->CallBooleanMethod(playerControllerObj.getInstance(), attackMid, player->getInstance(), world, item.getInstance());
 	}
-	jobject playerControllerObj = SDK::Minecraft->getPlayerController();
+	Object playerControllerObj = SDK::Minecraft->getPlayerController();
 	jmethodID attackMid = Java::Env->GetMethodID(playerControllerClazz, "sendUseItem", "(Lnet/minecraft/entity/player/EntityPlayer;Lnet/minecraft/world/World;Lnet/minecraft/item/ItemStack;)Z");
-	return Java::Env->CallBooleanMethod(playerControllerObj, attackMid, player->getInstance(), world, item.getInstance());
+	return Java::Env->CallBooleanMethod(playerControllerObj.getInstance(), attackMid, player->getInstance(), world, item.getInstance());
 }
 
 double CEntityPlayerSP::get_motion_x()
@@ -188,14 +188,14 @@ void CEntityPlayerSP::set_speed(const float speed)
 	}
 }
 
-jobject CEntityPlayerSP::get_abilities()
+Object CEntityPlayerSP::get_abilities()
 {
 	if (JNIHelper::IsForge()) {
 		jfieldID abi = Java::Env->GetFieldID(this->getClass(), "field_71075_bZ", "Lnet/minecraft/entity/player/PlayerAbilities;");
 		return Java::Env->GetObjectField(this->getInstance(), abi);
 	}
 	jfieldID abi = Java::Env->GetFieldID(this->getClass(), "abilities", "Lnet/minecraft/entity/player/PlayerAbilities;");
-	return Java::Env->GetObjectField(this->getInstance(), abi);
+	return Object(Java::Env->GetObjectField(this->getInstance(), abi));
 }
 
 void CEntityPlayerSP::setFly(bool state)
@@ -204,15 +204,15 @@ void CEntityPlayerSP::setFly(bool state)
 	Java::AssignClass("net.minecraft.entity.player.PlayerCapabilities", clazz);
 	if (JNIHelper::IsForge()) {
 		jfieldID abi = Java::Env->GetFieldID(clazz, "field_75100_b", "Z");
-		return Java::Env->SetBooleanField(get_abilities(), abi, state);
+		return Java::Env->SetBooleanField(get_abilities().getInstance(), abi, state);
 	}
 	jfieldID abi = Java::Env->GetFieldID(clazz, "isFlying", "Z");
-	return Java::Env->SetBooleanField(get_abilities(), abi, state);
+	return Java::Env->SetBooleanField(get_abilities().getInstance(), abi, state);
 
 }
 
 
-void CEntityPlayerSP::sendGroundPacket(jobject Packet)
+void CEntityPlayerSP::sendGroundPacket(Object Packet)
 {
 	jclass playerClass;
 	Java::AssignClass("net.minecraft.client.entity.EntityPlayerSP", playerClass);
@@ -240,7 +240,7 @@ void CEntityPlayerSP::sendGroundPacket(jobject Packet)
 		return;
 	}
 
-	Java::Env->CallVoidMethod(queueObject, addToSendQueue, Packet);
+	Java::Env->CallVoidMethod(queueObject, addToSendQueue, Packet.getInstance());
 
 	Java::Env->DeleteLocalRef(playerClass);
 
@@ -252,7 +252,7 @@ void CEntityPlayerSP::sendGroundPacket(jobject Packet)
 	return;
 }
 
-jobject CEntityPlayerSP::C03PacketPlayer(jboolean ground, float yaw, float pitch)
+Object CEntityPlayerSP::C03PacketPlayer(jboolean ground, float yaw, float pitch)
 {
 	jclass C03;
 	Java::AssignClass("net.minecraft.network.play.client.C03PacketPlayer", C03);
@@ -269,5 +269,5 @@ jobject CEntityPlayerSP::C03PacketPlayer(jboolean ground, float yaw, float pitch
 	jobject Packet = Java::Env->NewObject(C03, c03Constructer, ground);
 	Java::Env->SetFloatField(Packet, yawf, yaw);
 	Java::Env->SetFloatField(Packet, pitchf, pitch);
-	return Packet;
+	return Object(Packet);
 }
