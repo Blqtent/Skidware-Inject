@@ -47,7 +47,7 @@ public:
 		}
 
 		//std::cout << "3" << std::endl;
-		if (entityHead.GetItem() == nullptr || myHead.GetItem()== nullptr)
+		if (entityHead.GetItem().getInstance() == nullptr || myHead.GetItem().getInstance() == nullptr)
 		{
 			return true;
 		}

@@ -24,7 +24,9 @@
 //	return this->Instance;
 //}
 //
-
+CItemArmor::CItemArmor(CItem item) {
+	this->instance = Java::Env->NewGlobalRef(item.getInstance());
+}
 int CItemArmor::getColor(jobject stack) {
 	return Java::Env->CallIntMethod(this->getInstance(), StrayCache::itemArmor_getColor , stack);
 }

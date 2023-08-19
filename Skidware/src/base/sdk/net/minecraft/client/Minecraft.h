@@ -20,7 +20,7 @@ public:
 	int getDebugFPS();
 	void ClickMouse();
 	void setRightClickDelayTimer(jint delay);
-	jobject getPlayerController();
+	Object getPlayerController();
 	CMovingObjectPosition GetMouseOver();
 	CRenderManager GetRenderManager();
 

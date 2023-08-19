@@ -11,5 +11,6 @@ public:
 	CItemStack GetCurrentItem();
 	void SetCurrentItem(int index);
 	CItemStack GetIndexItem(int index);
+	CItemStack GetStackInSlot(int index);
 	CItemStack GetArmorItem(int index);
 };

@@ -39,6 +39,8 @@ public:
 	float fov;
 	int thirdPersonView;
 
+	bool isCombat = false;
+
 	//struct PlayerData{
 	//	CEntityPlayer obj;
 	//	Vector3 pos;
@@ -70,7 +72,7 @@ public:
 		float ySubtractValue = 3.4;
 		if (SDK::Minecraft->thePlayer->IsSneaking())
 			ySubtractValue -= .175f;
-
+		isCombat = false;
 		renderPos = SDK::Minecraft->renderManager->RenderPos() + Vector3{ 0, ySubtractValue, 0 };
 		renderPartialTicks = SDK::Minecraft->timer->GetRenderPartialTicks();
 

@@ -1,5 +1,5 @@
 #pragma once
-
+#include "../../block/Block.h"
 #include "../../../../Object.h"
 #include "../../entity/player/EntityPlayer.h"
 #include "../../../../../util/math/geometry.h"
@@ -15,6 +15,6 @@ class CChunk : public Object
 	//
 public:
 	using Object::Object;
-	jobject getBlock(jint x, jint y, jint z);
+	CBlock getBlock(jint x, jint y, jint z);
 };
 

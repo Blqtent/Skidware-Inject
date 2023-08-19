@@ -8,6 +8,8 @@
 
 #include "../../../../util/logger.h"
 
+
+
 //CWorld::CWorld() 
 //{
 //	Java::AssignClass("net.minecraft.world.World", StrayCache::world_class);
@@ -125,6 +127,16 @@ CChunk CWorld::getChunkFromChunkCoords(jint chunkX, jint chunkZ)
 	return CChunk(Java::Env->CallObjectMethod(this->getInstance(), StrayCache::world_getChunkFromChunkCoords));
 }
 
+CIBlockState CWorld::getBlockState(BlockPos pos) {
+	//if (!this->isValid() || this->isNULL()) 
+	//{
+	//	Logger::Log("e");
+	//	return CBlockState{};
+	//}
+	//
+	return CIBlockState(Java::Env->CallObjectMethod(this->getInstance(), StrayCache::world_getBlockState, pos.getInstance()));
+}
+
 bool CWorld::isAirBlock(double x, double y, double z)
 {
 	/*
@@ -158,4 +170,31 @@ bool CWorld::isAirBlock(double x, double y, double z)
 	jobject blockpos = Java::Env->NewObject(blockPosClass, blockPosConstructor, x, y, z);
 
 	return Java::Env->CallBooleanMethod(this->getInstance(), StrayCache::world_isAirBlock, blockpos);
+}
+
+bool CWorld::isAirBlock(BlockPos pos)
+{
+	/*
+	if (JNIHelper::IsVanilla()) {
+		jclass bpclass = Java::Env->FindClass("cj");
+		jmethodID bpmid = Java::Env->GetMethodID(bpclass, "<init>", "(DDD)V");
+		jobject blockpos = Java::Env->NewObject(bpclass, bpmid, (jdouble)x, (jdouble)y, (jdouble)z);
+
+		jclass wclass = Java::Env->GetObjectClass(this->getInstance());
+		jmethodID mid = Java::Env->GetMethodID(wclass, "d", "(Lcj;)Z");
+
+		bool res = Java::Env->CallBooleanMethod(this->getInstance(), mid, blockpos);
+
+		Java::Env->DeleteLocalRef(bpclass);
+		Java::Env->DeleteLocalRef(wclass);
+		Java::Env->DeleteLocalRef(blockpos);
+
+		return res;
+	}
+	*/
+	if (JNIHelper::IsForge()) {
+		return Java::Env->CallBooleanMethod(this->getInstance(), StrayCache::world_isAirBlock, pos.getInstance());
+
+	}
+	return Java::Env->CallBooleanMethod(this->getInstance(), StrayCache::world_isAirBlock, pos.getInstance());
 }

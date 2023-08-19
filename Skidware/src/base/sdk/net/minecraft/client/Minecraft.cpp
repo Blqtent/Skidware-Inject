@@ -172,9 +172,9 @@ void CMinecraft::setRightClickDelayTimer(jint delay) {
 	Java::Env->SetIntField(this->getInstance(), StrayCache::minecraft_rightClickDelayTimer, delay);
 }
 
-jobject CMinecraft::getPlayerController()
+Object CMinecraft::getPlayerController()
 {
-	return Java::Env->GetObjectField(this->getInstance(), StrayCache::minecraft_playerController);
+	return Object(Java::Env->GetObjectField(this->getInstance(), StrayCache::minecraft_playerController));
 }
 CRenderManager CMinecraft::GetRenderManager() {
 	if (!this->instance) return GetRenderManager();

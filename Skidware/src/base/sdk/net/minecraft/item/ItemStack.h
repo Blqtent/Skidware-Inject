@@ -1,6 +1,8 @@
 #pragma once
 #include "../../../Object.h"
 #include "ItemArmor.h"
+#include "../block/Block.h"
+#include "item.h"
 class CItemStack : public Object
 {
 	//CItemStack();
@@ -10,6 +12,7 @@ class CItemStack : public Object
 	//jobject getInstance();
 public:
 	using Object::Object;
-	jobject GetItem();
-	int GetItemID();
+	CItem GetItem();
+	
+	float GetStrVsBlock(CBlock block);
 };

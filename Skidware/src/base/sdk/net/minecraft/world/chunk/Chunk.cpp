@@ -1,5 +1,6 @@
 #include "Chunk.h"
 
+
 //CChunk::CChunk(jobject instance)
 //{
 //	Java::AssignClass("net.minecraft.world.chunk.Chunk", StrayCache::chunk_class);
@@ -20,7 +21,7 @@
 //	this->Instance = instance;
 //}
 
-jobject CChunk::getBlock(jint x, jint y, jint z)
+CBlock CChunk::getBlock(jint x, jint y, jint z)
 {
-	return Java::Env->CallObjectMethod(this->getInstance(), StrayCache::chunk_getBlock, x, y, z);
+	return CBlock(Java::Env->CallObjectMethod(this->getInstance(), StrayCache::chunk_getBlock, x, y, z));
 }

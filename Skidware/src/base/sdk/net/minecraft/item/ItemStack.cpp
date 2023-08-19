@@ -23,12 +23,14 @@
 //	return this->Instance;
 //}
 
-jobject CItemStack::GetItem()
+CItem CItemStack::GetItem()
 {
-	return Java::Env->CallObjectMethod(this->getInstance(), StrayCache::itemStack_getItem);
+	return CItem(Java::Env->CallObjectMethod(this->getInstance(), StrayCache::itemStack_getItem));
 }
 
-int CItemStack::GetItemID()
+
+float CItemStack::GetStrVsBlock(CBlock block)
 {
-	return Java::Env->CallStaticIntMethod(this->getClass(), StrayCache::itemStack_getIdFromItem, this->GetItem());
+	if (!this->isValid() || this->isNULL()) return NULL;
+	return Java::Env->CallFloatMethod(this->instance, StrayCache::itemStack_getStrVsBlock,block.getInstance());
 }

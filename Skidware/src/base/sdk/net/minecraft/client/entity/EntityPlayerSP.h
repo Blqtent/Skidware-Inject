@@ -38,11 +38,11 @@ public:
 	bool isMovingBackwards();
 
 	void set_speed(const float speed);
-	jobject get_abilities();
+	Object get_abilities();
 	void setFly(bool state);
 
-	void sendGroundPacket(jobject Packet);
+	void sendGroundPacket(Object Packet);
 
-	jobject C03PacketPlayer(jboolean ground, float yaw, float pitch);
+	Object C03PacketPlayer(jboolean ground, float yaw, float pitch);
 
 };
