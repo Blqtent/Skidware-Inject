@@ -1,566 +1,192 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
+    <ClCompile Include="src\base\menu\hooks\glTexEnviHook.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\blatent\tower.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\item\ItemArmor.cpp" />
+    <ClCompile Include="src\base\eventManager\events\EventUpdate.hpp" />
+    <ClCompile Include="src\base\menu\hooks\WalkingUpdate.cpp" />
+    <ClCompile Include="src\base\menu\hooks\WSA.cpp" />
+    <ClCompile Include="src\base\moduleManager\AbstractModule.cpp" />
+    <ClCompile Include="src\base\moduleManager\ModuleManager.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\blatent\flight.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\blatent\killaura.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\blatent\longjump.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\blatent\nofall.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\blatent\speed.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\blatent\timerhack.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\clicker\leftAutoClicker.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\clicker\rightAutoClicker.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\combat\aimAssist.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\combat\antibot.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\combat\reach.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\combat\teams.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\combat\velocity.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\player\blink.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\player\eagle.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\player\fastplace.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\visual\cavefinder.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\visual\esp.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\visual\fullbright.cpp" />
+    <ClCompile Include="src\base\sdk\JNIHelper.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\item\item.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\item\ItemStack.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\entity\player\InventoryPlayer.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\util\BlockPos.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\util\MovingObjectPosition.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\util\AxisAlignedBB.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\client\settings\GameSettings.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\world\chunk\Chunk.cpp" />
+    <ClCompile Include="src\base\util\window\borderless.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\client\renderer\entity\RenderManager.cpp" />
+    <ClCompile Include="src\base\sdk\java\nio\FloatBuffer.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\client\renderer\ActiveRenderInfo.cpp" />
+    <ClCompile Include="src\base\sdk\java\util\Set.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\entity\EntityLivingBase.cpp" />
+    <ClCompile Include="src\base\sdk\java\util\List.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\entity\player\EntityPlayer.cpp" />
+    <ClCompile Include="ext\imgui\imgui.cpp" />
+    <ClCompile Include="ext\imgui\imgui_demo.cpp" />
+    <ClCompile Include="ext\imgui\imgui_draw.cpp" />
+    <ClCompile Include="ext\imgui\imgui_impl_opengl2.cpp" />
+    <ClCompile Include="ext\imgui\imgui_impl_win32.cpp" />
+    <ClCompile Include="ext\imgui\imgui_tables.cpp" />
+    <ClCompile Include="ext\imgui\imgui_widgets.cpp" />
+    <ClCompile Include="ext\minhook\buffer.cpp" />
+    <ClCompile Include="ext\minhook\hde\hde32.cpp" />
+    <ClCompile Include="ext\minhook\hde\hde64.cpp" />
+    <ClCompile Include="ext\minhook\hook.cpp" />
+    <ClCompile Include="ext\minhook\trampoline.cpp" />
+    <ClCompile Include="src\base\menu\hooks\wglSwapBuffers.cpp" />
+    <ClCompile Include="src\base\menu\hooks\wndProc.cpp" />
+    <ClCompile Include="src\base\menu\renderMenu.cpp" />
+    <ClCompile Include="src\base\menu\menu.cpp" />
+    <ClCompile Include="src\base\renderLoop.cpp" />
+    <ClCompile Include="src\base\sdk\java\lang\String.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\client\entity\EntityPlayerSP.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\client\Minecraft.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\entity\Entity.cpp" />
+    <ClCompile Include="src\base\sdk\sdk.cpp" />
+    <ClCompile Include="src\base\util\logger.cpp" />
+    <ClCompile Include="src\base\java\java.cpp" />
+    <ClCompile Include="src\base\sdk\Object.cpp" />
+    <ClCompile Include="src\base\base.cpp" />
+    <ClCompile Include="src\base\util\math\math.cpp" />
+    <ClCompile Include="src\base\util\math\worldToScreen.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\world\World.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\client\multiplayer\WorldClient.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\util\Timer.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\util\Vec3.cpp" />
+    <ClCompile Include="src\base\util\utils.cpp" />
+    <ClCompile Include="src\base\sdk\java\util\Collection.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\main.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\base.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\java\java.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\jni\classfile_constants.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\jni\jawt.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\jni\jawt_md.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\jni\jdwpTransport.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\jni\jni.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\jni\jni_md.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\jni\jvmti.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\jni\jvmticmlr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\util\logger.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\menu\menu.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\client\Minecraft.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\imgui\imconfig.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\imgui\imgui.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\imgui\imgui_impl_opengl2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\imgui\imgui_impl_win32.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\imgui\imgui_internal.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\imgui\imstb_rectpack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\imgui\imstb_textedit.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\imgui\imstb_truetype.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\minhook\hde\hde32.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\minhook\hde\hde64.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\minhook\hde\pstdint.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\minhook\hde\table32.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\minhook\hde\table64.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\minhook\buffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\minhook\minhook.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\minhook\trampoline.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\entity\Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\java\IClass.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\sdk.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\java\lang\String.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\client\entity\EntityPlayerSP.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\world\World.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\entity\player\EntityPlayer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\java\util\List.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\entity\EntityLivingBase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\client\multiplayer\WorldClient.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\java\util\Set.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\client\renderer\ActiveRenderInfo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\java\nio\FloatBuffer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\client\renderer\entity\RenderManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\util\Timer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\util\math\geometry.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\util\math\math.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\util\math\worldToScreen.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\util\window\borderless.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\client\settings\GameSettings.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\util\AxisAlignedBB.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\util\trimmer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\util\render\renderqolf.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\util\MovingObjectPosition.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\util\Vec3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\strayCache.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ext\fonts\jetbrainsmono.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\entity\player\InventoryPlayer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\item\ItemStack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\util\window\bind.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\util\xorstr.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\JNIHelper.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\extension\config.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\extension\hook.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\menu\ImGuiUtils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\menu\hooks\WSA.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\security\lazy_importer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\util\BlockPos.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\world\chunk\Chunk.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\security\security.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\eventManager\EventManager.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\eventManager\AbstractEvent.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\eventManager\events\EventKey.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\AbstractModule.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\ModuleManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\blatent\flight.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\blatent\killaura.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\blatent\longjump.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\blatent\nofall.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\blatent\speed.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\clicker\leftAutoClicker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\clicker\rightAutoClicker.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\combat\aimAssist.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\combat\antibot.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\combat\reach.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\combat\velocity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\player\blink.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\player\eagle.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\player\fastplace.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\visual\cavefinder.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\visual\esp.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\visual\fullbright.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\commonData.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\util\type\ArrayList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\blatent\timerhack.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\eventManager\events\EventPacketSend.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\eventManager\events\EventPacketReceive.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\combat\teams.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\item\item.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\sdk\net\minecraft\item\ItemArmor.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\menu\hooks\glTexEnviHook.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\eventManager\events\EventChams.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="src\base\moduleManager\modules\blatent\tower.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-<<<<<<< Updated upstream
-    <ClInclude Include="ext\fonts\Minecraft.h">
-=======
-    <ClInclude Include="src\base\menu\hooks\moncraftfont.h">
->>>>>>> Stashed changes
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="src\main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\base.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\java\java.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\util\logger.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\menu\menu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ext\imgui\imgui.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ext\imgui\imgui_demo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ext\imgui\imgui_draw.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ext\imgui\imgui_impl_opengl2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ext\imgui\imgui_impl_win32.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ext\imgui\imgui_tables.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ext\imgui\imgui_widgets.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ext\minhook\hde\hde32.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ext\minhook\hde\hde64.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ext\minhook\buffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ext\minhook\hook.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ext\minhook\trampoline.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\menu\hooks\wglSwapBuffers.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\menu\renderMenu.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\menu\hooks\wndProc.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\java\lang\String.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\client\entity\EntityPlayerSP.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\client\Minecraft.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\entity\Entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\sdk.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\renderLoop.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\world\World.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\entity\player\EntityPlayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\java\util\List.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\entity\EntityLivingBase.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\client\multiplayer\WorldClient.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\java\util\Set.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\client\renderer\ActiveRenderInfo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\java\nio\FloatBuffer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\client\renderer\entity\RenderManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\util\Timer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\util\math\math.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\util\math\worldToScreen.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\util\window\borderless.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\client\settings\GameSettings.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\util\AxisAlignedBB.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\util\MovingObjectPosition.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\util\Vec3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\entity\player\InventoryPlayer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\item\ItemStack.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\JNIHelper.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\menu\hooks\WSA.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\menu\hooks\WalkingUpdate.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\util\BlockPos.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\world\chunk\Chunk.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\eventManager\events\EventUpdate.hpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\ModuleManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\AbstractModule.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\blatent\flight.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\blatent\killaura.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\blatent\longjump.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\blatent\nofall.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\blatent\speed.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\clicker\leftAutoClicker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\clicker\rightAutoClicker.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\combat\aimAssist.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\combat\antibot.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\combat\reach.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\combat\velocity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\player\blink.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\player\eagle.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\player\fastplace.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\visual\cavefinder.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\visual\esp.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\visual\fullbright.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\blatent\timerhack.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\combat\teams.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\item\item.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\sdk\net\minecraft\item\ItemArmor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\menu\hooks\glTexEnviHook.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="src\base\moduleManager\modules\blatent\tower.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="ext\fonts\Minecraft.h" />
+    <ClInclude Include="src\base\eventManager\events\EventChams.hpp" />
+    <ClInclude Include="src\base\menu\hooks\glTexEnviHook.h" />
+    <ClInclude Include="src\base\moduleManager\modules\blatent\tower.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\item\ItemArmor.h" />
+    <ClInclude Include="src\base\eventManager\AbstractEvent.h" />
+    <ClInclude Include="src\base\eventManager\EventManager.hpp" />
+    <ClInclude Include="src\base\eventManager\events\EventKey.hpp" />
+    <ClInclude Include="src\base\eventManager\events\EventPacketReceive.h" />
+    <ClInclude Include="src\base\eventManager\events\EventPacketSend.h" />
+    <ClInclude Include="src\base\extension\config.h" />
+    <ClInclude Include="src\base\extension\hook.h" />
+    <ClInclude Include="src\base\menu\hooks\WSA.h" />
+    <ClInclude Include="src\base\menu\ImGuiUtils.h" />
+    <ClInclude Include="src\base\moduleManager\AbstractModule.h" />
+    <ClInclude Include="src\base\moduleManager\commonData.h" />
+    <ClInclude Include="src\base\moduleManager\ModuleManager.h" />
+    <ClInclude Include="src\base\moduleManager\modules\blatent\flight.h" />
+    <ClInclude Include="src\base\moduleManager\modules\blatent\killaura.h" />
+    <ClInclude Include="src\base\moduleManager\modules\blatent\longjump.h" />
+    <ClInclude Include="src\base\moduleManager\modules\blatent\nofall.h" />
+    <ClInclude Include="src\base\moduleManager\modules\blatent\speed.h" />
+    <ClInclude Include="src\base\moduleManager\modules\blatent\timerhack.h" />
+    <ClInclude Include="src\base\moduleManager\modules\clicker\leftAutoClicker.h" />
+    <ClInclude Include="src\base\moduleManager\modules\clicker\rightAutoClicker.h" />
+    <ClInclude Include="src\base\moduleManager\modules\combat\aimAssist.h" />
+    <ClInclude Include="src\base\moduleManager\modules\combat\antibot.h" />
+    <ClInclude Include="src\base\moduleManager\modules\combat\reach.h" />
+    <ClInclude Include="src\base\moduleManager\modules\combat\teams.h" />
+    <ClInclude Include="src\base\moduleManager\modules\combat\velocity.h" />
+    <ClInclude Include="src\base\moduleManager\modules\player\blink.h" />
+    <ClInclude Include="src\base\moduleManager\modules\player\eagle.h" />
+    <ClInclude Include="src\base\moduleManager\modules\player\fastplace.h" />
+    <ClInclude Include="src\base\moduleManager\modules\visual\cavefinder.h" />
+    <ClInclude Include="src\base\moduleManager\modules\visual\esp.h" />
+    <ClInclude Include="src\base\moduleManager\modules\visual\fullbright.h" />
+    <ClInclude Include="src\base\sdk\JNIHelper.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\item\item.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\item\ItemStack.h" />
+    <ClInclude Include="ext\fonts\jetbrainsmono.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\entity\player\InventoryPlayer.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\util\BlockPos.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\util\MovingObjectPosition.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\util\AxisAlignedBB.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\client\settings\GameSettings.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\world\chunk\Chunk.h" />
+    <ClInclude Include="src\base\sdk\strayCache.h" />
+    <ClInclude Include="src\base\security\lazy_importer.h" />
+    <ClInclude Include="src\base\security\security.hpp" />
+    <ClInclude Include="src\base\util\render\renderqolf.h" />
+    <ClInclude Include="src\base\util\type\ArrayList.h" />
+    <ClInclude Include="src\base\util\window\bind.hpp" />
+    <ClInclude Include="src\base\util\window\borderless.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\client\renderer\entity\RenderManager.h" />
+    <ClInclude Include="src\base\sdk\java\nio\FloatBuffer.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\client\renderer\ActiveRenderInfo.h" />
+    <ClInclude Include="src\base\sdk\java\util\Set.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\entity\EntityLivingBase.h" />
+    <ClInclude Include="src\base\sdk\java\util\List.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\entity\player\EntityPlayer.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\client\entity\EntityPlayerSP.h" />
+    <ClInclude Include="src\base\sdk\sdk.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\entity\Entity.h" />
+    <ClInclude Include="ext\imgui\imconfig.h" />
+    <ClInclude Include="ext\imgui\imgui.h" />
+    <ClInclude Include="ext\imgui\imgui_impl_opengl2.h" />
+    <ClInclude Include="ext\imgui\imgui_impl_win32.h" />
+    <ClInclude Include="ext\imgui\imgui_internal.h" />
+    <ClInclude Include="ext\imgui\imstb_rectpack.h" />
+    <ClInclude Include="ext\imgui\imstb_textedit.h" />
+    <ClInclude Include="ext\imgui\imstb_truetype.h" />
+    <ClInclude Include="ext\jni\classfile_constants.h" />
+    <ClInclude Include="ext\jni\jawt.h" />
+    <ClInclude Include="ext\jni\jawt_md.h" />
+    <ClInclude Include="ext\jni\jdwpTransport.h" />
+    <ClInclude Include="ext\jni\jni.h" />
+    <ClInclude Include="ext\jni\jni_md.h" />
+    <ClInclude Include="ext\jni\jvmti.h" />
+    <ClInclude Include="ext\jni\jvmticmlr.h" />
+    <ClInclude Include="ext\minhook\buffer.h" />
+    <ClInclude Include="ext\minhook\hde\hde32.h" />
+    <ClInclude Include="ext\minhook\hde\hde64.h" />
+    <ClInclude Include="ext\minhook\hde\pstdint.h" />
+    <ClInclude Include="ext\minhook\hde\table32.h" />
+    <ClInclude Include="ext\minhook\hde\table64.h" />
+    <ClInclude Include="ext\minhook\minhook.h" />
+    <ClInclude Include="ext\minhook\trampoline.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\client\Minecraft.h" />
+    <ClInclude Include="src\base\menu\menu.h" />
+    <ClInclude Include="src\base\util\logger.h" />
+    <ClInclude Include="src\base\java\java.h" />
+    <ClInclude Include="src\base\base.h" />
+    <ClInclude Include="src\base\util\math\geometry.h" />
+    <ClInclude Include="src\base\util\math\math.h" />
+    <ClInclude Include="src\base\util\math\worldToScreen.h" />
+    <ClInclude Include="src\base\util\xorstr.h" />
+    <ClInclude Include="src\main.h" />
+    <ClInclude Include="src\base\sdk\java\lang\String.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\world\World.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\client\multiplayer\WorldClient.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\util\Timer.h" />
+    <ClInclude Include="src\base\util\trimmer.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\util\Vec3.h" />
+    <ClInclude Include="src\base\sdk\Object.h" />
+    <ClInclude Include="src\base\util\utils.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

@@ -65,10 +65,10 @@ void AimAssist::onUpdate(const EventUpdate e)
 	Vector3 headPos = thePlayer->GetEyePos();
 	Vector2 currentLookAngles = thePlayer->GetAngles();
 
-	std::vector<CommonData::PlayerData> playerList = CommonData::getInstance()->nativePlayerList;
-	if (playerList.empty()) return;
+	List playerList = CommonData::getInstance()->playerEntities;
 
-	CommonData::PlayerData target;
+
+	CEntityPlayer target;
 	float finalDist = FLT_MAX;
 	float finalDiff = 370;
 	float finalHealth = FLT_MAX;
@@ -85,8 +85,10 @@ void AimAssist::onUpdate(const EventUpdate e)
 	};
 
 
-	for (CommonData::PlayerData player : playerList)
+	for (CEntityPlayer player : playerList.toVector<CEntityPlayer>())
 	{
+		if (!player.isValid() || player.isNULL()) continue;
+
 		if (Antibot::getInstance()->getToggle() && Antibot::getInstance()->isBot(player)) {
 			continue;
 		}
@@ -95,28 +97,28 @@ void AimAssist::onUpdate(const EventUpdate e)
 			continue;
 		}
 
-		if (player.name.length() < 0) return;
-		if (!Java::Env->IsSameObject(thePlayer->GetInstance(), player.obj.GetInstance())) {
-			if (!thePlayer->CanEntityBeSeen(player.obj.GetInstance())) continue;
+		if (player.GetName().length() < 0) return;
+		if (!Java::Env->IsSameObject(thePlayer->getInstance(), player.getInstance())) {
+			if (!thePlayer->CanEntityBeSeen(player.getInstance())) continue;
 
-			float playerHeight = target.height - 0.1;
+			float playerHeight = target.GetHeight() - 0.1;
 
 
-			Vector2 difference = Math::vec_wrapAngleTo180(currentLookAngles.Invert() - Math::getAngles(headPos, player.pos + Vector3(0, playerHeight, 0)).Invert());
+			Vector2 difference = Math::vec_wrapAngleTo180(currentLookAngles.Invert() - Math::getAngles(headPos, player.GetPos() + Vector3(0, playerHeight, 0)).Invert());
 			if (difference.x < 0) difference.x = -difference.x;
 			if (difference.y < 0) difference.y = -difference.y;
-			Vector2 differenceFoot = Math::vec_wrapAngleTo180(currentLookAngles.Invert() - Math::getAngles(headPos, player.pos).Invert());
+			Vector2 differenceFoot = Math::vec_wrapAngleTo180(currentLookAngles.Invert() - Math::getAngles(headPos, player.GetPos()).Invert());
 			if (differenceFoot.x < 0) differenceFoot.x = -differenceFoot.x;
 			if (differenceFoot.y < 0) differenceFoot.y = -differenceFoot.y;
 
 			float angleYaw = currentLookAngles.x - difference.x;
 
-			Vector3 diff = thePlayer->GetPos() - player.pos;
+			Vector3 diff = thePlayer->GetPos() - player.GetPos();
 			float dist = sqrt(pow(diff.x, 2) + pow(diff.y, 2) + pow(diff.z, 2));
 
 			if ((abs(difference.x) <= fov) && dist <= realAimDistance)
 			{
-				float health = player.health;
+				float health = player.GetHealth();
 				switch (targetPriority)
 				{
 				case 1:
@@ -145,17 +147,17 @@ void AimAssist::onUpdate(const EventUpdate e)
 		}
 	}
 
-	if (!target.obj.GetInstance()) {
+	if (!target.getInstance()) {
 		Vector3 null;
 		data = null;
 		return;
 	}
 
 
-	Vector3 ePos = target.pos;
-	Vector3 eLastPos = target.lastPos;
+	Vector3 ePos = target.GetPos();
+	Vector3 eLastPos = target.GetLastTickPos();
 
-	float eHeight = target.height - 0.1;
+	float eHeight = target.GetHeight() - 0.1;
 	Vector3 eHeadPos = ePos + Vector3(0, eHeight, 0);
 	Vector3 eLastHeadPos = eLastPos + Vector3(0, eHeight, 0);
 

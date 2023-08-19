@@ -3,12 +3,10 @@
 #include "../../entity/player/EntityPlayer.h"
 #include "../../entity/Entity.h"
 #include "../../world/World.h"
-struct CEntityPlayerSP : CEntityPlayer
+class CEntityPlayerSP : public CEntityPlayer
 {
-	CEntityPlayerSP();
-
-	jclass GetClass();
-	jobject GetInstance();
+public:
+	using CEntityPlayer::CEntityPlayer;
 	void setSneak(bool state);
 	void attackEntity(CEntityPlayerSP* player, jobject entity);
 	bool sendUseItem(CEntityPlayer* player, CWorld* world, CItemStack item);

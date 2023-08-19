@@ -1,26 +1,26 @@
 #include "Chunk.h"
 
-CChunk::CChunk(jobject instance)
-{
-	Java::AssignClass("net.minecraft.world.chunk.Chunk", this->Class);
-	if (this->Class == nullptr)
-	{
-		if (!StrayCache::initialized) StrayCache::Initialize();
-		this->Class = StrayCache::chunk_class;
-	}
-	if (JNIHelper::IsForge()) {
-
-		this->MethodIDs["getBlock"] = Java::Env->GetMethodID(this->Class, "func_177438_a", "(III)Lnet/minecraft/block/Block;");
-		return;
-	}
-
-	
-	this->MethodIDs["getBlock"] = Java::Env->GetMethodID(this->Class, "getBlock", "(III)Lnet/minecraft/block/Block;");
-	
-	this->Instance = instance;
-}
+//CChunk::CChunk(jobject instance)
+//{
+//	Java::AssignClass("net.minecraft.world.chunk.Chunk", StrayCache::chunk_class);
+//	if (StrayCache::chunk_class == nullptr)
+//	{
+//		if (!StrayCache::initialized) StrayCache::Initialize();
+//		StrayCache::chunk_class = StrayCache::chunk_class;
+//	}
+//	if (JNIHelper::IsForge()) {
+//
+//		StrayCache::chunk_getBlock = Java::Env->GetMethodID(StrayCache::chunk_class, "func_177438_a", "(III)Lnet/minecraft/block/Block;");
+//		return;
+//	}
+//
+//	
+//	StrayCache::chunk_getBlock = Java::Env->GetMethodID(StrayCache::chunk_class, "getBlock", "(III)Lnet/minecraft/block/Block;");
+//	
+//	this->Instance = instance;
+//}
 
 jobject CChunk::getBlock(jint x, jint y, jint z)
 {
-	return Java::Env->CallObjectMethod(this->GetInstance(), this->MethodIDs["getBlock"], x, y, z);
+	return Java::Env->CallObjectMethod(this->getInstance(), StrayCache::chunk_getBlock, x, y, z);
 }

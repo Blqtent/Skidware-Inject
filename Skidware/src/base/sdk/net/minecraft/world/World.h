@@ -1,19 +1,17 @@
 #pragma once
 
-#include "../../../java/IClass.h"
+#include "../../../Object.h"
 #include "../entity/player/EntityPlayer.h"
 #include "../../../../util/math/geometry.h"
 #include "chunk/Chunk.h"
 #include <vector>
+#include "../../../java/util/List.h"
 
-struct CWorld : IClass
+class CWorld : public Object
 {
-	CWorld();
-
-	jclass GetClass();
-	jobject GetInstance();
-
-	std::vector<CEntityPlayer> GetPlayerList();
+public:
+	using Object::Object;
+	List GetPlayerList();
 
 	Vector3 rayTraceBlocks(Vector3 from, Vector3 to, bool stopOnLiquid, bool ignoreBlockWithoutBoundingBox, bool returnLastUncollidableBlock);
 

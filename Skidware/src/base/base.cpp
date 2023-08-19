@@ -94,13 +94,13 @@ void Base::Init()
 		EventManager::getInstance().call(EventUpdate());
 
 #ifndef _DEBUG
-		HideFromDebugger();
+		/*HideFromDebugger();*/
 #endif
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(5));
 		
 #ifndef _DEBUG
-		Check();
+		/*Check();*/
 #endif
 	}
 

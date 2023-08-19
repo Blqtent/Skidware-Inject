@@ -51,8 +51,7 @@ void Reach::onUpdate(const EventUpdate e)
 		lastUpdate = nanoTime;
 
 	CEntityPlayerSP* thePlayer = SDK::Minecraft->thePlayer;
-	std::vector<CommonData::PlayerData> playerList = CommonData::getInstance()->nativePlayerList;
-	if (playerList.empty()) return;
+	List playerList = CommonData::getInstance()->playerEntities;
 
 	Vector2 playerAngles = thePlayer->GetAngles();
 	Vector3 playerPos = thePlayer->GetPos();
@@ -68,31 +67,33 @@ void Reach::onUpdate(const EventUpdate e)
 	//
 
 
-	for (CommonData::PlayerData target : playerList)
+	for (CEntityPlayer target : playerList.toVector<CEntityPlayer>())
 	{
+		if (!target.isValid() || target.isNULL()) continue;
+
 		float distance = ReachDistance;
-		if (Java::Env->IsSameObject(thePlayer->GetInstance(), target.obj.GetInstance())) continue;
+		if (Java::Env->IsSameObject(thePlayer->getInstance(), target.getInstance())) continue;
 
-		BoundingBox targetBB = target.boundingBox;
+		BoundingBox targetBB = target.GetBB().GetNativeBoundingBox();
 
-		float hypothenuseDistance = (float) sqrt(pow((playerPos - target.pos).x, 2) + pow((playerPos - target.pos).z, 2));
+		float hypothenuseDistance = (float) sqrt(pow((playerPos - target.GetPos()).x, 2) + pow((playerPos - target.GetPos()).z, 2));
 
 		if (distance > hypothenuseDistance)
 			distance -= hypothenuseDistance;
 
-		float difference = Math::wrapAngleTo180(playerAngles.x - Math::getAngles(playerPos, target.pos).x);
+		float difference = Math::wrapAngleTo180(playerAngles.x - Math::getAngles(playerPos, target.GetPos()).x);
 
 		if (std::abs(difference) > 180.0f)
 			continue;
 
-		float cos = std::cos(Math::degToRadiants(Math::getAngles(playerPos, target.pos).x + 90.0f));
-		float sin = std::sin(Math::degToRadiants(Math::getAngles(playerPos, target.pos).x + 90.0f));
-		float cosPitch = std::cos(Math::degToRadiants(Math::getAngles(playerPos, target.pos).y));
-		float sinPitch = std::sin(Math::degToRadiants(Math::getAngles(playerPos, target.pos).y));
+		float cos = std::cos(Math::degToRadiants(Math::getAngles(playerPos, target.GetPos()).x + 90.0f));
+		float sin = std::sin(Math::degToRadiants(Math::getAngles(playerPos, target.GetPos()).x + 90.0f));
+		float cosPitch = std::cos(Math::degToRadiants(Math::getAngles(playerPos, target.GetPos()).y));
+		float sinPitch = std::sin(Math::degToRadiants(Math::getAngles(playerPos, target.GetPos()).y));
 
-		float x = target.pos.x - (cos * distance * cosPitch);
-		float y = target.pos.y + (distance * sinPitch);
-		float z = target.pos.z - (sin * distance * cosPitch);
+		float x = target.GetPos().x - (cos * distance * cosPitch);
+		float y = target.GetPos().y + (distance * sinPitch);
+		float z = target.GetPos().z - (sin * distance * cosPitch);
 
 		float entityWidth = 0.6f;
 		float bbWidth = entityWidth / 2.0f;
@@ -109,7 +110,7 @@ void Reach::onUpdate(const EventUpdate e)
 			(double) z + bbWidth
 		};
 
-		target.obj.SetBB(newBB);
+		target.SetBB(newBB);
 	}
 
 }

@@ -2,13 +2,10 @@
 
 #include "Entity.h"
 
-struct CEntityLivingBase : CEntity
+class CEntityLivingBase :public CEntity
 {
-	CEntityLivingBase();
-
-	jclass GetClass();
-	jobject GetInstance();
-
+public:
+	using CEntity::CEntity;
 	float GetHealth();
 	float GetMaxHealth();
 	float getMoveStrafe();

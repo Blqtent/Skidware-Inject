@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../../../java/IClass.h"
+#include "../../../Object.h"
 #include "../client/entity/EntityPlayerSP.h"
 #include "multiplayer/WorldClient.h"
 #include "renderer/ActiveRenderInfo.h"
@@ -9,13 +9,12 @@
 #include "settings/GameSettings.h"
 #include "../util/MovingObjectPosition.h"
 
-struct CMinecraft : IClass
+class CMinecraft : public Object
 {
-	CMinecraft();
-
-	jclass GetClass();
-	jobject GetInstance();
-
+public:
+	using Object::Object;
+	CWorldClient getTheWorld();
+	CEntityPlayerSP getThePlayer();
 	CEntity GetRenderViewEntity();
 	bool IsInGuiState();
 	int getDebugFPS();
@@ -23,6 +22,7 @@ struct CMinecraft : IClass
 	void setRightClickDelayTimer(jint delay);
 	jobject getPlayerController();
 	CMovingObjectPosition GetMouseOver();
+	CRenderManager GetRenderManager();
 
 	CEntityPlayerSP* thePlayer;
 	CWorldClient* theWorld;

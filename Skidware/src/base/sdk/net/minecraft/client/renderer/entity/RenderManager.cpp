@@ -3,73 +3,63 @@
 #include "../../../../../../java/java.h"
 #include "../../../../../sdk.h"
 
-CRenderManager::CRenderManager()
-{
-	Java::AssignClass("net.minecraft.client.renderer.entity.RenderManager", this->Class);
-
-	if (this->Class == nullptr)
-	{
-		if (!StrayCache::initialized) StrayCache::Initialize();
-		this->Class = StrayCache::entityPlayer_class;
-	}
-	/*
-	if (JNIHelper::IsVanilla()) {
-		this->FieldIDs["renderPosX"] = Java::Env->GetFieldID(this->Class, "o", "D");
-		this->FieldIDs["renderPosY"] = Java::Env->GetFieldID(this->Class, "p", "D");
-		this->FieldIDs["renderPosZ"] = Java::Env->GetFieldID(this->Class, "q", "D");
-
-		this->FieldIDs["viewerPosX"] = Java::Env->GetFieldID(this->Class, "h", "D");
-		this->FieldIDs["viewerPosY"] = Java::Env->GetFieldID(this->Class, "i", "D");
-		this->FieldIDs["viewerPosZ"] = Java::Env->GetFieldID(this->Class, "j", "D");
-		return;
-	}
-	*/
-	if (JNIHelper::IsForge()) {
-		this->FieldIDs["renderPosX"] = Java::Env->GetFieldID(this->Class, "field_78725_b", "D");
-		this->FieldIDs["renderPosY"] = Java::Env->GetFieldID(this->Class, "field_78726_c", "D");
-		this->FieldIDs["renderPosZ"] = Java::Env->GetFieldID(this->Class, "field_78723_d", "D");
-
-		this->FieldIDs["viewerPosX"] = Java::Env->GetFieldID(this->Class, "field_78730_l", "D");
-		this->FieldIDs["viewerPosY"] = Java::Env->GetFieldID(this->Class, "field_78731_m", "D");
-		this->FieldIDs["viewerPosZ"] = Java::Env->GetFieldID(this->Class, "field_78728_n", "D");
-		return;
-	}
-
-	this->FieldIDs["renderPosX"] = Java::Env->GetFieldID(this->Class, "renderPosX", "D");
-	this->FieldIDs["renderPosY"] = Java::Env->GetFieldID(this->Class, "renderPosY", "D");
-	this->FieldIDs["renderPosZ"] = Java::Env->GetFieldID(this->Class, "renderPosZ", "D");
-
-	this->FieldIDs["viewerPosX"] = Java::Env->GetFieldID(this->Class, "viewerPosX", "D");
-	this->FieldIDs["viewerPosY"] = Java::Env->GetFieldID(this->Class, "viewerPosY", "D");
-	this->FieldIDs["viewerPosZ"] = Java::Env->GetFieldID(this->Class, "viewerPosZ", "D");
-}
+//CRenderManager::CRenderManager()
+//{
+//	Java::AssignClass("net.minecraft.client.renderer.entity.RenderManager", renderManager_class);
+//
+//	if (renderManager_class == nullptr)
+//	{
+//		if (!initialized) Initialize();
+//		renderManager_class = renderManager_class;
+//	}
+//	/*
+//	if (JNIHelper::IsVanilla()) {
+//		renderManager_renderPosX = Java::Env->GetFieldID(renderManager_class, "o", "D");
+//		renderManager_renderPosY = Java::Env->GetFieldID(renderManager_class, "p", "D");
+//		renderManager_renderPosZ = Java::Env->GetFieldID(renderManager_class, "q", "D");
+//
+//		renderManager_viewerPosX = Java::Env->GetFieldID(renderManager_class, "h", "D");
+//		renderManager_viewerPosY = Java::Env->GetFieldID(renderManager_class, "i", "D");
+//		renderManager_viewerPosZ = Java::Env->GetFieldID(renderManager_class, "j", "D");
+//		return;
+//	}
+//	*/
+//	if (JNIHelper::IsForge()) {
+//		renderManager_renderPosX = Java::Env->GetFieldID(renderManager_class, "field_78725_b", "D");
+//		renderManager_renderPosY = Java::Env->GetFieldID(renderManager_class, "field_78726_c", "D");
+//		renderManager_renderPosZ = Java::Env->GetFieldID(renderManager_class, "field_78723_d", "D");
+//
+//		renderManager_viewerPosX = Java::Env->GetFieldID(renderManager_class, "field_78730_l", "D");
+//		renderManager_viewerPosY = Java::Env->GetFieldID(renderManager_class, "field_78731_m", "D");
+//		renderManager_viewerPosZ = Java::Env->GetFieldID(renderManager_class, "field_78728_n", "D");
+//		return;
+//	}
+//
+//	renderManager_renderPosX = Java::Env->GetFieldID(renderManager_class, "renderPosX", "D");
+//	renderManager_renderPosY = Java::Env->GetFieldID(renderManager_class, "renderPosY", "D");
+//	renderManager_renderPosZ = Java::Env->GetFieldID(renderManager_class, "renderPosZ", "D");
+//
+//	renderManager_viewerPosX = Java::Env->GetFieldID(renderManager_class, "viewerPosX", "D");
+//	renderManager_viewerPosY = Java::Env->GetFieldID(renderManager_class, "viewerPosY", "D");
+//	renderManager_viewerPosZ = Java::Env->GetFieldID(renderManager_class, "viewerPosZ", "D");
+//}
 
 Vector3 CRenderManager::RenderPos()
 {
-	jobject instance = this->GetInstance();
+	jobject instance = this->getInstance();
 	return Vector3{
-		(float)(double) Java::Env->GetDoubleField(instance, this->FieldIDs["renderPosX"]),
-		(float)(double) Java::Env->GetDoubleField(instance, this->FieldIDs["renderPosY"]),
-		(float)(double) Java::Env->GetDoubleField(instance, this->FieldIDs["renderPosZ"])
+		(float)(double) Java::Env->GetDoubleField(instance, StrayCache::renderManager_renderPosX),
+		(float)(double) Java::Env->GetDoubleField(instance, StrayCache::renderManager_renderPosY),
+		(float)(double) Java::Env->GetDoubleField(instance, StrayCache::renderManager_renderPosZ)
 	};
 }
 
 Vector3 CRenderManager::ViewerPos()
 {
-	jobject instance = this->GetInstance();
+	jobject instance = this->getInstance();
 	return Vector3{
-		(float)(double)Java::Env->GetDoubleField(instance, this->FieldIDs["viewerPosX"]),
-		(float)(double)Java::Env->GetDoubleField(instance, this->FieldIDs["viewerPosY"]),
-		(float)(double)Java::Env->GetDoubleField(instance, this->FieldIDs["viewerPosZ"])
+		(float)(double)Java::Env->GetDoubleField(instance, StrayCache::renderManager_viewerPosX),
+		(float)(double)Java::Env->GetDoubleField(instance, StrayCache::renderManager_viewerPosY),
+		(float)(double)Java::Env->GetDoubleField(instance, StrayCache::renderManager_viewerPosZ)
 	};
-}
-
-jclass CRenderManager::GetClass()
-{
-	return this->Class;
-}
-
-jobject CRenderManager::GetInstance()
-{
-	return Java::Env->GetObjectField(SDK::Minecraft->GetInstance(), SDK::Minecraft->FieldIDs["renderManager"]);
 }

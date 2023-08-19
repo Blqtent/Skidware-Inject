@@ -3,20 +3,17 @@
 #include "../EntityLivingBase.h"
 #include "InventoryPlayer.h"
 
-struct CEntityPlayer : CEntityLivingBase
+class CEntityPlayer : public CEntityLivingBase
 {
-	CEntityPlayer();
-	CEntityPlayer(jobject instance);
+public:
 	bool operator==(const CEntityPlayer& other) const {
-		if (Instance == nullptr || other.Instance == nullptr)
+		if (getInstance() == nullptr || other.getInstance() == nullptr)
 		{
 			return false;
 		}
-		return Instance == other.Instance;
+		return Java::Env->IsSameObject(getInstance(),other.getInstance());
 	}
-	jclass GetClass();
-	jobject GetInstance();
-
+	using CEntityLivingBase::CEntityLivingBase;
 	CInventoryPlayer GetInventory();
 };
 

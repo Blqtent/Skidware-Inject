@@ -1,13 +1,10 @@
 #pragma once
-#include "../../../../java/IClass.h"
+#include "../../../../Object.h"
 
-struct CGameSettings : IClass
+class CGameSettings : public Object
 {
-	CGameSettings();
-
-	jclass GetClass();
-	jobject GetInstance();
-
+public:
+	using Object::Object;
 	int GetThirdPersonView();
 	float GetFOV();
 	void SetGamma(float gamma);
