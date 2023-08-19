@@ -160,7 +160,6 @@
     <ClInclude Include="ext\fonts\Minecraft.h" />
     <ClInclude Include="src\base\eventManager\events\EventChams.hpp" />
     <ClInclude Include="src\base\menu\hooks\glTexEnviHook.h" />
-    <ClInclude Include="src\base\menu\hooks\moncraftfont.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\tower.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\item\ItemArmor.h" />
     <ClInclude Include="src\base\eventManager\AbstractEvent.h" />

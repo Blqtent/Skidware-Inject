@@ -3,7 +3,7 @@
 #include <gl/GL.h>
 #include <mutex>
 #include <Shlobj.h>
-#include "moncraftfont.h"
+//#include "moncraftfont.h"
 #include "../../../../ext/minhook/minhook.h"
 #include "../../../../ext/imgui/imgui.h"
 #include "../../../../ext/imgui/imgui_impl_win32.h"
@@ -124,12 +124,8 @@ void Menu::SetupImgui()
 	//Menu::Font = io.Fonts->AddFontFromMemoryTTF(jetbrainsmono, sizeof(jetbrainsmono), 16);
 	Menu::Font = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\segoeui.ttf", 16);
 	Menu::FontBold = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\segoeuib.ttf", 24);
-<<<<<<< Updated upstream
 	Menu::Minecraft = io.Fonts->AddFontFromMemoryTTF(data, 71900, 16);
-=======
-	//Menu::Minecraft = io.Fonts->AddFontFromMemoryTTF(data, 71900, 16);
 
->>>>>>> Stashed changes
 
 	ImVec4* colors = ImGui::GetStyle().Colors;
 	colors[ImGuiCol_Text] = ImVec4(1.f, 1.f, 1.f, 1.00f);
