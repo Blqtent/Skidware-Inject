@@ -70,67 +70,6 @@ void Base::RenderLoop() // Runs every frame
 
 	io.IniFilename = NULL; // GET RID OF IMGUI.INI
 	
-<<<<<<< Updated upstream
-	y = 35;
-
-	if (AimAssist::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Aimassist");
-		y += 20;
-	}
-	if (Esp::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "ESP");
-		y += 20;
-	}
-	if (LeftAutoClicker::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "LeftClicker");
-		y += 20;
-	}
-	if (RightAutoClicker::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "RightClicker");
-		y += 20;
-	}
-	if (Reach::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Reach");
-		y += 20;
-	}
-	if (Velocity::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Velocity");
-		y += 20;
-	}
-	if (Eagle::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Eagle");
-		y += 20;
-	}
-	if (Fastplace::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "FastPlace");
-		y += 20;
-	}
-	if (Cavefinder::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "XRay");
-		y += 20;
-	}
-	if (Antibot::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Antibot");
-		y += 20;
-	}
-	if (Killaura::getInstance()->getToggle()) {
-		if (Killaura::getInstance()->getMode() == 0) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Killaura - Legit");
-		}
-		else if (Killaura::getInstance()->getMode() == 1) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Killaura - Normal");
-
-		}
-		y += 20;
-	}
-	if (Blink::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Fakelag");
-		y += 20;
-	}
-	if (Fulbright::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Fulbright");
-		y += 20;
-=======
 	y = 24;
 	/*
 	if (Menu::useMCFont) {
@@ -243,7 +182,7 @@ void Base::RenderLoop() // Runs every frame
 		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "LongJump");
 		y += 20;
 	}
-=======
+
 	*/
 	//else {
 		if (AimAssist::getInstance()->getToggle()) {
@@ -337,5 +276,4 @@ void Base::RenderLoop() // Runs every frame
 			y += 20;
 		}
 	//}
->>>>>>> Stashed changes
 }
