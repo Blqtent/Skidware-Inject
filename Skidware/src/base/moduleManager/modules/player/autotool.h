@@ -13,7 +13,7 @@ public:
 	void onDisable();
 	void onUpdate(const EventUpdate e);
 	void RenderMenu();
-
+	int currentSlot = 0;
 	float delay = 0;
 private:
 	AutoTool();

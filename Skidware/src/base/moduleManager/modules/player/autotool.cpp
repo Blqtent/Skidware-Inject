@@ -31,6 +31,10 @@ void AutoTool::onUpdate(const EventUpdate e)
 	if (!CommonData::getInstance()->SanityCheck()) return;
 	if (CommonData::getInstance()->isCombat) return;
 	if (GetAsyncKeyState(VK_RBUTTON) && 1) return;
+	if (!GetAsyncKeyState(VK_LBUTTON) && 1) {
+		SDK::Minecraft->thePlayer->GetInventory().SetCurrentItem(currentSlot);
+		return;
+	}
 	if (GetAsyncKeyState(VK_LBUTTON) && 1) {
 		float bestSpeed = 1.f;
 		int bestSlot = -1;
@@ -102,6 +106,7 @@ void AutoTool::onUpdate(const EventUpdate e)
 		{
 			return;
 		}
+		currentSlot = inventory.GetCurrentItemIndex();
 		inventory.SetCurrentItem(bestSlot);
 	}
 	

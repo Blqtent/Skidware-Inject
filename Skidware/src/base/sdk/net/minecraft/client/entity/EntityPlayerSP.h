@@ -8,6 +8,7 @@ class CEntityPlayerSP : public CEntityPlayer
 public:
 	using CEntityPlayer::CEntityPlayer;
 	void setSneak(bool state);
+	void setKeyJump(bool state);
 	void attackEntity(CEntityPlayerSP* player, jobject entity);
 	bool sendUseItem(CEntityPlayer* player, CWorld* world, CItemStack item);
 

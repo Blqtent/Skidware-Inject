@@ -10,6 +10,7 @@ public:
 	using Object::Object;
 	CItemStack GetCurrentItem();
 	void SetCurrentItem(int index);
+	int GetCurrentItemIndex();
 	CItemStack GetIndexItem(int index);
 	CItemStack GetStackInSlot(int index);
 	CItemStack GetArmorItem(int index);

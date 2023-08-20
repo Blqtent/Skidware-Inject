@@ -14,6 +14,10 @@ Eagle* Eagle::getInstance() {
 }
 
 void Eagle::onDisable() {
+	if (!CommonData::getInstance()->SanityCheck())
+		return;
+	SDK::Minecraft->thePlayer->setSneak(false);
+
 }
 
 void Eagle::onEnable() {

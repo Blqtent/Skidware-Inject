@@ -36,6 +36,7 @@ struct StrayCache {
 	inline static jfieldID gamesettings_gammaSetting;
 	inline static jfieldID gamesettings_keyBindFullscreen;
 	inline static jfieldID gamesettings_keyBindSneak;
+	inline static jfieldID gamesettings_keyBindJump;
 
 
 	// ENTITY CLASS
@@ -308,6 +309,7 @@ struct StrayCache {
 				gamesettings_gammaSetting = Java::Env->GetFieldID(StrayCache::gamesettings_class, "field_74333_Y", "F");
 				gamesettings_keyBindFullscreen = Java::Env->GetFieldID(StrayCache::gamesettings_class, "field_152395_am", "Lnet/minecraft/client/settings/KeyBinding;");
 				gamesettings_keyBindSneak = Java::Env->GetFieldID(gamesettings_class, "field_74311_E", "Lnet/minecraft/client/settings/KeyBinding;");
+				gamesettings_keyBindJump = Java::Env->GetFieldID(gamesettings_class, "field_74314_A", "Lnet/minecraft/client/settings/KeyBinding;");
 				
 			}
 
@@ -585,6 +587,7 @@ struct StrayCache {
 			gamesettings_gammaSetting = Java::Env->GetFieldID(StrayCache::gamesettings_class, "gammaSetting", "F");
 			gamesettings_keyBindFullscreen = Java::Env->GetFieldID(StrayCache::gamesettings_class, "keyBindFullscreen", "Lnet/minecraft/client/settings/KeyBinding;");
 			gamesettings_keyBindSneak = Java::Env->GetFieldID(gamesettings_class, "keyBindSneak", "Lnet/minecraft/client/settings/KeyBinding;");
+			gamesettings_keyBindJump = Java::Env->GetFieldID(gamesettings_class, "keyBindJump", "Lnet/minecraft/client/settings/KeyBinding;");
 
 		}
 
@@ -650,9 +653,10 @@ struct StrayCache {
 			entityPlayer_inventory = Java::Env->GetFieldID(StrayCache::entityPlayer_class, "inventory", "Lnet/minecraft/entity/player/InventoryPlayer;");
 		}
 
-		Java::AssignClass("net.minecraft.client.entity.EntityPlayerSP", entityPlayerSP_class);
-		entityPlayerSP_class = (jclass)Java::Env->NewGlobalRef(entityPlayerSP_class);
-
+		{
+			Java::AssignClass("net.minecraft.client.entity.EntityPlayerSP", entityPlayerSP_class);
+			entityPlayerSP_class = (jclass)Java::Env->NewGlobalRef(entityPlayerSP_class);
+		}
 
 
 

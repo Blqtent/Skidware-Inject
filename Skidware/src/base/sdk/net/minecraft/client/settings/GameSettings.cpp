@@ -76,6 +76,7 @@ void CGameSettings::RestoreFullscreenKey()
 }
 
 
+
 int CGameSettings::GetThirdPersonView()
 {
 	return Java::Env->GetIntField(this->getInstance(), StrayCache::gamesettings_thirdPersonView);
