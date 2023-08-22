@@ -157,10 +157,10 @@ void CEntityPlayerSP::set_speed(const float speed)
 Object CEntityPlayerSP::get_abilities()
 {
 	if (JNIHelper::IsForge()) {
-		jfieldID abi = Java::Env->GetFieldID(this->getClass(), "field_71075_bZ", "Lnet/minecraft/entity/player/PlayerAbilities;");
+		jfieldID abi = Java::Env->GetFieldID(StrayCache::entityPlayer_class, "field_71075_bZ", "Lnet/minecraft/entity/player/PlayerAbilities;");
 		return Java::Env->GetObjectField(this->getInstance(), abi);
 	}
-	jfieldID abi = Java::Env->GetFieldID(this->getClass(), "abilities", "Lnet/minecraft/entity/player/PlayerAbilities;");
+	jfieldID abi = Java::Env->GetFieldID(this->getClass(), "capabilities", "Lnet/minecraft/entity/player/PlayerAbilities;");
 	return Object(Java::Env->GetObjectField(this->getInstance(), abi));
 }
 

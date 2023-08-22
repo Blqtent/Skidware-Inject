@@ -19,7 +19,7 @@ public:
 	float Horizontal = 0.f;
 	float Vertical = 1.0f;
 	bool onlyTargeting = false;
-	const char* modes[5]{ "Normal", "Intave", "Push", "Strafe", "Legit"};
+	const char* modes[6]{ "Normal", "Intave", "Push", "Strafe", "NoBypass", "Flag"};
 private:
 	Velocity();
 };

@@ -9,6 +9,7 @@
 #include "../combat/teams.h"
 long lastClickTime = 0;
 int nextCps = 10;
+long counter = 0;
 double distance(double x, double y) {
 	return sqrt(pow(x, 2) + pow(y, 2));
 }
@@ -191,6 +192,11 @@ void Killaura::onUpdate(const EventUpdate e) {
 		thePlayer.setSprint(true);
 	}
 
+	else if (autoblock == true && this->getMode() == 1 && counter % 3 == 0) {
+		thePlayer.sendUseItem(&thePlayer, SDK::Minecraft->theWorld, thePlayer.GetInventory().GetCurrentItem());
+
+	}
+	counter++;
 	long milli = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	if (lastClickTime == 0) lastClickTime = milli;
 	if ((milli - lastClickTime) < (1000 / nextCps)) return;
@@ -215,13 +221,7 @@ void Killaura::onUpdate(const EventUpdate e) {
 		if (isMove())
 			thePlayer.set_speed(0.155);
 	}
-	else if (autoblock == true && this->getMode() == 1) {
-		POINT pos_cursor;
-		GetCursorPos(&pos_cursor);
 
-		SendMessage(Menu::HandleWindow, WM_RBUTTONDOWN, MK_RBUTTON, MAKELPARAM(pos_cursor.x, pos_cursor.y));
-
-	}
 
 
 	lastClickTime = milli;
