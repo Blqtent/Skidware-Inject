@@ -1,15 +1,12 @@
 #pragma once
 
-#include "../IClass.h"
+#include "../../Object.h"
 #include "../../../util/math/geometry.h"
 
-struct FloatBuffer : IClass
+class FloatBuffer : public Object
 {
-	FloatBuffer(jobject obj);
-
-	jclass GetClass();
-	jobject GetInstance();
-
+public:
+	using Object::Object;
 	Matrix GetMatrix();
 };
 

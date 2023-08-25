@@ -57,6 +57,8 @@ Flight* Flight::getInstance() {
 }
 
 void Flight::onDisable() {
+	//if (CommonData::getInstance()->SanityCheck())
+		//SDK::Minecraft->thePlayer->setFly(false);
 
 }
 
@@ -71,12 +73,15 @@ void Flight::onUpdate(const EventUpdate e) {
 	CEntityPlayerSP* p = SDK::Minecraft->thePlayer;
 	if (this->getMode() == 0) {
 		p->setMotion(Vector3(100000000000, 0, 100000000000));
+		p->set_speed(glideSpeed);
 	}
 	else if (this->getMode() == 1) {
 		if (p->getMotion().y < 0)
 			p->setOnGround(true);
 	}
-
+	else if (this->getMode() == 2) {
+		p->setFly(true);
+	}
 
 }
 
@@ -92,8 +97,8 @@ void Flight::RenderMenu()
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
 
 		Menu::DoToggleButtonStuff(235354, "Toggle Flight",this);
-		if (getMode() == 11000)
-			Menu::DoSliderStuff(9864, "Glide Speed", &this->glideSpeed, -1, 1);
+		if (getMode() == 0)
+			Menu::DoSliderStuff(9864, "Speed", &this->glideSpeed, 0, 5);
 		//Menu::DoToggleButtonStuff(124343343, "Antikick", &Flight::antikick);
 
 		ImGui::Text("Flight Mode");

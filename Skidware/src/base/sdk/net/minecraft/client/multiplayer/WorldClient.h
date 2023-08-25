@@ -1,16 +1,13 @@
 #pragma once
 
 #include "../../world/World.h"
+#include "../../../../java/util/Set.h"
 
-struct CWorldClient : CWorld
+class CWorldClient :public CWorld
 {
-	CWorldClient();
-
+public:
+	using CWorld::CWorld;
 	jclass EntityPlayer;
-
-	jclass GetClass();
-	jobject GetInstance();
-
-	std::vector<CEntity> GetEntityList();
+	Set GetEntityList();
 };
 

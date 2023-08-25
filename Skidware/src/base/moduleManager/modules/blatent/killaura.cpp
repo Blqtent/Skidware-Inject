@@ -9,6 +9,7 @@
 #include "../combat/teams.h"
 long lastClickTime = 0;
 int nextCps = 10;
+long counter = 0;
 double distance(double x, double y) {
 	return sqrt(pow(x, 2) + pow(y, 2));
 }
@@ -46,16 +47,13 @@ void Killaura::onUpdate(const EventUpdate e) {
 	if (!CommonData::getInstance()->SanityCheck()) return;
 	if (SDK::Minecraft->IsInGuiState()) return;
 
+	List playerList = CommonData::getInstance()->playerEntities;
+	CEntityPlayerSP thePlayer = *SDK::Minecraft->thePlayer;
 
-	CEntityPlayerSP* thePlayer = SDK::Minecraft->thePlayer;
+	Vector3 headPos = thePlayer.GetEyePos();
+	Vector2 currentLookAngles = thePlayer.GetAngles();
 
-	Vector3 headPos = thePlayer->GetEyePos();
-	Vector2 currentLookAngles = thePlayer->GetAngles();
-
-	std::vector<CommonData::PlayerData> playerList = CommonData::getInstance()->nativePlayerList;
-	if (playerList.empty()) return;
-
-	CommonData::PlayerData target;
+	CEntityPlayer target;
 	float finalDist = FLT_MAX;
 	float finalDiff = 370;
 	float finalHealth = FLT_MAX;
@@ -65,9 +63,12 @@ void Killaura::onUpdate(const EventUpdate e) {
 	// The code from here and below is kind of dog water, however it does the job.
 	// The real math for the aim angles if you're interested is located in Math::getAngles()
 	// fusion/src/base/util/math/Math.cpp
-
-	for (CommonData::PlayerData player : playerList)
+	auto list = playerList.toVector<CEntityPlayer>();
+	for (CEntityPlayer player : list)
 	{
+
+		if (!player.isValid() || player.isNULL()) continue;
+
 		if (Antibot::getInstance()->getToggle() && Antibot::getInstance()->isBot(player)  ) {
 			continue;
 		}
@@ -76,28 +77,27 @@ void Killaura::onUpdate(const EventUpdate e) {
 			continue;
 		}
 
-		if (player.name.length() < 0) return;
-		if (!Java::Env->IsSameObject(thePlayer->GetInstance(), player.obj.GetInstance())) {
-			if (!thePlayer->CanEntityBeSeen(player.obj.GetInstance())) continue;
+		if (player.GetName().length() < 0) return;
+		if (!Java::Env->IsSameObject(thePlayer.getInstance(), player.getInstance())) {
+			if (!thePlayer.CanEntityBeSeen(player.getInstance())) continue;
 
-			float playerHeight = target.height - 0.1;
+			float playerHeight = target.GetHeight() - 0.1;
 
-
-			Vector2 difference = Math::vec_wrapAngleTo180(currentLookAngles.Invert() - Math::getAngles(headPos, player.pos + Vector3(0, playerHeight, 0)).Invert());
+			Vector2 difference = Math::vec_wrapAngleTo180(currentLookAngles.Invert() - Math::getAngles(headPos, player.GetPos() + Vector3(0, playerHeight, 0)).Invert());
 			if (difference.x < 0) difference.x = -difference.x;
 			if (difference.y < 0) difference.y = -difference.y;
-			Vector2 differenceFoot = Math::vec_wrapAngleTo180(currentLookAngles.Invert() - Math::getAngles(headPos, player.pos).Invert());
+			Vector2 differenceFoot = Math::vec_wrapAngleTo180(currentLookAngles.Invert() - Math::getAngles(headPos, player.GetPos()).Invert());
 			if (differenceFoot.x < 0) differenceFoot.x = -differenceFoot.x;
 			if (differenceFoot.y < 0) differenceFoot.y = -differenceFoot.y;
 
 			float angleYaw = currentLookAngles.x - difference.x;
 
-			Vector3 diff = thePlayer->GetPos() - player.pos;
+			Vector3 diff = thePlayer.GetPos() - player.GetPos();
 			float dist = sqrt(pow(diff.x, 2) + pow(diff.y, 2) + pow(diff.z, 2));
 
 			if ((abs(difference.x) <= fov) && dist <= realAimDistance)
 			{
-				float health = player.health;
+				float health = player.GetHealth();
 				switch (targetPriority)
 				{
 				case 1:
@@ -126,17 +126,17 @@ void Killaura::onUpdate(const EventUpdate e) {
 		}
 	}
 
-	if (!target.obj.GetInstance()) {
+	if (!target.getInstance()) {
 		Vector3 null;
 		data = null;
 		return;
 	}
 
 	if (this->getMode() == 0) {
-		Vector3 ePos = target.pos;
-		Vector3 eLastPos = target.lastPos;
+		Vector3 ePos = target.GetPos();
+		Vector3 eLastPos = target.GetLastTickPos();
 
-		float eHeight = target.height - 0.1;
+		float eHeight = target.GetHeight() - 0.1;
 		Vector3 eHeadPos = ePos + Vector3(0, eHeight, 0);
 		Vector3 eLastHeadPos = eLastPos + Vector3(0, eHeight, 0);
 
@@ -176,34 +176,41 @@ void Killaura::onUpdate(const EventUpdate e) {
 			}
 			//pitchInfluenced = true;
 			//targetPitch += randomFloat(-this->randomPitch, this->randomPitch);
-			thePlayer->SetAngles(Vector2(targetYaw, targetPitch));
+			thePlayer.SetAngles(Vector2(targetYaw, targetPitch));
 		}
 		else {
 			data = renderPos - eLastPos + (eLastPos - ePos) * renderPartialTicks;
 			//pitchInfluenced = false;
-			thePlayer->SetAngles(Vector2(targetYaw, currentLookAngles.y + 0));
+			thePlayer.SetAngles(Vector2(targetYaw, currentLookAngles.y + 0));
 		}
 	}
-	if (!target.obj.GetInstance()) {
+	if (!target.getInstance()) {
 		return;
 	}
 
-	if (keepsprint && thePlayer->getMoveForward() != 0) {
-		thePlayer->setSprint(true);
+	if (keepsprint && thePlayer.getMoveForward() != 0) {
+		thePlayer.setSprint(true);
 	}
 
+	else if (autoblock == true && this->getMode() == 1 && counter % 3 == 0) {
+		thePlayer.sendUseItem(&thePlayer, SDK::Minecraft->theWorld, thePlayer.GetInventory().GetCurrentItem());
+
+	}
+	counter++;
 	long milli = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	if (lastClickTime == 0) lastClickTime = milli;
 	if ((milli - lastClickTime) < (1000 / nextCps)) return;
 	if (this->getMode() == 0) {
 		POINT pos_cursor;
 		GetCursorPos(&pos_cursor);
+		CommonData::getInstance()->isCombat = true;
 		SendMessage(Menu::HandleWindow, WM_LBUTTONDOWN, MK_LBUTTON, MAKELPARAM(pos_cursor.x, pos_cursor.y));
 		SendMessage(Menu::HandleWindow, WM_LBUTTONUP, 0, MAKELPARAM(pos_cursor.x, pos_cursor.y));
 	}
 	else if (this->getMode() == 1) {
-		thePlayer->swingItem();
-		thePlayer->attackEntity(thePlayer, target.obj.GetInstance());
+		thePlayer.swingItem();
+		CommonData::getInstance()->isCombat = true;
+		thePlayer.attackEntity(&thePlayer, target.getInstance());
 	}
 	if (autoblock == true && this->getMode() == 0) {
 		POINT pos_cursor;
@@ -212,15 +219,9 @@ void Killaura::onUpdate(const EventUpdate e) {
 		SendMessage(Menu::HandleWindow, WM_RBUTTONDOWN, MK_RBUTTON, MAKELPARAM(pos_cursor.x, pos_cursor.y));
 		SendMessage(Menu::HandleWindow, WM_RBUTTONUP, 0, MAKELPARAM(pos_cursor.x, pos_cursor.y));
 		if (isMove())
-			thePlayer->set_speed(0.155);
+			thePlayer.set_speed(0.155);
 	}
-	else if (autoblock == true && this->getMode() == 1) {
-		POINT pos_cursor;
-		GetCursorPos(&pos_cursor);
 
-		SendMessage(Menu::HandleWindow, WM_RBUTTONDOWN, MK_RBUTTON, MAKELPARAM(pos_cursor.x, pos_cursor.y));
-
-	}
 
 
 	lastClickTime = milli;

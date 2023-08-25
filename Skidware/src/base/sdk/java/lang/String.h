@@ -1,18 +1,13 @@
 #pragma once
 
-#include "../IClass.h"
+#include "../../Object.h"
 
 
-struct String : IClass
+class String : public Object
 {
-	String(jobject instance);
-
+public:
+	using Object::Object;
 	String(std::string text);
-
-	jclass GetClass();
-	jobject GetInstance();
-
-
 	std::string ToString();
 };
 

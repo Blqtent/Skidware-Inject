@@ -3,13 +3,12 @@
 #include "../../entity/player/EntityPlayer.h"
 #include "../../entity/Entity.h"
 #include "../../world/World.h"
-struct CEntityPlayerSP : CEntityPlayer
+class CEntityPlayerSP : public CEntityPlayer
 {
-	CEntityPlayerSP();
-
-	jclass GetClass();
-	jobject GetInstance();
+public:
+	using CEntityPlayer::CEntityPlayer;
 	void setSneak(bool state);
+	void setKeyJump(bool state);
 	void attackEntity(CEntityPlayerSP* player, jobject entity);
 	bool sendUseItem(CEntityPlayer* player, CWorld* world, CItemStack item);
 
@@ -40,11 +39,11 @@ struct CEntityPlayerSP : CEntityPlayer
 	bool isMovingBackwards();
 
 	void set_speed(const float speed);
-	jobject get_abilities();
+	Object get_abilities();
 	void setFly(bool state);
 
-	void sendGroundPacket(jobject Packet);
+	void sendGroundPacket(Object Packet);
 
-	jobject C03PacketPlayer(jboolean ground, float yaw, float pitch);
+	Object C03PacketPlayer(jboolean ground, float yaw, float pitch);
 
 };

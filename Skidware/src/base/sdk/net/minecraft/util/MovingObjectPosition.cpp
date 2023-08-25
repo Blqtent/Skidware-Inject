@@ -3,35 +3,35 @@
 #include "../../../../java/java.h"
 #include "../../../strayCache.h"
 
-CMovingObjectPosition::CMovingObjectPosition()
-{
-	if (!StrayCache::initialized) StrayCache::Initialize();
-	this->Class = StrayCache::movingObjectPosition_class;
-}
-
-CMovingObjectPosition::CMovingObjectPosition(jobject instance) : CMovingObjectPosition()
-{
-	this->Instance = instance;
-}
-
-jclass CMovingObjectPosition::GetClass()
-{
-	return this->Class;
-}
-
-jobject CMovingObjectPosition::GetInstance()
-{
-	return this->Instance;
-}
+//CMovingObjectPosition::CMovingObjectPosition()
+//{
+//	if (!StrayCache::initialized) StrayCache::Initialize();
+//	this->Class = StrayCache::movingObjectPosition_class;
+//}
+//
+//CMovingObjectPosition::CMovingObjectPosition(jobject instance) : CMovingObjectPosition()
+//{
+//	this->Instance = instance;
+//}
+//
+//jclass CMovingObjectPosition::getClass()
+//{
+//	return this->Class;
+//}
+//
+//jobject CMovingObjectPosition::getInstance()
+//{
+//	return this->Instance;
+//}
 
 CVec3 CMovingObjectPosition::GetBlockPosition()
 {
-	return CVec3(Java::Env->GetObjectField(this->GetInstance(), StrayCache::movingObjectPosition_hitVec));
+	return CVec3(Java::Env->GetObjectField(this->getInstance(), StrayCache::movingObjectPosition_hitVec));
 }
 
 bool CMovingObjectPosition::IsTypeOfBlock()
 {
-	jobject typeOfHit = Java::Env->GetObjectField(this->GetInstance(), StrayCache::movingObjectPosition_typeOfHit);
+	jobject typeOfHit = Java::Env->GetObjectField(this->getInstance(), StrayCache::movingObjectPosition_typeOfHit);
 	if (!typeOfHit) return false;
 
 	jclass movingObjectType = Java::Env->GetObjectClass(typeOfHit);
@@ -46,7 +46,7 @@ bool CMovingObjectPosition::IsTypeOfBlock()
 
 bool CMovingObjectPosition::IsTypeOfEntity()
 {
-	jobject typeOfHit = Java::Env->GetObjectField(this->GetInstance(), StrayCache::movingObjectPosition_typeOfHit);
+	jobject typeOfHit = Java::Env->GetObjectField(this->getInstance(), StrayCache::movingObjectPosition_typeOfHit);
 	if (!typeOfHit) return false;
 
 	jclass movingObjectType = Java::Env->GetObjectClass(typeOfHit);
@@ -62,5 +62,5 @@ bool CMovingObjectPosition::IsTypeOfEntity()
 BlockPos CMovingObjectPosition::getBlockPos()
 {
 
-	return BlockPos(Java::Env->GetObjectField(this->GetInstance(), StrayCache::movingObjectPosition_blockPos));
+	return BlockPos(Java::Env->GetObjectField(this->getInstance(), StrayCache::movingObjectPosition_blockPos));
 }

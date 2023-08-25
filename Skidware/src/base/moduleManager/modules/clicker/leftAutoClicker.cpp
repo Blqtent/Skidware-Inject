@@ -3,7 +3,7 @@
 #include "../../../menu/menu.h"
 #include "../../../util/logger.h"
 #include "../../../menu/menu.h"
-
+#include "../../commonData.h"
 #include <chrono>
 #include <random>
 #include "../../../eventManager/EventManager.hpp"
@@ -46,6 +46,7 @@ void LeftAutoClicker::onUpdate(const EventUpdate e)
 	if (GetAsyncKeyState(VK_LBUTTON) && 1) {
 		POINT pos_cursor;
 		GetCursorPos(&pos_cursor);
+		CommonData::getInstance()->isCombat = true;
 		SendMessage(Menu::HandleWindow, WM_LBUTTONDOWN, MK_LBUTTON, MAKELPARAM(pos_cursor.x, pos_cursor.y));
 		SendMessage(Menu::HandleWindow, WM_LBUTTONUP, 0, MAKELPARAM(pos_cursor.x, pos_cursor.y));
 		

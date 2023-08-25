@@ -1,16 +1,17 @@
 #pragma once
 
-#include "../../../java/IClass.h"
+#include "../../../Object.h"
 #include "../../../../util/math/geometry.h"
 #include "../../../strayCache.h"
 
-struct BlockPos : IClass
+class BlockPos :public Object
 {
-	BlockPos();
-	BlockPos(jobject instance);
+	//BlockPos();
+	//BlockPos(jobject instance);
 
-	jclass GetClass();
-	jobject GetInstance();
-
+	//jclass getClass();
+	//jobject getInstance();
+public:
+	using Object::Object;
 	Vector3 getPos();
 };

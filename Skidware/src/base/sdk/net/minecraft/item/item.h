@@ -1,11 +1,9 @@
 #pragma once
-#include "../../../java/IClass.h"
+#include "../../../Object.h"
 
-struct CItem : IClass
+class CItem : public Object
 {
-	CItem();
-
-	CItem(jobject instance);
-	jclass GetClass();
-	jobject GetInstance();
+public:
+	using Object::Object;
+	int GetIdFromItem(CItem item);
 };

@@ -1,17 +1,18 @@
 #pragma once
 
-#include "../../../java/IClass.h"
+#include "../../../Object.h"
 #include "../../../../util/math/geometry.h"
 #include "../../../strayCache.h"
 
-struct CAxisAlignedBB : IClass
+class CAxisAlignedBB : public Object
 {
-	CAxisAlignedBB();
-	CAxisAlignedBB(jobject instance);
+	//CAxisAlignedBB();
+	//CAxisAlignedBB(jobject instance);
 
-	jclass GetClass();
-	jobject GetInstance();
-
+	//jclass getClass();
+	//jobject getInstance();
+public:
+	using Object::Object;
 	BoundingBox GetNativeBoundingBox();
 	void SetBoundingBox(BoundingBox newBoundingBox);
 };

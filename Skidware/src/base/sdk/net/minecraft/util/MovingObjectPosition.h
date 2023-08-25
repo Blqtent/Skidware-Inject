@@ -1,16 +1,17 @@
 #pragma once
-#include "../../../java/IClass.h"
+#include "../../../Object.h"
 #include "Vec3.h"
 #include "BlockPos.h"
 
-struct CMovingObjectPosition : IClass
+class CMovingObjectPosition :public Object
 {
-	CMovingObjectPosition();
-	CMovingObjectPosition(jobject instance);
+	//CMovingObjectPosition();
+	//CMovingObjectPosition(jobject instance);
 
-	jclass GetClass();
-	jobject GetInstance();
-
+	//jclass getClass();
+	//jobject getInstance();
+public:
+	using Object::Object;
 	CVec3 GetBlockPosition();
 	bool IsTypeOfBlock();
 	bool IsTypeOfEntity();

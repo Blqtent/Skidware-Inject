@@ -30,9 +30,10 @@ void Esp::onUpdate(const EventUpdate e)
 	if (!CommonData::getInstance()->SanityCheck()) return;
 
 	CEntityPlayerSP* player = SDK::Minecraft->thePlayer;
+
 	CWorld* world = SDK::Minecraft->theWorld;
-	std::vector<CommonData::PlayerData> playerList = CommonData::getInstance()->nativePlayerList;
-	if (playerList.empty()) return;
+
+	
 
 	Vector3 renderPos = CommonData::getInstance()->renderPos;
 	Vector3 pos = player->GetPos();
@@ -65,19 +66,22 @@ void Esp::onUpdate(const EventUpdate e)
 	}
 
 	std::vector<Data> newData;
-
+	List playerList = CommonData::getInstance()->playerEntities;
+	auto list = playerList.toVector<CEntityPlayer>();
 	float renderPartialTicks = CommonData::getInstance()->renderPartialTicks;
 
-	for (CommonData::PlayerData entity : playerList)
+	for (CEntityPlayer entity : list)
 	{
+		if (!entity.isValid() || entity.isNULL()) continue;
+		
 		if (Antibot::getInstance()->isBot(entity) && Antibot::getInstance()->getToggle()) {
 			continue;
 		}
-		Vector3 entityPos = entity.pos;
-		Vector3 entityLastPos = entity.lastPos;
+		Vector3 entityPos = entity.GetPos();
+		Vector3 entityLastPos = entity.GetLastTickPos();
 
 		float entityWidth = 0.7f;
-		float entityHeight = (float)(entity.height / 2) + 0.2f;
+		float entityHeight = (float)(entity.GetHeight() / 2) + 0.2f;
 
 		Vector3 diff = pos - entityPos;
 		float dist = sqrt(pow(diff.x, 2) + pow(diff.y, 2) + pow(diff.z, 2)); // Sqrt((x2 - x1)^2 + (y2 - y1)^2 + (z2 - z1)^2)
@@ -129,12 +133,12 @@ void Esp::onUpdate(const EventUpdate e)
 		// Then finally taking all the data we acquired for this loop and pushing it to the data list.
 		newData.push_back(Data{
 			boxVerticies, // Box data
-			entity.name, // Entity name
+			entity.GetName(), // Entity name
 			distS + "m", // Distance
 			dist, // Real distance value (for fade)
 			fadeFactor, // Fade factor
-			entity.health, // Entity health
-			entity.maxHealth, // And max health (for health bar)
+			entity.GetHealth(), // Entity health
+			entity.GetMaxHealth(), // And max health (for health bar)
 			});
 	}
 

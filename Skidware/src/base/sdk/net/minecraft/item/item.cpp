@@ -2,23 +2,8 @@
 
 #include "../../../strayCache.h"
 
-CItem::CItem()
+int CItem::GetIdFromItem(CItem item)
 {
-	if (!StrayCache::initialized) StrayCache::Initialize();
-	this->Class = StrayCache::itemStack_class;
-}
+    return Java::Env->CallStaticIntMethod(this->getClass(), StrayCache::item_getIdFromItem, item.getInstance());
 
-CItem::CItem(jobject instance) : CItem()
-{
-	this->Instance = instance;
-}
-
-jclass CItem::GetClass()
-{
-	return this->Class;
-}
-
-jobject CItem::GetInstance()
-{
-	return this->Instance;
 }

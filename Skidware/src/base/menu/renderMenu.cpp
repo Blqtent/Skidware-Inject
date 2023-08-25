@@ -46,6 +46,8 @@
 #include "../moduleManager/modules/blatent/nofall.h"
 #include "../moduleManager/modules/visual/fullbright.h"
 #include "../moduleManager/modules/visual/cavefinder.h"
+#include "../moduleManager/modules/player/autotool.h"
+#include "../moduleManager/modules/blatent/noslow.h"
 
 
 int currentTab = -1;
@@ -364,6 +366,9 @@ void Menu::RenderMenu()
 			if (Menu::TabButton("FastPlace", (currentTab5 == 0 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab5 = 0;
 			ImGui::SameLine();
 			if (Menu::TabButton("Eagle", (currentTab5 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab5 = 1;
+			ImGui::SameLine();
+			if (Menu::TabButton("AutoTool", (currentTab5 == 2 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab5 = 2;
+
 			if (currentTab5 == 0) {
 				Fastplace::getInstance()->RenderMenu();
 				keybind::key_bind(Fastplace::getInstance()->getKey(), 125, 25);
@@ -374,7 +379,11 @@ void Menu::RenderMenu()
 				keybind::key_bind(Eagle::getInstance()->getKey(), 125, 25);
 			}
 			//keybind::key_bind(Eagle::getInstance()->getKey(), 150, 50);
-
+			if (currentTab5 == 2)
+			{
+				AutoTool::getInstance()->RenderMenu();
+				keybind::key_bind(AutoTool::getInstance()->getKey(), 125, 25);
+			}
 			ImGui::InvisibleButton("", ImVec2(1, 100));
 
 		}
@@ -456,6 +465,8 @@ void Menu::RenderMenu()
 			if (Menu::TabButton("Timer", (currentTab6 == 5 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 5;
 			ImGui::SameLine();
 			if (Menu::TabButton("Scaffold", (currentTab6 == 6 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 6;
+			ImGui::SameLine();
+			if (Menu::TabButton("NoSlow", (currentTab6 == 7 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 7;
 			
 			
 			if (currentTab6 == 0) {
@@ -491,6 +502,12 @@ void Menu::RenderMenu()
 				Tower::getInstance()->RenderMenu();
 
 				keybind::key_bind(Tower::getInstance()->getKey(), 125, 25);
+
+			}
+			if (currentTab6 == 7) {
+				NoSlow::getInstance()->RenderMenu();
+
+				keybind::key_bind(NoSlow::getInstance()->getKey(), 125, 25);
 
 			}
 			ImGui::InvisibleButton("", ImVec2(1, 100));

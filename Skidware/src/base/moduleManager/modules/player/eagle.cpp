@@ -14,6 +14,10 @@ Eagle* Eagle::getInstance() {
 }
 
 void Eagle::onDisable() {
+	if (!CommonData::getInstance()->SanityCheck())
+		return;
+	SDK::Minecraft->thePlayer->setSneak(false);
+
 }
 
 void Eagle::onEnable() {
@@ -23,6 +27,8 @@ void Eagle::onEnable() {
 void Eagle::onUpdate(const EventUpdate e)
 {
 	if (!this->getToggle()) return;
+	if (Menu::Open) return;
+	
 	if (!CommonData::getInstance()->SanityCheck()) return;
 
 	if (SDK::Minecraft->theWorld->isAirBlock(SDK::Minecraft->thePlayer->GetPos().x, SDK::Minecraft->thePlayer->GetPos().y - 1, SDK::Minecraft->thePlayer->GetPos().z)) {

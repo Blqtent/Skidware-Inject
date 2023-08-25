@@ -31,6 +31,7 @@
 #include "moduleManager/modules/combat/velocity.h"
 
 #include "moduleManager/modules/player/blink.h"
+#include "moduleManager/modules/player/autotool.h"
 #include "moduleManager/modules/player/eagle.h"
 #include "moduleManager/modules/player/fastplace.h"
 
@@ -39,6 +40,7 @@
 #include "moduleManager/modules/visual/fullbright.h"
 #include "moduleManager/modules/blatent/timerhack.h"
 #include "moduleManager/modules/blatent/tower.h"
+#include "moduleManager/modules/blatent/noslow.h"
 
 
 
@@ -76,7 +78,7 @@ void Base::Init()
 	
 	initModule();
 	initEvent();
-	//Logger::Init();
+	Logger::Init();
 	//scripting::luaThing();
 	Base::Running = true;
 	
@@ -94,13 +96,13 @@ void Base::Init()
 		EventManager::getInstance().call(EventUpdate());
 
 #ifndef _DEBUG
-		HideFromDebugger();
+		/*HideFromDebugger();*/
 #endif
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(5));
 		
 #ifndef _DEBUG
-		Check();
+		/*Check();*/
 #endif
 	}
 
@@ -126,6 +128,7 @@ void Base::initModule() {
 		ModuleManager::getInstance().addModule<Speed>(Speed::getInstance());
 		ModuleManager::getInstance().addModule<TimerHack>(TimerHack::getInstance());
 		ModuleManager::getInstance().addModule<Tower>(Tower::getInstance());
+		ModuleManager::getInstance().addModule<NoSlow>(NoSlow::getInstance());
 	}
 	
 	{
@@ -143,6 +146,7 @@ void Base::initModule() {
 
 	{
 		ModuleManager::getInstance().addModule<Blink>(Blink::getInstance());
+		ModuleManager::getInstance().addModule<AutoTool>(AutoTool::getInstance());
 		ModuleManager::getInstance().addModule<Eagle>(Eagle::getInstance());
 		ModuleManager::getInstance().addModule<Fastplace>(Fastplace::getInstance());
 	}

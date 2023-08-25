@@ -31,13 +31,15 @@ void Velocity::onUpdate(const EventUpdate e)
 	Vector2 rot = Vector2(thePlayer->GetRotationYaw(), thePlayer->GetRotationPitch());
 	float clamped_yaw = Math::wrapAngleTo180(rot.x);
 	float yawToAdd = 0;
+	for (CEntityPlayer& p : CommonData::getInstance()->playerEntities.toVector<CEntityPlayer>()) {
 
-	for (CommonData::PlayerData& p : CommonData::getInstance()->nativePlayerList) {
-		if (Java::Env->IsSameObject(p.obj.GetInstance(), thePlayer->GetInstance())) {
+		if (!p.isValid() || p.isNULL()) continue;
+
+		if (Java::Env->IsSameObject(p.getInstance(), thePlayer->getInstance())) {
 			continue;
 		}
 
-		Vector3 targetPos = p.pos;
+		Vector3 targetPos = p.GetPos();
 
 		if (onlyTargeting && (targetPos - pos).Dist() >= 5.0f) {
 			continue;
@@ -60,10 +62,11 @@ void Velocity::onUpdate(const EventUpdate e)
 				}
 			}
 			else if (this->getMode() == 1) {
-				if (thePlayer->getHurtTime() > 7 && thePlayer->isOnGround() && counter++ % 2 == 0) {
-					POINT pos_cursor;
-					GetCursorPos(&pos_cursor);
-					thePlayer->jump();
+				if (thePlayer->getHurtTime() > 9 && thePlayer->isOnGround() && counter++ % 2 == 0) {
+					thePlayer->setKeyJump(true); 
+				}
+				else if (!GetAsyncKeyState(VK_SPACE) & 1){
+					thePlayer->setKeyJump(false);
 				}
 			}
 			else if (this->getMode() == 2) {
@@ -75,6 +78,26 @@ void Velocity::onUpdate(const EventUpdate e)
 				if (thePlayer->getHurtTime() > 5) {
 					thePlayer->set_speed(thePlayer->get_speed());
 				}
+			}
+			else if (this->getMode() == 4) {
+				if (thePlayer->getHurtTime() == 9) {
+					thePlayer->setMotion(Vector3(thePlayer->getMotion().x * 0.0, thePlayer->getMotion().y, thePlayer->getMotion().z * 0.0));
+				}
+				if (thePlayer->getHurtTime() == 8) {
+					thePlayer->setMotion(Vector3(thePlayer->getMotion().x * 0.4, thePlayer->getMotion().y, thePlayer->getMotion().z * 0.4));
+				}
+				if (thePlayer->getHurtTime() == 7) {
+					thePlayer->setMotion(Vector3(thePlayer->getMotion().x * 0.5, thePlayer->getMotion().y, thePlayer->getMotion().z * 0.5));
+				}
+				if (thePlayer->getHurtTime() == 6) {
+					thePlayer->setMotion(Vector3(thePlayer->getMotion().x * 0.8, thePlayer->getMotion().y, thePlayer->getMotion().z * 0.8));
+				}
+			}
+			else if (this->getMode() == 5) {
+				if (thePlayer->getHurtTime() > 8) {
+					thePlayer->setPos(thePlayer->GetPos().x, thePlayer->GetPos().y - 0.26, thePlayer->GetPos().z);
+					thePlayer->setPos(thePlayer->GetPos().x, thePlayer->GetPos().y + 0.3, thePlayer->GetPos().z);					//thePlayer->set_speed(10);
+				}//thePlayer->set_speed(10);
 			}
 		}
 	}
@@ -101,7 +124,7 @@ void Velocity::RenderMenu()
 			Menu::DoSliderStuff(248913712347, "Horizontal", &this->Horizontal, 0.f, 1.f);
 			Menu::DoSliderStuff(2489137, "Vertical", &this->Vertical, 0.f, 1.f);
 		}
-		ImGui::Combo("Mode", &this->getMode(), this->modes, 4);
+		ImGui::Combo("Mode", &this->getMode(), this->modes, 6);
 		ImGui::EndChild();
 	}
 	ImGui::PopStyleVar();

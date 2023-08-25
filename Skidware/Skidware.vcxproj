@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -143,7 +143,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <LanguageStandard>stdcpp20</LanguageStandard>
       <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
@@ -160,7 +160,19 @@
     <ClInclude Include="ext\fonts\Minecraft.h" />
     <ClInclude Include="src\base\eventManager\events\EventChams.hpp" />
     <ClInclude Include="src\base\menu\hooks\glTexEnviHook.h" />
+    <ClInclude Include="src\base\moduleManager\modules\blatent\noslow.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\tower.h" />
+    <ClInclude Include="src\base\moduleManager\modules\player\autotool.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\block\Block.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\block\state\BlockState.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\block\state\IBlockState.h" />
+    <ClInclude Include="src\base\sdk\net\minecraft\item\ItemTool.h" />
+    <ClInclude Include="src\base\sdk\Object.h">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
+    </ClInclude>
     <ClInclude Include="src\base\sdk\net\minecraft\item\ItemArmor.h" />
     <ClInclude Include="src\base\eventManager\AbstractEvent.h" />
     <ClInclude Include="src\base\eventManager\EventManager.hpp" />
@@ -219,7 +231,6 @@
     <ClInclude Include="src\base\sdk\net\minecraft\entity\player\EntityPlayer.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\client\entity\EntityPlayerSP.h" />
     <ClInclude Include="src\base\sdk\sdk.h" />
-    <ClInclude Include="src\base\sdk\java\IClass.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\entity\Entity.h" />
     <ClInclude Include="ext\imgui\imconfig.h" />
     <ClInclude Include="ext\imgui\imgui.h" />
@@ -261,10 +272,24 @@
     <ClInclude Include="src\base\sdk\net\minecraft\util\Timer.h" />
     <ClInclude Include="src\base\util\trimmer.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\util\Vec3.h" />
+    <ClInclude Include="src\base\util\utils.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\base\menu\hooks\glTexEnviHook.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\blatent\noslow.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\tower.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\player\autotool.cpp" />
+    <ClCompile Include="src\base\sdk\java\util\Collection.h" />
+    <ClCompile Include="src\base\sdk\net\minecraft\block\Block.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\block\state\BlockState.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\block\state\IBlockState.cpp" />
+    <ClCompile Include="src\base\sdk\net\minecraft\item\ItemTool.cpp" />
+    <ClCompile Include="src\base\sdk\Object.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</DeploymentContent>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</ExcludedFromBuild>
+      <DeploymentContent Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</DeploymentContent>
+    </ClCompile>
     <ClCompile Include="src\base\sdk\net\minecraft\item\ItemArmor.cpp" />
     <ClCompile Include="src\base\eventManager\events\EventUpdate.hpp" />
     <ClCompile Include="src\base\menu\hooks\WalkingUpdate.cpp" />
@@ -339,6 +364,7 @@
     <ClCompile Include="src\base\sdk\net\minecraft\client\multiplayer\WorldClient.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\util\Timer.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\util\Vec3.cpp" />
+    <ClCompile Include="src\base\util\utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

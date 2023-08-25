@@ -1,18 +1,17 @@
 #pragma once
 
-#include "../../../../java/IClass.h"
+#include "../../../../Object.h"
 #include "../../item/ItemStack.h"
 
-struct CInventoryPlayer : IClass
+class CInventoryPlayer :public Object
 {
-	CInventoryPlayer();
-	CInventoryPlayer(jobject instance);
 
-	jclass GetClass();
-	jobject GetInstance();
-
+public:
+	using Object::Object;
 	CItemStack GetCurrentItem();
 	void SetCurrentItem(int index);
+	int GetCurrentItemIndex();
 	CItemStack GetIndexItem(int index);
+	CItemStack GetStackInSlot(int index);
 	CItemStack GetArmorItem(int index);
 };
