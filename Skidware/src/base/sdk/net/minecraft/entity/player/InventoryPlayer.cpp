@@ -33,6 +33,12 @@ void CInventoryPlayer::SetCurrentItem(int index)
 	Java::Env->SetIntField(this->getInstance(), StrayCache::inventoryPlayer_currentItem, index);
 }
 
+int CInventoryPlayer::GetCurrentItemIndex()
+{
+	return Java::Env->GetIntField(this->getInstance(), StrayCache::inventoryPlayer_currentItem);
+
+}
+
 CItemStack CInventoryPlayer::GetIndexItem(int index)
 {
 	jobject mainInventory = Java::Env->GetObjectField(this->getInstance(), StrayCache::inventoryPlayer_mainInv);

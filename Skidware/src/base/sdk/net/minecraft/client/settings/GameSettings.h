@@ -11,5 +11,6 @@ public:
 	float GetGamma();
 	void SetFullscreenKeyToNull();
 	void RestoreFullscreenKey();
+	void setKeyJump(bool state);
 };
 

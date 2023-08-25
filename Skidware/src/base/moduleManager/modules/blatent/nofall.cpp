@@ -1,9 +1,10 @@
 #include "nofall.h"
 #include "../../../../../ext/imgui/imgui.h"
 #include "../../../menu/menu.h"
-
+#include "../player/blink.h"
 static uint64_t timer = GetTickCount64();
-
+bool should = false;
+long count = 0;
 Nofall::Nofall() : AbstractModule("Nofall", Category::BLATENT) {
 	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
 }
@@ -15,6 +16,7 @@ Nofall* Nofall::getInstance() {
 }
 
 void Nofall::onDisable() {
+	Blink::getInstance()->shouldSpoof = false;
 }
 
 void Nofall::onEnable() {
@@ -45,7 +47,7 @@ void Nofall::onUpdate(const EventUpdate e)
 		}
 	}
 	else if (this->getMode() == 3) {
-		if (p->fallDistance() > 1) {
+		if (p->fallDistance() > 2) {
 			p->sendGroundPacket(p->C03PacketPlayer(true, p->GetRotationYaw(), p->GetRotationPitch()));
 			p->setFallDistance(0);
 
@@ -56,6 +58,27 @@ void Nofall::onUpdate(const EventUpdate e)
 			p->sendGroundPacket(p->C03PacketPlayer(true, p->GetRotationYaw(), p->GetRotationPitch()));
 			//p->C03PacketPlayer(true);
 			p->setFallDistance(0);
+		}
+	}
+	else if (this->getMode() == 5) {
+
+		if (p->isOnGround()) {
+			count++;
+		}
+		
+		if (p->fallDistance() > 2) {
+			p->sendGroundPacket(p->C03PacketPlayer(true, p->GetRotationYaw(), p->GetRotationPitch()));
+			p->setFallDistance(0);
+
+		}
+
+		Blink::getInstance()->shouldSpoof = true;
+
+		if (count >= 150) {
+			//Blink::getInstance()->shouldSpoof = false;
+			count = 0;
+			this->toggle();
+			
 		}
 	}
 
@@ -75,7 +98,7 @@ void Nofall::RenderMenu()
 		Menu::DoToggleButtonStuff(23432423, "Toggle Nofall", this);
 
 		ImGui::Text("Nofall Mode");
-		ImGui::Combo("Nofall Mode", &this->getMode(), this->modes, 5);
+		ImGui::Combo("Nofall Mode", &this->getMode(), this->modes, 6);
 
 		ImGui::EndChild();
 	}

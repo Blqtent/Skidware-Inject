@@ -160,6 +160,7 @@
     <ClInclude Include="ext\fonts\Minecraft.h" />
     <ClInclude Include="src\base\eventManager\events\EventChams.hpp" />
     <ClInclude Include="src\base\menu\hooks\glTexEnviHook.h" />
+    <ClInclude Include="src\base\moduleManager\modules\blatent\noslow.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\tower.h" />
     <ClInclude Include="src\base\moduleManager\modules\player\autotool.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\block\Block.h" />
@@ -275,6 +276,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\base\menu\hooks\glTexEnviHook.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\blatent\noslow.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\tower.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\player\autotool.cpp" />
     <ClCompile Include="src\base\patcher\patcher.cpp" />

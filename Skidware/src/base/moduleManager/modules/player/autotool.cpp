@@ -30,10 +30,17 @@ void AutoTool::onUpdate(const EventUpdate e)
 	if (Menu::Open) return;
 	if (!CommonData::getInstance()->SanityCheck()) return;
 	if (CommonData::getInstance()->isCombat) return;
+	if (GetAsyncKeyState(VK_RBUTTON) && 1) return;
+	if (!GetAsyncKeyState(VK_LBUTTON) && 1) {
+		//SDK::Minecraft->thePlayer->GetInventory().SetCurrentItem(currentSlot);
+		return;
+	}
 	if (GetAsyncKeyState(VK_LBUTTON) && 1) {
 		float bestSpeed = 1.f;
 		int bestSlot = -1;
 		CMovingObjectPosition mouseover = SDK::Minecraft->GetMouseOver();
+		if (mouseover.IsTypeOfEntity())
+			return;
 		//Logger::LogWait("hI", 1);
 
 		if (!mouseover)
@@ -99,6 +106,8 @@ void AutoTool::onUpdate(const EventUpdate e)
 		{
 			return;
 		}
+		if (!(inventory.GetCurrentItemIndex() == bestSlot))
+			currentSlot = inventory.GetCurrentItemIndex();
 		inventory.SetCurrentItem(bestSlot);
 	}
 	

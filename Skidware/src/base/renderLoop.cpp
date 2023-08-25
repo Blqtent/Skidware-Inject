@@ -31,6 +31,7 @@
 #include "moduleManager/ModuleManager.h"
 #include "moduleManager/modules/blatent/tower.h"
 #include "moduleManager/modules/player/autotool.h"
+#include "moduleManager/modules/blatent/noslow.h"
 
 extern ImVec4 clear_col;
 static int y;
@@ -278,6 +279,10 @@ void Base::RenderLoop() // Runs every frame
 		}
 		if (Blink::getInstance()->getToggle()) {
 			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Fakelag");
+			y += 20;
+		}
+		if (NoSlow::getInstance()->getToggle()) {
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "NoSlow");
 			y += 20;
 		}
 	//}

@@ -30,7 +30,26 @@ void CEntityPlayerSP::setSneak(bool state)
 	CGameSettings* settings = SDK::Minecraft->gameSettings;
 	jobject sneakObj = Java::Env->GetObjectField(settings->getInstance(), StrayCache::gamesettings_keyBindSneak);
 	jclass keybind_class = Java::Env->GetObjectClass(sneakObj);
-	jfieldID pressed = Java::Env->GetFieldID(keybind_class, "pressed", "Z");
+	jfieldID pressed;
+	if (JNIHelper::IsForge())
+		pressed = Java::Env->GetFieldID(keybind_class, "field_74513_e", "Z");
+	else
+		pressed = Java::Env->GetFieldID(keybind_class, "pressed", "Z");
+
+	Java::Env->SetBooleanField(sneakObj, pressed, state);
+}
+
+void CEntityPlayerSP::setKeyJump(bool state)
+{
+	CGameSettings* settings = SDK::Minecraft->gameSettings;
+	jobject sneakObj = Java::Env->GetObjectField(settings->getInstance(), StrayCache::gamesettings_keyBindJump);
+	jclass keybind_class = Java::Env->GetObjectClass(sneakObj);
+	jfieldID pressed;
+	if (JNIHelper::IsForge())
+		pressed = Java::Env->GetFieldID(keybind_class, "field_74513_e", "Z");
+	else
+		pressed = Java::Env->GetFieldID(keybind_class, "pressed", "Z");
+
 	Java::Env->SetBooleanField(sneakObj, pressed, state);
 }
 
@@ -62,60 +81,7 @@ bool CEntityPlayerSP::sendUseItem(CEntityPlayer* player, CWorld* world, CItemSta
 	return Java::Env->CallBooleanMethod(playerControllerObj.getInstance(), attackMid, player->getInstance(), world, item.getInstance());
 }
 
-double CEntityPlayerSP::get_motion_x()
-{
-	if (getClass() == NULL) return NULL;
-	jclass playerclass = JNIHelper::env->GetObjectClass(getInstance());
-	jfieldID xfid = JNIHelper::env->GetFieldID(playerclass, JNIHelper::IsForge() ? "field_70159_w" : "motionX", "D");
-	double x = (double)JNIHelper::env->GetDoubleField(getInstance(), StrayCache::entity_motionX);
-	JNIHelper::env->DeleteLocalRef(playerclass);
-	return x;
-}
 
-void CEntityPlayerSP::set_motion_x(double x)
-{
-	if (getClass() == NULL) return;
-	jclass playerclass = JNIHelper::env->GetObjectClass(getInstance());
-	JNIHelper::env->SetDoubleField(getInstance(), StrayCache::entity_motionX, (jdouble)x);
-	JNIHelper::env->DeleteLocalRef(playerclass);
-}
-
-double CEntityPlayerSP::get_motion_y()
-{
-	if (getClass() == NULL) return NULL;
-	jclass playerclass = JNIHelper::env->GetObjectClass(getInstance());
-	double y = (double)JNIHelper::env->GetDoubleField(getInstance(), StrayCache::entity_motionY);
-	JNIHelper::env->DeleteLocalRef(playerclass);
-	return y;
-}
-
-void CEntityPlayerSP::set_motion_y(double y)
-{
-	if (getClass() == NULL) return;
-	jclass playerclass = JNIHelper::env->GetObjectClass(getInstance());
-	jfieldID yfid = JNIHelper::env->GetFieldID(playerclass, JNIHelper::IsForge() ? "field_70181_x" : "motionY", "D");
-	JNIHelper::env->SetDoubleField(getInstance(), StrayCache::entity_motionY, (jdouble)y);
-	JNIHelper::env->DeleteLocalRef(playerclass);
-}
-
-double CEntityPlayerSP::get_motion_z()
-{
-	if (getClass() == NULL) return NULL;
-	jclass playerclass = JNIHelper::env->GetObjectClass(getInstance());
-	jfieldID xfid = JNIHelper::env->GetFieldID(playerclass, JNIHelper::IsForge() ? "field_70179_y" : "motionZ", "D");
-	double z = (double)JNIHelper::env->GetDoubleField(getInstance(), StrayCache::entity_motionZ);
-	JNIHelper::env->DeleteLocalRef(playerclass);
-	return z;
-}
-
-void CEntityPlayerSP::set_motion_z(double z)
-{
-	if (getClass() == NULL) return;
-	jclass playerclass = JNIHelper::env->GetObjectClass(getInstance());
-	jfieldID xfid = JNIHelper::env->GetFieldID(playerclass, JNIHelper::IsForge() ? "field_70179_y" : "motionZ", "D");
-	JNIHelper::env->SetDoubleField(getInstance(), StrayCache::entity_motionZ, (jdouble)z);
-	JNIHelper::env->DeleteLocalRef(playerclass);
-}
 
 double CEntityPlayerSP::toRadians(float degrees) {
 	return degrees * (M_PI / 180);
@@ -191,10 +157,10 @@ void CEntityPlayerSP::set_speed(const float speed)
 Object CEntityPlayerSP::get_abilities()
 {
 	if (JNIHelper::IsForge()) {
-		jfieldID abi = Java::Env->GetFieldID(this->getClass(), "field_71075_bZ", "Lnet/minecraft/entity/player/PlayerAbilities;");
+		jfieldID abi = Java::Env->GetFieldID(StrayCache::entityPlayer_class, "field_71075_bZ", "Lnet/minecraft/entity/player/PlayerAbilities;");
 		return Java::Env->GetObjectField(this->getInstance(), abi);
 	}
-	jfieldID abi = Java::Env->GetFieldID(this->getClass(), "abilities", "Lnet/minecraft/entity/player/PlayerAbilities;");
+	jfieldID abi = Java::Env->GetFieldID(this->getClass(), "capabilities", "Lnet/minecraft/entity/player/PlayerAbilities;");
 	return Object(Java::Env->GetObjectField(this->getInstance(), abi));
 }
 

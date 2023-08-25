@@ -55,9 +55,11 @@ void Tower::onEnable()
 
 void Tower::onDisable()
 {
-	if (CommonData::getInstance()->SanityCheck())
-		SDK::Minecraft->thePlayer->SetAngles(Vector2(orYaw, orPitch));
-	
+
+	if (!CommonData::getInstance()->SanityCheck())
+		return;
+	SDK::Minecraft->thePlayer->setSneak(false);
+	SDK::Minecraft->thePlayer->SetAngles(Vector2(orYaw, orPitch));
 
 }
 
