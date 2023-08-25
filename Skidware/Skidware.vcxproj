@@ -277,6 +277,7 @@
     <ClCompile Include="src\base\menu\hooks\glTexEnviHook.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\tower.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\player\autotool.cpp" />
+    <ClCompile Include="src\base\patcher\patcher.cpp" />
     <ClCompile Include="src\base\sdk\java\util\Collection.h" />
     <ClCompile Include="src\base\sdk\net\minecraft\block\Block.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\block\state\BlockState.cpp" />
