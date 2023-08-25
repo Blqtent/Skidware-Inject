@@ -3,7 +3,7 @@
 #include "../../../menu/menu.h"
 #include "../../commonData.h"
 
-Blink::Blink() : AbstractModule("Blink", Category::PLAYER,'H') {
+Blink::Blink() : AbstractModule("Fakelag", Category::PLAYER,'H') {
 	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
 }
 
@@ -43,6 +43,7 @@ void Blink::RenderMenu()
 		ImGui::Separator();
 		//Menu::DoToggleButtonStuff(566578, "Fakelag Throttle", &Blink::throttle);
 		//Menu::DoSliderStuff(566578, "Fakelag Delay", &this->Milliseonds, 1, 10000);
+		ImGui::Combo("Bind Mode", &this->getMode(), this->modes, 2);
 
 		ImGui::EndChild();
 	}

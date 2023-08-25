@@ -40,6 +40,7 @@
 #include "moduleManager/modules/visual/fullbright.h"
 #include "moduleManager/modules/blatent/timerhack.h"
 #include "moduleManager/modules/blatent/tower.h"
+#include "moduleManager/modules/blatent/noslow.h"
 
 
 
@@ -77,7 +78,7 @@ void Base::Init()
 	
 	initModule();
 	initEvent();
-	//Logger::Init();
+	Logger::Init();
 	//scripting::luaThing();
 	Base::Running = true;
 	
@@ -127,6 +128,7 @@ void Base::initModule() {
 		ModuleManager::getInstance().addModule<Speed>(Speed::getInstance());
 		ModuleManager::getInstance().addModule<TimerHack>(TimerHack::getInstance());
 		ModuleManager::getInstance().addModule<Tower>(Tower::getInstance());
+		ModuleManager::getInstance().addModule<NoSlow>(NoSlow::getInstance());
 	}
 	
 	{

@@ -47,6 +47,7 @@
 #include "../moduleManager/modules/visual/fullbright.h"
 #include "../moduleManager/modules/visual/cavefinder.h"
 #include "../moduleManager/modules/player/autotool.h"
+#include "../moduleManager/modules/blatent/noslow.h"
 
 
 int currentTab = -1;
@@ -464,6 +465,8 @@ void Menu::RenderMenu()
 			if (Menu::TabButton("Timer", (currentTab6 == 5 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 5;
 			ImGui::SameLine();
 			if (Menu::TabButton("Scaffold", (currentTab6 == 6 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 6;
+			ImGui::SameLine();
+			if (Menu::TabButton("NoSlow", (currentTab6 == 7 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 7;
 			
 			
 			if (currentTab6 == 0) {
@@ -499,6 +502,12 @@ void Menu::RenderMenu()
 				Tower::getInstance()->RenderMenu();
 
 				keybind::key_bind(Tower::getInstance()->getKey(), 125, 25);
+
+			}
+			if (currentTab6 == 7) {
+				NoSlow::getInstance()->RenderMenu();
+
+				keybind::key_bind(NoSlow::getInstance()->getKey(), 125, 25);
 
 			}
 			ImGui::InvisibleButton("", ImVec2(1, 100));

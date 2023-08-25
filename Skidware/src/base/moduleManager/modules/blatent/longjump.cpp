@@ -26,8 +26,12 @@ void LongJump::onUpdate(const EventUpdate e)
 		return;
 	}
 	if (getMode() == 0) {
-		if (SDK::Minecraft->thePlayer->getHurtTime() > 0)
+		if (SDK::Minecraft->thePlayer->getHurtTime() > 0) {
 			SDK::Minecraft->thePlayer->set_speed(speed);
+			if (SDK::Minecraft->thePlayer->isOnGround())
+				SDK::Minecraft->thePlayer->jump();
+
+		}
 	}
 }
 

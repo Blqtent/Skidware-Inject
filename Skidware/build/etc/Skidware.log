@@ -1,12 +1,9 @@
 ﻿  Scanning sources for module dependencies...
-  flight.cpp
+  noslow.cpp
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\flight.cpp(75,54): warning C4305: 'argument': truncation from '__int64' to 'const float'
-  EntityPlayerSP.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\client\entity\EntityPlayerSP.cpp(151,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\client\entity\EntityPlayerSP.cpp(152,11): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\client\entity\EntityPlayerSP.cpp(153,67): warning C4305: 'argument': truncation from '__int64' to 'const float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\noslow.cpp(33,20): warning C4305: 'argument': truncation from 'double' to 'const float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\noslow.cpp(34,44): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\noslow.cpp(37,20): warning C4305: 'argument': truncation from 'double' to 'const float'
 leftAutoClicker.obj : warning LNK4006: "long lastClickTime" (?lastClickTime@@3JA) already defined in killaura.obj; second definition ignored
 leftAutoClicker.obj : warning LNK4006: "int nextCps" (?nextCps@@3HA) already defined in killaura.obj; second definition ignored
 leftAutoClicker.obj : warning LNK4006: "int count" (?count@@3HA) already defined in tower.obj; second definition ignored
@@ -14,9 +11,9 @@ rightAutoClicker.obj : warning LNK4006: "int rightNextCps" (?rightNextCps@@3HA) 
 rightAutoClicker.obj : warning LNK4006: "long rightLastClickTime" (?rightLastClickTime@@3JA) already defined in tower.obj; second definition ignored
 E:\Repos\Skidware-Inject\Skidware\build\Skidware 1.08.dll : warning LNK4088: image being generated due to /FORCE option; image may not run
   Generating code
-  4 of 4052 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  9 of 4087 functions ( 0.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    52 functions had inline decision re-evaluated but remain unchanged
+    30 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
 * CIL library *(* CIL module *) : warning LNK4006: "int count" (?count@@3HA) already defined in * CIL library *(* CIL module *); second definition ignored
 * CIL library *(* CIL module *) : warning LNK4006: "int nextCps" (?nextCps@@3HA) already defined in * CIL library *(* CIL module *); second definition ignored
@@ -24,29 +21,30 @@ E:\Repos\Skidware-Inject\Skidware\build\Skidware 1.08.dll : warning LNK4088: ima
 * CIL library *(* CIL module *) : warning LNK4006: "long rightLastClickTime" (?rightLastClickTime@@3JA) already defined in * CIL library *(* CIL module *); second definition ignored
 * CIL library *(* CIL module *) : warning LNK4006: "int rightNextCps" (?rightNextCps@@3HA) already defined in * CIL library *(* CIL module *); second definition ignored
 E:\Repos\Skidware-Inject\Skidware\build\Skidware 1.08.dll : warning LNK4088: image being generated due to /FORCE option; image may not run
-BlockState.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-WalkingUpdate.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+EventUpdate.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+WSA.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+WSA.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 AbstractModule.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 AbstractModule.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+AbstractModule.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+ModuleManager.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+ModuleManager.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+ModuleManager.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 ModuleManager.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 flight.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 flight.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 flight.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 flight.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-killaura.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+flight.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 longjump.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-longjump.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-longjump.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-nofall.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 nofall.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 speed.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-timerhack.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-timerhack.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+speed.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 leftAutoClicker.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 leftAutoClicker.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 rightAutoClicker.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 antibot.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-reach.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+antibot.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 teams.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 teams.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 blink.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
@@ -54,20 +52,20 @@ blink.obj : warning LNK4020: a type record in '' is corrupted; some symbols and 
 eagle.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 cavefinder.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 cavefinder.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-item.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-item.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+ItemStack.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+ItemStack.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+ItemStack.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 BlockPos.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+AxisAlignedBB.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 MovingObjectPosition.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-MovingObjectPosition.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-MovingObjectPosition.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-Chunk.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-Chunk.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-Set.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+RenderManager.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+RenderManager.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+RenderManager.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+EntityLivingBase.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+EntityLivingBase.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+EntityPlayer.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+EntityPlayer.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 List.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-List.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-EntityPlayer.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-EntityPlayer.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-EntityPlayer.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 EntityPlayer.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 EntityPlayer.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 EntityPlayer.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
@@ -77,12 +75,12 @@ imgui_demo.obj : warning LNK4020: a type record in '' is corrupted; some symbols
 imgui_impl_opengl2.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 imgui_tables.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 imgui_tables.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-imgui_tables.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-hde32.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+imgui_widgets.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 hde64.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-hook.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-hook.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+hde64.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 trampoline.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+trampoline.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+wglSwapBuffers.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 wndProc.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 wndProc.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 menu.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
@@ -94,11 +92,11 @@ Minecraft.obj : warning LNK4020: a type record in '' is corrupted; some symbols 
 Entity.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 java.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 java.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-worldToScreen.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-World.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+math.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+main.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 WorldClient.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-utils.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
-utils.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+Vec3.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
+Vec3.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 Collection.h.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 Collection.h.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger
 Collection.h.obj : warning LNK4020: a type record in '' is corrupted; some symbols and types may not be accessible from the debugger

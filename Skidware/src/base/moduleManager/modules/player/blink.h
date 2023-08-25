@@ -32,7 +32,8 @@ public:
 	void onUpdate(const EventUpdate e);
 	void RenderMenu();
 	void OnReceiveData();
-
+	const char* modes[6]{ "Toggle", "Hold"};
+	bool shouldSpoof = false;
 	ULONGLONG timer;
 	bool running;
 	bool wasActive;

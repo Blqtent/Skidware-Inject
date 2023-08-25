@@ -10,9 +10,19 @@ int(__stdcall* g_origWSASend)(SOCKET, LPWSABUF, DWORD, LPDWORD, DWORD, LPWSAOVER
 int __stdcall WSASendHook(SOCKET s, LPWSABUF lpBuffers, DWORD dwBufferCount, LPDWORD lpNumberOfBytesSent, DWORD dwFlags, LPWSAOVERLAPPED lpOverlapped, LPWSAOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine)
 {
 	//EventManager::getInstance().call(EventPacketSend((const char*)lpBuffers));
-	while (Blink::getInstance()->getToggle()) {
-		
+	while (Blink::getInstance()->shouldSpoof) {
 		Sleep(1);
+	}
+
+	if (Blink::getInstance()->getMode() == 0) {
+		while (Blink::getInstance()->getToggle()) {
+			Sleep(1);
+		}
+	}
+	else if (Blink::getInstance()->getMode() == 1){
+		while (Blink::getInstance()->getToggle() && (GetAsyncKeyState(Blink::getInstance()->getKey()))) {
+			Sleep(1);
+		}
 	}
 	return g_origWSASend(s, lpBuffers, dwBufferCount, lpNumberOfBytesSent, dwFlags, lpOverlapped, lpCompletionRoutine);
 }
