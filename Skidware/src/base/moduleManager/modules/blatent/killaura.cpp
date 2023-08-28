@@ -36,9 +36,14 @@ Killaura* Killaura::getInstance() {
 }
 
 void Killaura::onDisable() {
+	SDK::Minecraft->timer->SetTimerSpeed(1);
+	POINT pos_cursor;
+	GetCursorPos(&pos_cursor);
+	SendMessage(Menu::HandleWindow, WM_RBUTTONUP, MK_RBUTTON, MAKELPARAM(pos_cursor.x, pos_cursor.y));
 }
 
 void Killaura::onEnable() {
+	
 }
 
 void Killaura::onUpdate(const EventUpdate e) {
@@ -132,7 +137,7 @@ void Killaura::onUpdate(const EventUpdate e) {
 		return;
 	}
 
-	if (this->getMode() == 0) {
+	if (this->getMode() == 0 || this->getMode() == 2) {
 		Vector3 ePos = target.GetPos();
 		Vector3 eLastPos = target.GetLastTickPos();
 
@@ -176,12 +181,20 @@ void Killaura::onUpdate(const EventUpdate e) {
 			}
 			//pitchInfluenced = true;
 			//targetPitch += randomFloat(-this->randomPitch, this->randomPitch);
-			thePlayer.SetAngles(Vector2(targetYaw, targetPitch));
+			if (this->getMode() == 0)
+				thePlayer.SetAngles(Vector2(targetYaw, targetPitch));
+			else if (this->getMode() == 2) {
+				thePlayer.sendGroundPacket(thePlayer.C03PacketPlayer(thePlayer.isOnGround(), targetYaw, targetPitch));
+			}
 		}
 		else {
 			data = renderPos - eLastPos + (eLastPos - ePos) * renderPartialTicks;
 			//pitchInfluenced = false;
-			thePlayer.SetAngles(Vector2(targetYaw, currentLookAngles.y + 0));
+			if (this->getMode() == 0)
+				thePlayer.SetAngles(Vector2(targetYaw, currentLookAngles.y + 0));
+			else if (this->getMode() == 2) {
+				thePlayer.sendGroundPacket(thePlayer.C03PacketPlayer(thePlayer.isOnGround(), targetYaw, currentLookAngles.y + 0));
+			}
 		}
 	}
 	if (!target.getInstance()) {
@@ -189,29 +202,40 @@ void Killaura::onUpdate(const EventUpdate e) {
 	}
 
 	if (keepsprint && thePlayer.getMoveForward() != 0) {
+		//float dist = (100 - (100 / 100));
+		thePlayer.set_speed(thePlayer.get_speed() * 1.0095);
 		thePlayer.setSprint(true);
 	}
 
-	else if (autoblock == true && this->getMode() == 1 && counter % 3 == 0) {
-		thePlayer.sendUseItem(&thePlayer, SDK::Minecraft->theWorld, thePlayer.GetInventory().GetCurrentItem());
+	else if (autoblock == true && (this->getMode() == 1 || this->getMode() == 2)) {
+		POINT pos_cursor;
+		GetCursorPos(&pos_cursor);
+		SendMessage(Menu::HandleWindow, WM_RBUTTONDOWN, MK_RBUTTON, MAKELPARAM(pos_cursor.x, pos_cursor.y));
 
+		if (isMove()) {
+			thePlayer.set_speed(0.21);
+			SDK::Minecraft->timer->SetTimerSpeed(0.95);
+		}
 	}
 	counter++;
 	long milli = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	if (lastClickTime == 0) lastClickTime = milli;
 	if ((milli - lastClickTime) < (1000 / nextCps)) return;
+
 	if (this->getMode() == 0) {
 		POINT pos_cursor;
 		GetCursorPos(&pos_cursor);
 		CommonData::getInstance()->isCombat = true;
 		SendMessage(Menu::HandleWindow, WM_LBUTTONDOWN, MK_LBUTTON, MAKELPARAM(pos_cursor.x, pos_cursor.y));
 		SendMessage(Menu::HandleWindow, WM_LBUTTONUP, 0, MAKELPARAM(pos_cursor.x, pos_cursor.y));
+
 	}
-	else if (this->getMode() == 1) {
+	else if (this->getMode() == 1 || this->getMode() == 2) {
 		thePlayer.swingItem();
 		CommonData::getInstance()->isCombat = true;
 		thePlayer.attackEntity(&thePlayer, target.getInstance());
 	}
+
 	if (autoblock == true && this->getMode() == 0) {
 		POINT pos_cursor;
 		GetCursorPos(&pos_cursor);
@@ -254,7 +278,7 @@ void Killaura::RenderMenu()
 		ImGui::Text("Target Priority");
 		ImGui::Combo("Target", &this->targetPriority, Killaura::targetPriorityList, 3);
 		ImGui::Text("Mode");
-		ImGui::Combo("Rot", &this->getMode(), Killaura::modes, 2);
+		ImGui::Combo("Rot", &this->getMode(), Killaura::modes, 3);
 		ImGui::EndChild();
 	}
 	ImGui::PopStyleVar();

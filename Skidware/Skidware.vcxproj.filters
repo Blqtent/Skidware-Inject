@@ -85,7 +85,7 @@
     <ClCompile Include="src\base\moduleManager\modules\player\autotool.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\item\ItemTool.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\block\state\IBlockState.cpp" />
-    <ClCompile Include="src\base\moduleManager\modules\blatent\noslow.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\blatent\antivoid.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ext\fonts\Minecraft.h" />
@@ -198,7 +198,7 @@
     <ClInclude Include="src\base\moduleManager\modules\player\autotool.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\item\ItemTool.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\block\state\IBlockState.h" />
-    <ClInclude Include="src\base\moduleManager\modules\blatent\noslow.h" />
+    <ClInclude Include="src\base\moduleManager\modules\blatent\antivoid.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

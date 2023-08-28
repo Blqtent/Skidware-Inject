@@ -30,7 +30,7 @@
 #include "../moduleManager/modules/blatent/flight.h"
 #include "../moduleManager/modules/blatent/timerHack.h"
 #include "../moduleManager/modules/blatent/tower.h"
-
+#include "../moduleManager/modules/player/autotool.h"
 //#include "../moduleManager/modules/other/config.h"
 
 #include "../sdk/net/minecraft/client/Minecraft.h"
@@ -46,8 +46,9 @@
 #include "../moduleManager/modules/blatent/nofall.h"
 #include "../moduleManager/modules/visual/fullbright.h"
 #include "../moduleManager/modules/visual/cavefinder.h"
-#include "../moduleManager/modules/player/autotool.h"
-#include "../moduleManager/modules/blatent/noslow.h"
+#include "../moduleManager/modules/blatent/antivoid.h"
+
+
 
 
 int currentTab = -1;
@@ -324,7 +325,7 @@ void Menu::RenderMenu()
 				Reach::getInstance()->RenderMenu();
 				keybind::key_bind(Reach::getInstance()->getKey(), 125, 25);
 			}
-			//keybind::key_bind(Reach::getInstance()->getKey(), 150, 50);
+
 			if (currentTab3 == 2) {
 				Velocity::getInstance()->RenderMenu();
 				keybind::key_bind(Velocity::getInstance()->getKey(), 125, 25);
@@ -340,7 +341,7 @@ void Menu::RenderMenu()
 				keybind::key_bind(Teams::getInstance()->getKey(), 125, 25);
 			}
 
-			//keybind::key_bind(Velocity::getInstance()->getKey(), 150, 50);
+
 
 			ImGui::InvisibleButton("", ImVec2(1, 100));
 		}
@@ -466,7 +467,9 @@ void Menu::RenderMenu()
 			ImGui::SameLine();
 			if (Menu::TabButton("Scaffold", (currentTab6 == 6 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 6;
 			ImGui::SameLine();
-			if (Menu::TabButton("NoSlow", (currentTab6 == 7 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 7;
+			if (Menu::TabButton("Antivoid", (currentTab6 == 7 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 7;
+			//ImGui::SameLine();
+			//if (Menu::TabButton("NoSlow", (currentTab6 == 7 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 7;
 			
 			
 			if (currentTab6 == 0) {
@@ -500,15 +503,11 @@ void Menu::RenderMenu()
 			}
 			if (currentTab6 == 6) {
 				Tower::getInstance()->RenderMenu();
-
 				keybind::key_bind(Tower::getInstance()->getKey(), 125, 25);
-
 			}
 			if (currentTab6 == 7) {
-				NoSlow::getInstance()->RenderMenu();
-
-				keybind::key_bind(NoSlow::getInstance()->getKey(), 125, 25);
-
+				Antivoid::getInstance()->RenderMenu();
+				keybind::key_bind(Antivoid::getInstance()->getKey(), 125, 25);
 			}
 			ImGui::InvisibleButton("", ImVec2(1, 100));
 		}

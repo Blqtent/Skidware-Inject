@@ -1,6 +1,7 @@
 #include "java.h"
 #include "../base.h"
 #include "../sdk/JNIHelper.h"
+#include "../../../ext/jni/jvmti.h"
 
 JavaVM* vm;
 jobject classLoader;
@@ -71,10 +72,10 @@ void Java::Init()
         return;
 
 
-    jint res = vm->GetEnv((void**)&Java::Env, JNI_VERSION_1_8);
+    jint res = vm->GetEnv((void**)&Java::Env, JNI_VERSION_1_6);
 
     if (res == JNI_EDETACHED)
-        res = vm->AttachCurrentThreadAsDaemon((void**)&Java::Env, nullptr);
+        res = vm->AttachCurrentThread((void**)&Java::Env, nullptr);
 
     if (res != JNI_OK)
         return;
@@ -82,6 +83,7 @@ void Java::Init()
     if (Java::Env == nullptr)
         vm->DestroyJavaVM();
 
+    vm->GetEnv((void**)&Java::tiEnv, JVMTI_VERSION);
     setupClassLoader();
 }
 
@@ -112,4 +114,28 @@ bool Java::AssignClass(std::string name, jclass &out)
     }
         
     return false;
+}
+
+jclass Java::findClass(JNIEnv* p_env, jvmtiEnv* p_tienv, const std::string& path)
+{
+    jint class_count = 0;
+    jclass* classes = nullptr;
+    jclass foundclass = nullptr;
+    p_tienv->GetLoadedClasses(&class_count, &classes);
+    for (int i = 0; i < class_count; ++i)
+    {
+        char* signature_buffer = nullptr;
+        p_tienv->GetClassSignature(classes[i], &signature_buffer, nullptr);
+        std::string signature = signature_buffer;
+        p_tienv->Deallocate((unsigned char*)signature_buffer);
+        signature = signature.substr(1);
+        signature.pop_back();
+        if (signature == path)
+        {
+            foundclass = (jclass)p_env->NewLocalRef(classes[i]);
+        }
+        p_env->DeleteLocalRef(classes[i]);
+    }
+    p_tienv->Deallocate((unsigned char*)classes);
+    return foundclass;
 }

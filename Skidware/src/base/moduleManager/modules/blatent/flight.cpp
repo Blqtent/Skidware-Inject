@@ -1,6 +1,7 @@
 #include "flight.h"
 #include "../../../menu/menu.h"
 
+
 //void Flight::Update()
 //{
 //	if (Menu::Open) return;
@@ -47,7 +48,7 @@
 //    //EventManager::getInstance().reg(Events::EventUpdate, [this] { onUpdate(); });
 //}
 
-Flight::Flight() : AbstractModule("Flight", Category::BLATENT) {
+Flight::Flight() : AbstractModule("Flight", Category::BLATENT, 'U') {
 	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
 }
 
@@ -55,6 +56,8 @@ Flight* Flight::getInstance() {
     static auto* inst = new Flight();
     return inst;
 }
+
+
 
 void Flight::onDisable() {
 	//if (CommonData::getInstance()->SanityCheck())
@@ -72,15 +75,29 @@ void Flight::onUpdate(const EventUpdate e) {
 
 	CEntityPlayerSP* p = SDK::Minecraft->thePlayer;
 	if (this->getMode() == 0) {
-		p->setMotion(Vector3(100000000000, 0, 100000000000));
 		p->set_speed(glideSpeed);
+
+		p->setMotion(Vector3(p->getMotion().x, 0, p->getMotion().z));
 	}
 	else if (this->getMode() == 1) {
 		if (p->getMotion().y < 0)
 			p->setOnGround(true);
 	}
 	else if (this->getMode() == 2) {
-		p->setFly(true);
+		p->set_speed(glideSpeed);
+
+		p->setMotion(Vector3(p->getMotion().x, 0, p->getMotion().z));
+
+		if (!(p->getMoveForward() != 0 || p->getMoveStrafe() != 0)) {
+			p->setMotion(Vector3(0, 0, 0));
+		}
+
+		if (GetAsyncKeyState(VK_LSHIFT)) {
+			p->setMotion(Vector3(p->getMotion().x, -0.45, p->getMotion().z));
+		}
+		if (GetAsyncKeyState(VK_SPACE)) {
+			p->setMotion(Vector3(p->getMotion().x, 0.45, p->getMotion().z));
+		}
 	}
 
 }
@@ -97,12 +114,12 @@ void Flight::RenderMenu()
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
 
 		Menu::DoToggleButtonStuff(235354, "Toggle Flight",this);
-		if (getMode() == 0)
+		if (getMode() == 0 || getMode() == 2)
 			Menu::DoSliderStuff(9864, "Speed", &this->glideSpeed, 0, 5);
 		//Menu::DoToggleButtonStuff(124343343, "Antikick", &Flight::antikick);
 
 		ImGui::Text("Flight Mode");
-		ImGui::Combo("Flight Mode", &Flight::getMode(), Flight::modes, 2);
+		ImGui::Combo("Flight Mode", &Flight::getMode(), Flight::modes, 3);
 
 		ImGui::EndChild();
 	}

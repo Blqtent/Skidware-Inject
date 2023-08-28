@@ -31,7 +31,8 @@
 #include "moduleManager/ModuleManager.h"
 #include "moduleManager/modules/blatent/tower.h"
 #include "moduleManager/modules/player/autotool.h"
-#include "moduleManager/modules/blatent/noslow.h"
+#include "moduleManager/modules/blatent/antivoid.h"
+
 
 extern ImVec4 clear_col;
 static int y;
@@ -73,119 +74,7 @@ void Base::RenderLoop() // Runs every frame
 	io.IniFilename = NULL; // GET RID OF IMGUI.INI
 	
 	y = 24;
-	/*
-	if (Menu::useMCFont) {
-		if (AimAssist::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Aimassist");
-			y += 20;
-		}
-		if (Esp::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "ESP");
-			y += 20;
-		}
-		if (LeftAutoClicker::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "LeftClicker");
-			y += 20;
-		}
-		if (RightAutoClicker::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "RightClicker");
-			y += 20;
-		}
-		if (Reach::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Reach");
-			y += 20;
-		}
-		if (Velocity::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Velocity");
-			y += 20;
-		}
-		if (Eagle::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Eagle");
-			y += 20;
-		}
-		if (Fastplace::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "FastPlace");
-			y += 20;
-		}
-		if (Cavefinder::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "XRay");
-			y += 20;
-		}
-		if (Antibot::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Antibot");
-			y += 20;
-		}
 
-		if (Teams::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Teams");
-			y += 20;
-		}
-
-		if (Killaura::getInstance()->getToggle()) {
-			if (Killaura::getInstance()->getMode() == 0) {
-				d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Killaura - Legit");
-			}
-			else if (Killaura::getInstance()->getMode() == 1) {
-				d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Killaura - Normal");
-			}
-			y += 20;
-		}
-		if (TimerHack::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Timer");
-			y += 20;
-		}
-		if (Fulbright::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Fulbright");
-			y += 20;
-
-		}
-		if (Speed::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Speed");
-			y += 20;
-		}
-		if (Nofall::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Nofall");
-			y += 20;
-		}
-		if (Flight::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Flight");
-			y += 20;
-		}
-		if (Tower::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Scaffold");
-			y += 20;
-		}
->>>>>>> Stashed changes
-
-		if (LongJump::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "LongJump");
-			y += 20;
-		}
-		if (Blink::getInstance()->getToggle()) {
-			d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Fakelag");
-			y += 20;
-		}
-	}
-<<<<<<< Updated upstream
-	if (Speed::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Speed");
-		y += 20;
-	}
-	if (Nofall::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Nofall");
-		y += 20;
-	}
-	if (Flight::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Flight");
-		y += 20;
-	}
-
-	if (LongJump::getInstance()->getToggle()) {
-		d->AddText(Menu::Minecraft, font_size, ImVec2(4, y), ImColor(255, 255, 255), "LongJump");
-		y += 20;
-	}
-
-	*/
 	//else {
 		if (AimAssist::getInstance()->getToggle()) {
 			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Aimassist");
@@ -232,10 +121,10 @@ void Base::RenderLoop() // Runs every frame
 			y += 20;
 		}
 
-		if (Teams::getInstance()->getToggle()) {
-			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Teams");
-			y += 20;
-		}
+		//if (Teams::getInstance()->getToggle()) {
+			//d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Teams");
+			//y += 20;
+		//}
 
 		if (Killaura::getInstance()->getToggle()) {
 			if (Killaura::getInstance()->getMode() == 0) {
@@ -243,7 +132,9 @@ void Base::RenderLoop() // Runs every frame
 			}
 			else if (Killaura::getInstance()->getMode() == 1) {
 				d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Killaura - Normal");
-
+			}
+			else if (Killaura::getInstance()->getMode() == 2) {
+				d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Killaura - Silent");
 			}
 			y += 20;
 		}
@@ -281,9 +172,14 @@ void Base::RenderLoop() // Runs every frame
 			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Fakelag");
 			y += 20;
 		}
-		if (NoSlow::getInstance()->getToggle()) {
-			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "NoSlow");
+		//Logger::Log("Antivoid 3 2");
+
+		if (Antivoid::getInstance()->getToggle()) {
+			//Logger::Log("Antivoid 3");
+
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Antivoid");
 			y += 20;
 		}
+
 	//}
 }

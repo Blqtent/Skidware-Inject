@@ -9,7 +9,7 @@ public:
 	void onUpdate(const EventUpdate e);
 	void RenderMenu();
 	float glideSpeed = 0;
-	const char* modes[5]{ "MotionY", "Airjump", "Vanilla"};
+	const char* modes[5]{ "MotionY", "Airjump", "Motion"};
 private:
 	Flight();
 };

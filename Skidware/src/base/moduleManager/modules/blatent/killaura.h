@@ -47,7 +47,7 @@ public:
 	float fov = 360.0f;
 	CEntityPlayer player;
 	float currdistance;
-	const char* modes[3]{ "Legit", "Normal", "" };
+	const char* modes[3]{ "Legit", "Normal", "Silent" };
 	const char* targetPriorityList[3]{ "Distance", "Health", "Closest to Crosshair" };
 private:
 	Killaura();

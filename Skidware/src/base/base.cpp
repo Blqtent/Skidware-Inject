@@ -40,7 +40,8 @@
 #include "moduleManager/modules/visual/fullbright.h"
 #include "moduleManager/modules/blatent/timerhack.h"
 #include "moduleManager/modules/blatent/tower.h"
-#include "moduleManager/modules/blatent/noslow.h"
+#include "moduleManager/modules/blatent/antivoid.h"
+
 
 
 
@@ -128,7 +129,8 @@ void Base::initModule() {
 		ModuleManager::getInstance().addModule<Speed>(Speed::getInstance());
 		ModuleManager::getInstance().addModule<TimerHack>(TimerHack::getInstance());
 		ModuleManager::getInstance().addModule<Tower>(Tower::getInstance());
-		ModuleManager::getInstance().addModule<NoSlow>(NoSlow::getInstance());
+		ModuleManager::getInstance().addModule<Antivoid>(Antivoid::getInstance());
+		//Logger::Log("Antivoid 2");
 	}
 	
 	{
@@ -139,7 +141,7 @@ void Base::initModule() {
 	{
 		ModuleManager::getInstance().addModule<AimAssist>(AimAssist::getInstance());
 		ModuleManager::getInstance().addModule<Antibot>(Antibot::getInstance());
-		ModuleManager::getInstance().addModule<Teams>(Teams::getInstance());
+		//ModuleManager::getInstance().addModule<Teams>(Teams::getInstance());
 		ModuleManager::getInstance().addModule<Reach>(Reach::getInstance());
 		ModuleManager::getInstance().addModule<Velocity>(Velocity::getInstance());
 	}

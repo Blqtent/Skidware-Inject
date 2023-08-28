@@ -3,7 +3,7 @@
 #include "../../../menu/menu.h"
 #include "../../commonData.h"
 
-Blink::Blink() : AbstractModule("Fakelag", Category::PLAYER,'H') {
+Blink::Blink() : AbstractModule("Fakelag", Category::PLAYER) {
 	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
 }
 

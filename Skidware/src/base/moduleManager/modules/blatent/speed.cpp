@@ -6,8 +6,8 @@
 #include <windows.h>
 #include <numbers>
 //#include "../../../extension/scripting.hpp"
-
-Speed::Speed() : AbstractModule("Speed", Category::BLATENT) {
+long count = 0;
+Speed::Speed() : AbstractModule("Speed", Category::BLATENT, 'H') {
 	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
 }
 
@@ -38,7 +38,7 @@ void Speed::onUpdate(const EventUpdate e)
 	if (!CommonData::getInstance()->SanityCheck()) return;
 	//if (!SDK::Minecraft->thePlayer->isOnGround()) return;
 	CEntityPlayerSP* p = SDK::Minecraft->thePlayer;
-	
+
 	if (getMode() == 0) {
 		if (isMoving()) {
 			p->set_speed(speed);
@@ -55,7 +55,7 @@ void Speed::onUpdate(const EventUpdate e)
 			timer = GetTickCount64();
 			p->jump();
 		}
-	} 
+	}
 	else if (getMode() == 2) {
 		if (p->isOnGround()) {
 			if (isMoving()) {
@@ -68,22 +68,40 @@ void Speed::onUpdate(const EventUpdate e)
 		}
 	}
 	else if (getMode() == 3) {
+		if (isMoving())
+			p->set_speed(speed);
+
 		if (p->isOnGround()) {
 			if (isMoving()) {
-				p->set_speed(speed);
-				p->setMotion(Vector3(100000000000, 0.2, 100000000000));
+				p->jump();
 
 			}
 			else {
 				p->setMotion(Vector3(0, 100000000000, 0));
 			}
 		}
-/*		else {
-			Vector3 motion = p->getMotion();
-			Vector3 speedMotion = Vector3(motion.x, motion.y - 0.27, motion.z);
-			p->setMotion(speedMotion);
-		}*/
+		else {
+			p->setMotion(Vector3(0, -0.10, 0));
+
+		}
+
 	}
+	else if (getMode() == 4) {
+		if (p->isOnGround()) {
+			if (isMoving() && count % 2 == 0) {
+				p->set_speed(0.275);
+				p->jump();
+			}
+			else if (isMoving() && !(count % 2 == 0)) {
+				p->set_speed(0.25);
+				p->jump();
+			}
+		}
+		if (p->getHurtTime() > 6) {
+			//p->set_speed(p->get_speed());
+		}
+	}
+	count++;
 
 }
 
@@ -98,12 +116,12 @@ void Speed::RenderMenu()
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
 		Menu::DoToggleButtonStuff(23432423, "Toggle Strafe", this);
-		if (this->getMode() == 0 || getMode() == 2 || getMode() == 3);
-			Menu::DoSliderStuff(1734563, "Speed", &this->speed, 0, 3);
-		if (this->getMode() == 2 || getMode() == 3)
-			Menu::DoSliderStuff(11111, "Max Ground Speed", &this->maxspeed, 0, 3);
+		if (getMode() == 0 || getMode() == 2 || getMode() == 3);
+			Menu::DoSliderStuff(1734563, "Speed", &this->speed, 0, 5);
+		if (getMode() == 2 || getMode() == 3)
+			//Menu::DoSliderStuff(11111, "Max Ground Speed", &this->maxspeed, 0, 5);
 		ImGui::Text("Speed Mode Mode");
-		ImGui::Combo("Mode", &this->getMode(), modes, 4);
+		ImGui::Combo("Mode", &this->getMode(), modes, 5);
 
 
 		ImGui::EndChild();
