@@ -4,6 +4,7 @@
 
 
 Teams::Teams() : AbstractModule("Teams", Category::COMBAT) {
+	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
 }
 
 Teams* Teams::getInstance() {
@@ -12,6 +13,9 @@ Teams* Teams::getInstance() {
 }
 
 void Teams::onDisable() {
+}
+
+void Teams::onUpdate(const EventUpdate e) {
 }
 
 void Teams::onEnable() {

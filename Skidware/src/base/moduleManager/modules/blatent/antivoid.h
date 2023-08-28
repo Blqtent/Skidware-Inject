@@ -12,7 +12,7 @@
 //	static void RenderMenu();
 //};
 
-class Antivoid :public AbstractModule {
+class Antivoid : public AbstractModule {
 public:
 	static Antivoid* getInstance();
 	void onEnable();

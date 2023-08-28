@@ -7,7 +7,7 @@ Antivoid::Antivoid() : AbstractModule("Antivoid", Category::BLATENT) {
 }
 
 Antivoid* Antivoid::getInstance() {
-	static auto* inst = new Antivoid();
+	static Antivoid* inst = new Antivoid();
 	//Logger::Log("Antivoid");
 	return inst;
 }
@@ -18,9 +18,8 @@ void Antivoid::onDisable() {
 void Antivoid::onEnable() {
 }
 
-void Antivoid::onUpdate(const EventUpdate e)
+void Antivoid::onUpdate(EventUpdate e)
 {
-
 	if (Menu::Open) return;
 	if (!CommonData::getInstance()->SanityCheck()) return;
 	if (!this->getToggle()) {

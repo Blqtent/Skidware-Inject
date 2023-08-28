@@ -122,6 +122,7 @@ void Base::initEvent() {
 void Base::initModule() {
 	
 	{
+		
 		ModuleManager::getInstance().addModule<Flight>(Flight::getInstance());
 		ModuleManager::getInstance().addModule<Killaura>(Killaura::getInstance());
 		ModuleManager::getInstance().addModule<LongJump>(LongJump::getInstance());
@@ -141,7 +142,7 @@ void Base::initModule() {
 	{
 		ModuleManager::getInstance().addModule<AimAssist>(AimAssist::getInstance());
 		ModuleManager::getInstance().addModule<Antibot>(Antibot::getInstance());
-		//ModuleManager::getInstance().addModule<Teams>(Teams::getInstance());
+		ModuleManager::getInstance().addModule<Teams>(Teams::getInstance());
 		ModuleManager::getInstance().addModule<Reach>(Reach::getInstance());
 		ModuleManager::getInstance().addModule<Velocity>(Velocity::getInstance());
 	}

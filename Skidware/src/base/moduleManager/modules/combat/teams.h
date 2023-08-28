@@ -4,12 +4,13 @@
 #include <string>
 #include <vector>
 #include "../../commonData.h"
-
+#include "../../../eventManager/events/EventUpdate.hpp"
 class Teams :public AbstractModule {
 public:
 	static Teams* getInstance();
 	void onEnable();
 	void onDisable();
+	void onUpdate(const EventUpdate e);
 	void RenderMenu();
 	bool isTeam(CEntityPlayer p) {
 
