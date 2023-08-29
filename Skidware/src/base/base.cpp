@@ -79,7 +79,7 @@ void Base::Init()
 	
 	initModule();
 	initEvent();
-	Logger::Init();
+	//Logger::Init();
 	//scripting::luaThing();
 	Base::Running = true;
 	
@@ -130,8 +130,8 @@ void Base::initModule() {
 		ModuleManager::getInstance().addModule<Speed>(Speed::getInstance());
 		ModuleManager::getInstance().addModule<TimerHack>(TimerHack::getInstance());
 		ModuleManager::getInstance().addModule<Tower>(Tower::getInstance());
-		ModuleManager::getInstance().addModule<Antivoid>(Antivoid::getInstance());
-		//Logger::Log("Antivoid 2");
+		//ModuleManager::getInstance().addModule<Antivoid>(Antivoid::getInstance());
+		
 	}
 	
 	{
