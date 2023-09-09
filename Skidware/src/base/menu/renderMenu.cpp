@@ -47,6 +47,7 @@
 #include "../moduleManager/modules/visual/fullbright.h"
 #include "../moduleManager/modules/visual/cavefinder.h"
 #include "../moduleManager/modules/blatent/antivoid.h"
+#include "../moduleManager/modules/blatent/noslow.h"
 
 
 
@@ -468,6 +469,8 @@ void Menu::RenderMenu()
 			if (Menu::TabButton("Scaffold", (currentTab6 == 6 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 6;
 			ImGui::SameLine();
 			if (Menu::TabButton("Antivoid", (currentTab6 == 7 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 7;
+			ImGui::SameLine();
+			if (Menu::TabButton("Noslowdown", (currentTab6 == 8 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 8;
 			//ImGui::SameLine();
 			//if (Menu::TabButton("NoSlow", (currentTab6 == 7 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 7;
 			
@@ -508,6 +511,10 @@ void Menu::RenderMenu()
 			if (currentTab6 == 7) {
 				Antivoid::getInstance()->RenderMenu();
 				keybind::key_bind(Antivoid::getInstance()->getKey(), 125, 25);
+			}
+			if (currentTab6 == 8) {
+				Noslowdown::getInstance()->RenderMenu();
+				keybind::key_bind(Noslowdown::getInstance()->getKey(), 125, 25);
 			}
 			ImGui::InvisibleButton("", ImVec2(1, 100));
 		}

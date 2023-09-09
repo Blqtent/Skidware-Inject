@@ -41,6 +41,8 @@
 #include "moduleManager/modules/blatent/timerhack.h"
 #include "moduleManager/modules/blatent/tower.h"
 #include "moduleManager/modules/blatent/antivoid.h"
+#include "moduleManager/modules/blatent/noslow.h"
+#include "patcher/patcher.h"
 
 
 
@@ -76,7 +78,7 @@ void Base::Init()
 	Java::Init();
 	SDK::Init();
 	Menu::Init();
-	
+	//Patcher::Init();
 	initModule();
 	initEvent();
 	//Logger::Init();
@@ -130,7 +132,8 @@ void Base::initModule() {
 		ModuleManager::getInstance().addModule<Speed>(Speed::getInstance());
 		ModuleManager::getInstance().addModule<TimerHack>(TimerHack::getInstance());
 		ModuleManager::getInstance().addModule<Tower>(Tower::getInstance());
-		//ModuleManager::getInstance().addModule<Antivoid>(Antivoid::getInstance());
+		ModuleManager::getInstance().addModule<Antivoid>(Antivoid::getInstance());
+		ModuleManager::getInstance().addModule<Noslowdown>(Noslowdown::getInstance());
 		
 	}
 	
@@ -179,6 +182,7 @@ void Base::Kill()
 	Java::Kill();
 	Menu::Kill();
 	Logger::Kill();
+	//Patcher::Kill();
 
 	MH_Uninitialize();
 }

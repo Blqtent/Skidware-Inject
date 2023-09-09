@@ -1,5 +1,5 @@
 #include "patcher.h"
-#include "miniz.hpp"
+//#include "miniz.hpp"
 #include "data.h"
 #include <functional>
 #include "../sdk/JNIHelper.h"
@@ -9,6 +9,7 @@ namespace Patcher
 	{
 		void loadJar(jobject classLoader, const unsigned char* jarBytes, size_t size)
 		{
+			/*
 			mz_zip_archive archive{};
 			if (!mz_zip_reader_init_mem(&archive, jarBytes, size, 0))
 			{
@@ -42,6 +43,9 @@ namespace Patcher
 			}
 			mz_zip_reader_end(&archive);
 			return;
+			*/
+			jclass jaclass = Java::Env->DefineClass(nullptr, classLoader, (const jbyte*)jarBytes, size);
+			if (jaclass)Java::Env->DeleteLocalRef(jaclass);
 		}
 
 		void gc()
@@ -51,7 +55,7 @@ namespace Patcher
 			Java::Env->CallStaticVoidMethod(System_class, gcID);
 			Java::Env->DeleteLocalRef(System_class);
 		}
-
+		
 		jobject newClassLoader()
 		{
 			jclass urlClass = Java::Env->FindClass("java/net/URL");

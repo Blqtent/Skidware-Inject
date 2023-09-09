@@ -33,6 +33,11 @@ void LongJump::onUpdate(const EventUpdate e)
 
 		}
 	}
+	if (getMode() == 1) {
+		SDK::Minecraft->thePlayer->setMotion(Vector3(SDK::Minecraft->thePlayer->getMotion().x, SDK::Minecraft->thePlayer->getMotion().x + 0.05999, SDK::Minecraft->thePlayer->getMotion().z));
+		SDK::Minecraft->thePlayer->set_speed(SDK::Minecraft->thePlayer->get_speed() * 1.08f);
+
+	}
 }
 
 
@@ -50,8 +55,9 @@ void LongJump::RenderMenu()
 		//Menu::DoToggleButtonStuff(124343343, "Antikick", &this->antikick);
 
 		ImGui::Text("Longjump Mode");
-		ImGui::Combo("Longjump Mode", &this->getMode(), this->modes, 1);
-		Menu::DoSliderStuff(69420666, "Longjump Speed", &this->speed, 0, 5);
+		ImGui::Combo("Longjump Mode", &this->getMode(), this->modes, 2);
+		if (this->getMode() == 0)
+			Menu::DoSliderStuff(69420666, "Longjump Speed", &this->speed, 0, 5);
 
 		ImGui::EndChild();
 	}

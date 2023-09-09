@@ -38,3 +38,10 @@ CInventoryPlayer CEntityPlayer::GetInventory()
 	if (!this->isValid() || this->isNULL()) return CInventoryPlayer{};
 	return CInventoryPlayer(Java::Env->GetObjectField(this->getInstance(), StrayCache::entityPlayer_inventory));
 }
+
+bool CEntityPlayer::isBlocking()
+{
+	if (!this->isValid() || this->isNULL()) return false;
+
+	return Java::Env->CallBooleanMethod(this->getInstance(), StrayCache::entityPlayer_isBlocking);
+}

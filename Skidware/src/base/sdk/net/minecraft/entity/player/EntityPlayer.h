@@ -15,5 +15,6 @@ public:
 	}
 	using CEntityLivingBase::CEntityLivingBase;
 	CInventoryPlayer GetInventory();
+	bool isBlocking();
 };
 

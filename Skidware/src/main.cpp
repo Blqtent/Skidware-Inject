@@ -11,7 +11,7 @@ void Main::Kill()
 	Base::Kill();
 	FreeLibraryAndExitThread(Main::HModule, 0);
 }
-
+//
 BOOL WINAPI DllMain(HINSTANCE hModule, DWORD dwReason, LPVOID lpReserved)
 {
 	if (dwReason == DLL_PROCESS_ATTACH)

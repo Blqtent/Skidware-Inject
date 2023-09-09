@@ -32,6 +32,7 @@
 #include "moduleManager/modules/blatent/tower.h"
 #include "moduleManager/modules/player/autotool.h"
 #include "moduleManager/modules/blatent/antivoid.h"
+#include "moduleManager/modules/blatent/noslow.h"
 
 
 extern ImVec4 clear_col;
@@ -178,6 +179,12 @@ void Base::RenderLoop() // Runs every frame
 			//Logger::Log("Antivoid 3");
 
 			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Antivoid");
+			y += 20;
+		}
+		if (Noslowdown::getInstance()->getToggle()) {
+			//Logger::Log("Antivoid 3");
+
+			d->AddText(Menu::Font, font_size, ImVec2(4, y), ImColor(255, 255, 255), "Noslowdown");
 			y += 20;
 		}
 

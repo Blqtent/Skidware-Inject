@@ -161,8 +161,11 @@
     <ClInclude Include="src\base\eventManager\events\EventChams.hpp" />
     <ClInclude Include="src\base\menu\hooks\glTexEnviHook.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\antivoid.h" />
+    <ClInclude Include="src\base\moduleManager\modules\blatent\noslow.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\tower.h" />
     <ClInclude Include="src\base\moduleManager\modules\player\autotool.h" />
+    <ClInclude Include="src\base\patcher\data.h" />
+    <ClInclude Include="src\base\patcher\patcher.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\block\Block.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\block\state\BlockState.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\block\state\IBlockState.h" />
@@ -277,8 +280,10 @@
   <ItemGroup>
     <ClCompile Include="src\base\menu\hooks\glTexEnviHook.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\antivoid.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\blatent\noslow.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\tower.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\player\autotool.cpp" />
+    <ClCompile Include="src\base\patcher\patcher.cpp" />
     <ClCompile Include="src\base\sdk\java\util\Collection.h" />
     <ClCompile Include="src\base\sdk\net\minecraft\block\Block.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\block\state\BlockState.cpp" />

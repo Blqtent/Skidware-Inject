@@ -26,9 +26,11 @@ void Antivoid::onUpdate(EventUpdate e)
 		return;
 	}
 	if (getMode() == 0) {
-		if (SDK::Minecraft->thePlayer->fallDistance() > 4) {
-			SDK::Minecraft->thePlayer->setMotion(Vector3(SDK::Minecraft->thePlayer->getMotion().x, 1, SDK::Minecraft->thePlayer->getMotion().z));
+		if (SDK::Minecraft->thePlayer->fallDistance() > 5) {
+			SDK::Minecraft->thePlayer->setMotion(Vector3(SDK::Minecraft->thePlayer->getMotion().x, -0.68, SDK::Minecraft->thePlayer->getMotion().z));
 		}
+
+
 	}
 }
 

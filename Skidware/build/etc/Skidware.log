@@ -1,9 +1,14 @@
 ﻿  Scanning sources for module dependencies...
-  base.cpp
+  speed.cpp
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\base.cpp(57): warning C4172: returning address of local variable or temporary: windowTitle
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(47,44): warning C4305: 'argument': truncation from '__int64' to 'const float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(66,45): warning C4305: 'argument': truncation from '__int64' to 'const float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(80,45): warning C4305: 'argument': truncation from '__int64' to 'const float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(84,37): warning C4305: 'argument': truncation from 'double' to 'const float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(124,58): warning C4390: ';': empty controlled statement found; is this the intent?
 LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
-speed.obj : warning LNK4006: "long count" (?count@@3JA) already defined in nofall.obj; second definition ignored
+nofall.obj : warning LNK4006: "long count" (?count@@3JA) already defined in noslow.obj; second definition ignored
+speed.obj : warning LNK4006: "long count" (?count@@3JA) already defined in noslow.obj; second definition ignored
 leftAutoClicker.obj : warning LNK4006: "long lastClickTime" (?lastClickTime@@3JA) already defined in killaura.obj; second definition ignored
 leftAutoClicker.obj : warning LNK4006: "int nextCps" (?nextCps@@3HA) already defined in killaura.obj; second definition ignored
 leftAutoClicker.obj : warning LNK4006: "int count" (?count@@3HA) already defined in tower.obj; second definition ignored

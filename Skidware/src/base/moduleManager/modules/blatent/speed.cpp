@@ -82,12 +82,12 @@ void Speed::onUpdate(const EventUpdate e)
 		}
 		else {
 			p->setMotion(Vector3(0, -0.10, 0));
-
 		}
 
 	}
 	else if (getMode() == 4) {
 		if (p->isOnGround()) {
+			/*
 			if (isMoving() && count % 2 == 0) {
 				p->set_speed(0.275);
 				p->jump();
@@ -96,12 +96,16 @@ void Speed::onUpdate(const EventUpdate e)
 				p->set_speed(0.25);
 				p->jump();
 			}
+			*/
+			if (isMoving()) {
+				p->set_speed(0.25);
+				p->jump();
+			}
 		}
-		if (p->getHurtTime() > 6) {
-			//p->set_speed(p->get_speed());
-		}
+
+
 	}
-	count++;
+	//count++;
 
 }
 
@@ -115,11 +119,9 @@ void Speed::RenderMenu()
 	if (ImGui::BeginChild("Strafe", ImVec2(450, 100))) {
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
-		Menu::DoToggleButtonStuff(23432423, "Toggle Strafe", this);
+		Menu::DoToggleButtonStuff(23432423, "Toggle Speed", this);
 		if (getMode() == 0 || getMode() == 2 || getMode() == 3);
 			Menu::DoSliderStuff(1734563, "Speed", &this->speed, 0, 5);
-		if (getMode() == 2 || getMode() == 3)
-			//Menu::DoSliderStuff(11111, "Max Ground Speed", &this->maxspeed, 0, 5);
 		ImGui::Text("Speed Mode Mode");
 		ImGui::Combo("Mode", &this->getMode(), modes, 5);
 

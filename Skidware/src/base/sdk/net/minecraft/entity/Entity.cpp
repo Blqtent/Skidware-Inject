@@ -136,7 +136,7 @@ void CEntity::setFallDistance(float i)
 int CEntity::ticksExisted()
 {
 	if (!this->isValid() || this->isNULL()) return NULL;
-	return Java::Env->GetFloatField(this->getInstance(), StrayCache::entity_ticksExisted);
+	return Java::Env->GetIntField(this->getInstance(), StrayCache::entity_ticksExisted);
 
 }
 

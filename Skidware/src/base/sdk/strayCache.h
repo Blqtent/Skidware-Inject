@@ -86,6 +86,7 @@ struct StrayCache {
 	//Entity Player
 	inline static jclass entityPlayer_class;
 	inline static jfieldID entityPlayer_inventory;
+	inline static jmethodID entityPlayer_isBlocking;
 
 
 	//Entity Player SP
@@ -373,6 +374,7 @@ struct StrayCache {
 				entityPlayer_class = (jclass)Java::Env->NewGlobalRef(entityPlayer_class);
 
 				entityPlayer_inventory = Java::Env->GetFieldID(StrayCache::entityPlayer_class, "field_71071_by", "Lnet/minecraft/entity/player/InventoryPlayer;");
+				entityPlayer_isBlocking = Java::Env->GetMethodID(StrayCache::entityPlayer_class, "func_70632_aY", "()Z");
 			}
 
 
@@ -651,6 +653,7 @@ struct StrayCache {
 
 
 			entityPlayer_inventory = Java::Env->GetFieldID(StrayCache::entityPlayer_class, "inventory", "Lnet/minecraft/entity/player/InventoryPlayer;");
+			entityPlayer_isBlocking = Java::Env->GetMethodID(StrayCache::entityPlayer_class, "isBlocking", "()Z");
 		}
 
 		{

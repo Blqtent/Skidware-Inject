@@ -18,7 +18,7 @@ public:
 	void onDisable();
 	void onUpdate(const EventUpdate e);
 	void RenderMenu();
-	const char* modes[5]{ "TNT" };
+	const char* modes[5]{ "TNT", "Polar"};
 	float speed = 2;
 private:
 	LongJump();
