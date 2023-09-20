@@ -32,7 +32,7 @@ float getStrafeMultiplier() {
 	return multiplier;
 }
 */
-Tower::Tower() : AbstractModule("Scaffold", Category::BLATENT, 'Y') {
+Tower::Tower() : AbstractModule("Scaffold", Category::BLATENT) {
 	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
 }
 

@@ -62,7 +62,7 @@ void Velocity::onUpdate(const EventUpdate e)
 				}
 			}
 			else if (this->getMode() == 1) {
-				if (thePlayer->getHurtTime() > 9 && thePlayer->isOnGround() && counter++ % 2 == 0) {
+				if (thePlayer->getHurtTime() > 5 /* && counter++ % 2 == 0 */ ) {
 					thePlayer->setKeyJump(true); 
 				}
 				else if (!GetAsyncKeyState(VK_SPACE) & 1){
@@ -75,8 +75,8 @@ void Velocity::onUpdate(const EventUpdate e)
 				}
 			}
 			else if (this->getMode() == 3) {
-				if (thePlayer->getHurtTime() > 5) {
-					thePlayer->set_speed(thePlayer->get_speed());
+				if (thePlayer->getHurtTime() > 6) {
+					thePlayer->set_speed(0.025);
 				}
 			}
 			else if (this->getMode() == 4) {

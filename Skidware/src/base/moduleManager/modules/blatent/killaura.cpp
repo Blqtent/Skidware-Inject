@@ -26,7 +26,7 @@ bool isMove() {
 	return (p->getMoveForward() != 0 || p->getMoveStrafe() != 0);
 }
 
-Killaura::Killaura() : AbstractModule("Killaura", Category::BLATENT, 'G') {
+Killaura::Killaura() : AbstractModule("Killaura", Category::BLATENT) {
 	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
 }
 

@@ -9,7 +9,7 @@ bool isCurrMov() {
 	return (p->getMoveForward() != 0 || p->getMoveStrafe() != 0);
 }
 
-Noslowdown::Noslowdown() : AbstractModule("Noslowdown", Category::BLATENT, 'L') {
+Noslowdown::Noslowdown() : AbstractModule("Noslowdown", Category::BLATENT) {
 	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
 }
 

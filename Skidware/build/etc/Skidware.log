@@ -1,11 +1,55 @@
 ﻿  Scanning sources for module dependencies...
+  killaura.cpp
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: 'initializing': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(89,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(101,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(144,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(175,44): warning C4305: 'argument': truncation from 'double' to 'const float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(180,44): warning C4305: 'argument': truncation from 'double' to 'const float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(206,45): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(216,28): warning C4305: 'argument': truncation from 'double' to 'const float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(217,45): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(221,13): warning C4244: 'initializing': conversion from '_Rep' to 'long', possible loss of data
+          with
+          [
+              _Rep=__int64
+          ]
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(246,29): warning C4305: 'argument': truncation from 'double' to 'const float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(255,64): warning C4244: 'argument': conversion from 'float' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(255,46): warning C4244: 'argument': conversion from 'float' to '_Ty', possible loss of data
+          with
+          [
+              _Ty=int
+          ]
+  noslow.cpp
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: 'initializing': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\noslow.cpp(46,46): warning C4305: 'argument': truncation from 'double' to 'const float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\noslow.cpp(50,46): warning C4305: 'argument': truncation from 'double' to 'const float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\noslow.cpp(51,45): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\noslow.cpp(55,46): warning C4305: 'argument': truncation from 'double' to 'const float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\noslow.cpp(56,45): warning C4305: 'argument': truncation from 'double' to 'float'
   speed.cpp
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: 'initializing': truncation from 'double' to 'float'
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(47,44): warning C4305: 'argument': truncation from '__int64' to 'const float'
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(66,45): warning C4305: 'argument': truncation from '__int64' to 'const float'
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(80,45): warning C4305: 'argument': truncation from '__int64' to 'const float'
 E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(84,37): warning C4305: 'argument': truncation from 'double' to 'const float'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(124,58): warning C4390: ';': empty controlled statement found; is this the intent?
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(123,58): warning C4390: ';': empty controlled statement found; is this the intent?
+  tower.cpp
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: 'initializing': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\tower.cpp(51,136): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\tower.cpp(87,61): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\tower.cpp(93,130): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\tower.cpp(96,13): warning C4244: 'initializing': conversion from '_Rep' to 'long', possible loss of data
+          with
+          [
+              _Rep=__int64
+          ]
+  Generating Code...
 LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
 nofall.obj : warning LNK4006: "long count" (?count@@3JA) already defined in noslow.obj; second definition ignored
 speed.obj : warning LNK4006: "long count" (?count@@3JA) already defined in noslow.obj; second definition ignored

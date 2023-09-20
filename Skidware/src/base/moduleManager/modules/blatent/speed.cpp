@@ -7,7 +7,7 @@
 #include <numbers>
 //#include "../../../extension/scripting.hpp"
 long count = 0;
-Speed::Speed() : AbstractModule("Speed", Category::BLATENT, 'H') {
+Speed::Speed() : AbstractModule("Speed", Category::BLATENT) {
 	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
 }
 
