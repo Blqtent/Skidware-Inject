@@ -1,12 +1,14 @@
 #include "WSA.h"
-
 #include "../menu.h"
 #include "../../util/logger.h"
 #include "../../../../ext/minhook/minhook.h"
 #include "../../moduleManager/modules/player/blink.h"
 #include "../../eventManager/EventManager.hpp"
 #include "../../eventManager/events/EventPacketSend.h"
+
+
 int(__stdcall* g_origWSASend)(SOCKET, LPWSABUF, DWORD, LPDWORD, DWORD, LPWSAOVERLAPPED, LPWSAOVERLAPPED_COMPLETION_ROUTINE);
+
 int __stdcall WSASendHook(SOCKET s, LPWSABUF lpBuffers, DWORD dwBufferCount, LPDWORD lpNumberOfBytesSent, DWORD dwFlags, LPWSAOVERLAPPED lpOverlapped, LPWSAOVERLAPPED_COMPLETION_ROUTINE lpCompletionRoutine)
 {
 	//EventManager::getInstance().call(EventPacketSend((const char*)lpBuffers));
@@ -23,6 +25,12 @@ int __stdcall WSASendHook(SOCKET s, LPWSABUF lpBuffers, DWORD dwBufferCount, LPD
 		while (Blink::getInstance()->getToggle() && (GetAsyncKeyState(Blink::getInstance()->getKey()))) {
 			Sleep(1);
 		}
+	}
+
+	else if (Blink::getInstance()->getMode() == 2 && Blink::getInstance()->getToggle() && Blink::getInstance()->timer % (int)Blink::getInstance()->Chance == 0) {
+		//while (Blink::getInstance()->getToggle() && !Blink::getInstance()->Time.isElapsed()) {
+		Sleep(Blink::getInstance()->Milliseonds);
+		//}
 	}
 	return g_origWSASend(s, lpBuffers, dwBufferCount, lpNumberOfBytesSent, dwFlags, lpOverlapped, lpCompletionRoutine);
 }
