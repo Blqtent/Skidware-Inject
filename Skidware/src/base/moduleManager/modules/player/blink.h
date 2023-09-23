@@ -4,7 +4,8 @@
 #include "../../../eventManager/events/EventUpdate.hpp"
 #include "../../AbstractModule.h"
 #include <Windows.h>
-
+#include "../../../util/Timer.h"
+	
 #include <string>
 #include <vector>
 //struct Blink
@@ -32,12 +33,14 @@ public:
 	void onUpdate(const EventUpdate e);
 	void RenderMenu();
 	void OnReceiveData();
-	const char* modes[6]{ "Toggle", "Hold"};
+	const char* modes[6]{ "Toggle", "Hold", "Backtrack"};
 	bool shouldSpoof = false;
-	ULONGLONG timer;
+	long long timer = 0;
 	bool running;
 	bool wasActive;
-	float Milliseonds = 10;
+	float Milliseonds = 100;
+	float Chance = 2;
+
 private:
 	Blink();
 };
