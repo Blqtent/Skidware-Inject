@@ -2,7 +2,7 @@
 #include "../../../../../ext/imgui/imgui.h"
 #include "../../../menu/menu.h"
 #include "../../commonData.h"
-
+#include <chrono>
 Blink::Blink() : AbstractModule("Fakelag", Category::PLAYER) {
 	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
 }
@@ -16,6 +16,7 @@ void Blink::onDisable() {
 }
 
 void Blink::onEnable() {
+	timer = 0;
 }
 
 
@@ -23,6 +24,7 @@ void Blink::onUpdate(const EventUpdate e)
 {
 	if (!this->getToggle()) return;
 	if (!CommonData::getInstance()->SanityCheck()) return;
+	Blink::getInstance()->timer++;
 
 
 }
@@ -42,8 +44,11 @@ void Blink::RenderMenu()
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
 		//Menu::DoToggleButtonStuff(566578, "Fakelag Throttle", &Blink::throttle);
-		//Menu::DoSliderStuff(566578, "Fakelag Delay", &this->Milliseonds, 1, 10000);
-		ImGui::Combo("Bind Mode", &this->getMode(), this->modes, 2);
+		if (this->getMode() == 2) {
+			Menu::DoSliderStuff(566578, "Backtrack Delay", &this->Milliseonds, 1, 100);
+			Menu::DoSliderStuff(2, "Chance", &this->Chance, 1, 10);
+		}
+		ImGui::Combo("Mode", &this->getMode(), this->modes, 3);
 
 		ImGui::EndChild();
 	}
