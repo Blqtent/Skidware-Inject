@@ -2,6 +2,8 @@
 #include "killaura.h"
 #include <mutex>
 #include <random>
+#include <cstring>
+#include <iostream>
 #include "../../../../../ext/imgui/imgui.h"
 #include "../../../menu/menu.h"
 #include "../../../util/math/math.h"
@@ -261,20 +263,20 @@ void Killaura::RenderMenu()
 	ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 20);
 	ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.12f, 0.12f, 0.12f, 0.5));
 	ImGui::PushStyleVar(ImGuiStyleVar_ChildRounding, 10);
-	if (ImGui::BeginChild("Killaura", ImVec2(450, 130))) {
+	if (ImGui::BeginChild("Killaura", ImVec2(450, 381))) {
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
 		Menu::DoToggleButtonStuff(45646, "Toggle Killaura", this);
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
-		Menu::DoSliderStuff(13141, "Min CPS", &this->leftMinCps, 1, 20);
-		Menu::DoSliderStuff(242, "Max CPS", &this->leftMaxCps, 1, 20);
-		Menu::DoSliderStuff(1324124, "FOV", &this->fov, 1, 360);
-		if (leftMinCps > leftMaxCps) {
+		ImGui::SliderFloat("Min CPS", &this->leftMinCps, 1, 20, "%.0f");
+		ImGui::SliderFloat("Max CPS", &this->leftMaxCps, 1, 20, "%.0f");
+		ImGui::SliderFloat("FOV", &this->fov, 1, 360, "%.0f");
+		/*if (leftMinCps > leftMaxCps) {
 			leftMinCps = leftMaxCps;
-		}
+		}*/
 		Menu::DoToggleButtonStuff(2524, "Autoblock", &this->autoblock);
 		Menu::DoToggleButtonStuff(679067, "Keepsprint", &this->keepsprint);
-		Menu::DoSliderStuff(34508, "Range", &this->range, 3, 6);
+		ImGui::SliderFloat("Range", &this->range, 3, 6, "%.0f");
 		ImGui::Text("Target Priority");
 		ImGui::Combo("Target", &this->targetPriority, Killaura::targetPriorityList, 3);
 		ImGui::Text("Mode");
@@ -285,4 +287,3 @@ void Killaura::RenderMenu()
 	ImGui::PopStyleColor();
 	ImGui::EndGroup();
 }
-

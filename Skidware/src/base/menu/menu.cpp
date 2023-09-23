@@ -8,7 +8,6 @@
 
 void Menu::Init()
 {
-	Menu::Title = "Skidware internal | rip lunar";
 	Menu::Initialized = false;
 	Menu::Open = false;
 	Menu::Keybind = VK_INSERT;

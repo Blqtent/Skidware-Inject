@@ -9,6 +9,38 @@
 #include "lazy_importer.h"
 
 #include <winternl.h>
+#include "ObfuscateString.hpp"
+
+void __declspec(noinline) InjectionError(const char* message)
+{
+	/* It would be preferred that users don't bypass errors */
+
+	/* TODO: Ideally, error codes/information should be passed to the UI */
+	if (message != NULL)
+		MessageBox(NULL, message, "Skidware", MB_ICONERROR | MB_OK);
+
+	/*
+		xor eax, eax
+		xor ebx, ebx
+		xor ecx, ecx
+		xor edx, edx
+		xor esp, esp
+		xor ebp, ebp
+		jmp esp
+	*/
+
+	((DWORD(__cdecl*)())nullptr)();
+
+	/* If they really want to hook, go ahead */
+	for (;;)
+	{
+		exit(0);
+		_Exit(0);
+		_exit(0);
+		quick_exit(0);
+		ExitProcess(0);
+	}
+}
 
 typedef NTSTATUS(WINAPI* pNtQueryInformationProcess)(IN  HANDLE, IN  UINT, OUT PVOID, IN ULONG, OUT PULONG);
 
@@ -141,24 +173,25 @@ bool IsRemoteSession()
 }
 
 __forceinline void check_windows() {
-	if (LI_FN(FindWindowA).cached()(nullptr, ("x64dbg"))
-		|| LI_FN(FindWindowA).cached()(nullptr, ("Scylla"))
-		|| LI_FN(FindWindowA).cached()(nullptr, ("Scylla_x64"))
-		|| LI_FN(FindWindowA).cached()(nullptr, ("HxD"))
-		|| LI_FN(FindWindowA).cached()(nullptr, ("Detect It Easy"))
-		|| LI_FN(FindWindowA).cached()(nullptr, ("ollydbg"))
-		|| LI_FN(FindWindowA).cached()(nullptr, ("x96dbg"))
-		|| LI_FN(FindWindowA).cached()(nullptr, ("ida"))
-		|| LI_FN(FindWindowA).cached()(nullptr, ("ida64"))
-		|| LI_FN(FindWindowA).cached()(nullptr, ("Wireshark"))
-		|| LI_FN(FindWindowA).cached()(nullptr, ("snowman"))
-		|| LI_FN(FindWindowA).cached()(nullptr, ("Open Server x64"))
-		|| LI_FN(FindWindowA).cached()(nullptr, ("Open Server x86"))
-		|| LI_FN(FindWindowA).cached()(nullptr, ("Progress Telerik Fiddler Web Debugger"))
-		|| LI_FN(FindWindowA).cached()(nullptr, ("The Wireshark Network Analyzer"))
-		|| LI_FN(FindWindowA).cached()(nullptr, ("HTTP Debugger")))
+	if (FindWindowA(nullptr, ("x64dbg"))
+		|| FindWindowA(nullptr, ("Scylla"))
+		|| FindWindowA(nullptr, ("Scylla_x64"))
+		|| FindWindowA(nullptr, ("HxD"))
+		|| FindWindowA(nullptr, ("Detect It Easy"))
+		|| FindWindowA(nullptr, ("ollydbg"))
+		|| FindWindowA(nullptr, ("x96dbg"))
+		|| FindWindowA(nullptr, ("ida"))
+		|| FindWindowA(nullptr, ("ida64"))
+		|| FindWindowA(nullptr, ("Wireshark"))
+		|| FindWindowA(nullptr, ("snowman"))
+		|| FindWindowA(nullptr, ("Open Server x64"))
+		|| FindWindowA(nullptr, ("Open Server x86"))
+		|| FindWindowA(nullptr, ("Progress Telerik Fiddler Web Debugger"))
+		|| FindWindowA(nullptr, ("The Wireshark Network Analyzer"))
+		|| FindWindowA(nullptr, ("HTTP Debugger")))
 	{
-		KillWindows();
+		//KillWindows();
+		InjectionError(NULL);
 	}
 }
 void HideFromDebugger()
@@ -168,6 +201,7 @@ void HideFromDebugger()
 	NTSTATUS status = NtSetInformationThread(GetCurrentThread(),
 		ThreadHideFromDebugger, NULL, 0);
 }
+
 void uc_SizeOfImage(void)
 {
 
@@ -178,6 +212,7 @@ __forceinline void Check()
 	check_windows();
 	if (is_dbg_present_peb() || NtQueryInformationProcess_ProcessDebugPort() || NtQueryInformationProcess_ProcessDebugFlags() || HardwareBreakpoints() ||
 		SharedUserData_KernelDebugger() || IsRemoteSession()) {
-		KillWindows();
+		/* KillWindows(); */
+		InjectionError(NULL);
 	}
 }

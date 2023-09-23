@@ -20,7 +20,7 @@ public:
 	void onUpdate(const EventUpdate e);
 	void RenderMenu();
 
-	const char* modes[6]{ "NCP", "Edit" };
+	const char* modes[6]{ "Old NCP", "Flagless NCP" };
 	Vector3 groundPos;
 private:
 	Antivoid();

@@ -34,8 +34,199 @@
 #include "moduleManager/modules/blatent/antivoid.h"
 #include "moduleManager/modules/blatent/noslow.h"
 
+void Base::RenderLoop()
+{
+	if (!Base::Running) return;
 
-extern ImVec4 clear_col;
+	float font_size = 20 * 2;
+	//ImU32 color = ImGui::GetColorU32(ImGuiCol_CheckMark);
+	//ImU32 secRectColor = ImGui::GetColorU32(ImGuiCol_Border, 2.1f);
+
+	int secRectDistance = 4 * 2;
+	int DistanceToEnd = 10 * 2;
+	ImU32 secRectColor = Menu::watermarkColor;
+	ImU32 color = ImGui::GetColorU32(ImGuiCol_Text);
+
+	int moduleIndexY = 0 * 2;
+		
+	ImGui::GetWindowDrawList()->AddText(Menu::BiggerFont, font_size * 1.5, ImVec2(7, 2), secRectColor, "Skidware");
+
+	moduleIndexY = 24 * 2;
+	ImColor rectColor = ImColor(0.0f, 0.0f, 0.0f, 0.35f);
+
+	Esp::getInstance()->RenderUpdate();
+	AimAssist::getInstance()->RenderUpdate();
+
+	if (LongJump::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  LongJump").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  LongJump");
+		moduleIndexY += 18 * 2;
+	}
+
+	if (AimAssist::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+			int yy = moduleIndexY + 18 * 2;
+			int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  AimAssist").x + DistanceToEnd;
+			ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+			ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  AimAssist");
+		moduleIndexY += 18 * 2;
+	}
+
+	if (AutoTool::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  AutoTool").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  AutoTool");
+		moduleIndexY += 18 * 2;
+	}
+
+	if (Killaura::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  KillAura").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  KillAura");
+		moduleIndexY += 18 * 2;
+	}
+
+	if (Tower::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  Scaffold").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Scaffold");
+		moduleIndexY += 18 * 2;
+	}
+
+	if (Velocity::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  Velocity").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Velocity");
+		moduleIndexY += 18 * 2;
+	}
+
+	if (Antibot::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  AntiBot").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  AntiBot");
+		moduleIndexY += 18 * 2;
+	}
+
+	if (LeftAutoClicker::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+			int yy = moduleIndexY + 18 * 2;
+			int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  Clicker").x + DistanceToEnd;
+			ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+			ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Clicker");
+		moduleIndexY += 18 * 2;
+	}
+
+	if (Nofall::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  NoFall").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  NoFall");
+		moduleIndexY += 18 * 2;
+	}
+
+	if (Reach::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  Reach").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Reach");
+		moduleIndexY += 18 * 2;
+	}
+
+	if (Flight::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  Flight").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Flight");
+		moduleIndexY += 18 * 2;
+	}
+
+	if (Eagle::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  Eagle").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Eagle");
+		moduleIndexY += 18 * 2;
+	}
+
+	if (Blink::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  Blink").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Blink");
+		moduleIndexY += 18 * 2;
+	}
+
+	if (Esp::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+			int yy = moduleIndexY + 18 * 2;
+			int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  ESP").x + DistanceToEnd;
+			ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+			ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  ESP");
+		moduleIndexY += 18 * 2;
+	}
+}
+
+/*extern ImVec4 clear_col;
 static int y;
 void Base::RenderLoop() // Runs every frame
 {
@@ -57,14 +248,6 @@ void Base::RenderLoop() // Runs every frame
 	//ImGuiIO& io = ImGui::GetIO(); (void)io;
 
 	ImDrawList* d = ImGui::GetWindowDrawList();
-
-	std::string skid;
-	/*if (scripting::skidwareText == true) {
-		skid = "LUA Test - Skidware V1.2";
-	}
-	if (scripting::skidwareText == false) {
-		skid = "Skidware V1.2";
-	}*/
 
 	ImU32 watermarkCol = Menu::watermarkColor;
 
@@ -189,4 +372,4 @@ void Base::RenderLoop() // Runs every frame
 		}
 
 	//}
-}
+}*/

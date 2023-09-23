@@ -22,15 +22,29 @@ void Antivoid::onUpdate(EventUpdate e)
 {
 	if (Menu::Open) return;
 	if (!CommonData::getInstance()->SanityCheck()) return;
+	CEntityPlayerSP* p = SDK::Minecraft->thePlayer;
 	if (!this->getToggle()) {
 		return;
 	}
+
+	/* 1-2 Flags NCP */
 	if (getMode() == 0) {
-		if (SDK::Minecraft->thePlayer->fallDistance() > 5) {
-			SDK::Minecraft->thePlayer->setMotion(Vector3(SDK::Minecraft->thePlayer->getMotion().x, -0.68, SDK::Minecraft->thePlayer->getMotion().z));
+		if (p->fallDistance() > 5) {
+			p->setMotion(Vector3(p->getMotion().x, -0.68, p->getMotion().z));
 		}
 
+		/* We can vanilla nofall with the same amount of flags. */
+		if (p->fallDistance() > 2.5 && !(p->getHurtTime() > 0)) {
+			p->setMotion(Vector3(p->getMotion().x, -11, p->getMotion().z));
+		}
+	}
 
+	/* Flagless NCP */
+	if (getMode() == 1) {
+		if (p->fallDistance() > 6) {
+			p->setMotion(Vector3(p->getMotion().x, 5, p->getMotion().z));
+			p->setFallDistance(0);
+		}
 	}
 }
 
@@ -49,7 +63,7 @@ void Antivoid::RenderMenu()
 		//Menu::DoToggleButtonStuff(124343343, "Antikick", &this->antikick);
 
 		ImGui::Text("Antivoid Mode");
-		ImGui::Combo("Antivoid Mode", &this->getMode(), this->modes, 1);
+		ImGui::Combo("Antivoid Mode", &this->getMode(), this->modes, 2);
 
 
 		ImGui::EndChild();

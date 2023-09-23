@@ -6,6 +6,7 @@
 #include "../../../eventManager/EventManager.hpp"
 #include <chrono>
 #include <random>
+#include "../../../security/ObfuscateString.hpp"
 
 long rightLastClickTime = 0;
 int rightNextCps = 10;
@@ -68,12 +69,12 @@ void RightAutoClicker::RenderMenu()
 		Menu::DoToggleButtonStuff(2344, "Toggle Right Auto Clicker", this);
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
-		Menu::DoSliderStuff(3280, "Min CPS", &this->rightMinCps, 1, 20);
-		Menu::DoSliderStuff(675, "Max CPS", &this->rightMaxCps, 1, 20);
+		ImGui::SliderFloat("Min CPS", &this->rightMinCps, 1, 20);
+		ImGui::SliderFloat("Max CPS", &this->rightMaxCps, 1, 20);
 		if (rightMinCps > rightMaxCps) {
 			rightMinCps = rightMaxCps;
 		}
-		Menu::DoToggleButtonStuff(73451, "Blocks Only", &this->blocksOnly);
+		Menu::DoToggleButtonStuff(4444444, "Blocks Only", &this->blocksOnly);
 
 		ImGui::EndChild();
 	}

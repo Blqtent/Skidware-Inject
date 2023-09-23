@@ -41,7 +41,7 @@ void Speed::onUpdate(const EventUpdate e)
 
 	if (getMode() == 0) {
 		if (isMoving()) {
-			p->set_speed(speed);
+			p->set_speed(speed * 0.01);
 		}
 		else {
 			p->setMotion(Vector3(0, 100000000000, 0));
@@ -60,7 +60,7 @@ void Speed::onUpdate(const EventUpdate e)
 		if (p->isOnGround()) {
 			if (isMoving()) {
 
-				p->set_speed(speed);
+				p->set_speed(speed * 0.01);
 			}
 			else {
 				p->setMotion(Vector3(0, 100000000000, 0));
@@ -69,7 +69,7 @@ void Speed::onUpdate(const EventUpdate e)
 	}
 	else if (getMode() == 3) {
 		if (isMoving())
-			p->set_speed(speed);
+			p->set_speed(speed * 0.01);
 
 		if (p->isOnGround()) {
 			if (isMoving()) {
@@ -116,12 +116,12 @@ void Speed::RenderMenu()
 	ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.12f, 0.12f, 0.12f, 0.5));
 	ImGui::PushStyleVar(ImGuiStyleVar_ChildRounding, 10);
 
-	if (ImGui::BeginChild("Strafe", ImVec2(450, 100))) {
+	if (ImGui::BeginChild("Strafe", ImVec2(450, 150))) {
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
 		Menu::DoToggleButtonStuff(23432423, "Toggle Speed", this);
 		if (getMode() == 0 || getMode() == 2 || getMode() == 3);
-			Menu::DoSliderStuff(1734563, "Speed", &this->speed, 0, 5);
+			ImGui::SliderFloat("Speed", &this->speed, 0, 100, "%.0f");
 		ImGui::Text("Speed Mode Mode");
 		ImGui::Combo("Mode", &this->getMode(), modes, 5);
 

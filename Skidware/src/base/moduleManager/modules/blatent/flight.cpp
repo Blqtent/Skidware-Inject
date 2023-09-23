@@ -48,7 +48,7 @@
 //    //EventManager::getInstance().reg(Events::EventUpdate, [this] { onUpdate(); });
 //}
 
-Flight::Flight() : AbstractModule("Flight", Category::BLATENT, 'U') {
+Flight::Flight() : AbstractModule("Flight", Category::BLATENT) {
 	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
 }
 
@@ -115,7 +115,7 @@ void Flight::RenderMenu()
 
 		Menu::DoToggleButtonStuff(235354, "Toggle Flight",this);
 		if (getMode() == 0 || getMode() == 2)
-			Menu::DoSliderStuff(9864, "Speed", &this->glideSpeed, 0, 5);
+			ImGui::SliderFloat("Speed", &this->glideSpeed, 0, 5, "%.0f");
 		//Menu::DoToggleButtonStuff(124343343, "Antikick", &Flight::antikick);
 
 		ImGui::Text("Flight Mode");

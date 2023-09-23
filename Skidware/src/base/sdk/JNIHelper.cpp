@@ -55,6 +55,10 @@ bool JNIHelper::IsForge()
 			Java::Env->DeleteLocalRef(forgeClass);
 			IsForgeExisting = true;
 		}
+		//BadLion
+		if (forgeClass != NULL && !FindWindowA(NULL, "Minecraft 1.8.9")) {
+			IsForgeExisting = true;
+		}
 	}
 	return IsForgeExisting;
 }

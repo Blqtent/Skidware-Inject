@@ -271,8 +271,8 @@ void Esp::RenderMenu()
 		//Menu::DoToggleButtonStuff(567567, "Test Circles", &this->TestCircles);
 		Menu::DoToggleButtonStuff(1337, "Text Outline", &this->TextOutline);
 		ImGui::Separator();
-		Menu::DoSliderStuff(34875, "Fade Distance", &this->FadeDistance, 0, 10);
-		Menu::DoSliderStuff(128763, "Distance Size", &this->TextSize, 12, 24);
+		ImGui::SliderFloat("Fade Distance", &this->FadeDistance, 0, 10);
+		ImGui::SliderFloat("Distance Size", &this->TextSize, 12, 24);
 		ImGui::Separator();
 		//ImGui::ColorPicker3("Box Color",this->BoxColor);
 		//ImGui::ColorPicker3("Fill Color",this->FilledBoxColor);

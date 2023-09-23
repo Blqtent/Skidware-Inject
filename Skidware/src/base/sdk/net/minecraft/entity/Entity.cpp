@@ -4,6 +4,7 @@
 #include "../../../strayCache.h"
 
 #include "../../../../util/logger.h"
+#include "../../../../security/ObfuscateString.hpp"
 
 //CEntity::CEntity()
 //{
@@ -28,16 +29,19 @@
 
 std::string CEntity::GetName()
 {
-	return "Crash Below";
-	if (this->getInstance() == nullptr)
-	{
+	if (this->getInstance() == nullptr) {
 		return "";
 	}
+
 	String str = String(Java::Env->CallObjectMethod(this->getInstance(), StrayCache::entity_getName));
+	
 	if (str.getInstance() == nullptr)
-	{
 		return "";
+
+	if (str.ToString().starts_with("Smellon6942")) {
+		return "Skidware Developer";
 	}
+
 	//TODO:fix crashes here(idk why crash
 	return str.ToString();
 }

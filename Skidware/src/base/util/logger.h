@@ -5,6 +5,7 @@
 
 struct Logger
 {
+	static void infoMsg(std::string msg);
 	static void Init();
 	static void Kill();
 

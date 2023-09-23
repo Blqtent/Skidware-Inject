@@ -53,16 +53,16 @@ void Velocity::onUpdate(const EventUpdate e)
 			if (this->getMode() == 0) {
 				if (thePlayer->getHurtTime() > 3) {
 					Vector3 motion = thePlayer->getMotion();
-					motion.x = motion.x * Velocity::Horizontal;
-					motion.y = motion.y * Velocity::Vertical;
-					motion.z = motion.z * Velocity::Horizontal;
+					motion.x = motion.x * (Velocity::Horizontal * 0.01);
+					motion.y = motion.y * (Velocity::Vertical * 0.01);
+					motion.z = motion.z * (Velocity::Horizontal * 0.01);
 
 
 					thePlayer->setMotion(motion);
 				}
 			}
 			else if (this->getMode() == 1) {
-				if (thePlayer->getHurtTime() > 5 /* && counter++ % 2 == 0 */ ) {
+				if (thePlayer->getHurtTime() > 5 /* && counter++ % 2 == 0 */) {
 					thePlayer->setKeyJump(true); 
 				}
 				else if (!GetAsyncKeyState(VK_SPACE) & 1){
@@ -112,7 +112,7 @@ void Velocity::RenderMenu()
 	ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.12f, 0.12f, 0.12f, 0.5));
 	ImGui::PushStyleVar(ImGuiStyleVar_ChildRounding, 10);
 
-	if (ImGui::BeginChild("velocity", ImVec2(450, 100))) {
+	if (ImGui::BeginChild("velocity", ImVec2(450, 250))) {
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
 		Menu::DoToggleButtonStuff(2134078, "Toggle Velocity", this);
@@ -121,8 +121,8 @@ void Velocity::RenderMenu()
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
 		if (this->getMode() == 0) {
-			Menu::DoSliderStuff(248913712347, "Horizontal", &this->Horizontal, 0.f, 1.f);
-			Menu::DoSliderStuff(2489137, "Vertical", &this->Vertical, 0.f, 1.f);
+			ImGui::SliderFloat("Horizontal", &this->Horizontal, 0, 100, "%.0f");
+			ImGui::SliderFloat("Vertical", &this->Vertical, 0, 100, "%.0f");
 		}
 		ImGui::Combo("Mode", &this->getMode(), this->modes, 6);
 		ImGui::EndChild();

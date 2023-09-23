@@ -1,6 +1,6 @@
 #include "base.h"
 
-#include "../main.h"
+#include "../main.hh"
 #include "java/java.h"
 #include "util/logger.h"
 #include "menu/menu.h"
@@ -42,14 +42,11 @@
 #include "moduleManager/modules/blatent/tower.h"
 #include "moduleManager/modules/blatent/antivoid.h"
 #include "moduleManager/modules/blatent/noslow.h"
+#include "moduleManager/modules/blatent/criticals.h"
 #include "patcher/patcher.h"
 
-
-
-
-
 // LUA import
-//#include "extension/scripting.hpp"
+#include "extension/scripting.hpp"
 
 const char* GetWindowTitle(HWND hWnd)
 {
@@ -72,19 +69,31 @@ bool IsKeyReleased(int key)
 
 void Base::Init()
 {
-
+	//KeyAuthApp.init();
+	//KeyAuthApp.checkblack();
 	MH_Initialize();
-	//();
+	//Logger::Init();
+	//Logger::Log("1/6 Logger Initialized. \n");
 	Java::Init();
+	//Logger::Log("2/6 JVM Initialized. \n");
 	SDK::Init();
+	//Logger::Log("3/6 SDK Initialized. \n");
 	Menu::Init();
+	//Logger::Log("4/6 Menu Initialized. \n");
 	//Patcher::Init();
 	initModule();
+	//Logger::Log("5/6 Modules Initialized. \n");
 	initEvent();
+	//Logger::Log("6/6 Events Initialized. \n");
+
 	//Logger::Init();
 	//scripting::luaThing();
 	Base::Running = true;
+
+	//Logger::Log("Complete. You may close this window. \n");
+	//FreeConsole();
 	
+	//PlaySoundA("C:\Windows\Media\notify.wav", 0, 0);
 	SDK::Minecraft->gameSettings->SetFullscreenKeyToNull();
 	while (Base::Running)
 	{
@@ -99,22 +108,24 @@ void Base::Init()
 		EventManager::getInstance().call(EventUpdate());
 
 #ifndef _DEBUG
-		/*HideFromDebugger();*/
+		//HideFromDebugger();
 #endif
 
 		std::this_thread::sleep_for(std::chrono::milliseconds(5));
 		
 #ifndef _DEBUG
-		/*Check();*/
+		//Check();
 #endif
 	}
 
 	Main::Kill();
 }
+
 void Base::initConsole() {
 	AllocConsole();
 	freopen("CONOUT$", "w", stdout);
 }
+
 void Base::initEvent() {
 	//EventManager::getInstance().reg(Events::EventUpdate, test);
 	EventManager::getInstance().reg<EventKey>(handleEventKey);
@@ -134,7 +145,7 @@ void Base::initModule() {
 		ModuleManager::getInstance().addModule<Tower>(Tower::getInstance());
 		ModuleManager::getInstance().addModule<Antivoid>(Antivoid::getInstance());
 		ModuleManager::getInstance().addModule<Noslowdown>(Noslowdown::getInstance());
-		
+		ModuleManager::getInstance().addModule<Criticals>(Criticals::getInstance());
 	}
 	
 	{
@@ -179,10 +190,10 @@ void Base::Kill()
 		Borderless::Restore(Menu::HandleWindow);
 
 	StrayCache::DeleteRefs();
-	Java::Kill();
 	Menu::Kill();
 	Logger::Kill();
 	//Patcher::Kill();
 
 	MH_Uninitialize();
+	Java::Kill();
 }

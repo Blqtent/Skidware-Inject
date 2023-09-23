@@ -69,15 +69,15 @@ void TimerHack::RenderMenu()
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
 		Menu::DoToggleButtonStuff(23432423, "Toggle Timer", this);
 		if (mode == 0 || mode == 3) {
-			Menu::DoSliderStuff(756374, "Speed", &speed, 0.1, 5);
+			ImGui::SliderFloat("Speed", &speed, 0.1, 5);
 		}
 		if (mode == 1) {
-			Menu::DoSliderStuff(903573, "Speed", &speed, 0.0001, 5);
-			Menu::DoSliderStuff(14386953532, "Speed2", &speed2, 0.1, 5);
+			ImGui::SliderFloat("Speed", &speed, 0.0001, 5);
+			ImGui::SliderFloat("Speed2", &speed2, 0.1, 5);
 		}
 		if (mode == 2) {
-			Menu::DoSliderStuff(756374, "Speed", &speed, 0.1, 5);
-			Menu::DoSliderStuff(9836142421246, "Boost Ticks", &boostTicks, 1, 500);
+			ImGui::SliderFloat("Speed", &speed, 0.1, 5);
+			ImGui::SliderFloat("Boost Ticks", &boostTicks, 1, 500);
 		}
 		ImGui::Text("Speed Mode Mode");
 		ImGui::Combo("Mode", &mode, modes, 4);

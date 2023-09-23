@@ -14,7 +14,6 @@ void SDK::Init()
 	SDK::Minecraft->renderManager = new CRenderManager(Java::Env->GetObjectField(SDK::Minecraft->getInstance(), StrayCache::minecraft_renderManager));
 	SDK::Minecraft->gameSettings = new CGameSettings(Java::Env->GetObjectField(Minecraft->getInstance(), StrayCache::minecraft_gameSettings));
 	SDK::Minecraft->timer = new CTimer(Java::Env->GetObjectField(Minecraft->getInstance(), StrayCache::minecraft_timer));
-
 }
 
 void SDK::Clean() 

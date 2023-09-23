@@ -13,6 +13,7 @@ typedef bool(*callback2)();
 struct Menu
 {
 	inline static const ImColor watermarkColor = ImColor(0, 0, 200);
+	static float dpiScale;
 	static void Init();
 	static void GlitchText(const char* text, ImVec2 pos, ImColor col);
 	static void Kill();
@@ -21,9 +22,11 @@ struct Menu
 	static inline bool Open;
 	static inline int Keybind;
 	static inline ImFont* Font;
-	//static inline ImFont* Minecraft;
 	static inline ImFont* FontBold;
-	static inline ImFont* Minecraft;
+	static inline ImFont* BiggerFont;
+	static inline ImFont* medium;
+	static inline ImFont* semibold;
+	//static inline ImFont* Minecraft;
 	static inline bool Initialized;
 	static inline bool useMCFont;
 

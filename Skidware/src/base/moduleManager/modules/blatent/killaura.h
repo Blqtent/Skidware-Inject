@@ -44,11 +44,14 @@ public:
 	bool keepsprint = false;
 	Vector3 data;
 	int targetPriority = 2;
-	float fov = 360.0f;
+	float fov = 360;
 	CEntityPlayer player;
 	float currdistance;
 	const char* modes[3]{ "Legit", "Normal", "Silent" };
 	const char* targetPriorityList[3]{ "Distance", "Health", "Closest to Crosshair" };
+
+	//Killaura();
 private:
 	Killaura();
 };
+//Killaura Killaurasettings;

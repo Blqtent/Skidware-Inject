@@ -24,8 +24,8 @@ public:
 	void RenderMenu();
 
 	const char* modes[5]{ "Normal", "Legit", "Ground", "YPort", "Watchdog"};
-	float speed = 1.18f;
-	float maxspeed = 0.9f;
+	float speed = 1;
+	float maxspeed = 1;
 private:
 	Speed();
 };

@@ -264,9 +264,9 @@ void AimAssist::RenderMenu()
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
-		Menu::DoSliderStuff(23084562545, "FOV", &this->fov, 5.0f, 180.0f);
-		Menu::DoSliderStuff(869765007, "Lock Distance", &this->aimDistance, 1.0f, 8.0f);
-		Menu::DoSliderStuff(2314057445345, "Smoothness", &this->smooth, 1.0f, 90.0f);
+		ImGui::SliderFloat("FOV", &this->fov, 5.0f, 180.0f);
+		ImGui::SliderFloat("Lock Distance", &this->aimDistance, 1.0f, 8.0f);
+		ImGui::SliderFloat("Smoothness", &this->smooth, 1.0f, 90.0f);
 		Menu::DoToggleButtonStuff(22645342, "Visbility Check", &this->visibilityCheck);
 		Menu::DoToggleButtonStuff(206573465433442, "Left Button To Aim", &this->aimKey);
 
@@ -288,12 +288,12 @@ void AimAssist::RenderMenu()
 		ImGui::Separator();
 
 		Menu::DoToggleButtonStuff(5635678756247, "Adapt to strafing", &this->adaptive);
-		Menu::DoSliderStuff(457323434, "Adaptive strafing offset", &this->adaptiveOffset, 0.1f, 15.f);
+		ImGui::SliderFloat("Adaptive strafing offset", &this->adaptiveOffset, 0.1f, 15.f);
 		ImGui::SetCursorPos(ImVec2(20, ImGui::GetCursorPosY() + 5));
 
 		ImGui::Separator();
-		Menu::DoSliderStuff(3464340056, "Yaw Randomness", &this->randomYaw, 0.0f, 10.0f);
-		Menu::DoSliderStuff(54034352347, "Pitch Randomness", &this->randomPitch, 0.0f, 1);
+		ImGui::SliderFloat("Yaw Randomness", &this->randomYaw, 0.0f, 10.0f);
+		ImGui::SliderFloat("Pitch Randomness", &this->randomPitch, 0.0f, 1);
 		ImGui::SetCursorPos(ImVec2(20, ImGui::GetCursorPosY() + 5));
 
 		ImGui::Separator();

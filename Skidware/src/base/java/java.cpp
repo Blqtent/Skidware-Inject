@@ -2,6 +2,7 @@
 #include "../base.h"
 #include "../sdk/JNIHelper.h"
 #include "../../../ext/jni/jvmti.h"
+#include "../../main.hh"
 
 JavaVM* vm;
 jobject classLoader;
@@ -77,8 +78,10 @@ void Java::Init()
     if (res == JNI_EDETACHED)
         res = vm->AttachCurrentThread((void**)&Java::Env, nullptr);
 
-    if (res != JNI_OK)
+    if (res != JNI_OK) {
+        Hack::m_InitializationState = ERR;
         return;
+    }
 
     if (Java::Env == nullptr)
         vm->DestroyJavaVM();
@@ -90,6 +93,7 @@ void Java::Init()
 void Java::Kill()
 {
     vm->DetachCurrentThread();
+    vm = nullptr;
 }
 
 bool Java::AssignClass(std::string name, jclass &out)

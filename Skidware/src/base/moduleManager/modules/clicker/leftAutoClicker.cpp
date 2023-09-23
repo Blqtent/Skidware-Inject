@@ -8,6 +8,7 @@
 #include <random>
 #include "../../../eventManager/EventManager.hpp"
 #include "../../../util/logger.h"
+#include "../../../security/ObfuscateString.hpp"
 long lastClickTime = 0;
 int nextCps = 10;
 int count = 0;
@@ -75,20 +76,20 @@ void LeftAutoClicker::RenderMenu()
 	ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 20);
 	ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.12f, 0.12f, 0.12f, 0.5));
 	ImGui::PushStyleVar(ImGuiStyleVar_ChildRounding, 10);
-	if (ImGui::BeginChild("autoclicker", ImVec2(450, 130))) {
+	if (ImGui::BeginChild("autoclicker", ImVec2(450, 381))) {
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
 		Menu::DoToggleButtonStuff(857834, "Toggle Left Auto Clicker",this);
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
-		Menu::DoSliderStuff(3280, "Min CPS", &this->leftMinCps, 1, 20);
-		Menu::DoSliderStuff(675, "Max CPS", &this->leftMaxCps, 1, 20);
+		ImGui::SliderFloat("Min CPS", &this->leftMinCps, 1, 20);
+		ImGui::SliderFloat("Max CPS", &this->leftMaxCps, 1, 20);
 		if (leftMinCps > leftMaxCps) {
 			leftMinCps = leftMaxCps;
 		}
 		Menu::DoToggleButtonStuff(2136, "Ignore Blocks", &this->ignoreBlocks);
 		Menu::DoToggleButtonStuff(13423, "Blockhit", &this->blockhit);
 		Menu::DoToggleButtonStuff(135315, "In Inventory", &this->inInventory);
-		Menu::DoSliderStuff(342, "Blockhit Chance", &this->blockHitChance, 1, 50);
+		ImGui::SliderFloat("Blockhit Chance", &this->blockHitChance, 1, 50);
 
 
 		ImGui::EndChild();

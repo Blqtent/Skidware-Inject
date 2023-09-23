@@ -9,16 +9,6 @@
 
 #include <chrono>
 
-//
-//
-// NOTICE:
-//
-// THIS MODULE IS PASTED FROM GASPER! ALL CREDIT FOR THIS MODULE GOES TO ZORFTW:
-//
-// https://github.com/zorftw/gasper-cpp
-//
-//
-
 Reach::Reach() : AbstractModule("Reach", Category::COMBAT) {
 	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
 }
@@ -55,17 +45,6 @@ void Reach::onUpdate(const EventUpdate e)
 
 	Vector2 playerAngles = thePlayer->GetAngles();
 	Vector3 playerPos = thePlayer->GetPos();
-
-	//
-	//
-	// NOTICE:
-	//
-	// THIS MODULE IS PASTED FROM GASPER! ALL CREDIT FOR THIS MODULE GOES TO ZORFTW:
-	//
-	// https://github.com/zorftw/gasper-cpp
-	//
-	//
-
 
 	for (CEntityPlayer target : playerList.toVector<CEntityPlayer>())
 	{
@@ -115,17 +94,6 @@ void Reach::onUpdate(const EventUpdate e)
 
 }
 
-//
-//
-// NOTICE:
-//
-// THIS MODULE IS PASTED FROM GASPER! ALL CREDIT FOR THIS MODULE GOES TO ZORFTW:
-//
-// https://github.com/zorftw/gasper-cpp
-//
-//
-
-
 void Reach::RenderMenu()
 {
 
@@ -141,7 +109,7 @@ void Reach::RenderMenu()
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
-		Menu::DoSliderStuff(560117, "Reach Distance", &this->ReachDistance, 0, 4);
+		ImGui::SliderFloat("Reach Distance", &this->ReachDistance, 0, 4);
 
 		ImGui::EndChild();
 	}

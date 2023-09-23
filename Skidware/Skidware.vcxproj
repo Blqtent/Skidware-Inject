@@ -158,9 +158,15 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="ext\fonts\Minecraft.h" />
+    <ClInclude Include="src\auth\auth.hpp" />
     <ClInclude Include="src\base\eventManager\events\EventChams.hpp" />
+    <ClInclude Include="src\base\extension\archivex.hpp" />
+    <ClInclude Include="src\base\extension\json.hpp" />
+    <ClInclude Include="src\base\menu\elements.h" />
+    <ClInclude Include="src\base\menu\hooks\byte.h" />
     <ClInclude Include="src\base\menu\hooks\glTexEnviHook.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\antivoid.h" />
+    <ClInclude Include="src\base\moduleManager\modules\blatent\criticals.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\noslow.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\tower.h" />
     <ClInclude Include="src\base\moduleManager\modules\player\autotool.h" />
@@ -220,8 +226,11 @@
     <ClInclude Include="src\base\sdk\net\minecraft\world\chunk\Chunk.h" />
     <ClInclude Include="src\base\sdk\strayCache.h" />
     <ClInclude Include="src\base\security\lazy_importer.h" />
+    <ClInclude Include="src\base\security\ObfuscateString.hpp" />
+    <ClInclude Include="src\base\security\Random.hpp" />
     <ClInclude Include="src\base\security\security.hpp" />
     <ClInclude Include="src\base\util\render\renderqolf.h" />
+    <ClInclude Include="src\base\util\termcolor.h" />
     <ClInclude Include="src\base\util\type\ArrayList.h" />
     <ClInclude Include="src\base\util\window\bind.hpp" />
     <ClInclude Include="src\base\util\window\borderless.h" />
@@ -268,7 +277,7 @@
     <ClInclude Include="src\base\util\math\math.h" />
     <ClInclude Include="src\base\util\math\worldToScreen.h" />
     <ClInclude Include="src\base\util\xorstr.h" />
-    <ClInclude Include="src\main.h" />
+    <ClInclude Include="src\main.hh" />
     <ClInclude Include="src\base\sdk\java\lang\String.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\world\World.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\client\multiplayer\WorldClient.h" />
@@ -276,10 +285,13 @@
     <ClInclude Include="src\base\util\trimmer.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\util\Vec3.h" />
     <ClInclude Include="src\base\util\utils.h" />
+    <ClInclude Include="src\Memory.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="src\base\menu\elements.cpp" />
     <ClCompile Include="src\base\menu\hooks\glTexEnviHook.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\antivoid.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\blatent\criticals.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\noslow.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\tower.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\player\autotool.cpp" />
@@ -329,6 +341,7 @@
     <ClCompile Include="src\base\sdk\net\minecraft\util\AxisAlignedBB.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\client\settings\GameSettings.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\world\chunk\Chunk.cpp" />
+    <ClCompile Include="src\base\security\detach.cpp" />
     <ClCompile Include="src\base\util\window\borderless.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\client\renderer\entity\RenderManager.cpp" />
     <ClCompile Include="src\base\sdk\java\nio\FloatBuffer.cpp" />
@@ -370,9 +383,14 @@
     <ClCompile Include="src\base\sdk\net\minecraft\util\Timer.cpp" />
     <ClCompile Include="src\base\sdk\net\minecraft\util\Vec3.cpp" />
     <ClCompile Include="src\base\util\utils.cpp" />
+    <ClCompile Include="src\Memory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="src\auth\libcurl.lib" />
+    <Library Include="src\auth\library_x64.lib" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

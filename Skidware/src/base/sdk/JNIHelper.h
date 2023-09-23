@@ -19,4 +19,5 @@ public:
 	static jclass ForgeFindClass(const char*);
 	static bool IsForge();
 	static bool IsVanilla();
+	static bool IsBadlion();
 };

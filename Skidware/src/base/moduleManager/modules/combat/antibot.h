@@ -10,36 +10,29 @@ public:
 	static Antibot* getInstance();
 	void onEnable();
 	void onDisable();
-	bool isBot(CEntityPlayer p) {
+	bool isBot(CEntityPlayer entity) {
+		std::string name = entity.GetName();
 
-		if (Java::Env->IsSameObject(p.getInstance(), NULL)) {
+		if (Java::Env->IsSameObject(SDK::Minecraft->thePlayer->getInstance(), entity.getInstance())
+			|| entity.ticksExisted() > 99999
+			|| name.find("-")
+			|| name.find("[")
+			|| name.find("]")
+			|| name.find(" ")
+			|| entity.isInvisible()
+			|| name.length() <= 2) {
 			return true;
 		}
-
-		if (p.GetHeight() <= 0.5f)
-		{
-			HeightBots.add(p);
-		}
 		else {
-			HeightBots.remove(p);
+			return false;
 		}
-
-		if (p.isPlayerSleeping())
-		{
-			sleepingEntities.add(p);
-		}
-		else {
-			sleepingEntities.remove(p);
-		}
-
-
-		return HeightBots.contains(p) || sleepingEntities.contains(p);
 	}
 	void RenderMenu();
 private:
 	std::vector<CEntityPlayer> bots;
 	Antibot();
 	ArrayList<CEntityPlayer> HeightBots;
+	ArrayList<CEntityPlayer> flyingBots;
 	/*ArrayList<CEntityPlayer> ticksExistedEntities;*/
 	ArrayList<CEntityPlayer> sleepingEntities;
 };

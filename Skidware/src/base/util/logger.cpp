@@ -2,12 +2,11 @@
 #include <thread>
 #include "../util/xorstr.h"
 #include "logger.h"
+#include "../../main.hh"
+#include "termcolor.h"
 
 FILE* out;
 FILE* err;
-
-std::string username;
-std::string password;
 
 static const char letters[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 bool check_license(const char* user, const char* users_license)
@@ -35,6 +34,20 @@ bool check_license(const char* user, const char* users_license)
 	return true;
 }
 
+void msg(std::string msg) {
+	std::string msg1 = ' ' + msg;
+	std::cout << termcolor::white << "[" << termcolor::green << "#" << termcolor::white << "]" << msg1 + "\n";
+}
+
+void ASCII(std::string msg) {
+	std::cout << termcolor::yellow << msg;
+}
+
+void Logger::infoMsg(std::string msg) {
+	std::string msg1 = ' ' + msg;
+	std::cout << termcolor::white << "[" << termcolor::yellow << "?" << termcolor::white << "]" + msg1 + "\n";
+}
+
 void Logger::Init()
 {
 	AllocConsole();
@@ -47,17 +60,16 @@ void Logger::Init()
 	std::cout << " /        \\    <|  / /_/ | \\     /  / __ \\|  | \\/\\  ___/  \n";
 	std::cout << "/_______  /__|_ \\__\\____ |  \\/\\_/  (____  /__|	\\___  > \n";
 	std::cout << "        \\/     \\/       \\/              \\/          \\/  \n";
-	std::cout << ("Best Client\n");
-	std::cout << ("https://discord.gg/zxkq88xcA6\n");
+	std::cout << ("Best Client \n");
+	std::cout << ("https://discord.gg/qhq28Sz2GP \n");
 
 	std::cout << "Loading Skidware...\n";
 
-	/*	Sleep(3000);
-	std::cout << "Done\n";
-	fclose(out);
-	fclose(err);
-	FreeConsole();
-	Logger::Initialized = false;*/
+	//std::cout << "Started Initialization \n";
+	//fclose(out);
+	//fclose(err);
+	//FreeConsole();
+
 	Logger::Initialized = true;
 }
 
@@ -74,7 +86,9 @@ void Logger::Kill()
 void Logger::Log(std::string message)
 {
 	if (!Logger::Initialized) Logger::Init();
-	std::cout << "[ LOG ] :: " + message << "\n";
+	std::string msg1 = ' ' + message;
+	std::cout << termcolor::white << "[" << termcolor::yellow << "LOG" << termcolor::white << "]" + msg1 + "\n";
+	//std::cout << "[ LOG ] :: " + message << "\n";
 	Sleep(1000);
 }
 

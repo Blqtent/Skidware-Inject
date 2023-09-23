@@ -14,6 +14,7 @@
 #include "../../moduleManager/modules/visual/cavefinder.h"
 #include "../../base.h"
 #include "../../../../ext/fonts/Minecraft.h"
+#include "byte.h"
 
 std::once_flag setupFlag;
 std::atomic_flag clipCursor = ATOMIC_FLAG_INIT;
@@ -122,8 +123,13 @@ void Menu::SetupImgui()
 	io.Fonts->AddFontDefault();
 
 	//Menu::Font = io.Fonts->AddFontFromMemoryTTF(jetbrainsmono, sizeof(jetbrainsmono), 16);
-	Menu::Font = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\segoeui.ttf", 16);
-	Menu::FontBold = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\segoeuib.ttf", 24);
+	Menu::Font = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\ebrima.ttf", 18);
+	Menu::FontBold = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\ebrima.ttf", 26);
+	Menu::BiggerFont = io.Fonts->AddFontFromFileTTF("C:\\Windows\\Fonts\\ebrima.ttf", 24);
+	//Menu::Font = io.Fonts->AddFontFromMemoryTTF(mojangles, 71900, 16);
+	//Menu::FontBold = io.Fonts->AddFontFromMemoryTTF(mojangles, 71900, 24);
+	//Menu::medium = io.Fonts->AddFontFromMemoryTTF(InterMedium, sizeof(InterMedium), 15.0f, &font_config, ranges);
+	//Menu::semibold = io.Fonts->AddFontFromMemoryTTF(InterSemiBold, sizeof(InterSemiBold), 17.0f, &font_config, ranges);
 	//Menu::Minecraft = io.Fonts->AddFontFromMemoryTTF(data, 71900, 16);
 
 
@@ -189,7 +195,6 @@ void Menu::SetupImgui()
 
 	ImGui_ImplWin32_Init(Menu::HandleWindow);
 	ImGui_ImplOpenGL2_Init();
-
 
 	Menu::Initialized = true;
 }

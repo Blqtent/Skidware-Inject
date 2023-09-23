@@ -41,7 +41,7 @@ void Fastplace::RenderMenu()
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
-		Menu::DoSliderStuff(124124123, "Delay", &this->delay, 0.f, 6.f);
+		ImGui::SliderFloat("Delay", &this->delay, 0.f, 6.f);
 
 		ImGui::EndChild();
 	}
