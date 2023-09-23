@@ -1,91 +1,134 @@
 ﻿  Scanning sources for module dependencies...
   renderLoop.cpp
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\moduleManager\commonData.h(72,24): warning C4305: 'initializing': truncation from 'double' to 'float'
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(52,66): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(63,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(64,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(64,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(65,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(65,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(68,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(75,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(76,108): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(76,94): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(77,118): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(77,96): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(80,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(87,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(88,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(88,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(89,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(89,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(92,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(99,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(100,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(100,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(101,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(101,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(104,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(111,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(112,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(112,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(113,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(113,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(116,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(123,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(124,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(124,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(125,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(125,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(128,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(135,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(136,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(136,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(137,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(137,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(140,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(147,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(148,108): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(148,94): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(149,118): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(149,96): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(152,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(159,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(160,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(160,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(161,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(161,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(164,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(171,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(172,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(172,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(173,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(173,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(176,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(183,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(184,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(184,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(185,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(185,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(188,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(195,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(196,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(196,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(197,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(197,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(200,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(207,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(208,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(208,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(209,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(209,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(212,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(219,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(220,108): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(220,94): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(221,118): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(221,96): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\src\base\renderLoop.cpp(224,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: 'initializing': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(53,66): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(64,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(65,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(65,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(66,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(66,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(69,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(76,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(77,108): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(77,94): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(78,118): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(78,96): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(81,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(88,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(89,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(89,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(90,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(90,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(93,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(100,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(101,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(101,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(102,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(102,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(105,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(112,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(113,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(113,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(114,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(114,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(117,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(124,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(125,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(125,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(126,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(126,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(129,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(136,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(137,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(137,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(138,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(138,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(141,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(148,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(149,108): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(149,94): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(150,118): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(150,96): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(153,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(160,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(161,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(161,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(162,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(162,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(165,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(172,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(173,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(173,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(174,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(174,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(177,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(184,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(185,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(185,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(186,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(186,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(189,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(196,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(197,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(197,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(198,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(198,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(201,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(208,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(209,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(209,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(210,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(210,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(213,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(220,18): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(221,108): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(221,94): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(222,118): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(222,96): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(225,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(231,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(232,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(232,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(233,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(233,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(236,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(242,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(243,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(243,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(244,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(244,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(247,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(253,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(254,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(254,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(255,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(255,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(258,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(264,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(265,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(265,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(266,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(266,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(269,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(275,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(276,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(276,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(277,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(277,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(280,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(286,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(287,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(287,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(288,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(288,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(291,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(297,17): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(298,107): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(298,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(299,117): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(299,95): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+E:\Repos\Skidware-Inject\Skidware\src\base\renderLoop.cpp(302,85): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/FORCE' specification
 noslow.obj : warning LNK4006: "long count" (?count@@3JA) already defined in criticals.obj; second definition ignored
 nofall.obj : warning LNK4006: "bool should" (?should@@3_NA) already defined in criticals.obj; second definition ignored
 nofall.obj : warning LNK4006: "long count" (?count@@3JA) already defined in criticals.obj; second definition ignored
@@ -93,97 +136,57 @@ speed.obj : warning LNK4006: "long count" (?count@@3JA) already defined in criti
 leftAutoClicker.obj : warning LNK4006: "long lastClickTime" (?lastClickTime@@3JA) already defined in killaura.obj; second definition ignored
 leftAutoClicker.obj : warning LNK4006: "int nextCps" (?nextCps@@3HA) already defined in killaura.obj; second definition ignored
 leftAutoClicker.obj : warning LNK4006: "int count" (?count@@3HA) already defined in tower.obj; second definition ignored
-rightAutoClicker.obj : warning LNK4006: "int rightNextCps" (?rightNextCps@@3HA) already defined in tower.obj; second definition ignored
 rightAutoClicker.obj : warning LNK4006: "long rightLastClickTime" (?rightLastClickTime@@3JA) already defined in tower.obj; second definition ignored
-renderMenu.obj : warning LNK4006: "class std::vector<char const *,class std::allocator<char const *> > exenamevector2" (?exenamevector2@@3V?$vector@PEBDV?$allocator@PEBD@std@@@std@@A) already defined in detach.obj; second definition ignored
+rightAutoClicker.obj : warning LNK4006: "int rightNextCps" (?rightNextCps@@3HA) already defined in tower.obj; second definition ignored
+renderMenu.obj : warning LNK4006: "void __cdecl cucklord_destruct_clean_strings_function(unsigned long,class std::vector<char const *,class std::allocator<char const *> >,bool)" (?cucklord_destruct_clean_strings_function@@YAXKV?$vector@PEBDV?$allocator@PEBD@std@@@std@@_N@Z) already defined in detach.obj; second definition ignored
+renderMenu.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl cucklord_get_exe_name(void)" (?cucklord_get_exe_name@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) already defined in detach.obj; second definition ignored
+renderMenu.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl cucklord_get_exe_path(void)" (?cucklord_get_exe_path@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) already defined in detach.obj; second definition ignored
+renderMenu.obj : warning LNK4006: "unsigned long __cdecl cucklord_get_service_processid(char const *)" (?cucklord_get_service_processid@@YAKPEBD@Z) already defined in detach.obj; second definition ignored
+renderMenu.obj : warning LNK4006: "int __cdecl cucklord_random_int(int,int)" (?cucklord_random_int@@YAHHH@Z) already defined in detach.obj; second definition ignored
+renderMenu.obj : warning LNK4006: "wchar_t __cdecl cucklord_random_wchar(int,int)" (?cucklord_random_wchar@@YA_WHH@Z) already defined in detach.obj; second definition ignored
+renderMenu.obj : warning LNK4006: "bool dps_string_found" (?dps_string_found@@3_NA) already defined in detach.obj; second definition ignored
 renderMenu.obj : warning LNK4006: "struct HINSTANCE__ * HModule" (?HModule@@3PEAUHINSTANCE__@@EA) already defined in detach.obj; second definition ignored
 renderMenu.obj : warning LNK4006: "int cleanedprocesses" (?cleanedprocesses@@3HA) already defined in detach.obj; second definition ignored
 renderMenu.obj : warning LNK4006: "class std::vector<char const *,class std::allocator<char const *> > exenamevectordps" (?exenamevectordps@@3V?$vector@PEBDV?$allocator@PEBD@std@@@std@@A) already defined in detach.obj; second definition ignored
 renderMenu.obj : warning LNK4006: "class std::vector<char const *,class std::allocator<char const *> > exenamevector" (?exenamevector@@3V?$vector@PEBDV?$allocator@PEBD@std@@@std@@A) already defined in detach.obj; second definition ignored
-renderMenu.obj : warning LNK4006: "bool dps_string_found" (?dps_string_found@@3_NA) already defined in detach.obj; second definition ignored
-renderMenu.obj : warning LNK4006: "void __cdecl cucklord_destruct_clean_strings_function(unsigned long,class std::vector<char const *,class std::allocator<char const *> >,bool)" (?cucklord_destruct_clean_strings_function@@YAXKV?$vector@PEBDV?$allocator@PEBD@std@@@std@@_N@Z) already defined in detach.obj; second definition ignored
-renderMenu.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl cucklord_get_exe_path(void)" (?cucklord_get_exe_path@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) already defined in detach.obj; second definition ignored
-renderMenu.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl cucklord_get_exe_name(void)" (?cucklord_get_exe_name@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@XZ) already defined in detach.obj; second definition ignored
-renderMenu.obj : warning LNK4006: "unsigned long __cdecl cucklord_get_service_processid(char const *)" (?cucklord_get_service_processid@@YAKPEBD@Z) already defined in detach.obj; second definition ignored
-renderMenu.obj : warning LNK4006: "wchar_t __cdecl cucklord_random_wchar(int,int)" (?cucklord_random_wchar@@YA_WHH@Z) already defined in detach.obj; second definition ignored
-renderMenu.obj : warning LNK4006: "int __cdecl cucklord_random_int(int,int)" (?cucklord_random_int@@YAHHH@Z) already defined in detach.obj; second definition ignored
-logger.obj : warning LNK4006: "bool isLoggedIn" (?isLoggedIn@@3_NA) already defined in renderMenu.obj; second definition ignored
-logger.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > version" (?version@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
+renderMenu.obj : warning LNK4006: "class std::vector<char const *,class std::allocator<char const *> > exenamevector2" (?exenamevector2@@3V?$vector@PEBDV?$allocator@PEBD@std@@@std@@A) already defined in detach.obj; second definition ignored
 logger.obj : warning LNK4006: "bool loginFailed" (?loginFailed@@3_NA) already defined in renderMenu.obj; second definition ignored
+logger.obj : warning LNK4006: "bool isLoggedIn" (?isLoggedIn@@3_NA) already defined in renderMenu.obj; second definition ignored
+logger.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name" (?name@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
 logger.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > ownerid" (?ownerid@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
+logger.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > secret" (?secret@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
+logger.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > version" (?version@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
 logger.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > url" (?url@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
 logger.obj : warning LNK4006: "class KeyAuth::api KeyAuthApp" (?KeyAuthApp@@3Vapi@KeyAuth@@A) already defined in renderMenu.obj; second definition ignored
-logger.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name" (?name@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
-logger.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > secret" (?secret@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
-java.obj : warning LNK4006: "bool isLoggedIn" (?isLoggedIn@@3_NA) already defined in renderMenu.obj; second definition ignored
-java.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > version" (?version@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
 java.obj : warning LNK4006: "bool loginFailed" (?loginFailed@@3_NA) already defined in renderMenu.obj; second definition ignored
+java.obj : warning LNK4006: "bool isLoggedIn" (?isLoggedIn@@3_NA) already defined in renderMenu.obj; second definition ignored
+java.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name" (?name@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
 java.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > ownerid" (?ownerid@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
+java.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > secret" (?secret@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
+java.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > version" (?version@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
 java.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > url" (?url@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
 java.obj : warning LNK4006: "class KeyAuth::api KeyAuthApp" (?KeyAuthApp@@3Vapi@KeyAuth@@A) already defined in renderMenu.obj; second definition ignored
-java.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name" (?name@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
-java.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > secret" (?secret@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
-base.obj : warning LNK4006: "bool isLoggedIn" (?isLoggedIn@@3_NA) already defined in renderMenu.obj; second definition ignored
-base.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > version" (?version@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
 base.obj : warning LNK4006: "bool loginFailed" (?loginFailed@@3_NA) already defined in renderMenu.obj; second definition ignored
+base.obj : warning LNK4006: "bool isLoggedIn" (?isLoggedIn@@3_NA) already defined in renderMenu.obj; second definition ignored
+base.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name" (?name@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
 base.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > ownerid" (?ownerid@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
+base.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > secret" (?secret@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
+base.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > version" (?version@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
 base.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > url" (?url@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
 base.obj : warning LNK4006: "class KeyAuth::api KeyAuthApp" (?KeyAuthApp@@3Vapi@KeyAuth@@A) already defined in renderMenu.obj; second definition ignored
-base.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name" (?name@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
-base.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > secret" (?secret@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
-main.obj : warning LNK4006: "bool isLoggedIn" (?isLoggedIn@@3_NA) already defined in renderMenu.obj; second definition ignored
-main.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > version" (?version@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
-main.obj : warning LNK4006: "bool loginFailed" (?loginFailed@@3_NA) already defined in renderMenu.obj; second definition ignored
-main.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > ownerid" (?ownerid@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
-main.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > url" (?url@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
-main.obj : warning LNK4006: "class KeyAuth::api KeyAuthApp" (?KeyAuthApp@@3Vapi@KeyAuth@@A) already defined in renderMenu.obj; second definition ignored
-main.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name" (?name@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
-main.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > secret" (?secret@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
-main.obj : warning LNK4006: "void __cdecl uc_SizeOfImage(void)" (?uc_SizeOfImage@@YAXXZ) already defined in base.obj; second definition ignored
 main.obj : warning LNK4006: "void __cdecl HideFromDebugger(void)" (?HideFromDebugger@@YAXXZ) already defined in base.obj; second definition ignored
+main.obj : warning LNK4006: "void __cdecl InjectionError(char const *)" (?InjectionError@@YAXPEBD@Z) already defined in base.obj; second definition ignored
 main.obj : warning LNK4006: "bool __cdecl IsRemoteSession(void)" (?IsRemoteSession@@YA_NXZ) already defined in base.obj; second definition ignored
 main.obj : warning LNK4006: "void __cdecl KillWindows(void)" (?KillWindows@@YAXXZ) already defined in base.obj; second definition ignored
-main.obj : warning LNK4006: "void __cdecl InjectionError(char const *)" (?InjectionError@@YAXPEBD@Z) already defined in base.obj; second definition ignored
+main.obj : warning LNK4006: "void __cdecl uc_SizeOfImage(void)" (?uc_SizeOfImage@@YAXXZ) already defined in base.obj; second definition ignored
+main.obj : warning LNK4006: "bool loginFailed" (?loginFailed@@3_NA) already defined in renderMenu.obj; second definition ignored
+main.obj : warning LNK4006: "bool isLoggedIn" (?isLoggedIn@@3_NA) already defined in renderMenu.obj; second definition ignored
+main.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name" (?name@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
+main.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > ownerid" (?ownerid@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
+main.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > secret" (?secret@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
+main.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > version" (?version@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
+main.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > url" (?url@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
+main.obj : warning LNK4006: "class KeyAuth::api KeyAuthApp" (?KeyAuthApp@@3Vapi@KeyAuth@@A) already defined in renderMenu.obj; second definition ignored
 java.obj : error LNK2001: unresolved external symbol "public: static enum HackState Hack::m_InitializationState" (?m_InitializationState@Hack@@2W4HackState@@A)
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\build\Skidware 1.08.dll : warning LNK4088: image being generated due to /FORCE option; image may not run
-  Generating code
-  1 of 4454 functions (<0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    30 functions had inline decision re-evaluated but remain unchanged
-  Finished generating code
-* CIL library *(* CIL module *) : warning LNK4006: "long count" (?count@@3JA) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "int count" (?count@@3HA) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "int nextCps" (?nextCps@@3HA) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "long lastClickTime" (?lastClickTime@@3JA) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "long rightLastClickTime" (?rightLastClickTime@@3JA) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "int rightNextCps" (?rightNextCps@@3HA) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::vector<char const *,class std::allocator<char const *> > exenamevector2" (?exenamevector2@@3V?$vector@PEBDV?$allocator@PEBD@std@@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::vector<char const *,class std::allocator<char const *> > exenamevectordps" (?exenamevectordps@@3V?$vector@PEBDV?$allocator@PEBD@std@@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::vector<char const *,class std::allocator<char const *> > exenamevector" (?exenamevector@@3V?$vector@PEBDV?$allocator@PEBD@std@@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > version" (?version@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > ownerid" (?ownerid@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > url" (?url@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class KeyAuth::api KeyAuthApp" (?KeyAuthApp@@3Vapi@KeyAuth@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name" (?name@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > secret" (?secret@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > version" (?version@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > ownerid" (?ownerid@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > url" (?url@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class KeyAuth::api KeyAuthApp" (?KeyAuthApp@@3Vapi@KeyAuth@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name" (?name@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > secret" (?secret@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > version" (?version@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > ownerid" (?ownerid@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > url" (?url@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class KeyAuth::api KeyAuthApp" (?KeyAuthApp@@3Vapi@KeyAuth@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name" (?name@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > secret" (?secret@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > version" (?version@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > ownerid" (?ownerid@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > url" (?url@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class KeyAuth::api KeyAuthApp" (?KeyAuthApp@@3Vapi@KeyAuth@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name" (?name@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-* CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > secret" (?secret@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
-java.obj : error LNK2001: unresolved external symbol "public: static enum HackState Hack::m_InitializationState" (?m_InitializationState@Hack@@2W4HackState@@A)
-C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\build\Skidware 1.08.dll : warning LNK4088: image being generated due to /FORCE option; image may not run
-  Skidware.vcxproj -> C:\Users\Smellon\Downloads\Skidware-Inject-main (4)\Skidware-Inject-main\Skidware\build\Skidware 1.08.dll
+E:\Repos\Skidware-Inject\Skidware\build\Skidware 1.08.dll : warning LNK4088: image being generated due to /FORCE option; image may not run
+  Skidware.vcxproj -> E:\Repos\Skidware-Inject\Skidware\build\Skidware 1.08.dll

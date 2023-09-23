@@ -31,18 +31,16 @@ void Antivoid::onUpdate(EventUpdate e)
 	if (getMode() == 0) {
 		if (p->fallDistance() > 5) {
 			p->setMotion(Vector3(p->getMotion().x, -0.68, p->getMotion().z));
+			p->sendGroundPacket(p->C03PacketPlayer(true, p->GetRotationYaw(), p->GetRotationPitch()));
+			p->setFallDistance(0);
 		}
-
-		/* We can vanilla nofall with the same amount of flags. */
-		if (p->fallDistance() > 2.5 && !(p->getHurtTime() > 0)) {
-			p->setMotion(Vector3(p->getMotion().x, -11, p->getMotion().z));
-		}
+		
 	}
 
 	/* Flagless NCP */
 	if (getMode() == 1) {
 		if (p->fallDistance() > 6) {
-			p->setMotion(Vector3(p->getMotion().x, 5, p->getMotion().z));
+			p->setMotion(Vector3(p->getMotion().x, -0.68, p->getMotion().z));
 			p->setFallDistance(0);
 		}
 	}

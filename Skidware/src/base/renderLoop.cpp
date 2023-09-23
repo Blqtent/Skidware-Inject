@@ -33,6 +33,7 @@
 #include "moduleManager/modules/player/autotool.h"
 #include "moduleManager/modules/blatent/antivoid.h"
 #include "moduleManager/modules/blatent/noslow.h"
+#include "moduleManager/modules/blatent/criticals.h"
 
 void Base::RenderLoop()
 {
@@ -204,12 +205,12 @@ void Base::RenderLoop()
 	if (Blink::getInstance()->getToggle()) {
 		//if (TextGui::rectangles) {
 		int yy = moduleIndexY + 18 * 2;
-		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  Blink").x + DistanceToEnd;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  Fakelag").x + DistanceToEnd;
 		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
 		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
 		//}
 
-		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Blink");
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Fakelag");
 		moduleIndexY += 18 * 2;
 	}
 
@@ -222,6 +223,83 @@ void Base::RenderLoop()
 		//}
 
 		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  ESP");
+		moduleIndexY += 18 * 2;
+	}
+	if (Antivoid::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  Antivoid").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Antivoid");
+		moduleIndexY += 18 * 2;
+	}
+	if (Noslowdown::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  Noslowdown").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Noslowdown");
+		moduleIndexY += 18 * 2;
+	}
+	if (Criticals::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  Criticals").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Criticals");
+		moduleIndexY += 18 * 2;
+	}
+	if (Speed::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  Speed").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Speed");
+		moduleIndexY += 18 * 2;
+	}
+	if (Fulbright::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  Fullbright").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Fullbright");
+		moduleIndexY += 18 * 2;
+	}
+	if (Fastplace::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  Fastplace").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Fastplace");
+		moduleIndexY += 18 * 2;
+	}
+	if (TimerHack::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  Timer").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Timer");
 		moduleIndexY += 18 * 2;
 	}
 }

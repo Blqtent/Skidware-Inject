@@ -36,7 +36,7 @@ void Blink::RenderMenu()
 	ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.12f, 0.12f, 0.12f, 0.5));
 	ImGui::PushStyleVar(ImGuiStyleVar_ChildRounding, 10);
 
-	if (ImGui::BeginChild("Blink", ImVec2(450, 75))) {
+	if (ImGui::BeginChild("Blink", ImVec2(450, 100))) {
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
 		Menu::DoToggleButtonStuff(6890, "Toggle Fakelag", this);
@@ -45,8 +45,8 @@ void Blink::RenderMenu()
 		ImGui::Separator();
 		//Menu::DoToggleButtonStuff(566578, "Fakelag Throttle", &Blink::throttle);
 		if (this->getMode() == 2) {
-			Menu::DoSliderStuff(566578, "Backtrack Delay", &this->Milliseonds, 1, 100);
-			Menu::DoSliderStuff(2, "Chance", &this->Chance, 1, 10);
+			ImGui::SliderFloat("Backtrack Delay", &this->Milliseonds, 1, 100);
+			ImGui::SliderFloat("Chance", &this->Chance, 1, 10);
 		}
 		ImGui::Combo("Mode", &this->getMode(), this->modes, 3);
 

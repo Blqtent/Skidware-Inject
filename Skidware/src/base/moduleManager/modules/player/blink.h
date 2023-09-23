@@ -4,7 +4,7 @@
 #include "../../../eventManager/events/EventUpdate.hpp"
 #include "../../AbstractModule.h"
 #include <Windows.h>
-#include "../../../util/Timer.h"
+
 	
 #include <string>
 #include <vector>

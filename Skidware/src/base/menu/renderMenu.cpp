@@ -307,8 +307,8 @@ void Menu::RenderMenu()
 			if (Menu::TabButton("ESP", (currentTab2 == 0 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab2 = 0;
 			ImGui::SameLine();
 			if (Menu::TabButton("Fullbright", (currentTab2 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab2 = 1;
-			//ImGui::SameLine();
-			//if (Menu::TabButton("Xray", (currentTab2 == 2 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab2 = 2;
+			ImGui::SameLine();
+			if (Menu::TabButton("Xray", (currentTab2 == 2 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab2 = 2;
 
 			if (currentTab2 == 0) {
 				Esp::getInstance()->getInstance()->RenderMenu();
@@ -320,10 +320,10 @@ void Menu::RenderMenu()
 				keybind::key_bind(Fulbright::getInstance()->getKey(), 125, 25);
 			}
 			
-			/*if (currentTab2 == 2) {
+			if (currentTab2 == 2) {
 				Cavefinder::getInstance()->RenderMenu();
 				keybind::key_bind(Cavefinder::getInstance()->getKey(), 125, 25);
-			}*/
+			}
 			//Fullbright::getInstance()->RenderMenu();
 			//keybind::key_bind(Esp::getInstance()->getInstance()->getKey(), 150, 50);
 			ImGui::InvisibleButton("", ImVec2(1, 100));
@@ -374,16 +374,16 @@ void Menu::RenderMenu()
 		if (currentTab == 2)
 		{
 			if (Menu::TabButton("LeftClicker", (currentTab4 == 0 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab4 = 0;
-			//ImGui::SameLine();
-			//if (Menu::TabButton("RightClicker", (currentTab4 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab4 = 1;
+			ImGui::SameLine();
+			if (Menu::TabButton("RightClicker", (currentTab4 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab4 = 1;
 			if (currentTab4 == 0) {
 				LeftAutoClicker::getInstance()->RenderMenu();
 				keybind::key_bind(LeftAutoClicker::getInstance()->getKey(), 125, 25);
 			}
-			/*if (currentTab4 == 1) {
+			if (currentTab4 == 1) {
 				RightAutoClicker::getInstance()->RenderMenu();
 				keybind::key_bind(RightAutoClicker::getInstance()->getKey(), 125, 25);
-			}*/
+			}
 			//keybind::key_bind(RightAutoClicker::getInstance()->getKey(), 150, 50);
 
 			ImGui::InvisibleButton("", ImVec2(1, 100));
