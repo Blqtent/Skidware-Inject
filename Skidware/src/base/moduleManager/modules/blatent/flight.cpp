@@ -60,8 +60,8 @@ Flight* Flight::getInstance() {
 
 
 void Flight::onDisable() {
-	//if (CommonData::getInstance()->SanityCheck())
-		//SDK::Minecraft->thePlayer->setFly(false);
+	if (CommonData::getInstance()->SanityCheck())
+		SDK::Minecraft->thePlayer->set_speed(0);
 
 }
 
@@ -115,7 +115,7 @@ void Flight::RenderMenu()
 
 		Menu::DoToggleButtonStuff(235354, "Toggle Flight",this);
 		if (getMode() == 0 || getMode() == 2)
-			ImGui::SliderFloat("Speed", &this->glideSpeed, 0, 5, "%.0f");
+			ImGui::SliderFloat("Speed", &this->glideSpeed, 0, 5);
 		//Menu::DoToggleButtonStuff(124343343, "Antikick", &Flight::antikick);
 
 		ImGui::Text("Flight Mode");

@@ -57,7 +57,7 @@ void LongJump::RenderMenu()
 		ImGui::Text("Longjump Mode");
 		ImGui::Combo("Longjump Mode", &this->getMode(), this->modes, 2);
 		if (this->getMode() == 0)
-			ImGui::SliderFloat("Longjump Speed", &this->speed, 0, 5, "%.0f");
+			ImGui::SliderFloat("Longjump Speed", &this->speed, 0, 5);
 
 		ImGui::EndChild();
 	}

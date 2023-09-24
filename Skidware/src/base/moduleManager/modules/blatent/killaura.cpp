@@ -268,15 +268,15 @@ void Killaura::RenderMenu()
 		Menu::DoToggleButtonStuff(45646, "Toggle Killaura", this);
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
-		ImGui::SliderFloat("Min CPS", &this->leftMinCps, 1, 20, "%.0f");
-		ImGui::SliderFloat("Max CPS", &this->leftMaxCps, 1, 20, "%.0f");
-		ImGui::SliderFloat("FOV", &this->fov, 1, 360, "%.0f");
+		ImGui::SliderFloat("Min CPS", &this->leftMinCps, 1, 20);
+		ImGui::SliderFloat("Max CPS", &this->leftMaxCps, 1, 20);
+		ImGui::SliderFloat("FOV", &this->fov, 1, 360);
 		/*if (leftMinCps > leftMaxCps) {
 			leftMinCps = leftMaxCps;
 		}*/
 		Menu::DoToggleButtonStuff(2524, "Autoblock", &this->autoblock);
 		Menu::DoToggleButtonStuff(679067, "Keepsprint", &this->keepsprint);
-		ImGui::SliderFloat("Range", &this->range, 3, 6, "%.0f");
+		ImGui::SliderFloat("Range", &this->range, 3, 6);
 		ImGui::Text("Target Priority");
 		ImGui::Combo("Target", &this->targetPriority, Killaura::targetPriorityList, 3);
 		ImGui::Text("Mode");

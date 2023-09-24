@@ -20,7 +20,7 @@ public:
 	void onUpdate(const EventUpdate e);
 	void RenderMenu();
 
-	const char* modes[6]{ "Old NCP", "Flagless NCP" };
+	const char* modes[6]{ "BlocksMC", "Flagless BMC", "Old NCP"};
 	Vector3 groundPos;
 private:
 	Antivoid();

@@ -121,7 +121,7 @@ void Speed::RenderMenu()
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
 		Menu::DoToggleButtonStuff(23432423, "Toggle Speed", this);
 		if (getMode() == 0 || getMode() == 2 || getMode() == 3);
-			ImGui::SliderFloat("Speed", &this->speed, 0, 100, "%.0f");
+			ImGui::SliderFloat("Speed", &this->speed, 0, 10);
 		ImGui::Text("Speed Mode Mode");
 		ImGui::Combo("Mode", &this->getMode(), modes, 5);
 

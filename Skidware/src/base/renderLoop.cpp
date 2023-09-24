@@ -45,15 +45,15 @@ void Base::RenderLoop()
 
 	int secRectDistance = 4 * 2;
 	int DistanceToEnd = 10 * 2;
-	ImU32 secRectColor = Menu::watermarkColor;
-	ImU32 color = ImGui::GetColorU32(ImGuiCol_Text);
+	ImU32 secRectColor = ImColor(255.0f, 255.0f, 255.0f, 200.0f);
+	ImU32 color = ImColor(115.0f, 115.0f, 115.0f, 200.0f);
 
 	int moduleIndexY = 0 * 2;
 		
-	ImGui::GetWindowDrawList()->AddText(Menu::BiggerFont, font_size * 1.5, ImVec2(7, 2), secRectColor, "Skidware");
+	ImGui::GetWindowDrawList()->AddText(Menu::BiggerFont, font_size * 1.5, ImVec2(7, 2), secRectColor, "- Skidware");
 
 	moduleIndexY = 24 * 2;
-	ImColor rectColor = ImColor(0.0f, 0.0f, 0.0f, 0.35f);
+	ImColor rectColor = ImColor(69.0f, 69.0f, 69.0f, 0.45f);
 
 	Esp::getInstance()->RenderUpdate();
 	AimAssist::getInstance()->RenderUpdate();
