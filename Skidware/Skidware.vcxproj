@@ -170,6 +170,7 @@
     <ClInclude Include="src\base\moduleManager\modules\blatent\noslow.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\tower.h" />
     <ClInclude Include="src\base\moduleManager\modules\player\autotool.h" />
+    <ClInclude Include="src\base\moduleManager\modules\player\disabler.h" />
     <ClInclude Include="src\base\patcher\data.h" />
     <ClInclude Include="src\base\patcher\patcher.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\block\Block.h" />
@@ -295,6 +296,7 @@
     <ClCompile Include="src\base\moduleManager\modules\blatent\noslow.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\tower.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\player\autotool.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\player\disabler.cpp" />
     <ClCompile Include="src\base\patcher\patcher.cpp" />
     <ClCompile Include="src\base\sdk\java\util\Collection.h" />
     <ClCompile Include="src\base\sdk\net\minecraft\block\Block.cpp" />

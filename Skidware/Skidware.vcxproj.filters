@@ -92,6 +92,7 @@
     <ClCompile Include="src\base\security\detach.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\criticals.cpp" />
     <ClCompile Include="src\Memory.cpp" />
+    <ClCompile Include="src\base\moduleManager\modules\player\disabler.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ext\fonts\Minecraft.h" />
@@ -218,6 +219,7 @@
     <ClInclude Include="src\Memory.h" />
     <ClInclude Include="src\base\security\ObfuscateString.hpp" />
     <ClInclude Include="src\base\security\Random.hpp" />
+    <ClInclude Include="src\base\moduleManager\modules\player\disabler.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

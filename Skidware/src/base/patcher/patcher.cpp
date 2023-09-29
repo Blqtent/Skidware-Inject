@@ -1,13 +1,14 @@
 #include "patcher.h"
-//#include "miniz.hpp"
+#include "miniz.h"
 #include "data.h"
 #include <functional>
 #include "../sdk/JNIHelper.h"
+#include "../util/logger.h"
 namespace Patcher
 {
 	namespace
 	{
-		void loadJar(jobject classLoader, const unsigned char* jarBytes, size_t size)
+		void loadClass(jobject classLoader, const unsigned char* jarBytes, size_t size)
 		{
 			/*
 			mz_zip_archive archive{};
@@ -43,9 +44,10 @@ namespace Patcher
 			}
 			mz_zip_reader_end(&archive);
 			return;
+			
+			//jclass jaclass = Java::Env->DefineClass(nullptr, classLoader, (const jbyte*)jarBytes, size);
+			//if (jaclass)Java::Env->DeleteLocalRef(jaclass);
 			*/
-			jclass jaclass = Java::Env->DefineClass(nullptr, classLoader, (const jbyte*)jarBytes, size);
-			if (jaclass)Java::Env->DeleteLocalRef(jaclass);
 		}
 
 		void gc()
@@ -138,20 +140,25 @@ namespace Patcher
 	}
 	void Init()
 	{
+		Logger::Log("Patcher Init Start");
 		jvmtiCapabilities capabilities{};
 		capabilities.can_retransform_classes = JVMTI_ENABLE;
 		Java::tiEnv->AddCapabilities(&capabilities);
+		Logger::Log("JVMTI Setup");
+
 		jvmtiEventCallbacks callbacks{};
 		callbacks.ClassFileLoadHook = &ClassFileLoadHook;
 		Java::tiEnv->SetEventCallbacks(&callbacks, sizeof(jvmtiEventCallbacks));
 		Java::tiEnv->SetEventNotificationMode(JVMTI_ENABLE, JVMTI_EVENT_CLASS_FILE_LOAD_HOOK, NULL);
+		Logger::Log("Create ClassFileLoadHook");
 
 		//here I am using an empty map, already in the game, to hide and store my cheat data, the getMouseOver than accesses this map (see asm folder)
 		Java::AssignClass("net.minecraft.client.renderer.EntityRenderer", EntityRenderer_class);
 		jclass ThreadContext_class = Java::findClass(Java::Env, Java::tiEnv, "org/apache/logging/log4j/ThreadContext");
 		jfieldID EMPTY_MAP_ID = Java::Env->GetStaticFieldID(ThreadContext_class, "EMPTY_MAP", "Ljava/util/Map;");
 		original_EMPTY_MAP = Java::Env->GetStaticObjectField(EntityRenderer_class, EMPTY_MAP_ID);
-		
+		Logger::Log("Creating Map");
+
 
 		jclass hashmap_class = Java::Env->FindClass("java/util/HashMap");
 		jmethodID constructor = Java::Env->GetMethodID(hashmap_class, "<init>", "()V");
@@ -161,15 +168,42 @@ namespace Patcher
 		Java::Env->DeleteLocalRef(ThreadContext_class);
 
 		put("reach_distance", "3.0");
+		//put("S", "a");
+		Logger::Log("Value Init");
 
 		jobject classLoader = newClassLoader();
-		loadJar(classLoader, data, sizeof(data));
+		loadClass(classLoader, ClassPatcherJar.data(), sizeof(ClassPatcherJar));
+		/*
+		loadClass(classLoader, data2, sizeof(data2));
+		loadClass(classLoader, data3, sizeof(data3));
+		loadClass(classLoader, data4, sizeof(data4));
+		loadClass(classLoader, data5, sizeof(data5));
+		loadClass(classLoader, data6, sizeof(data6));
+		loadClass(classLoader, data7, sizeof(data7));
+		loadClass(classLoader, data8, sizeof(data8));
+		loadClass(classLoader, data9, sizeof(data9));
+		loadClass(classLoader, data10, sizeof(data10));
+		loadClass(classLoader, data11, sizeof(data11));
+		loadClass(classLoader, data12, sizeof(data12));
+		loadClass(classLoader, data13, sizeof(data13));
+		loadClass(classLoader, data14, sizeof(data14));
+		loadClass(classLoader, data15, sizeof(data15));
+		loadClass(classLoader, data16, sizeof(data16));
+		loadClass(classLoader, data17, sizeof(data17));
+		loadClass(classLoader, data18, sizeof(data18));
+		*/
+		Logger::Log("Load Classes");
 
 		retransformClasses();
+		Logger::Log("Retransform Classes");
+
 		Java::tiEnv->SetEventNotificationMode(JVMTI_DISABLE, JVMTI_EVENT_CLASS_FILE_LOAD_HOOK, NULL);
+		Logger::Log("Disable ClassFileLoadHook");
 
 		Java::Env->DeleteLocalRef(classLoader);
 		gc();
+		Logger::Log("Garbage Collect");
+
 		//delete classLoader ref and call garbage collector, so that our patcher class gets unloaded
 	}
 	void Kill()

@@ -47,6 +47,7 @@
 
 // LUA import
 #include "extension/scripting.hpp"
+#include "moduleManager/modules/player/disabler.h"
 
 const char* GetWindowTitle(HWND hWnd)
 {
@@ -72,20 +73,22 @@ void Base::Init()
 	//KeyAuthApp.init();
 	//KeyAuthApp.checkblack();
 	MH_Initialize();
-	//Logger::Init();
-	//Logger::Log("1/6 Logger Initialized. \n");
+	Logger::Init();
+	Logger::Log("1/7 Logger Initialized. \n");
 	Java::Init();
-	//Logger::Log("2/6 JVM Initialized. \n");
+	Logger::Log("2/7 JVM Initialized. \n");
 	SDK::Init();
-	//Logger::Log("3/6 SDK Initialized. \n");
+	Logger::Log("3/7 SDK Initialized. \n");
 	Menu::Init();
-	//Logger::Log("4/6 Menu Initialized. \n");
+	Logger::Log("4/7 Menu Initialized. \n");
 	//Patcher::Init();
-	initModule();
-	//Logger::Log("5/6 Modules Initialized. \n");
-	initEvent();
-	//Logger::Log("6/6 Events Initialized. \n");
+	Logger::Log("5/7 Patcher Initialized. \n");
 
+	initModule();
+	Logger::Log("6/7 Modules Initialized. \n");
+	initEvent();
+	Logger::Log("7/7 Events Initialized. \n");
+	Logger::Kill();
 	//Logger::Init();
 	//scripting::luaThing();
 	Base::Running = true;
@@ -166,6 +169,7 @@ void Base::initModule() {
 		ModuleManager::getInstance().addModule<AutoTool>(AutoTool::getInstance());
 		ModuleManager::getInstance().addModule<Eagle>(Eagle::getInstance());
 		ModuleManager::getInstance().addModule<Fastplace>(Fastplace::getInstance());
+		ModuleManager::getInstance().addModule<Disabler>(Disabler::getInstance());
 	}
 
 	{

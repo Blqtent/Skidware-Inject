@@ -9,7 +9,7 @@ namespace Patcher
 		inline jobject EMPTY_MAP = nullptr;
 		inline jclass EntityRenderer_class = nullptr;
 
-		void loadJar(jobject classLoader, const unsigned char* jarBytes, size_t size);
+		void loadClass(jobject classLoader, const unsigned char* jarBytes, size_t size);
 		void gc();
 		jobject newClassLoader();
 		void retransformClasses();

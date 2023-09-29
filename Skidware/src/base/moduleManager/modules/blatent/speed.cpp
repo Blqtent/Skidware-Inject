@@ -41,7 +41,7 @@ void Speed::onUpdate(const EventUpdate e)
 
 	if (getMode() == 0) {
 		if (isMoving()) {
-			p->set_speed(speed * 0.01);
+			p->set_speed(speed);
 		}
 		else {
 			p->setMotion(Vector3(0, 100000000000, 0));
@@ -60,7 +60,7 @@ void Speed::onUpdate(const EventUpdate e)
 		if (p->isOnGround()) {
 			if (isMoving()) {
 
-				p->set_speed(speed * 0.01);
+				p->set_speed(speed);
 			}
 			else {
 				p->setMotion(Vector3(0, 100000000000, 0));
@@ -120,9 +120,9 @@ void Speed::RenderMenu()
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
 		Menu::DoToggleButtonStuff(23432423, "Toggle Speed", this);
-		if (getMode() == 0 || getMode() == 2 || getMode() == 3);
+		if (getMode() == 0 || getMode() == 2 || getMode() == 3)
 			ImGui::SliderFloat("Speed", &this->speed, 0, 10);
-		ImGui::Text("Speed Mode Mode");
+		ImGui::Text("Speed Mode");
 		ImGui::Combo("Mode", &this->getMode(), modes, 5);
 
 

@@ -32,6 +32,13 @@ int __stdcall WSASendHook(SOCKET s, LPWSABUF lpBuffers, DWORD dwBufferCount, LPD
 		Sleep(Blink::getInstance()->Milliseonds);
 		//}
 	}
+
+	else if (Blink::getInstance()->getMode() == 3 && Blink::getInstance()->getToggle() && Blink::getInstance()->timer % (int)Blink::getInstance()->Chance == 0 && Blink::getInstance()->target.getInstance()) {
+		//while (Blink::getInstance()->getToggle() && !Blink::getInstance()->Time.isElapsed()) {
+		Sleep(Blink::getInstance()->Milliseonds);
+		//}
+	}
+
 	return g_origWSASend(s, lpBuffers, dwBufferCount, lpNumberOfBytesSent, dwFlags, lpOverlapped, lpCompletionRoutine);
 }
 

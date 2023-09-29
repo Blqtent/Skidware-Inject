@@ -29,7 +29,7 @@ void Antivoid::onUpdate(EventUpdate e)
 
 	/* 1-2 Flags BMC */
 	if (getMode() == 0) {
-		if (p->fallDistance() > 5) {
+		if (p->fallDistance() > 6) {
 			p->setMotion(Vector3(p->getMotion().x, -0.68, p->getMotion().z));
 		}
 
@@ -42,11 +42,11 @@ void Antivoid::onUpdate(EventUpdate e)
 	/* Flagless BMC */
 	if (getMode() == 1) {
 		if (p->fallDistance() > 6) {
-			p->setMotion(Vector3(p->getMotion().x, 5, p->getMotion().z));
+			p->setMotion(Vector3(p->getMotion().x, 1, p->getMotion().z));
 			p->setFallDistance(0);
 		}
 	}
-
+	/* NCP */
 	if (getMode() == 2) {
 		if (p->fallDistance() > 6) {
 			p->setMotion(Vector3(p->getMotion().x, -0.01, p->getMotion().z));
@@ -70,7 +70,7 @@ void Antivoid::RenderMenu()
 		//Menu::DoToggleButtonStuff(124343343, "Antikick", &this->antikick);
 
 		ImGui::Text("Antivoid Mode");
-		ImGui::Combo("Antivoid Mode", &this->getMode(), this->modes, 2);
+		ImGui::Combo("Antivoid Mode", &this->getMode(), this->modes, 3);
 
 
 		ImGui::EndChild();

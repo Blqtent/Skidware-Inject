@@ -89,14 +89,14 @@ void Logger::Log(std::string message)
 	std::string msg1 = ' ' + message;
 	std::cout << termcolor::white << "[" << termcolor::yellow << "LOG" << termcolor::white << "]" + msg1 + "\n";
 	//std::cout << "[ LOG ] :: " + message << "\n";
-	Sleep(1000);
+	Sleep(100);
 }
 
 void Logger::Log(double message)
 {
 	if (!Logger::Initialized) Logger::Init();
 	std::cout << message << "\n";
-	Sleep(1000);
+	Sleep(100);
 }
 
 

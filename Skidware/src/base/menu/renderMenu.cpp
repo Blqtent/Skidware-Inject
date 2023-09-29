@@ -52,6 +52,7 @@
 #include "../security/detach.cpp"
 #include "../moduleManager/modules/blatent/criticals.h"
 #include "../security/ObfuscateString.hpp"
+#include "../moduleManager/modules/player/disabler.h"
 
 int currentTab = -1;
 int currentTab2 = 0;
@@ -111,7 +112,7 @@ void set_config(Config* config) {
 	config->set<int>("KillAuraKey", Killaura::getInstance()->getKey());
 
 	// AimAssist
-	/*config->set<bool>("AimAssist", AimAssist::getInstance()->getToggle());
+	config->set<bool>("AimAssist", AimAssist::getInstance()->getToggle());
 	config->set<bool>("AimAssistAdaptive", AimAssist::getInstance()->adaptive);
 	config->set<float>("AimAssistAdaptiveOffset", AimAssist::getInstance()->adaptiveOffset);
 	config->set<float>("AimAssistDistance", AimAssist::getInstance()->aimDistance);
@@ -122,6 +123,7 @@ void set_config(Config* config) {
 	config->set<float>("AimAssistRandomYaw", AimAssist::getInstance()->randomYaw);
 	config->set<bool>("AimAssistFOVCircle", AimAssist::getInstance()->fovCircle);
 	config->set<bool>("AimAssistVisibilityCheck", AimAssist::getInstance()->visibilityCheck);
+	config->set<int>("AimAssistTargetPriority", AimAssist::getInstance()->targetPriority);
 
 	// AutoClicker
 	config->set<bool>("LeftClicker", LeftAutoClicker::getInstance()->getToggle());
@@ -142,7 +144,7 @@ void set_config(Config* config) {
 
 	// Reach
 	config->set<bool>("Reach", Reach::getInstance()->getToggle());
-	config->set<float>("ReachDistance", Reach::getInstance()->ReachDistance);*/
+	config->set<float>("ReachDistance", Reach::getInstance()->ReachDistance);
 
 	// Velocity
 	config->set<bool>("Velocity", Velocity::getInstance()->getToggle());
@@ -191,7 +193,7 @@ void read_config(Config* config) {
 	Killaura::getInstance()->getKey() = config->get<int>("KillAuraKey");
 
 	// AimAssist
-	/*AimAssist::getInstance()->setToggle(config->get<bool>("AimAssist"));
+	AimAssist::getInstance()->setToggle(config->get<bool>("AimAssist"));
 	AimAssist::getInstance()->adaptive = config->get<bool>("AimAssistAdaptive");
 	AimAssist::getInstance()->adaptiveOffset = config->get<float>("AimAssistAdaptiveOffset");
 	AimAssist::getInstance()->aimDistance = config->get<float>("AimAssistDistance");
@@ -202,14 +204,20 @@ void read_config(Config* config) {
 	AimAssist::getInstance()->randomYaw = config->get<float>("AimAssistRandomYaw");
 	AimAssist::getInstance()->fovCircle = config->get<bool>("AimAssistFOVCircle");
 	AimAssist::getInstance()->visibilityCheck = config->get<bool>("AimAssistVisibilityCheck");
+	AimAssist::getInstance()->targetPriority = config->get<int>("AimAssistTargetPriority");
 
 	// AutoClicker
 	LeftAutoClicker::getInstance()->setToggle(config->get<bool>("LeftClicker"));
 	LeftAutoClicker::getInstance()->leftMinCps = config->get<float>("LeftMinCPS");
 	LeftAutoClicker::getInstance()->leftMaxCps = config->get<float>("LeftMaxCPS");
-	LeftAutoClicker::getInstance()->ignoreBlocks = config->get<float>("BreakBlocks");
-	LeftAutoClicker::getInstance()->blockhit = config->get<float>("BlockHit");
+	LeftAutoClicker::getInstance()->ignoreBlocks = config->get<bool>("BreakBlocks");
+	LeftAutoClicker::getInstance()->blockhit = config->get<bool>("BlockHit");
 	LeftAutoClicker::getInstance()->blockHitChance = config->get<float>("BlockHitChance");
+
+	RightAutoClicker::getInstance()->setToggle(config->get<bool>("rightClicker"));
+	RightAutoClicker::getInstance()->rightMinCps = config->get<float>("rightMinCPS");
+	RightAutoClicker::getInstance()->rightMaxCps = config->get<float>("rightMaxCPS");
+	RightAutoClicker::getInstance()->blocksOnly = config->get<bool>("RightBlocksOnly");
 
 	// ESP
 	Esp::getInstance()->setToggle(config->get<bool>("ESP"));
@@ -220,11 +228,13 @@ void read_config(Config* config) {
 	Esp::getInstance()->Outline = config->get<bool>("ESPOutline");
 	Esp::getInstance()->TestCircles = config->get<bool>("ESPTestCircles");
 	Esp::getInstance()->Text = config->get<bool>("ESPText");
+	Esp::getInstance()->FadeDistance = config->get<float>("ESPFadeDistance");
+	Esp::getInstance()->TextSize = config->get<float>("ESPTextSize");
 	Esp::getInstance()->TextOutline = config->get<bool>("ESPTextOutline");
 
 	// Reach
 	Reach::getInstance()->setToggle(config->get<bool>("Reach"));
-	Reach::getInstance()->ReachDistance = config->get<float>("ReachDistance");*/
+	Reach::getInstance()->ReachDistance = config->get<float>("ReachDistance");
 
 	// Velocity
 	Velocity::getInstance()->setToggle(config->get<bool>("Velocity"));
@@ -234,7 +244,7 @@ void read_config(Config* config) {
 	Velocity::getInstance()->getMode() = config->get<int>("VelocityMode");
 
 	// Eagle
-	/*Eagle::getInstance()->setToggle(config->get<bool>("Eagle"));
+	Eagle::getInstance()->setToggle(config->get<bool>("Eagle"));
 
 	// FastPlace
 	Fastplace::getInstance()->setToggle(config->get<bool>("FastPlace"));
@@ -243,7 +253,10 @@ void read_config(Config* config) {
 
 	// Blink
 	Blink::getInstance()->setToggle(config->get<bool>("Blink"));
-	Blink::getInstance()->getMode() = config->get<int>("BlinkMode");*/
+	Blink::getInstance()->getMode() = config->get<int>("BlinkMode");
+	Blink::getInstance()->Milliseonds = config->get<float>("BlinkMS");
+	Blink::getInstance()->Chance = config->get<float>("BlinkIntervel");
+	Blink::getInstance()->getKey() = config->get<int>("BlinkKey");
 
 	// BHop
 	Speed::getInstance()->setToggle(config->get<bool>("BHop"));
@@ -252,9 +265,10 @@ void read_config(Config* config) {
 	Speed::getInstance()->getKey() = config->get<int>("BHopKey");
 
 	//NoFall
-	//Nofall::getInstance()->setToggle(config->get<bool>("NoFall"));
-	//Nofall::getInstance()->getMode() = config->get<int>("NoFallMode");
-	//Nofall::getInstance()->speed = config->get<float>("NoFallSpeed");
+	Nofall::getInstance()->setToggle(config->get<bool>("NoFall"));
+	Nofall::getInstance()->getMode() = config->get<int>("NoFallMode");
+	Nofall::getInstance()->speed = config->get<float>("NoFallSpeed");
+	Nofall::getInstance()->getKey() = config->get<int>("NoFallKey");
 }
 
 void Menu::RenderMenu()
@@ -394,6 +408,8 @@ void Menu::RenderMenu()
 			if (Menu::TabButton("Eagle", (currentTab5 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab5 = 1;
 			ImGui::SameLine();
 			if (Menu::TabButton("AutoTool", (currentTab5 == 2 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab5 = 2;
+			ImGui::SameLine();
+			if (Menu::TabButton("Disabler", (currentTab5 == 3 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab5 = 3;
 
 			if (currentTab5 == 0) {
 				Fastplace::getInstance()->RenderMenu();
@@ -409,6 +425,11 @@ void Menu::RenderMenu()
 			{
 				AutoTool::getInstance()->RenderMenu();
 				keybind::key_bind(AutoTool::getInstance()->getKey(), 125, 25);
+			}
+			if (currentTab5 == 3)
+			{
+				Disabler::getInstance()->RenderMenu();
+				keybind::key_bind(Disabler::getInstance()->getKey(), 125, 25);
 			}
 			ImGui::InvisibleButton("", ImVec2(1, 100));
 

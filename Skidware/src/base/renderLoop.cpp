@@ -34,6 +34,7 @@
 #include "moduleManager/modules/blatent/antivoid.h"
 #include "moduleManager/modules/blatent/noslow.h"
 #include "moduleManager/modules/blatent/criticals.h"
+#include "moduleManager/modules/player/disabler.h"
 
 void Base::RenderLoop()
 {
@@ -46,14 +47,14 @@ void Base::RenderLoop()
 	int secRectDistance = 4 * 2;
 	int DistanceToEnd = 10 * 2;
 	ImU32 secRectColor = ImColor(255.0f, 255.0f, 255.0f, 200.0f);
-	ImU32 color = ImColor(115.0f, 115.0f, 115.0f, 200.0f);
+	ImU32 color = ImColor(0.65f, 0.65f, 0.65f, 1.0f);
 
 	int moduleIndexY = 0 * 2;
 		
-	ImGui::GetWindowDrawList()->AddText(Menu::BiggerFont, font_size * 1.5, ImVec2(7, 2), secRectColor, "- Skidware");
+	ImGui::GetWindowDrawList()->AddText(Menu::BiggerFont, font_size * 1, ImVec2(7, 2), secRectColor, "- Skidware");
 
 	moduleIndexY = 24 * 2;
-	ImColor rectColor = ImColor(69.0f, 69.0f, 69.0f, 0.45f);
+	ImColor rectColor = ImColor(0.35f, 0.35f, 0.35f, 0.65f);
 
 	Esp::getInstance()->RenderUpdate();
 	AimAssist::getInstance()->RenderUpdate();
@@ -145,12 +146,24 @@ void Base::RenderLoop()
 	if (LeftAutoClicker::getInstance()->getToggle()) {
 		//if (TextGui::rectangles) {
 			int yy = moduleIndexY + 18 * 2;
-			int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  Clicker").x + DistanceToEnd;
+			int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  LClicker").x + DistanceToEnd;
 			ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
 			ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
 		//}
 
-		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Clicker");
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  LClicker");
+		moduleIndexY += 18 * 2;
+	}
+
+	if (RightAutoClicker::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  RClicker").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  RClicker");
 		moduleIndexY += 18 * 2;
 	}
 
@@ -300,6 +313,17 @@ void Base::RenderLoop()
 		//}
 
 		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Timer");
+		moduleIndexY += 18 * 2;
+	}
+	if (Disabler::getInstance()->getToggle()) {
+		//if (TextGui::rectangles) {
+		int yy = moduleIndexY + 18 * 2;
+		int vecLength = Menu::Font->CalcTextSizeA(font_size, FLT_MAX, 0.0f, "  Disabler").x + DistanceToEnd;
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(vecLength, yy + 6 * 2), rectColor);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(7, yy - (font_size / 2) - 2 * 2), ImVec2(7 + secRectDistance, yy + 6 * 2), secRectColor);
+		//}
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, font_size, ImVec2(4, moduleIndexY + 4), color, "  Disabler");
 		moduleIndexY += 18 * 2;
 	}
 }

@@ -66,13 +66,14 @@ void Flight::onDisable() {
 }
 
 void Flight::onEnable() {
+	count = 0;
 }
 
 void Flight::onUpdate(const EventUpdate e) {
     if (!this->getToggle())return;
 	if (Menu::Open) return;
 	if (!CommonData::getInstance()->SanityCheck()) return;
-
+	count++;
 	CEntityPlayerSP* p = SDK::Minecraft->thePlayer;
 	if (this->getMode() == 0) {
 		p->set_speed(glideSpeed);
@@ -93,10 +94,23 @@ void Flight::onUpdate(const EventUpdate e) {
 		}
 
 		if (GetAsyncKeyState(VK_LSHIFT)) {
-			p->setMotion(Vector3(p->getMotion().x, -0.45, p->getMotion().z));
+			p->setMotion(Vector3(p->getMotion().x, -0.75, p->getMotion().z));
 		}
 		if (GetAsyncKeyState(VK_SPACE)) {
-			p->setMotion(Vector3(p->getMotion().x, 0.45, p->getMotion().z));
+			p->setMotion(Vector3(p->getMotion().x, 0.75, p->getMotion().z));
+		}
+	}
+	else if (this->getMode() == 3) {
+		if (!p->isOnGround() && p->fallDistance() > 0) {
+			if (count % 5 == 0) {
+				p->setMotion(Vector3(p->getMotion().x, -0.05, p->getMotion().z));
+			}
+			else {
+				p->setMotion(Vector3(p->getMotion().x, -0.3, p->getMotion().z));
+
+			}
+
+			p->set_speed(0.25);
 		}
 	}
 
@@ -105,7 +119,7 @@ void Flight::onUpdate(const EventUpdate e) {
 void Flight::RenderMenu()
 {
 	ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
-
+	
 	ImGui::PushStyleColor(ImGuiCol_ChildBg, ImVec4(0.12f, 0.12f, 0.12f, 0.5));
 	ImGui::PushStyleVar(ImGuiStyleVar_ChildRounding, 10);
 
@@ -119,7 +133,7 @@ void Flight::RenderMenu()
 		//Menu::DoToggleButtonStuff(124343343, "Antikick", &Flight::antikick);
 
 		ImGui::Text("Flight Mode");
-		ImGui::Combo("Flight Mode", &Flight::getMode(), Flight::modes, 3);
+		ImGui::Combo("Flight Mode", &Flight::getMode(), Flight::modes, 4);
 
 		ImGui::EndChild();
 	}
