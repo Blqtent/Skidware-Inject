@@ -29,7 +29,7 @@ void Disabler::onUpdate(const EventUpdate e)
 		return;
 	}
 	if (this->getMode() == 0) {
-		if (timer > 500000) {
+		if (timer > 5000) {
 			this->disable();
 		}
 		else {

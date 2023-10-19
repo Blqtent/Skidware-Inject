@@ -55,6 +55,15 @@ Vector3 CEntity::GetPos()
 	};
 }
 
+Vector3 CEntity::GetPrevPos()
+{
+	return Vector3{
+		(float)(double)Java::Env->GetDoubleField(this->getInstance(), StrayCache::entity_prev_posX),
+		(float)(double)Java::Env->GetDoubleField(this->getInstance(), StrayCache::entity_prev_posY),
+		(float)(double)Java::Env->GetDoubleField(this->getInstance(), StrayCache::entity_prev_posZ)
+	};
+}
+
 Vector3 CEntity::GetEyePos()
 {
 	Vector3 pos = GetPos();

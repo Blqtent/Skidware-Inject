@@ -12,6 +12,7 @@ public:
 	std::string GetName();
 
 	Vector3 GetPos();
+	Vector3 GetPrevPos();
 	Vector3 GetEyePos();
 	Vector3 GetLastTickPos();
 

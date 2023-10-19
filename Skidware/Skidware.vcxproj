@@ -165,10 +165,12 @@
     <ClInclude Include="src\base\menu\elements.h" />
     <ClInclude Include="src\base\menu\hooks\byte.h" />
     <ClInclude Include="src\base\menu\hooks\glTexEnviHook.h" />
+    <ClInclude Include="src\base\menu\jhook.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\antivoid.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\criticals.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\noslow.h" />
     <ClInclude Include="src\base\moduleManager\modules\blatent\tower.h" />
+    <ClInclude Include="src\base\moduleManager\modules\player\anticheat.h" />
     <ClInclude Include="src\base\moduleManager\modules\player\autotool.h" />
     <ClInclude Include="src\base\moduleManager\modules\player\disabler.h" />
     <ClInclude Include="src\base\patcher\data.h" />
@@ -291,6 +293,7 @@
   <ItemGroup>
     <ClCompile Include="src\base\menu\elements.cpp" />
     <ClCompile Include="src\base\menu\hooks\glTexEnviHook.cpp" />
+    <ClCompile Include="src\base\menu\jhook.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\antivoid.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\criticals.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\blatent\noslow.cpp" />

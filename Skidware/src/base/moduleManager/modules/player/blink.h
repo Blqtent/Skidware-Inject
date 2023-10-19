@@ -34,6 +34,9 @@ public:
 	void onUpdate(const EventUpdate e);
 	void RenderMenu();
 	void OnReceiveData();
+	void lag(int ms) {
+		this->ms = ms;
+	}
 	const char* modes[6]{ "Toggle", "Hold", "Throttle", "Dynamic"};
 	bool shouldSpoof = false;
 	long long timer = 0;
@@ -43,7 +46,8 @@ public:
 	float Chance = 2;
 	Vector3 data;
 	CEntityPlayer target;
-
+	float dist = 1000000000.0f;
+	float ms = 0;
 private:
 	Blink();
 };

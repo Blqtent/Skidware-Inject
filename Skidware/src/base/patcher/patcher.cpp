@@ -1,236 +1,117 @@
 #include "patcher.h"
-#include "miniz.h"
-#include "data.h"
-#include <functional>
-#include "../sdk/JNIHelper.h"
 #include "../util/logger.h"
-namespace Patcher
+#include "../../../ext/minhook/minhook.h"
+
+#include "../../../ext/jni/jni.h"
+#include "../sdk/sdk.h"
+
+typedef void(__cdecl* OnUpdate) (void**, void**);
+OnUpdate originalOnUpdate;
+OnUpdate patchedOnUpdate;
+void OnUpdatePatch(void** p1, void** p2)
 {
-	namespace
+	originalOnUpdate(p1, p2);
+}
+
+typedef void(__cdecl* OnTick) (void**, void**);
+OnTick originalOnTick;
+OnTick patchedOnTick;
+void OnTickPatch(void** p1, void** p2)
+{
+	originalOnTick(p1, p2);
+}
+
+typedef void(__cdecl* SetSprinting) (void**, void**, jobject);
+SetSprinting originalSetSprinting;
+SetSprinting patchedSetSprinting;
+void SetSprintingPatch(void** t1, void** t2, jobject packet)
+{
+
+	originalSetSprinting(t1, t2, packet);
+}
+
+
+/*
+void Patching::PatchOnUpdate()
+{
+	MH_STATUS status = MH_UNKNOWN;
+	while (status != MH_OK)
 	{
-		void loadClass(jobject classLoader, const unsigned char* jarBytes, size_t size)
-		{
-			/*
-			mz_zip_archive archive{};
-			if (!mz_zip_reader_init_mem(&archive, jarBytes, size, 0))
-			{
-				return;
-			}
-			mz_uint file_number = mz_zip_reader_get_num_files(&archive);
-			for (mz_uint i = 0; i < file_number; i++)
-			{
+		Minecraft minecraftInstance = LaunchWrapper::getMinecraft();
+		if (minecraftInstance.GetCurrentClass() == NULL) return;
 
-				if (!mz_zip_reader_is_file_supported(&archive, i) || mz_zip_reader_is_file_a_directory(&archive, i)) 
-					continue;
+		jmethodID OnUpdateMethod = JNIHelper::env->GetMethodID(minecraftInstance.GetCurrentClass(), "func_99999_d", "()V"); // maybe i should use func_71411_J instead?
+		if (OnUpdateMethod == NULL) return;
 
-				char str[256] = { 0 };
-				mz_zip_reader_get_filename(&archive, i, str, 256);
-				std::string filename(str);
+		patchedOnUpdate = OnUpdate(*(unsigned __int64*)(*(unsigned __int64*)OnUpdateMethod + 0x40));
 
-				if (filename.substr(filename.size() - 6) != ".class")
-					continue;
-
-				size_t classBytes_size = 0;
-				unsigned char* classBytes = (unsigned char*)mz_zip_reader_extract_to_heap(&archive, i, &classBytes_size, 0);
-				if (!classBytes)
-				{
-					mz_zip_reader_end(&archive);
-					return;
-				}
-
-				jclass jaclass = Java::Env->DefineClass(nullptr, classLoader, (const jbyte*)classBytes, classBytes_size);
-				if(jaclass)Java::Env->DeleteLocalRef(jaclass);
-				mz_free(classBytes);
-			}
-			mz_zip_reader_end(&archive);
-			return;
-			
-			//jclass jaclass = Java::Env->DefineClass(nullptr, classLoader, (const jbyte*)jarBytes, size);
-			//if (jaclass)Java::Env->DeleteLocalRef(jaclass);
-			*/
-		}
-
-		void gc()
-		{
-			jclass System_class = Java::Env->FindClass("java/lang/System");
-			jmethodID gcID = Java::Env->GetStaticMethodID(System_class, "gc", "()V");
-			Java::Env->CallStaticVoidMethod(System_class, gcID);
-			Java::Env->DeleteLocalRef(System_class);
-		}
-		
-		jobject newClassLoader()
-		{
-			jclass urlClass = Java::Env->FindClass("java/net/URL");
-			jmethodID urlContructor = Java::Env->GetMethodID(urlClass, "<init>", "(Ljava/lang/String;)V");
-			jstring str = Java::Env->NewStringUTF("file://ftp.yoyodyne.com/pub/files/foobar.txt");
-			jobject url = Java::Env->NewObject(urlClass, urlContructor, str);
-			jobjectArray urls = Java::Env->NewObjectArray(1, urlClass, url);
-			jclass URLClassLoaderClass = Java::Env->FindClass("java/net/URLClassLoader");
-			jmethodID URLClassLoaderContructor = Java::Env->GetMethodID(URLClassLoaderClass, "<init>", "([Ljava/net/URL;)V");
-			jobject URLClassLoader = Java::Env->NewObject(URLClassLoaderClass, URLClassLoaderContructor, urls);
-
-			Java::Env->DeleteLocalRef(urlClass);
-			Java::Env->DeleteLocalRef(url);
-			Java::Env->DeleteLocalRef(str);
-			Java::Env->DeleteLocalRef(urls);
-			Java::Env->DeleteLocalRef(URLClassLoaderClass);
-
-			return URLClassLoader;
-		}
-
-		void retransformClasses()
-		{
-			Java::tiEnv->RetransformClasses(1, &EntityRenderer_class);
-		}
-
-		void JNICALL ClassFileLoadHook
-		(
-			jvmtiEnv* jvmti_env, 
-			JNIEnv* jni_env, 
-			jclass class_being_redefined, 
-			jobject loader, 
-			const char* name, 
-			jobject protection_domain, 
-			jint class_data_len, 
-			const unsigned char* class_data, 
-			jint* new_class_data_len, 
-			unsigned char** new_class_data
-		)
-		{
-			std::function<void(const std::string&, const std::string&)> patchClass = [=](const std::string& patchMethod, const std::string& methodToPatch)
-			{
-				jclass ClassPatcherClass = Java::findClass(jni_env, jvmti_env, "io/github/lefraudeur/ClassPatcher");
-				jbyteArray original_class_bytes = jni_env->NewByteArray(class_data_len);
-				jni_env->SetByteArrayRegion(original_class_bytes, 0, class_data_len, (const jbyte*)class_data);
-
-				jmethodID patchMethodID = jni_env->GetStaticMethodID(ClassPatcherClass, patchMethod.c_str(), "([BLjava/lang/String;Ljava/lang/String;Ljava/lang/String;)[B");
-				jstring methodToPatchStr = jni_env->NewStringUTF(methodToPatch.c_str());
-				jstring ThreadContextClassName = jni_env->NewStringUTF("org/apache/logging/log4j/ThreadContext");
-				jstring emptyMapName = jni_env->NewStringUTF("EMPTY_MAP");
-
-				jbyteArray new_class_bytes = (jbyteArray)jni_env->CallStaticObjectMethod(
-					ClassPatcherClass,
-					patchMethodID,
-					original_class_bytes,
-					methodToPatchStr,
-					ThreadContextClassName,
-					emptyMapName
-				);
-
-				jni_env->DeleteLocalRef(ClassPatcherClass);
-				jni_env->DeleteLocalRef(methodToPatchStr);
-				jni_env->DeleteLocalRef(ThreadContextClassName);
-				jni_env->DeleteLocalRef(emptyMapName);
-
-				jni_env->DeleteLocalRef(original_class_bytes);
-				*new_class_data_len = jni_env->GetArrayLength(new_class_bytes);
-				jvmti_env->Allocate(*new_class_data_len, new_class_data);
-				jni_env->GetByteArrayRegion(new_class_bytes, 0, *new_class_data_len, (jbyte*)*new_class_data);
-				jni_env->DeleteLocalRef(new_class_bytes);
-			};
-
-			if (jni_env->IsSameObject(class_being_redefined, EntityRenderer_class))
-			{
-				if (JNIHelper::IsForge())
-					patchClass("patchEntityRenderer", "func_78473_a");
-				else
-					patchClass("patchEntityRenderer", "getMouseOver");
-			}
-		}
+		status = MH_CreateHook(patchedOnUpdate, &OnUpdatePatch, (void**)(&originalOnUpdate));
+		if (status != MH_OK) Sleep(50);
 	}
-	void Init()
+
+	Logger::LogDebug("OnUpdate Patched");
+}
+
+void Patching::PatchOnTick()
+{
+	MH_STATUS status = MH_UNKNOWN;
+	while (status != MH_OK)
 	{
-		Logger::Log("Patcher Init Start");
-		jvmtiCapabilities capabilities{};
-		capabilities.can_retransform_classes = JVMTI_ENABLE;
-		Java::tiEnv->AddCapabilities(&capabilities);
-		Logger::Log("JVMTI Setup");
+		Minecraft minecraftInstance = LaunchWrapper::getMinecraft();
+		if (minecraftInstance.GetCurrentClass() == NULL) return;
 
-		jvmtiEventCallbacks callbacks{};
-		callbacks.ClassFileLoadHook = &ClassFileLoadHook;
-		Java::tiEnv->SetEventCallbacks(&callbacks, sizeof(jvmtiEventCallbacks));
-		Java::tiEnv->SetEventNotificationMode(JVMTI_ENABLE, JVMTI_EVENT_CLASS_FILE_LOAD_HOOK, NULL);
-		Logger::Log("Create ClassFileLoadHook");
+		jmethodID OnTickMethod = JNIHelper::env->GetMethodID(minecraftInstance.GetCurrentClass(), "func_71407_l", "()V");
+		if (OnTickMethod == NULL) return;
 
-		//here I am using an empty map, already in the game, to hide and store my cheat data, the getMouseOver than accesses this map (see asm folder)
-		Java::AssignClass("net.minecraft.client.renderer.EntityRenderer", EntityRenderer_class);
-		jclass ThreadContext_class = Java::findClass(Java::Env, Java::tiEnv, "org/apache/logging/log4j/ThreadContext");
-		jfieldID EMPTY_MAP_ID = Java::Env->GetStaticFieldID(ThreadContext_class, "EMPTY_MAP", "Ljava/util/Map;");
-		original_EMPTY_MAP = Java::Env->GetStaticObjectField(EntityRenderer_class, EMPTY_MAP_ID);
-		Logger::Log("Creating Map");
+		patchedOnTick = OnTick(*(unsigned __int64*)(*(unsigned __int64*)OnTickMethod + 0x40));
 
-
-		jclass hashmap_class = Java::Env->FindClass("java/util/HashMap");
-		jmethodID constructor = Java::Env->GetMethodID(hashmap_class, "<init>", "()V");
-		EMPTY_MAP = Java::Env->NewObject(hashmap_class, constructor);
-		Java::Env->SetStaticObjectField(ThreadContext_class, EMPTY_MAP_ID, EMPTY_MAP);
-		Java::Env->DeleteLocalRef(hashmap_class);
-		Java::Env->DeleteLocalRef(ThreadContext_class);
-
-		put("reach_distance", "3.0");
-		//put("S", "a");
-		Logger::Log("Value Init");
-
-		jobject classLoader = newClassLoader();
-		loadClass(classLoader, ClassPatcherJar.data(), sizeof(ClassPatcherJar));
-		/*
-		loadClass(classLoader, data2, sizeof(data2));
-		loadClass(classLoader, data3, sizeof(data3));
-		loadClass(classLoader, data4, sizeof(data4));
-		loadClass(classLoader, data5, sizeof(data5));
-		loadClass(classLoader, data6, sizeof(data6));
-		loadClass(classLoader, data7, sizeof(data7));
-		loadClass(classLoader, data8, sizeof(data8));
-		loadClass(classLoader, data9, sizeof(data9));
-		loadClass(classLoader, data10, sizeof(data10));
-		loadClass(classLoader, data11, sizeof(data11));
-		loadClass(classLoader, data12, sizeof(data12));
-		loadClass(classLoader, data13, sizeof(data13));
-		loadClass(classLoader, data14, sizeof(data14));
-		loadClass(classLoader, data15, sizeof(data15));
-		loadClass(classLoader, data16, sizeof(data16));
-		loadClass(classLoader, data17, sizeof(data17));
-		loadClass(classLoader, data18, sizeof(data18));
-		*/
-		Logger::Log("Load Classes");
-
-		retransformClasses();
-		Logger::Log("Retransform Classes");
-
-		Java::tiEnv->SetEventNotificationMode(JVMTI_DISABLE, JVMTI_EVENT_CLASS_FILE_LOAD_HOOK, NULL);
-		Logger::Log("Disable ClassFileLoadHook");
-
-		Java::Env->DeleteLocalRef(classLoader);
-		gc();
-		Logger::Log("Garbage Collect");
-
-		//delete classLoader ref and call garbage collector, so that our patcher class gets unloaded
+		status = MH_CreateHook(patchedOnTick, &OnTickPatch, (void**)(&originalOnTick));
+		if (status != MH_OK) Sleep(50);
 	}
-	void Kill()
+
+	Logger::LogDebug("OnTick Patched");
+}
+*/
+void Patching::PatchSetSprinting()
+{
+	MH_STATUS status = MH_UNKNOWN;
+	while (status != MH_OK)
 	{
-		retransformClasses();
+		CMinecraft* minecraftInstance = SDK::Minecraft;
+		if (minecraftInstance->getInstance() == NULL) return;
 
-		jclass ThreadContext_class = Java::findClass(Java::Env, Java::tiEnv, "org/apache/logging/log4j/ThreadContext");
-		jfieldID EMPTY_MAP_ID = Java::Env->GetStaticFieldID(ThreadContext_class, "EMPTY_MAP", "Ljava/util/Map;");
-		Java::Env->SetStaticObjectField(ThreadContext_class, EMPTY_MAP_ID, original_EMPTY_MAP);
+		CEntityPlayerSP* localPlayerInstance = minecraftInstance->thePlayer;
+		if (localPlayerInstance->getInstance() == NULL) return;
+		jclass playerHandler;
+		Java::AssignClass("net.minecraft.network.NetworkManager", playerHandler);
+		jmethodID SetSprintingMethod = JNIHelper::env->GetMethodID(playerHandler, "func_179290_a", "(Lnet/minecraft/network/Packet;)V");
+		if (SetSprintingMethod == NULL) return;
 
-		Java::Env->DeleteLocalRef(ThreadContext_class);
-		Java::Env->DeleteLocalRef(original_EMPTY_MAP);
-		Java::Env->DeleteLocalRef(EMPTY_MAP);
-		Java::Env->DeleteLocalRef(EntityRenderer_class);
+		patchedSetSprinting = SetSprinting(*(unsigned __int64*)(*(unsigned __int64*)SetSprintingMethod + 0x40));
+
+		status = MH_CreateHook(patchedSetSprinting, &SetSprintingPatch, (void**)(&originalSetSprinting));
+		if (status != MH_OK) Sleep(50);
 	}
-	void put(const std::string& key, const std::string& value)
-	{
-		jclass map_class = Java::Env->FindClass("java/util/Map");
-		jmethodID putID = Java::Env->GetMethodID(map_class, "put", "(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;");
-		Java::Env->DeleteLocalRef(map_class);
 
-		jstring k = Java::Env->NewStringUTF(key.c_str());
-		jstring v = Java::Env->NewStringUTF(value.c_str());
-		jobject rs = Java::Env->CallObjectMethod(EMPTY_MAP, putID, k, v);
+	//Logger::Log("SetSprinting Patched");
+}
 
-		Java::Env->DeleteLocalRef(k);
-		Java::Env->DeleteLocalRef(v);
-		Java::Env->DeleteLocalRef(rs);
-	}
+
+void Patching::ApplyPatches()
+{
+	Logger::Log("Initializing Hooks...");
+	MH_Initialize();
+	Logger::Log("Initializing Hooks Done...");
+
+	PatchSetSprinting();
+	Logger::Log("Patch...");
+
+	MH_EnableHook(MH_ALL_HOOKS);
+}
+
+void Patching::UnapplyPatches()
+{
+	MH_DisableHook(MH_ALL_HOOKS);
+
+	//MH_Uninitialize();
 }

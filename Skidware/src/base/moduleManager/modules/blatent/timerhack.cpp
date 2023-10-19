@@ -1,6 +1,8 @@
 #include "timerhack.h"
 #include <Windows.h>
 #include "../../../menu/menu.h"
+#include "../combat/teams.h"
+#include "../combat/antibot.h"
 static long timer = 0;
 
 TimerHack::TimerHack() : AbstractModule("Nofall", Category::BLATENT) {
@@ -32,11 +34,57 @@ void TimerHack::onUpdate(const EventUpdate e)
 		SDK::Minecraft->timer->SetTimerSpeed(speed);
 	}
 	else if (mode == 1) {
-		if (GetAsyncKeyState(VK_LSHIFT)) {
-			SDK::Minecraft->timer->SetTimerSpeed(speed2);
+
+		CEntityPlayerSP* thePlayer = SDK::Minecraft->thePlayer;
+		List playerList = CommonData::getInstance()->playerEntities;
+		float finalDist = FLT_MAX;
+
+
+		for (CEntityPlayer player : playerList.toVector<CEntityPlayer>())
+		{
+			if (!player.isValid() || player.isNULL()) continue;
+
+			if (Antibot::getInstance()->getToggle() && Antibot::getInstance()->isBot(player)) {
+				continue;
+			}
+
+			if (Teams::getInstance()->getToggle() && Teams::getInstance()->isTeam(player)) {
+				continue;
+			}
+
+			if (player.GetName().length() < 0) return;
+			if (!Java::Env->IsSameObject(thePlayer->getInstance(), player.getInstance())) {
+				if (!thePlayer->CanEntityBeSeen(player.getInstance())) continue;
+
+
+				Vector3 diff = thePlayer->GetPos() - player.GetPos();
+				float dist = sqrt(pow(diff.x, 2) + pow(diff.y, 2) + pow(diff.z, 2));
+				if (dist <= 5) {
+					if (finalDist > dist)
+					{
+						target = player;
+						finalDist = (float)dist;
+					}
+				}
+
+			}
+		}
+
+		if (!target.getInstance()) {
+			return;
+		}
+		if (finalDist <= 5) {
+			if (timer % 75 == 0) {
+				SDK::Minecraft->timer->SetTimerSpeed(speed);
+			}
+			else {
+				SDK::Minecraft->timer->SetTimerSpeed(speed2);
+			}
+			timer++;
 		}
 		else {
-			SDK::Minecraft->timer->SetTimerSpeed(speed);
+			SDK::Minecraft->timer->SetTimerSpeed(1.0f);
+
 		}
 	}
 	else if (mode == 2 && timer <= boostTicks) {
@@ -50,7 +98,7 @@ void TimerHack::onUpdate(const EventUpdate e)
 			SDK::Minecraft->timer->SetTimerSpeed(speed);
 		}
 		else {
-			SDK::Minecraft->timer->SetTimerSpeed(0.05);
+			SDK::Minecraft->timer->SetTimerSpeed(0.1);
 		}
 		timer++;
 

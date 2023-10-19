@@ -32,6 +32,7 @@ void Blink::onUpdate(const EventUpdate e)
 	List playerList = CommonData::getInstance()->playerEntities;
 	CEntityPlayerSP* thePlayer = SDK::Minecraft->thePlayer;
 
+	float dist = 1000000000.0f;
 
 	float finalDist = FLT_MAX;
 	float finalDiff = 370;
@@ -57,57 +58,16 @@ void Blink::onUpdate(const EventUpdate e)
 		if (!Java::Env->IsSameObject(thePlayer->getInstance(), player.getInstance())) {
 			if (!thePlayer->CanEntityBeSeen(player.getInstance())) continue;
 
-			float playerHeight = target.GetHeight() - 0.1;
+			float dist2 = Math::distance(thePlayer->GetPos().x, player.GetPos().x, thePlayer->GetPos().y, player.GetPos().y, thePlayer->GetPos().z, player.GetPos().z);
 
-
-			Vector2 difference = Math::vec_wrapAngleTo180(currentLookAngles.Invert() - Math::getAngles(headPos, player.GetPos() + Vector3(0, playerHeight, 0)).Invert());
-			if (difference.x < 0) difference.x = -difference.x;
-			if (difference.y < 0) difference.y = -difference.y;
-			Vector2 differenceFoot = Math::vec_wrapAngleTo180(currentLookAngles.Invert() - Math::getAngles(headPos, player.GetPos()).Invert());
-			if (differenceFoot.x < 0) differenceFoot.x = -differenceFoot.x;
-			if (differenceFoot.y < 0) differenceFoot.y = -differenceFoot.y;
-
-			float angleYaw = currentLookAngles.x - difference.x;
-
-			Vector3 diff = thePlayer->GetPos() - player.GetPos();
-			float dist = sqrt(pow(diff.x, 2) + pow(diff.y, 2) + pow(diff.z, 2));
-
-			if ((abs(difference.x) <= 360) && dist <= 5)
-			{
-				float health = player.GetHealth();
-				switch (3)
-				{
-				case 1:
-					if (finalHealth > health)
-					{
-						target = player;
-						finalHealth = health;
-					}
-					break;
-
-				case 2:
-					if (finalDiff > difference.x)
-					{
-						target = player;
-						finalDiff = difference.x;
-					}
-					break;
-				default:
-					if (finalDist > dist)
-					{
-						target = player;
-						finalDist = (float)dist;
-					}
-				}
+			if (dist2 < this->dist) {
+				this->target = player;
+				this->dist = dist2;
 			}
+
 		}
 	}
 
-	if (!target.getInstance()) {
-		Vector3 null;
-		data = null;
-		return;
-	}
 
 }
 
@@ -127,8 +87,8 @@ void Blink::RenderMenu()
 		ImGui::Separator();
 		//Menu::DoToggleButtonStuff(566578, "Fakelag Throttle", &Blink::throttle);
 		if (this->getMode() == 2 || this->getMode() == 3) {
-			ImGui::SliderFloat("Throttle Delay", &this->Milliseonds, 1, 150);
-			ImGui::SliderFloat("Chance", &this->Chance, 1, 10);
+			ImGui::SliderFloat("Throttle Delay", &this->Milliseonds, 1, 1000);
+			//ImGui::SliderFloat("Chance", &this->Chance, 1, 10);
 		}
 		ImGui::Combo("Mode", &this->getMode(), this->modes, 4);
 

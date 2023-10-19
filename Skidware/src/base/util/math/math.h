@@ -16,5 +16,14 @@ public:
 	static Vector2 getAngles(Vector3 pos1, Vector3 pos2);
 	static float radiantsToDeg(float x);
 	static float degToRadiants(float x);
+
+	inline static double distance(double x, double y) {
+		return sqrt(pow(x, 2) + pow(y, 2));
+	}
+
+	inline static double distance(double x1, double y1, double z1, double x2, double y2, double z2) {
+		return distance(y1 - y2, distance(x1 - x2, z1 - z2));
+	}
+
 };
 

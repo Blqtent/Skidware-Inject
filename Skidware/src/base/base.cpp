@@ -44,7 +44,7 @@
 #include "moduleManager/modules/blatent/noslow.h"
 #include "moduleManager/modules/blatent/criticals.h"
 #include "patcher/patcher.h"
-
+#include "menu/jhook.h"
 // LUA import
 #include "extension/scripting.hpp"
 #include "moduleManager/modules/player/disabler.h"
@@ -81,8 +81,8 @@ void Base::Init()
 	Logger::Log("3/7 SDK Initialized. \n");
 	Menu::Init();
 	Logger::Log("4/7 Menu Initialized. \n");
-	//Patcher::Init();
-	Logger::Log("5/7 Patcher Initialized. \n");
+	//jhook::apply_moveEntityHook();
+	Logger::Log("5/7 Hooks Initialized. \n");
 
 	initModule();
 	Logger::Log("6/7 Modules Initialized. \n");
@@ -194,9 +194,10 @@ void Base::Kill()
 		Borderless::Restore(Menu::HandleWindow);
 
 	StrayCache::DeleteRefs();
-	Menu::Kill();
 	Logger::Kill();
 	//Patcher::Kill();
+	//Patching::UnapplyPatches();
+	Menu::Kill();
 
 	MH_Uninitialize();
 	Java::Kill();

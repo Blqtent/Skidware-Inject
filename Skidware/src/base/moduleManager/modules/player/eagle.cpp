@@ -28,14 +28,20 @@ void Eagle::onUpdate(const EventUpdate e)
 {
 	if (!this->getToggle()) return;
 	if (Menu::Open) return;
-	
-	if (!CommonData::getInstance()->SanityCheck()) return;
 
-	if (SDK::Minecraft->theWorld->isAirBlock(SDK::Minecraft->thePlayer->GetPos().x, SDK::Minecraft->thePlayer->GetPos().y - 1, SDK::Minecraft->thePlayer->GetPos().z)) {
-		SDK::Minecraft->thePlayer->setSneak(true);
+	if (!CommonData::getInstance()->SanityCheck()) return;
+	if (!safewalk) {
+		if (SDK::Minecraft->theWorld->isAirBlock(SDK::Minecraft->thePlayer->GetPos().x, SDK::Minecraft->thePlayer->GetPos().y - 1, SDK::Minecraft->thePlayer->GetPos().z)) {
+			SDK::Minecraft->thePlayer->setSneak(true);
+		}
+		else {
+			SDK::Minecraft->thePlayer->setSneak(false);
+		}
 	}
 	else {
-		SDK::Minecraft->thePlayer->setSneak(false);
+		if (SDK::Minecraft->theWorld->isAirBlock(SDK::Minecraft->thePlayer->GetPos().x, SDK::Minecraft->thePlayer->GetPos().y - 1, SDK::Minecraft->thePlayer->GetPos().z)) {
+			SDK::Minecraft->thePlayer->setSneak(true);
+		}
 	}
 }
 
@@ -50,6 +56,8 @@ void Eagle::RenderMenu()
 
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 3);
 		Menu::DoToggleButtonStuff(245309786, "Toggle Eagle", this);
+
+		ImGui::Checkbox("Safewalk", &this->safewalk);
 		ImGui::EndChild();
 	}
 	ImGui::PopStyleVar();

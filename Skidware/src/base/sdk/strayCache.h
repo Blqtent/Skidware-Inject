@@ -51,6 +51,9 @@ struct StrayCache {
 	inline static jfieldID entity_posX;
 	inline static jfieldID entity_posY;
 	inline static jfieldID entity_posZ;
+	inline static jfieldID entity_prev_posX;
+	inline static jfieldID entity_prev_posY;
+	inline static jfieldID entity_prev_posZ;
 	inline static jfieldID entity_lastTickPosX;
 	inline static jfieldID entity_lastTickPosY;
 	inline static jfieldID entity_lastTickPosZ;
@@ -330,6 +333,9 @@ struct StrayCache {
 				entity_posX = Java::Env->GetFieldID(entity_class, "field_70165_t", "D");
 				entity_posY = Java::Env->GetFieldID(entity_class, "field_70163_u", "D");
 				entity_posZ = Java::Env->GetFieldID(entity_class, "field_70161_v", "D");
+				entity_prev_posX = Java::Env->GetFieldID(entity_class, "field_70169_q", "D");
+				entity_prev_posY = Java::Env->GetFieldID(entity_class, "field_70167_r", "D");
+				entity_prev_posZ = Java::Env->GetFieldID(entity_class, "field_70166_s", "D");
 				entity_lastTickPosX = Java::Env->GetFieldID(entity_class, "field_70142_S", "D");
 				entity_lastTickPosY = Java::Env->GetFieldID(entity_class, "field_70137_T", "D");
 				entity_lastTickPosZ = Java::Env->GetFieldID(entity_class, "field_70136_U", "D");
@@ -626,6 +632,10 @@ struct StrayCache {
 			entity_fallDistance = Java::Env->GetFieldID(entity_class, "fallDistance", "F");
 			entity_isDead = Java::Env->GetFieldID(entity_class, "isDead", "Z");
 			entity_ticksExisted = Java::Env->GetFieldID(entity_class, "ticksExisted", "F");
+
+			entity_prev_posX = Java::Env->GetFieldID(entity_class, "prevPosX", "D");
+			entity_prev_posY = Java::Env->GetFieldID(entity_class, "prevPosY", "D");
+			entity_prev_posZ = Java::Env->GetFieldID(entity_class, "prevPosZ", "D");
 
 		}
 

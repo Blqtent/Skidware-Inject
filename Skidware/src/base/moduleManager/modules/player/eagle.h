@@ -24,6 +24,8 @@ public:
 	void onDisable();
 	void onUpdate(const EventUpdate e);
 	void RenderMenu();
+	bool safewalk = false;
+	bool blockmovement = false;
 private:
 	Eagle();
 };

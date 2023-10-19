@@ -15,7 +15,10 @@ int __stdcall WSASendHook(SOCKET s, LPWSABUF lpBuffers, DWORD dwBufferCount, LPD
 	while (Blink::getInstance()->shouldSpoof) {
 		Sleep(1);
 	}
-
+	if (Blink::getInstance()->ms > 0) {
+		Sleep(Blink::getInstance()->ms);
+		Blink::getInstance()->ms = 0;
+	}
 	if (Blink::getInstance()->getMode() == 0) {
 		while (Blink::getInstance()->getToggle()) {
 			Sleep(1);
@@ -27,13 +30,13 @@ int __stdcall WSASendHook(SOCKET s, LPWSABUF lpBuffers, DWORD dwBufferCount, LPD
 		}
 	}
 
-	else if (Blink::getInstance()->getMode() == 2 && Blink::getInstance()->getToggle() && Blink::getInstance()->timer % (int)Blink::getInstance()->Chance == 0) {
+	else if (Blink::getInstance()->getMode() == 2 && Blink::getInstance()->getToggle() && Blink::getInstance()->timer % 20 == 0) {
 		//while (Blink::getInstance()->getToggle() && !Blink::getInstance()->Time.isElapsed()) {
 		Sleep(Blink::getInstance()->Milliseonds);
 		//}
 	}
 
-	else if (Blink::getInstance()->getMode() == 3 && Blink::getInstance()->getToggle() && Blink::getInstance()->timer % (int)Blink::getInstance()->Chance == 0 && Blink::getInstance()->target.getInstance()) {
+	else if (Blink::getInstance()->getMode() == 3 && Blink::getInstance()->getToggle() && Blink::getInstance()->timer % 20 == 0 && Blink::getInstance()->dist <= 5) {
 		//while (Blink::getInstance()->getToggle() && !Blink::getInstance()->Time.isElapsed()) {
 		Sleep(Blink::getInstance()->Milliseonds);
 		//}

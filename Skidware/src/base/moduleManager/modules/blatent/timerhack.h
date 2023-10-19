@@ -14,6 +14,7 @@ public:
 	inline static float boostTicks = 10;
 	inline static int mode = 0;
 	inline static const char* modes[5]{ "Normal", "Tickbase", "Boost", "Bypass"};
+	CEntityPlayer target;
 
 private:
 	TimerHack();

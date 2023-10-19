@@ -328,12 +328,12 @@ void Menu::RenderMenu()
 				Esp::getInstance()->getInstance()->RenderMenu();
 				keybind::key_bind(Esp::getInstance()->getInstance()->getKey(), 125, 25);
 			}
-			
+
 			if (currentTab2 == 1) {
 				Fulbright::getInstance()->RenderMenu();
 				keybind::key_bind(Fulbright::getInstance()->getKey(), 125, 25);
 			}
-			
+
 			if (currentTab2 == 2) {
 				Cavefinder::getInstance()->RenderMenu();
 				keybind::key_bind(Cavefinder::getInstance()->getKey(), 125, 25);
@@ -352,14 +352,14 @@ void Menu::RenderMenu()
 			if (Menu::TabButton("Velocity", (currentTab3 == 2 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab3 = 2;
 			ImGui::SameLine();
 			if (Menu::TabButton("Antibot", (currentTab3 == 3 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab3 = 3;
-			
+
 			if (Menu::TabButton("Teams", (currentTab3 == 4 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab3 = 4;
 
 			if (currentTab3 == 0) {
 				AimAssist::getInstance()->RenderMenu();
 				keybind::key_bind(AimAssist::getInstance()->getKey(), 125, 25);
 			}
-			
+
 			if (currentTab3 == 1) {
 				Reach::getInstance()->RenderMenu();
 				keybind::key_bind(Reach::getInstance()->getKey(), 125, 25);
@@ -374,7 +374,7 @@ void Menu::RenderMenu()
 				keybind::key_bind(Antibot::getInstance()->getKey(), 125, 25);
 			}
 
-			if (currentTab3 == 4 )
+			if (currentTab3 == 4)
 			{
 				Teams::getInstance()->RenderMenu();
 				keybind::key_bind(Teams::getInstance()->getKey(), 125, 25);
@@ -436,17 +436,17 @@ void Menu::RenderMenu()
 		}
 		if (currentTab == 5) {
 			if (Menu::TabButton("Fakelag", (currentTab7 == 0 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab7 = 0;
-			//ImGui::SameLine();
-			//if (Menu::TabButton("Autotool", (currentTab7 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab7 = 1;
+			ImGui::SameLine();
+			if (Menu::TabButton("Autotool", (currentTab7 == 1 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab7 = 1;
 
 			if (currentTab7 == 0) {
 				Blink::getInstance()->RenderMenu();
 				keybind::key_bind(Blink::getInstance()->getKey(), 125, 25);
 			}
-			/*else if (currentTab7 == 1) {
+			else if (currentTab7 == 1) {
 				AutoTool::getInstance()->RenderMenu();
 				keybind::key_bind(AutoTool::getInstance()->getKey(), 125, 25);
-			}*/
+			}
 		}
 		if (currentTab == 6) {
 			ImGui::Checkbox("Use Minecraft Font", &Menu::useMCFont);
@@ -517,8 +517,8 @@ void Menu::RenderMenu()
 			if (Menu::TabButton("Antivoid", (currentTab6 == 7 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 7;
 			ImGui::SameLine();
 			if (Menu::TabButton("Noslowdown", (currentTab6 == 8 ? ImVec4(0.3f, 0.3f, 0.3f, 0.2f) : ImVec4(0.1f, 0.1f, 0.1f, 0.f)))) currentTab6 = 8;
-			
-			
+
+
 			if (currentTab6 == 0) {
 				Killaura::getInstance()->RenderMenu();
 				keybind::key_bind(Killaura::getInstance()->getKey(), 125, 25);
