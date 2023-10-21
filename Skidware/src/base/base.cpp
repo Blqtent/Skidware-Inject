@@ -77,6 +77,7 @@ void Base::Init()
 	
 	initModule();
 	initEvent();
+	InitUpdateMessge();
 	//Logger::Init();
 	//scripting::luaThing();
 	Base::Running = true;
