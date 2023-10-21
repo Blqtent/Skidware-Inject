@@ -89,9 +89,19 @@ void AimAssist::onUpdate(const EventUpdate e)
 	{
 		if (!player.isValid() || player.isNULL()) continue;
 
-		if (Antibot::getInstance()->getToggle() && Antibot::getInstance()->isBot(player)) {
+		if (!player.isValid()
+			|| player.isNULL()
+			|| player.GetName().starts_with("§r§8[npc]")
+			|| !player.isDead() && player.isInvisible() && player.GetName().length() >= 2
+			|| player.GetName().contains("]")
+			|| player.GetName().contains("[")
+			|| player.GetName().contains("-")
+			|| player.GetName().contains(":")
+			|| player.GetName().contains("+")
+			|| player.GetName().contains("cit")
+			|| player.GetName().contains("npc")
+			)
 			continue;
-		}
 		
 		if (Teams::getInstance()->getToggle() && Teams::getInstance()->isTeam(player)) {
 			continue;
