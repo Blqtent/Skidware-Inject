@@ -1,29 +1,54 @@
 ﻿  正在扫描源以查找模块依赖项...
-  Collection.h
-  正在编译...
-  Collection.h
-  base.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断
+  glTexEnviHook.cpp
+  tower.cpp
+  EventUpdate.hpp
   WalkingUpdate.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断
-  wglSwapBuffers.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(133,66): warning C4305: “参数”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(138,65): warning C4305: “参数”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(139,72): warning C4305: “参数”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(140,71): warning C4305: “参数”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(141,65): warning C4305: “参数”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(142,71): warning C4305: “参数”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(143,74): warning C4305: “参数”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(150,61): warning C4305: “参数”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(158,63): warning C4305: “参数”: 从“double”到“float”截断
-  wndProc.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wndProc.cpp(42,46): warning C4244: “参数”: 从“WPARAM”转换到“int”，可能丢失数据
+  WSA.cpp
+  AbstractModule.cpp
+  ModuleManager.cpp
   flight.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\flight.cpp(73,54): warning C4305: “参数”: 从“__int64”到“const float”截断
   killaura.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断
+  longjump.cpp
+  nofall.cpp
+  speed.cpp
+  timerhack.cpp
+  leftAutoClicker.cpp
+  rightAutoClicker.cpp
+  antibot.cpp
+  teams.cpp
+  cavefinder.cpp
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断 (编译源文件 src\base\moduleManager\modules\blatent\tower.cpp)
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断 (编译源文件 src\base\moduleManager\modules\blatent\timerhack.cpp)
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断 (编译源文件 src\base\moduleManager\modules\blatent\speed.cpp)
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(53,45): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(72,55): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(75,58): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(76,62): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(76,62): warning C4305: “参数”: 从“__int64”到“int”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(76,24): warning C4309: “参数”: 截断常量值
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(79,55): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(80,73): warning C4305: “参数”: 从“__int64”到“int”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(80,24): warning C4309: “参数”: 截断常量值
+  fullbright.cpp
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断 (编译源文件 src\base\moduleManager\modules\blatent\flight.cpp)
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(47,44): warning C4305: “参数”: 从“__int64”到“const float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(66,45): warning C4305: “参数”: 从“__int64”到“const float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(74,58): warning C4305: “参数”: 从“__int64”到“const float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(74,58): warning C4305: “参数”: 从“double”到“const float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(78,45): warning C4305: “参数”: 从“__int64”到“const float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(101,64): warning C4390: “;”: 找到空的受控语句；这是否是有意的?
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断 (编译源文件 src\base\moduleManager\modules\blatent\nofall.cpp)
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断 (编译源文件 src\base\moduleManager\modules\blatent\longjump.cpp)
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断 (编译源文件 src\base\moduleManager\modules\combat\antibot.cpp)
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断 (编译源文件 src\base\moduleManager\modules\blatent\killaura.cpp)
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\flight.cpp(73,54): warning C4305: “参数”: 从“__int64”到“const float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\nofall.cpp(43,65): warning C4305: “参数”: 从“double”到“const float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断 (编译源文件 src\base\menu\hooks\WalkingUpdate.cpp)
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断 (编译源文件 src\base\moduleManager\modules\clicker\leftAutoClicker.cpp)
+  borderless.cpp
+  wglSwapBuffers.cpp
+  wndProc.cpp
+  renderMenu.cpp
 E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(83,23): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
 E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(95,15): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
 E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(138,17): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
@@ -45,32 +70,10 @@ E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.
           [
               _Ty=int
           ]
-  longjump.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断
-  nofall.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\nofall.cpp(43,65): warning C4305: “参数”: 从“double”到“const float”截断
-  speed.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(47,44): warning C4305: “参数”: 从“__int64”到“const float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(66,45): warning C4305: “参数”: 从“__int64”到“const float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(74,58): warning C4305: “参数”: 从“__int64”到“const float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(74,58): warning C4305: “参数”: 从“double”到“const float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(78,45): warning C4305: “参数”: 从“__int64”到“const float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\speed.cpp(101,64): warning C4390: “;”: 找到空的受控语句；这是否是有意的?
-  timerhack.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(53,45): warning C4305: “参数”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(72,55): warning C4305: “参数”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(75,58): warning C4305: “参数”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(76,62): warning C4305: “参数”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(76,62): warning C4305: “参数”: 从“__int64”到“int”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(76,24): warning C4309: “参数”: 截断常量值
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(79,55): warning C4305: “参数”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(80,73): warning C4305: “参数”: 从“__int64”到“int”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\timerhack.cpp(80,24): warning C4309: “参数”: 截断常量值
-  tower.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断
+  menu.cpp
+  EntityPlayerSP.cpp
+  base.cpp
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断 (编译源文件 src\base\moduleManager\modules\combat\teams.cpp)
 E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\tower.cpp(51,136): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
 E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\tower.cpp(85,61): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
 E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\tower.cpp(91,130): warning C4244: “初始化”: 从“int”转换到“float”，可能丢失数据
@@ -79,82 +82,78 @@ E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\tower.cpp
           [
               _Rep=__int64
           ]
-  antibot.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断
-  teams.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断
-  autotool.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断
-  eagle.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断
-  cavefinder.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断
-  fullbright.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断
-  renderLoop.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(190,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(194,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(198,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(202,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(206,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(210,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(214,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(218,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(222,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(226,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(230,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(235,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(241,49): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(244,49): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(250,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(254,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(259,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(263,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(267,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(271,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(276,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\renderLoop.cpp(280,48): warning C4244: “参数”: 从“int”转换到“float”，可能丢失数据
-  Object.cpp
-  String.cpp
-  正在编译...
-  FloatBuffer.cpp
-  List.cpp
-  Set.cpp
-  Block.cpp
-  BlockState.cpp
-  IBlockState.cpp
-  Minecraft.cpp
-  EntityPlayerSP.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\clicker\rightAutoClicker.cpp(41,13): warning C4244: “初始化”: 从“_Rep”转换到“long”，可能丢失数据
+          with
+          [
+              _Rep=__int64
+          ]
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\clicker\rightAutoClicker.cpp(55,66): warning C4244: “参数”: 从“float”转换到“_Ty”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\clicker\rightAutoClicker.cpp(55,47): warning C4244: “参数”: 从“float”转换到“_Ty”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\clicker\leftAutoClicker.cpp(42,13): warning C4244: “初始化”: 从“_Rep”转换到“long”，可能丢失数据
+          with
+          [
+              _Rep=__int64
+          ]
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\clicker\leftAutoClicker.cpp(66,90): warning C4244: “参数”: 从“float”转换到“_Ty”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\modules\clicker\leftAutoClicker.cpp(66,60): warning C4244: “参数”: 从“float”转换到“_Ty”，可能丢失数据
+          with
+          [
+              _Ty=int
+          ]
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断 (编译源文件 src\base\moduleManager\modules\visual\cavefinder.cpp)
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断 (编译源文件 src\base\moduleManager\modules\visual\fullbright.cpp)
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断 (编译源文件 src\base\sdk\net\minecraft\client\entity\EntityPlayerSP.cpp)
 E:\Dev\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\client\entity\EntityPlayerSP.cpp(185,11): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
 E:\Dev\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\client\entity\EntityPlayerSP.cpp(186,11): warning C4244: “初始化”: 从“double”转换到“float”，可能丢失数据
 E:\Dev\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\client\entity\EntityPlayerSP.cpp(187,67): warning C4305: “参数”: 从“__int64”到“const float”截断
-  WorldClient.cpp
-  ActiveRenderInfo.cpp
-  RenderManager.cpp
-  GameSettings.cpp
-  Entity.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\entity\Entity.cpp(139,33): warning C4244: “return”: 从“jfloat”转换到“int”，可能丢失数据
-  EntityLivingBase.cpp
-  EntityPlayer.cpp
-  InventoryPlayer.cpp
-  ItemArmor.cpp
-  ItemStack.cpp
-  ItemTool.cpp
-  item.cpp
-  正在编译...
-  AxisAlignedBB.cpp
-  BlockPos.cpp
-E:\Dev\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\util\BlockPos.cpp(35,26): warning C4244: “参数”: 从“jint”转换到“const float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\util\BlockPos.cpp(35,23): warning C4244: “参数”: 从“jint”转换到“const float”，可能丢失数据
-E:\Dev\Skidware-Inject\Skidware\src\base\sdk\net\minecraft\util\BlockPos.cpp(35,20): warning C4244: “参数”: 从“jint”转换到“const float”，可能丢失数据
-  MovingObjectPosition.cpp
-  Timer.cpp
-  Vec3.cpp
-  World.cpp
-  Chunk.cpp
-  sdk.cpp
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断 (编译源文件 src\base\menu\renderMenu.cpp)
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断 (编译源文件 src\base\menu\hooks\wglSwapBuffers.cpp)
+E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(133,66): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(138,65): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(139,72): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(140,71): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(141,65): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(142,71): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(143,74): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(150,61): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\menu\hooks\wglSwapBuffers.cpp(158,63): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\menu\renderMenu.cpp(416,70): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\menu\renderMenu.cpp(417,75): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\menu\renderMenu.cpp(418,71): warning C4305: “参数”: 从“double”到“float”截断
+E:\Dev\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: “初始化”: 从“double”到“float”截断 (编译源文件 src\base\base.cpp)
+E:\Dev\Skidware-Inject\Skidware\src\base\base.cpp(131,52): warning C4244: “参数”: 从“WPARAM”转换到“int”，可能丢失数据
+E:\Dev\Skidware-Inject\Skidware\src\base\extension\config.h(42,16): warning C4244: “return”: 从“double”转换到“tg”，可能丢失数据
+          with
+          [
+              tg=float
+          ] (编译源文件 src\base\menu\renderMenu.cpp)
+E:\Dev\Skidware-Inject\Skidware\src\base\menu\renderMenu.cpp(141,89): message : 查看对正在编译的函数 模板 实例化“tg Config::get<float>(std::string)”的引用
+          with
+          [
+              tg=float
+          ]
+E:\Dev\Skidware-Inject\Skidware\src\base\extension\config.h(42,16): warning C4244: “return”: 从“double”转换到“tg”，可能丢失数据
+          with
+          [
+              tg=int
+          ] (编译源文件 src\base\menu\renderMenu.cpp)
+E:\Dev\Skidware-Inject\Skidware\src\base\menu\renderMenu.cpp(196,63): message : 查看对正在编译的函数 模板 实例化“tg Config::get<int>(std::string)”的引用
+          with
+          [
+              tg=int
+          ]
 leftAutoClicker.obj : warning LNK4006: "long lastClickTime" (?lastClickTime@@3JA) 已在 killaura.obj 中定义；已忽略第二个定义
 leftAutoClicker.obj : warning LNK4006: "int nextCps" (?nextCps@@3HA) 已在 killaura.obj 中定义；已忽略第二个定义
 leftAutoClicker.obj : warning LNK4006: "int count" (?count@@3HA) 已在 tower.obj 中定义；已忽略第二个定义
@@ -162,9 +161,8 @@ rightAutoClicker.obj : warning LNK4006: "int rightNextCps" (?rightNextCps@@3HA) 
 rightAutoClicker.obj : warning LNK4006: "long rightLastClickTime" (?rightLastClickTime@@3JA) 已在 tower.obj 中定义；已忽略第二个定义
 E:\Dev\Skidware-Inject\Skidware\build\Skidware 1.08.dll : warning LNK4088: 因 /FORCE 选项生成了映像；映像可能不能运行
   正在生成代码
-  1 of 4040 functions (<0.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    37 functions had inline decision re-evaluated but remain unchanged
+  Previous IPDB not found, fall back to full compilation.
+  All 3972 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   已完成代码的生成
 * CIL library *(* CIL module *) : warning LNK4006: "int count" (?count@@3HA) 已在 * CIL library *(* CIL module *) 中定义；已忽略第二个定义
 * CIL library *(* CIL module *) : warning LNK4006: "int nextCps" (?nextCps@@3HA) 已在 * CIL library *(* CIL module *) 中定义；已忽略第二个定义

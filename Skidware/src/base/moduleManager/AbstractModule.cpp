@@ -55,8 +55,8 @@ void AbstractModule::setKeyCode(int keycode) {
     this->key = keycode;
 }
 
-void AbstractModule::onKeyEvent() {
+void AbstractModule::onKeyEvent(int key) {
     //TODO
-    if(IsKeyBeingDown(this->getKey()))
+    if(this->getKey() == key)
         this->toggle();
 }

@@ -28,7 +28,7 @@ public:
 
     AbstractModule* getModule(std::string name);
 
-    void ProcessKeyEvent();
+    void ProcessKeyEvent(int key);
 
     ModuleManager(ModuleManager &&) = delete;
 

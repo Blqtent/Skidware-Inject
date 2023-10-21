@@ -4,9 +4,10 @@ struct Base
 {
 	static void Init();
 	static void initConsole();
+	static int InitUpdateMessge();
 	static void initEvent();
 	static void initModule();
-	static void handleEventKey(const EventKey k);
+	static void handleEventKey(int key);
 	static void Kill();
 
 	/*static void CheatLoop();*/

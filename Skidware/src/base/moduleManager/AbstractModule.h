@@ -45,7 +45,7 @@ public:
 
     void setKeyCode(int keycode);
 
-    void onKeyEvent();
+    void onKeyEvent(int key);
 
     Category getCategory();
 
