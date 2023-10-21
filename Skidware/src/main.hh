@@ -6,6 +6,7 @@
 #include "../ext/jni/jni.h"
 #include <unordered_map>
 #include "Memory.h"
+#include "base/security/ObfuscateString.hpp"
 
 class Main
 {
@@ -54,3 +55,34 @@ private:
 
 	std::unique_ptr<Memory> m_Memory;
 };
+
+void __declspec(noinline) InjectionError(const char* message)
+{
+	/* It would be preferred that users don't bypass errors */
+
+	/* TODO: Ideally, error codes/information should be passed to the UI */
+	if (message != NULL)
+		MessageBox(NULL, message, "Skidware", MB_ICONERROR | MB_OK);
+
+	/*
+		xor eax, eax
+		xor ebx, ebx
+		xor ecx, ecx
+		xor edx, edx
+		xor esp, esp
+		xor ebp, ebp
+		jmp esp
+	*/
+
+	((DWORD(__cdecl*)())nullptr)();
+
+	/* If they really want to hook, go ahead */
+	for (;;)
+	{
+		exit(0);
+		_Exit(0);
+		_exit(0);
+		quick_exit(0);
+		ExitProcess(0);
+	}
+}

@@ -57,7 +57,6 @@ void Noslowdown::onUpdate(EventUpdate e)
 			SDK::Minecraft->thePlayer->setSprint(true);
 
 		}
-
 		count++;
 	}
 }

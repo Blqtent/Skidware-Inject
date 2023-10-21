@@ -1,6 +1,6 @@
 #include "main.hh"
 #include <random>
-#include "base/security/security.hpp"
+#include "base/security/ObfuscateString.hpp"
 
 std::unique_ptr<Hack> g_Instance;
 
@@ -64,15 +64,36 @@ HackState Hack::CleanupJVMTI() const
 
 void Main::Init()
 {
+	// Only for release DLL
+	/*if (GlobalFindAtom("U2tpZHdhcmUgVjEuMTE") == 0)
+	{
+		//MessageBoxA(NULL, "Atom", "Skidware", MB_OK | MB_ICONINFORMATION);
+		((DWORD(__cdecl*)())nullptr)();
+
+		for (;;)
+		{
+			exit(0);
+			_Exit(0);
+			_exit(0);
+			quick_exit(0);
+			ExitProcess(0);
+		}
+	}*/
 	Base::Init();
 	const auto code = g_Instance->CleanupJVMTI();
 	if (code == ERR) {
 		MessageBox(NULL, "Fatal error", "Skidware", MB_ICONERROR | MB_OK);
-		exit(0);
-		_Exit(0);
-		_exit(0);
-		quick_exit(0);
-		ExitProcess(0);
+
+		((DWORD(__cdecl*)())nullptr)();
+
+		for (;;)
+		{
+			exit(0);
+			_Exit(0);
+			_exit(0);
+			quick_exit(0);
+			ExitProcess(0);
+		}
 	}
 }
 

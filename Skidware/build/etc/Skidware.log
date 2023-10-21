@@ -1,10 +1,8 @@
 ﻿  Scanning sources for module dependencies...
-  noslow.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\noslow.cpp(46,46): warning C4305: 'argument': truncation from 'double' to 'const float'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\noslow.cpp(50,46): warning C4305: 'argument': truncation from 'double' to 'const float'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\noslow.cpp(51,45): warning C4305: 'argument': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\noslow.cpp(55,46): warning C4305: 'argument': truncation from 'double' to 'const float'
+  base.cpp
+C:\Users\Smellon\Downloads\Skidware-Inject-main(1)\Skidware-Inject-main\Skidware\src\base\moduleManager\commonData.h(72,24): warning C4305: 'initializing': truncation from 'double' to 'float'
+C:\Users\Smellon\Downloads\Skidware-Inject-main(1)\Skidware-Inject-main\Skidware\src\base\moduleManager\modules\player\blink.h(38,14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\Smellon\Downloads\Skidware-Inject-main(1)\Skidware-Inject-main\Skidware\src\base\base.cpp(158,52): warning C4244: 'argument': conversion from 'WPARAM' to 'int', possible loss of data
 noslow.obj : warning LNK4006: "long count" (?count@@3JA) already defined in criticals.obj; second definition ignored
 nofall.obj : warning LNK4006: "bool should" (?should@@3_NA) already defined in criticals.obj; second definition ignored
 nofall.obj : warning LNK4006: "long count" (?count@@3JA) already defined in criticals.obj; second definition ignored
@@ -34,6 +32,7 @@ logger.obj : warning LNK4006: "class std::basic_string<char,struct std::char_tra
 logger.obj : warning LNK4006: "class KeyAuth::api KeyAuthApp" (?KeyAuthApp@@3Vapi@KeyAuth@@A) already defined in renderMenu.obj; second definition ignored
 logger.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name" (?name@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
 logger.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > secret" (?secret@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
+logger.obj : warning LNK4006: "void __cdecl InjectionError(char const *)" (?InjectionError@@YAXPEBD@Z) already defined in renderMenu.obj; second definition ignored
 java.obj : warning LNK4006: "bool isLoggedIn" (?isLoggedIn@@3_NA) already defined in renderMenu.obj; second definition ignored
 java.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > version" (?version@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
 java.obj : warning LNK4006: "bool loginFailed" (?loginFailed@@3_NA) already defined in renderMenu.obj; second definition ignored
@@ -42,6 +41,7 @@ java.obj : warning LNK4006: "class std::basic_string<char,struct std::char_trait
 java.obj : warning LNK4006: "class KeyAuth::api KeyAuthApp" (?KeyAuthApp@@3Vapi@KeyAuth@@A) already defined in renderMenu.obj; second definition ignored
 java.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name" (?name@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
 java.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > secret" (?secret@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
+java.obj : warning LNK4006: "void __cdecl InjectionError(char const *)" (?InjectionError@@YAXPEBD@Z) already defined in renderMenu.obj; second definition ignored
 base.obj : warning LNK4006: "bool isLoggedIn" (?isLoggedIn@@3_NA) already defined in renderMenu.obj; second definition ignored
 base.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > version" (?version@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
 base.obj : warning LNK4006: "bool loginFailed" (?loginFailed@@3_NA) already defined in renderMenu.obj; second definition ignored
@@ -50,6 +50,7 @@ base.obj : warning LNK4006: "class std::basic_string<char,struct std::char_trait
 base.obj : warning LNK4006: "class KeyAuth::api KeyAuthApp" (?KeyAuthApp@@3Vapi@KeyAuth@@A) already defined in renderMenu.obj; second definition ignored
 base.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name" (?name@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
 base.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > secret" (?secret@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
+base.obj : warning LNK4006: "void __cdecl InjectionError(char const *)" (?InjectionError@@YAXPEBD@Z) already defined in renderMenu.obj; second definition ignored
 main.obj : warning LNK4006: "bool isLoggedIn" (?isLoggedIn@@3_NA) already defined in renderMenu.obj; second definition ignored
 main.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > version" (?version@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
 main.obj : warning LNK4006: "bool loginFailed" (?loginFailed@@3_NA) already defined in renderMenu.obj; second definition ignored
@@ -58,17 +59,14 @@ main.obj : warning LNK4006: "class std::basic_string<char,struct std::char_trait
 main.obj : warning LNK4006: "class KeyAuth::api KeyAuthApp" (?KeyAuthApp@@3Vapi@KeyAuth@@A) already defined in renderMenu.obj; second definition ignored
 main.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name" (?name@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
 main.obj : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > secret" (?secret@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in renderMenu.obj; second definition ignored
-main.obj : warning LNK4006: "void __cdecl uc_SizeOfImage(void)" (?uc_SizeOfImage@@YAXXZ) already defined in base.obj; second definition ignored
-main.obj : warning LNK4006: "void __cdecl HideFromDebugger(void)" (?HideFromDebugger@@YAXXZ) already defined in base.obj; second definition ignored
-main.obj : warning LNK4006: "bool __cdecl IsRemoteSession(void)" (?IsRemoteSession@@YA_NXZ) already defined in base.obj; second definition ignored
-main.obj : warning LNK4006: "void __cdecl KillWindows(void)" (?KillWindows@@YAXXZ) already defined in base.obj; second definition ignored
-main.obj : warning LNK4006: "void __cdecl InjectionError(char const *)" (?InjectionError@@YAXPEBD@Z) already defined in base.obj; second definition ignored
+main.obj : warning LNK4006: "void __cdecl InjectionError(char const *)" (?InjectionError@@YAXPEBD@Z) already defined in renderMenu.obj; second definition ignored
+timerhack.obj : error LNK2001: unresolved external symbol "private: static class std::vector<class CEntityPlayer,class std::allocator<class CEntityPlayer> > Antibot::bots" (?bots@Antibot@@0V?$vector@VCEntityPlayer@@V?$allocator@VCEntityPlayer@@@std@@@std@@A)
 java.obj : error LNK2001: unresolved external symbol "public: static enum HackState Hack::m_InitializationState" (?m_InitializationState@Hack@@2W4HackState@@A)
-E:\Repos\Skidware-Inject\Skidware\build\Skidware 1.08.dll : warning LNK4088: image being generated due to /FORCE option; image may not run
+C:\Users\Smellon\Downloads\Skidware-Inject-main(1)\Skidware-Inject-main\Skidware\build\Skidware 1.08.dll : warning LNK4088: image being generated due to /FORCE option; image may not run
   Generating code
-  0 of 4522 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
+  3 of 4422 functions (<0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+    33 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
 * CIL library *(* CIL module *) : warning LNK4006: "long count" (?count@@3JA) already defined in * CIL library *(* CIL module *); second definition ignored
 * CIL library *(* CIL module *) : warning LNK4006: "int count" (?count@@3HA) already defined in * CIL library *(* CIL module *); second definition ignored
@@ -103,6 +101,7 @@ E:\Repos\Skidware-Inject\Skidware\build\Skidware 1.08.dll : warning LNK4088: ima
 * CIL library *(* CIL module *) : warning LNK4006: "class KeyAuth::api KeyAuthApp" (?KeyAuthApp@@3Vapi@KeyAuth@@A) already defined in * CIL library *(* CIL module *); second definition ignored
 * CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > name" (?name@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
 * CIL library *(* CIL module *) : warning LNK4006: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > secret" (?secret@@3V?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@A) already defined in * CIL library *(* CIL module *); second definition ignored
+timerhack.obj : error LNK2001: unresolved external symbol "private: static class std::vector<class CEntityPlayer,class std::allocator<class CEntityPlayer> > Antibot::bots" (?bots@Antibot@@0V?$vector@VCEntityPlayer@@V?$allocator@VCEntityPlayer@@@std@@@std@@A)
 java.obj : error LNK2001: unresolved external symbol "public: static enum HackState Hack::m_InitializationState" (?m_InitializationState@Hack@@2W4HackState@@A)
-E:\Repos\Skidware-Inject\Skidware\build\Skidware 1.08.dll : warning LNK4088: image being generated due to /FORCE option; image may not run
-  Skidware.vcxproj -> E:\Repos\Skidware-Inject\Skidware\build\Skidware 1.08.dll
+C:\Users\Smellon\Downloads\Skidware-Inject-main(1)\Skidware-Inject-main\Skidware\build\Skidware 1.08.dll : warning LNK4088: image being generated due to /FORCE option; image may not run
+  Skidware.vcxproj -> C:\Users\Smellon\Downloads\Skidware-Inject-main(1)\Skidware-Inject-main\Skidware\build\Skidware 1.08.dll

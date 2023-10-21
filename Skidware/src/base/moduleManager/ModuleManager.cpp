@@ -43,12 +43,12 @@ void ModuleManager::getModule(bool isenable, std::vector<HMOD> *out_module) {
     }
 }
 
-void ModuleManager::ProcessKeyEvent() {
-//TODO
+void ModuleManager::ProcessKeyEvent(int key) {
+    //TODO
     for (auto iter = this->modules.cbegin(); iter < this->modules.cend(); iter++) {
         if (ToBaseModule(*iter)->getName() == "Fakelag" && ToBaseModule(*iter)->getMode() == 1)
             continue;
-        ToBaseModule(*iter)->onKeyEvent();
+        ToBaseModule(*iter)->onKeyEvent(key);
     }
 }
 

@@ -177,7 +177,6 @@ void CEntityPlayerSP::setFly(bool state)
 
 }
 
-
 void CEntityPlayerSP::sendPacket(Object Packet)
 {
 	jclass playerClass;
@@ -240,7 +239,7 @@ Object CEntityPlayerSP::C03PacketPlayer(jboolean ground, float yaw, float pitch)
 
 Object CEntityPlayerSP::C04PacketPos(double x, double y, double z, bool g)
 {
-	
+
 	jclass C04;
 	Java::AssignClass("net.minecraft.network.play.client.C03PacketPlayer$C04PacketPlayerPosition", C04);
 	jmethodID c04Constructer = Java::Env->GetMethodID(C04, "<init>", "(DDDZ)V");
@@ -251,7 +250,7 @@ Object CEntityPlayerSP::C04PacketPos(double x, double y, double z, bool g)
 
 Object CEntityPlayerSP::C05PacketLook(float yaw, float pitch, bool g)
 {
-	
+
 	jclass C04;
 	Java::AssignClass("net.minecraft.network.play.client.C03PacketPlayer$C05PacketPlayerLook", C04);
 	jmethodID c04Constructer = Java::Env->GetMethodID(C04, "<init>", "(FFZ)V");

@@ -4,32 +4,37 @@
 #include <string>
 #include "../../../sdk/sdk.h"
 #include "../../commonData.h"
+#include <string>
+#include <vector>
 
-class Antibot :public AbstractModule {
+class Antibot : public AbstractModule {
 public:
 	static Antibot* getInstance();
 	void onEnable();
 	void onDisable();
-	bool isBot(CEntityPlayer entity) {
-		std::string name = entity.GetName();
-
-		if (Java::Env->IsSameObject(SDK::Minecraft->thePlayer->getInstance(), entity.getInstance())
-			|| entity.ticksExisted() > 99999
-			|| name.find("-")
-			|| name.find("[")
-			|| name.find("]")
-			|| name.find(" ")
-			|| entity.isInvisible()
-			|| name.length() <= 2) {
+	static bool isBot(CEntityPlayer p) {
+		if (p.GetName().length() < 3) {
+			bots.push_back(p);
 			return true;
 		}
-		else {
-			return false;
+		else if ((p.isInvisible() && !p.isOnGround())) {
+			bots.push_back(p);
+			return true;
 		}
+		else if (p.ticksExisted() > 9999) {
+			bots.push_back(p);
+			return true;
+		}
+		std::string DisplayName = p.GetName();
+		bool ContainsIllegalChars = DisplayName.find_first_not_of("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_") != std::string::npos;
+		if (ContainsIllegalChars) {
+			return true;
+		}
+		return false;
 	}
 	void RenderMenu();
 private:
-	std::vector<CEntityPlayer> bots;
+	static std::vector<CEntityPlayer> bots;
 	Antibot();
 	ArrayList<CEntityPlayer> HeightBots;
 	ArrayList<CEntityPlayer> flyingBots;

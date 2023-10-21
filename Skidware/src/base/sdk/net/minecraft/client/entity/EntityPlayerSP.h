@@ -12,7 +12,7 @@ public:
 	void attackEntity(CEntityPlayerSP* player, jobject entity);
 	bool sendUseItem(CEntityPlayer* player, CWorld* world, CItemStack item);
 
-	double get_motion_x();
+	double get_motion_x();	
 
 	void set_motion_x(double x);
 
@@ -47,5 +47,4 @@ public:
 	Object C03PacketPlayer(jboolean ground, float yaw, float pitch);
 	Object C04PacketPos(double x, double y, double z, bool g);
 	Object C05PacketLook(float yaw, float pitch, bool g);
-
 };

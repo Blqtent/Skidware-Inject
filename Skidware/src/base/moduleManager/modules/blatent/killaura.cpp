@@ -78,7 +78,7 @@ void Killaura::onUpdate(const EventUpdate e) {
 
 		if (!player.isValid()
 			|| player.isNULL()
-			|| player.GetName().starts_with("ยงrยง8[npc]")
+			|| player.GetName().starts_with("งrง8[npc]")
 			|| !player.isDead() && player.isInvisible() && player.GetName().length() >= 2
 			|| player.GetName().contains("]")
 			|| player.GetName().contains("[")

@@ -6,8 +6,10 @@ struct Base
 	static void initConsole();
 	static void initEvent();
 	static void initModule();
-	static void handleEventKey(const EventKey k);
+	static void handleEventKey(int key);
 	static void Kill();
+
+	static int InitUpdateMessage();
 
 	/*static void CheatLoop();*/
 	static void RenderLoop();

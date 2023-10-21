@@ -60,13 +60,12 @@ Flight* Flight::getInstance() {
 
 
 void Flight::onDisable() {
-	if (CommonData::getInstance()->SanityCheck()) 
+	if (CommonData::getInstance()->SanityCheck())
 		SDK::Minecraft->thePlayer->set_speed(0);
 
 }
 
 void Flight::onEnable() {
-	//Logger::Log("E");
 	if (CommonData::getInstance()->SanityCheck()) {
 		CEntityPlayerSP* p = SDK::Minecraft->thePlayer;
 
@@ -121,22 +120,20 @@ void Flight::onUpdate(const EventUpdate e) {
 			p->set_speed(0.25);
 		}
 	}
+
 	else if (this->getMode() == 4) {
 		/*
 		Vector3 pos = p->GetPos();
 		Vector2 rot(p->GetRotationYaw(), p->GetRotationPitch());
-
 		const float PI = 3.1415926535;
 		float yaw = rot.x * (PI / 180.0f);
 		float pitch = rot.y * (PI / 180.0f);
 		const float move_forward = 0.05f;
 		Vector3 motion{};
-
 		float hypxz = std::cos(pitch) * move_forward;
 		motion.z = std::cos(yaw) * hypxz;
 		motion.x = -std::sin(yaw) * hypxz;
 		motion.y = -std::sin(pitch) * move_forward;
-
 		pos = pos + motion;
 		//p->sendPacket(p->C04PacketPos(pos.x, pos.y, pos.z, false));
 		p->setPos(pos.x, p->GetPos().y - 0.01, pos.z);

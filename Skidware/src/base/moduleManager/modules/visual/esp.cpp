@@ -74,7 +74,7 @@ void Esp::onUpdate(const EventUpdate e)
 	{
 		if	(!entity.isValid() 
 			|| entity.isNULL() 
-			|| entity.GetName().starts_with("ยงrยง8[npc]")
+			|| entity.GetName().starts_with("งrง8[npc]")
 			|| !entity.isDead() && entity.isInvisible() && entity.GetName().length() >= 2
 			|| entity.GetName().contains("]")
 			|| entity.GetName().contains("[")

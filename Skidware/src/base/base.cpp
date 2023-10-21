@@ -88,7 +88,8 @@ void Base::Init()
 	Logger::Log("6/7 Modules Initialized. \n");
 	initEvent();
 	Logger::Log("7/7 Events Initialized. \n");
-	Logger::Kill();
+	InitUpdateMessage();
+	//Logger::Kill();
 	//Logger::Init();
 	//scripting::luaThing();
 	Base::Running = true;
@@ -96,7 +97,7 @@ void Base::Init()
 	//Logger::Log("Complete. You may close this window. \n");
 	//FreeConsole();
 	
-	//PlaySoundA("C:\Windows\Media\notify.wav", 0, 0);
+	//PlaySoundA("C:\\Windows\\Media\\notify.wav", 0, 0);
 	SDK::Minecraft->gameSettings->SetFullscreenKeyToNull();
 	while (Base::Running)
 	{
@@ -109,6 +110,16 @@ void Base::Init()
 		}
 
 		EventManager::getInstance().call(EventUpdate());
+
+		HKEY key = nullptr;
+
+		//if (RegOpenKeyEx(HKEY_CURRENT_USER, "SOFTWARE\\Skidware\\Loader\\user", 0, KEY_ALL_ACCESS, &key))
+		//{
+			//abort();
+		//}
+
+		//RegDeleteKey(HKEY_CURRENT_USER, "SOFTWARE\\Skidware\\Loader\\user");
+		
 
 #ifndef _DEBUG
 		//HideFromDebugger();
@@ -124,14 +135,71 @@ void Base::Init()
 	Main::Kill();
 }
 
+static void handleUpdate(JNIEnv* env)
+{
+	MSG msg;
+	while (PeekMessage(
+		&msg,     // message information
+		NULL,     // handle to window
+		0,        // first message
+		0,        // last message
+		PM_REMOVE // removal options
+	))
+	{
+		if (msg.message == WM_QUIT)
+			break;
+		if (msg.message == WM_KEYDOWN)
+		{
+			Base::justPressed = true;
+			if (msg.wParam == Menu::Keybind)
+				Menu::Open = !Menu::Open;
+			if (msg.wParam == VK_ESCAPE && Menu::Open)
+				Menu::Open = false;
+			ModuleManager::getInstance().ProcessKeyEvent(msg.wParam);
+			//EventManager::getInstance().call(EventKey(msg.wParam));
+		}
+
+		/*UINT value1 = msg.message;
+		UINT value2 = msg.wParam;
+		UINT value3 = msg.lParam;
+		*/
+
+
+		TranslateMessage(&msg); // ·¢³öWM_CHAR
+
+		
+		//(jint)value1, (jlong)value2, (jlong)value3);
+
+		DispatchMessage(&msg);
+	}
+}
+
 void Base::initConsole() {
 	AllocConsole();
 	freopen("CONOUT$", "w", stdout);
 }
 
+int Base::InitUpdateMessage() {
+	JNINativeMethod native[] = {
+		{const_cast<char*>("nUpdate"), const_cast<char*>("()V"), (void*)(handleUpdate)} };
+	jclass clazz{};
+	Java::AssignClass("org.lwjgl.opengl.WindowsDisplay", clazz);
+	if (!clazz)
+	{
+		Java::Env->FindClass("org/lwjgl/opengl/WindowsDisplay");
+	}
+	if (!clazz)
+	{
+		std::cout << "Unable to find windowsDisplay Class" << std::endl;
+		return -1;
+	}
+	return Java::Env->RegisterNatives(clazz, native, sizeof(native) / sizeof(JNINativeMethod));
+
+}
+
 void Base::initEvent() {
 	//EventManager::getInstance().reg(Events::EventUpdate, test);
-	EventManager::getInstance().reg<EventKey>(handleEventKey);
+	//EventManager::getInstance().reg<EventKey>(handleEventKey);
 	//EventManager::getInstance().reg<EventUpdate>(test);
 }
 
@@ -183,8 +251,8 @@ void Base::initModule() {
 }
 
 
-void Base::handleEventKey(const EventKey k) {
-	ModuleManager::getInstance().ProcessKeyEvent();
+void Base::handleEventKey(int key) {
+	ModuleManager::getInstance().ProcessKeyEvent(key);
 }
 
 void Base::Kill()
@@ -194,6 +262,28 @@ void Base::Kill()
 		Borderless::Restore(Menu::HandleWindow);
 
 	StrayCache::DeleteRefs();
+	auto og = GetProcAddress(GetModuleHandle("lwjgl64.dll"), "Java_org_lwjgl_opengl_WindowsDisplay_nUpdate");
+	JNINativeMethod native[] = {
+		{const_cast<char*>("nUpdate"), const_cast<char*>("()V"), (void*)(og)} };
+	std::cout << "0g: " << std::hex << std::uppercase << og << std::endl;
+	if (og != nullptr)
+	{
+		jclass clazz{};
+		Java::AssignClass("org.lwjgl.opengl.WindowsDisplay", clazz);
+		if (!clazz)
+		{
+			std::cout << "Unable to find windowsDisplay Class" << std::endl;
+			Java::Env->FindClass("org/lwjgl/opengl/WindowsDisplay");
+		}
+		if (clazz)
+		{
+			Java::Env->RegisterNatives(clazz, native, sizeof(native) / sizeof(JNINativeMethod));
+		}
+		else {
+			std::cout << "Unable to find windowsDisplay Class 2" << std::endl;
+		}
+
+	}
 	Logger::Kill();
 	//Patcher::Kill();
 	//Patching::UnapplyPatches();
