@@ -52,11 +52,12 @@ void Noslowdown::onUpdate(EventUpdate e)
 			SDK::Minecraft->thePlayer->setSprint(true);
 		}
 		else if (this->getMode() == 1 && SDK::Minecraft->thePlayer->isOnGround() && !(count % 3 == 0)) {
-			SDK::Minecraft->thePlayer->set_speed(0.085);
-			SDK::Minecraft->timer->SetTimerSpeed(0.95);
+			SDK::Minecraft->thePlayer->set_speed(0.090);
+			SDK::Minecraft->timer->SetTimerSpeed(1);
 			SDK::Minecraft->thePlayer->setSprint(true);
 
 		}
+
 		count++;
 	}
 }

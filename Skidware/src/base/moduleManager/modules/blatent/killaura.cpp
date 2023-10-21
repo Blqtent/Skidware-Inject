@@ -186,7 +186,7 @@ void Killaura::onUpdate(const EventUpdate e) {
 			if (this->getMode() == 0)
 				thePlayer.SetAngles(Vector2(targetYaw, targetPitch));
 			else if (this->getMode() == 2) {
-				thePlayer.sendGroundPacket(thePlayer.C03PacketPlayer(thePlayer.isOnGround(), targetYaw, targetPitch));
+				thePlayer.sendPacket(thePlayer.C05PacketLook(targetYaw, targetPitch, thePlayer.isOnGround()));
 			}
 		}
 		else {
@@ -195,7 +195,8 @@ void Killaura::onUpdate(const EventUpdate e) {
 			if (this->getMode() == 0)
 				thePlayer.SetAngles(Vector2(targetYaw, currentLookAngles.y + 0));
 			else if (this->getMode() == 2) {
-				thePlayer.sendGroundPacket(thePlayer.C03PacketPlayer(thePlayer.isOnGround(), targetYaw, currentLookAngles.y + 0));
+				thePlayer.sendPacket(thePlayer.C05PacketLook(targetYaw, currentLookAngles.y + 0, thePlayer.isOnGround()));
+				//thePlayer.sendPacket(thePlayer.C03PacketPlayer(thePlayer.isOnGround(), targetYaw, currentLookAngles.y + 0));
 			}
 		}
 	}

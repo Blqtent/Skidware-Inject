@@ -48,14 +48,14 @@ void Nofall::onUpdate(const EventUpdate e)
 	}
 	else if (this->getMode() == 3) {
 		if (p->fallDistance() > 2) {
-			p->sendGroundPacket(p->C03PacketPlayer(true, p->GetRotationYaw(), p->GetRotationPitch()));
+			p->sendPacket(p->C03PacketPlayer(true, p->GetRotationYaw(), p->GetRotationPitch()));
 			p->setFallDistance(0);
 
 		}
 	}
 	else if (this->getMode() == 4) {
 		if (p->fallDistance() > 4) {
-			p->sendGroundPacket(p->C03PacketPlayer(true, p->GetRotationYaw(), p->GetRotationPitch()));
+			p->sendPacket(p->C03PacketPlayer(true, p->GetRotationYaw(), p->GetRotationPitch()));
 			//p->C03PacketPlayer(true);
 			p->setFallDistance(0);
 		}
@@ -67,7 +67,7 @@ void Nofall::onUpdate(const EventUpdate e)
 		}
 		
 		if (p->fallDistance() > 2) {
-			p->sendGroundPacket(p->C03PacketPlayer(true, p->GetRotationYaw(), p->GetRotationPitch()));
+			p->sendPacket(p->C03PacketPlayer(true, p->GetRotationYaw(), p->GetRotationPitch()));
 			p->setFallDistance(0);
 
 		}

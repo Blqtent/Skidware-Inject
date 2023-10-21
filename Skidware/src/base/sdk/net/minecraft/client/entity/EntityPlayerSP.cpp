@@ -178,7 +178,7 @@ void CEntityPlayerSP::setFly(bool state)
 }
 
 
-void CEntityPlayerSP::sendGroundPacket(Object Packet)
+void CEntityPlayerSP::sendPacket(Object Packet)
 {
 	jclass playerClass;
 	Java::AssignClass("net.minecraft.client.entity.EntityPlayerSP", playerClass);
@@ -235,5 +235,27 @@ Object CEntityPlayerSP::C03PacketPlayer(jboolean ground, float yaw, float pitch)
 	jobject Packet = Java::Env->NewObject(C03, c03Constructer, ground);
 	Java::Env->SetFloatField(Packet, yawf, yaw);
 	Java::Env->SetFloatField(Packet, pitchf, pitch);
+	return Object(Packet);
+}
+
+Object CEntityPlayerSP::C04PacketPos(double x, double y, double z, bool g)
+{
+	
+	jclass C04;
+	Java::AssignClass("net.minecraft.network.play.client.C03PacketPlayer$C04PacketPlayerPosition", C04);
+	jmethodID c04Constructer = Java::Env->GetMethodID(C04, "<init>", "(DDDZ)V");
+	//jfieldID yawf, pitchf;
+	jobject Packet = Java::Env->NewObject(C04, c04Constructer, x, y, z, g);
+	return Object(Packet);
+}
+
+Object CEntityPlayerSP::C05PacketLook(float yaw, float pitch, bool g)
+{
+	
+	jclass C04;
+	Java::AssignClass("net.minecraft.network.play.client.C03PacketPlayer$C05PacketPlayerLook", C04);
+	jmethodID c04Constructer = Java::Env->GetMethodID(C04, "<init>", "(FFZ)V");
+	//jfieldID yawf, pitchf;
+	jobject Packet = Java::Env->NewObject(C04, c04Constructer, yaw, pitch, g);
 	return Object(Packet);
 }

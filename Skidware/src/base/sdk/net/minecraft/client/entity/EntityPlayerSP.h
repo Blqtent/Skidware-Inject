@@ -42,8 +42,10 @@ public:
 	Object get_abilities();
 	void setFly(bool state);
 
-	void sendGroundPacket(Object Packet);
+	void sendPacket(Object Packet);
 
 	Object C03PacketPlayer(jboolean ground, float yaw, float pitch);
+	Object C04PacketPos(double x, double y, double z, bool g);
+	Object C05PacketLook(float yaw, float pitch, bool g);
 
 };

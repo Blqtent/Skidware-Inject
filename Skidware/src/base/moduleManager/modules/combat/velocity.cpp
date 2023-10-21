@@ -41,7 +41,7 @@ void Velocity::onUpdate(const EventUpdate e)
 
 		Vector3 targetPos = p.GetPos();
 
-		if (onlyTargeting && (targetPos - pos).Dist() >= 5.0f) {
+		if (onlyTargeting && (targetPos - pos).Dist() >= 10.0f) {
 			continue;
 		}
 		Vector2 target_required_rotation = Math::getAngles(pos, targetPos);

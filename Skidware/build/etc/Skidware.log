@@ -1,9 +1,10 @@
 ﻿  Scanning sources for module dependencies...
-  WSA.cpp
-E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\player\blink.h(38,14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\WSA.cpp(19,29): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\WSA.cpp(35,29): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
-E:\Repos\Skidware-Inject\Skidware\src\base\menu\hooks\WSA.cpp(41,29): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+  noslow.cpp
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: 'initializing': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\noslow.cpp(46,46): warning C4305: 'argument': truncation from 'double' to 'const float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\noslow.cpp(50,46): warning C4305: 'argument': truncation from 'double' to 'const float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\noslow.cpp(51,45): warning C4305: 'argument': truncation from 'double' to 'float'
+E:\Repos\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\noslow.cpp(55,46): warning C4305: 'argument': truncation from 'double' to 'const float'
 noslow.obj : warning LNK4006: "long count" (?count@@3JA) already defined in criticals.obj; second definition ignored
 nofall.obj : warning LNK4006: "bool should" (?should@@3_NA) already defined in criticals.obj; second definition ignored
 nofall.obj : warning LNK4006: "long count" (?count@@3JA) already defined in criticals.obj; second definition ignored
@@ -65,9 +66,9 @@ main.obj : warning LNK4006: "void __cdecl InjectionError(char const *)" (?Inject
 java.obj : error LNK2001: unresolved external symbol "public: static enum HackState Hack::m_InitializationState" (?m_InitializationState@Hack@@2W4HackState@@A)
 E:\Repos\Skidware-Inject\Skidware\build\Skidware 1.08.dll : warning LNK4088: image being generated due to /FORCE option; image may not run
   Generating code
-  4 of 4520 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  0 of 4522 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    33 functions had inline decision re-evaluated but remain unchanged
+    0 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
 * CIL library *(* CIL module *) : warning LNK4006: "long count" (?count@@3JA) already defined in * CIL library *(* CIL module *); second definition ignored
 * CIL library *(* CIL module *) : warning LNK4006: "int count" (?count@@3HA) already defined in * CIL library *(* CIL module *); second definition ignored
