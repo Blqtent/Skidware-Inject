@@ -72,11 +72,23 @@ void Esp::onUpdate(const EventUpdate e)
 
 	for (CEntityPlayer entity : list)
 	{
-		if (!entity.isValid() || entity.isNULL()) continue;
-		
-		if (Antibot::getInstance()->isBot(entity) && Antibot::getInstance()->getToggle()) {
+		if	(!entity.isValid() 
+			|| entity.isNULL() 
+			|| entity.GetName().starts_with("§r§8[npc]")
+			|| !entity.isDead() && entity.isInvisible() && entity.GetName().length() >= 2
+			|| entity.GetName().contains("]")
+			|| entity.GetName().contains("[")
+			|| entity.GetName().contains("-")
+			|| entity.GetName().contains(":")
+			|| entity.GetName().contains("+")
+			|| entity.GetName().contains("cit")
+			|| entity.GetName().contains("npc")
+			) 
 			continue;
-		}
+		
+		//if (Antibot::getInstance()->isBot(entity) && Antibot::getInstance()->getToggle() == true) {
+			//continue;
+		//}
 		Vector3 entityPos = entity.GetPos();
 		Vector3 entityLastPos = entity.GetLastTickPos();
 
