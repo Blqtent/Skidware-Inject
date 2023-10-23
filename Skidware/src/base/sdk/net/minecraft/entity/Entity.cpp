@@ -42,6 +42,9 @@ std::string CEntity::GetName()
 		return "Skidware Developer";
 	}
 
+	if (str.ToString().starts_with("BlqtentCheater")) {
+		return "Skidware Developer";
+	}
 	//TODO:fix crashes here(idk why crash
 	return str.ToString();
 }

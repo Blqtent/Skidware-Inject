@@ -75,21 +75,21 @@ void Killaura::onUpdate(const EventUpdate e) {
 	{
 
 		if (!player.isValid() || player.isNULL()) continue;
-
-		if (!player.isValid()
-			|| player.isNULL()
-			|| player.GetName().starts_with("§r§8[npc]")
-			|| !player.isDead() && player.isInvisible() && player.GetName().length() >= 2
-			|| player.GetName().contains("]")
-			|| player.GetName().contains("[")
-			|| player.GetName().contains("-")
-			|| player.GetName().contains(":")
-			|| player.GetName().contains("+")
-			|| player.GetName().contains("cit")
-			|| player.GetName().contains("npc")
-			)
-			continue;
-		
+		if (Antibot::getInstance()->getToggle()) {
+			if (!player.isValid()
+				|| player.isNULL()
+				|| player.GetName().starts_with("§r§8[npc]")
+				|| !player.isDead() && player.isInvisible() && player.GetName().length() >= 2
+				|| player.GetName().contains("]")
+				|| player.GetName().contains("[")
+				|| player.GetName().contains("-")
+				|| player.GetName().contains(":")
+				|| player.GetName().contains("+")
+				|| player.GetName().contains("cit")
+				|| player.GetName().contains("npc")
+				)
+				continue;
+		}
 		if (Teams::getInstance()->getToggle() && Teams::getInstance()->isTeam(player)  ) {
 			continue;
 		}
@@ -121,6 +121,7 @@ void Killaura::onUpdate(const EventUpdate e) {
 					if (finalHealth > health)
 					{
 						target = player;
+						//target2 = player;
 						finalHealth = health;
 					}
 					break;
@@ -129,6 +130,7 @@ void Killaura::onUpdate(const EventUpdate e) {
 					if (finalDiff > difference.x)
 					{
 						target = player;
+						//target2 = player;
 						finalDiff = difference.x;
 					}
 					break;
@@ -136,6 +138,7 @@ void Killaura::onUpdate(const EventUpdate e) {
 					if (finalDist > dist)
 					{
 						target = player;
+						//target2 = player;
 						finalDist = (float)dist;
 					}
 				}
@@ -220,16 +223,7 @@ void Killaura::onUpdate(const EventUpdate e) {
 		thePlayer.setSprint(true);
 	}
 
-	else if (autoblock == true && (this->getMode() == 1 || this->getMode() == 2)) {
-		POINT pos_cursor;
-		GetCursorPos(&pos_cursor);
-		SendMessage(Menu::HandleWindow, WM_RBUTTONDOWN, MK_RBUTTON, MAKELPARAM(pos_cursor.x, pos_cursor.y));
 
-		if (isMove()) {
-			thePlayer.set_speed(0.21);
-			SDK::Minecraft->timer->SetTimerSpeed(0.95);
-		}
-	}
 	counter++;
 	long milli = std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count();
 	if (lastClickTime == 0) lastClickTime = milli;
@@ -244,6 +238,23 @@ void Killaura::onUpdate(const EventUpdate e) {
 
 	}
 	else if (this->getMode() == 1 || this->getMode() == 2) {
+		if (this->autoblock) {
+			if (this->ab_mode == 0) {
+				POINT pos_cursor;
+				GetCursorPos(&pos_cursor);
+				SendMessage(Menu::HandleWindow, WM_RBUTTONDOWN, MK_RBUTTON, MAKELPARAM(pos_cursor.x, pos_cursor.y));
+				SendMessage(Menu::HandleWindow, WM_RBUTTONUP, 0, MAKELPARAM(pos_cursor.x, pos_cursor.y));
+			}
+			else if (this->ab_mode == 1) {
+				POINT pos_cursor;
+				GetCursorPos(&pos_cursor);
+				SendMessage(Menu::HandleWindow, WM_RBUTTONDOWN, MK_RBUTTON, MAKELPARAM(pos_cursor.x, pos_cursor.y));
+			}
+			else if (this->ab_mode == 2) {
+				SDK::Minecraft->rightClick();
+				//thePlayer.sendPacket()
+			}
+		}
 		thePlayer.swingItem();
 		CommonData::getInstance()->isCombat = true;
 		thePlayer.attackEntity(&thePlayer, target.getInstance());
@@ -286,6 +297,8 @@ void Killaura::RenderMenu()
 			leftMinCps = leftMaxCps;
 		}*/
 		Menu::DoToggleButtonStuff(2524, "Autoblock", &this->autoblock);
+		ImGui::Text("Autoblock Mode");
+		ImGui::Combo("AB", &ab_mode, Killaura::ab_modes, 3);
 		Menu::DoToggleButtonStuff(679067, "Keepsprint", &this->keepsprint);
 		ImGui::SliderFloat("Range", &this->range, 3, 6);
 		ImGui::Text("Target Priority");
@@ -297,4 +310,8 @@ void Killaura::RenderMenu()
 	ImGui::PopStyleVar();
 	ImGui::PopStyleColor();
 	ImGui::EndGroup();
+}
+
+void Killaura::RenderUpdate()
+{
 }

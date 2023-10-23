@@ -29,13 +29,15 @@ public:
 	float ReachDistance = .5f;
 	float tick = 4;
 	inline static int mode = 0;
-	inline static const char* modes[5]{ "Gasper", "Backtrack"};
+	inline static const char* modes[5]{ "Gasper", "Backtrack", "Normal"};
 	CEntityPlayer target;
 	long long dist = 99999999999999999;
 	bool blatent = true;
 	bool bypass = true;
 	long long ticks = 0;
 	float ms = 0;
+	float prev_reach = -1.0f;
+
 private:
 	Reach();
 };

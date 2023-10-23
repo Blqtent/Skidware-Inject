@@ -23,7 +23,7 @@ public:
 	Object getPlayerController();
 	CMovingObjectPosition GetMouseOver();
 	CRenderManager GetRenderManager();
-
+	void rightClick();
 	CEntityPlayerSP* thePlayer;
 	CWorldClient* theWorld;
 	CActiveRenderInfo* activeRenderInfo;

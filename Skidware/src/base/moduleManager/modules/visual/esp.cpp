@@ -9,6 +9,7 @@
 #include "../../../menu/menu.h"
 #include "../combat/antibot.h"
 #include <gl/GL.h>
+#include "../blatent/killaura.h"
 Esp::Esp() : AbstractModule("Esp", Category::VISUAL) {
 	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
 }
@@ -72,19 +73,21 @@ void Esp::onUpdate(const EventUpdate e)
 
 	for (CEntityPlayer entity : list)
 	{
-		if	(!entity.isValid() 
-			|| entity.isNULL() 
-			|| entity.GetName().starts_with("§r§8[npc]")
-			|| !entity.isDead() && entity.isInvisible() && entity.GetName().length() >= 2
-			|| entity.GetName().contains("]")
-			|| entity.GetName().contains("[")
-			|| entity.GetName().contains("-")
-			|| entity.GetName().contains(":")
-			|| entity.GetName().contains("+")
-			|| entity.GetName().contains("cit")
-			|| entity.GetName().contains("npc")
-			) 
-			continue;
+		if (Antibot::getInstance()->getToggle()) {
+			if (!entity.isValid()
+				|| entity.isNULL()
+				|| entity.GetName().starts_with("§r§8[npc]")
+				|| !entity.isDead() && entity.isInvisible() && entity.GetName().length() >= 2
+				|| entity.GetName().contains("]")
+				|| entity.GetName().contains("[")
+				|| entity.GetName().contains("-")
+				|| entity.GetName().contains(":")
+				|| entity.GetName().contains("+")
+				|| entity.GetName().contains("cit")
+				|| entity.GetName().contains("npc")
+				)
+				continue;
+		}
 		
 		//if (Antibot::getInstance()->isBot(entity) && Antibot::getInstance()->getToggle() == true) {
 			//continue;
@@ -151,6 +154,7 @@ void Esp::onUpdate(const EventUpdate e)
 			fadeFactor, // Fade factor
 			entity.GetHealth(), // Entity health
 			entity.GetMaxHealth(), // And max health (for health bar)
+			entity.GetPos()
 			});
 	}
 
@@ -160,7 +164,8 @@ void Esp::onUpdate(const EventUpdate e)
 void Esp::RenderUpdate()
 {
 	if (!this->getToggle() || !CommonData::getInstance()->dataUpdated) return;
-
+	Data target;
+	float finalDist = FLT_MAX;
 	for (Data data : renderData)
 	{
 		ImVec2 screenSize = ImGui::GetWindowSize();
@@ -261,7 +266,38 @@ void Esp::RenderUpdate()
 				ImGui::GetWindowDrawList()->AddText(Menu::Font, distTextSize, ImVec2(posX, posY), ImColor(TextColor[0], TextColor[1], TextColor[2], TextColor[3] * data.opacityFadeFactor), dist);
 			}
 		}
+
+		if (targetHud) {
+
+			Vector3 diff = SDK::Minecraft->thePlayer->GetPos() - data.pos;
+			float dist = sqrt(pow(diff.x, 2) + pow(diff.y, 2) + pow(diff.z, 2));
+			if (finalDist > dist)
+			{
+				target = data;
+				finalDist = (float)dist;
+			}
+
+
+			//std::string str = SDK::Minecraft->thePlayer->GetHealth() > Killaura::getInstance()->target2.GetHealth() ? "W" : "L";
+
+			//ImGui::Text("Skidware Bestest");
+
+			//RenderQOLF::DrawOutlinedText(Menu::Font, 30, ImVec2(850, 1975), ImColor(TextColor[0], TextColor[1], TextColor[2], TextColor[3]), ImColor(TextOutlineColor[0], TextOutlineColor[1], TextOutlineColor[2], TextOutlineColor[3]), "Skidware Best");
+
+		}
+
 	}
+	if (targetHud) {
+		ImU32 color = ImColor(0.65f, 0.65f, 0.65f, 0.2f);
+		ImGui::GetWindowDrawList()->AddRectFilled(ImVec2(800, 800), ImVec2(1100, 1000), ImColor(color));
+		const char* name = target.name.c_str();
+		std::string health = std::to_string(target.health);
+
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, 35, ImVec2(850, 810), ImColor(255.0f, 255.0f, 255.0f, 200.0f), name);
+		ImGui::GetWindowDrawList()->AddText(Menu::Font, 35, ImVec2(850, 850), ImColor(255.0f, 255.0f, 255.0f, 200.0f), health.c_str());
+		//ImGui::GetWindowDrawList()->AddText(Menu::Font, 35, ImVec2(850, 850), ImColor(255.0f, 255.0f, 255.0f, 200.0f), health);
+	}
+
 }
 
 void Esp::RenderMenu()
@@ -280,6 +316,7 @@ void Esp::RenderMenu()
 		Menu::DoToggleButtonStuff(7457, "Box Outline", &this->Outline);
 		Menu::DoToggleButtonStuff(23445, "Healthbar", &this->HealthBar);
 		Menu::DoToggleButtonStuff(34576, "Distance", &this->Text);
+		Menu::DoToggleButtonStuff(2341534002934, "TargetHUD", &this->targetHud);
 		//Menu::DoToggleButtonStuff(567567, "Test Circles", &this->TestCircles);
 		Menu::DoToggleButtonStuff(1337, "Text Outline", &this->TextOutline);
 		ImGui::Separator();

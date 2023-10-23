@@ -94,6 +94,7 @@
     <ClCompile Include="src\Memory.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\player\disabler.cpp" />
     <ClCompile Include="src\base\menu\jhook.cpp" />
+    <ClCompile Include="src\base\patcher\miniz.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ext\fonts\Minecraft.h" />
@@ -223,6 +224,8 @@
     <ClInclude Include="src\base\moduleManager\modules\player\disabler.h" />
     <ClInclude Include="src\base\moduleManager\modules\player\anticheat.h" />
     <ClInclude Include="src\base\menu\jhook.h" />
+    <ClInclude Include="src\base\patcher\miniz.h" />
+    <ClInclude Include="src\base\eventManager\events\EventType.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="cpp.hint" />

@@ -23,7 +23,7 @@
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{19b103f4-7249-4c81-a369-ac8c2f035fb8}</ProjectGuid>
     <RootNamespace>Skidware</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.22621.0</WindowsTargetPlatformVersion>
     <ProjectName>Skidware 1.08</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -144,7 +144,7 @@
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpplatest</LanguageStandard>
-      <LanguageStandard_C>Default</LanguageStandard_C>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -160,6 +160,7 @@
     <ClInclude Include="ext\fonts\Minecraft.h" />
     <ClInclude Include="src\auth\auth.hpp" />
     <ClInclude Include="src\base\eventManager\events\EventChams.hpp" />
+    <ClInclude Include="src\base\eventManager\events\EventType.h" />
     <ClInclude Include="src\base\extension\archivex.hpp" />
     <ClInclude Include="src\base\extension\json.hpp" />
     <ClInclude Include="src\base\menu\elements.h" />
@@ -174,6 +175,7 @@
     <ClInclude Include="src\base\moduleManager\modules\player\autotool.h" />
     <ClInclude Include="src\base\moduleManager\modules\player\disabler.h" />
     <ClInclude Include="src\base\patcher\data.h" />
+    <ClInclude Include="src\base\patcher\miniz.h" />
     <ClInclude Include="src\base\patcher\patcher.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\block\Block.h" />
     <ClInclude Include="src\base\sdk\net\minecraft\block\state\BlockState.h" />
@@ -300,6 +302,7 @@
     <ClCompile Include="src\base\moduleManager\modules\blatent\tower.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\player\autotool.cpp" />
     <ClCompile Include="src\base\moduleManager\modules\player\disabler.cpp" />
+    <ClCompile Include="src\base\patcher\miniz.c" />
     <ClCompile Include="src\base\patcher\patcher.cpp" />
     <ClCompile Include="src\base\sdk\java\util\Collection.h" />
     <ClCompile Include="src\base\sdk\net\minecraft\block\Block.cpp" />

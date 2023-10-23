@@ -58,7 +58,7 @@ void Base::RenderLoop()
 
 	Esp::getInstance()->RenderUpdate();
 	AimAssist::getInstance()->RenderUpdate();
-
+	//Killaura::getInstance()->RenderUpdate();
 	if (LongJump::getInstance()->getToggle()) {
 		//if (TextGui::rectangles) {
 		int yy = moduleIndexY + 18 * 2;

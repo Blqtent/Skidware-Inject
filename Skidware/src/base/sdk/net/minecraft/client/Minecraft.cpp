@@ -181,6 +181,10 @@ CRenderManager CMinecraft::GetRenderManager() {
 	*renderManager = CRenderManager(Java::Env->GetObjectField(SDK::Minecraft->getInstance(), StrayCache::minecraft_renderManager));
 	return *renderManager;
 }
+void CMinecraft::rightClick()
+{
+	Java::Env->CallVoidMethod(this->getInstance(), StrayCache::minecraft_rightClick);
+}
 CMovingObjectPosition CMinecraft::GetMouseOver()
 {
 	return CMovingObjectPosition(Java::Env->GetObjectField(this->getInstance(), StrayCache::minecraft_objectMouseOver));

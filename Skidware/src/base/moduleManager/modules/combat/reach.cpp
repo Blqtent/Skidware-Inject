@@ -10,7 +10,7 @@
 #include <chrono>
 #include "antibot.h"
 #include "teams.h"
-
+#include "../../../patcher/patcher.h"
 Reach::Reach() : AbstractModule("Reach", Category::COMBAT) {
 	EventManager::getInstance().reg<EventUpdate>([this](auto&& PH1) { onUpdate(std::forward<decltype(PH1)>(PH1)); });
 }
@@ -21,6 +21,12 @@ Reach* Reach::getInstance() {
 }
 
 void Reach::onDisable() {
+	if (!CommonData::getInstance()->SanityCheck()) return;
+
+	Patcher::put("reach_distance", "3.0");
+
+
+	return;
 }
 
 void Reach::onEnable() {
@@ -33,7 +39,6 @@ void Reach::onUpdate(const EventUpdate e)
 {
 	if (!this->getToggle()) return;
 	if (!CommonData::getInstance()->SanityCheck()) return;
-
 
 	if (this->getMode() == 0) {
 		std::chrono::steady_clock::time_point nanoTime = std::chrono::high_resolution_clock::now();
@@ -136,24 +141,7 @@ void Reach::onUpdate(const EventUpdate e)
 		if (!target.getInstance()) {
 			return;
 		}
-		/*
-		if (!prev.size() == 16) {
-			prev.push_back(target.GetPrevPos());
-			int index;
-			if (prev.size() - ticks >= 0) {
-				index = 0;
-			}
-			else {
-				index = prev.size() - ticks;
 
-			}
-
-			target.setPos(prev.at(index).x, prev.at(index).y, prev.at(index).z);
-		}
-		else {
-			prev.clear();
-		}
-		*/
 		if (!(thePlayer->getHurtTime() > 0)) {
 			if (this->blatent || this->ticks % (int)(this->tick * 10) == 0) {
 				if (!this->blatent && this->bypass) {
@@ -171,55 +159,13 @@ void Reach::onUpdate(const EventUpdate e)
 				}
 			}
 		}
-		/*
-		if (this->ticks % (int)(this->tick * 10) == 0) {
-			Blink::getInstance()->shouldSpoof = true;
-		}
-		else {
-			Blink::getInstance()->shouldSpoof = false;
-		}
-		*/
+		
 		this->ticks++;
-		/*
-		if (!prev.size() == 16) {
-			for (CEntityPlayer player : playerList.toVector<CEntityPlayer>())
-			{
-				if (!player.isValid() || player.isNULL()) continue;
-
-				if (Antibot::getInstance()->getToggle() && Antibot::getInstance()->isBot(player)) {
-					continue;
-				}
-
-				if (Teams::getInstance()->getToggle() && Teams::getInstance()->isTeam(player)) {
-					continue;
-				}
-
-				if (player.GetName().length() < 0) return;
-				if (!Java::Env->IsSameObject(thePlayer->getInstance(), player.getInstance())) {
-					if (!thePlayer->CanEntityBeSeen(player.getInstance())) continue;
-					
-					player.setPos(thePlayer->GetPos().x, thePlayer->GetPos().y, thePlayer->GetPos().z);
-
-					float dist2 = Math::distance(thePlayer->GetPos().x, player.GetPos().x, thePlayer->GetPos().y, player.GetPos().y, thePlayer->GetPos().z, player.GetPos().z);
-
-					if (dist2 < this->dist) {
-						this->target = player;
-						this->dist = dist2;
-					}
-
-				}
-			}
-			const int index = 15 - ticks;
-
-			//prev.push_back(this->target.GetPos());
-			//target.setPos(prev.at(index).x, prev.at(index).y, prev.at(index).z);
-			//target.setPos(thePlayer->GetPos().x, thePlayer->GetPos().y, thePlayer->GetPos().z);
-
-		}
-		else {
-			prev.clear();
-		}
-		*/
+		
+	}
+	else if (this->getMode() == 2) {
+		prev_reach = ReachDistance;
+		Patcher::put("reach_distance", std::to_string(ReachDistance));
 	}
 
 }
@@ -240,8 +186,8 @@ void Reach::RenderMenu()
 		ImGui::SetCursorPosY(ImGui::GetCursorPosY() + 5);
 		ImGui::Separator();
 		
-		if (this->getMode() == 0)
-			ImGui::SliderFloat("Reach Distance", &this->ReachDistance, 0, 4);
+		if (this->getMode() == 0 || this->getMode() == 2)
+			ImGui::SliderFloat("Reach Distance", &this->ReachDistance, 0, 6);
 		if (this->getMode() == 1) {
 			//ImGui::SliderFloat("Backtrack Ticks", &this->ticks, 0, 15);
 			ImGui::Checkbox("Blatent", &this->blatent);
@@ -253,7 +199,7 @@ void Reach::RenderMenu()
 
 		}
 		ImGui::Text("Reach Mode");
-		ImGui::Combo("Re", &this->getMode(), this->modes, 2);
+		ImGui::Combo("Re", &this->getMode(), this->modes, 3);
 		ImGui::EndChild();
 	}
 	ImGui::PopStyleVar();

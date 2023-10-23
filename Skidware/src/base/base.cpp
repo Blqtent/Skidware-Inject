@@ -83,7 +83,7 @@ void Base::Init()
 	Logger::Log("4/7 Menu Initialized. \n");
 	//jhook::apply_moveEntityHook();
 	Logger::Log("5/7 Hooks Initialized. \n");
-
+	Patcher::Init();
 	initModule();
 	Logger::Log("6/7 Modules Initialized. \n");
 	initEvent();
@@ -285,7 +285,7 @@ void Base::Kill()
 
 	}
 	Logger::Kill();
-	//Patcher::Kill();
+	Patcher::Kill();
 	//Patching::UnapplyPatches();
 	Menu::Kill();
 

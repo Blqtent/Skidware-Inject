@@ -12,6 +12,7 @@ struct StrayCache {
 	inline static jmethodID minecraft_getRenderViewEntity;
 	inline static jmethodID minecraft_clickMouse;
 	inline static jmethodID minecraft_getDebugFPS;
+	inline static jmethodID minecraft_rightClick;
 	inline static jfieldID minecraft_thePlayer;
 	inline static jfieldID minecraft_theWorld;
 	inline static jfieldID minecraft_playerController;
@@ -290,6 +291,7 @@ struct StrayCache {
 				minecraft_getRenderViewEntity = Java::Env->GetMethodID(minecraft_class, "func_175606_aa", "()Lnet/minecraft/entity/Entity;");
 				minecraft_clickMouse = Java::Env->GetMethodID(minecraft_class, "func_147116_af", "()V");
 				minecraft_getDebugFPS = Java::Env->GetMethodID(minecraft_class, "func_175610_ah", "()I");
+				minecraft_rightClick = Java::Env->GetMethodID(minecraft_class, "func_147121_ag", "()V");
 
 				minecraft_thePlayer = Java::Env->GetFieldID(minecraft_class, "field_71439_g", "Lnet/minecraft/client/entity/EntityPlayerSP;");
 				minecraft_theWorld = Java::Env->GetFieldID(minecraft_class, "field_71441_e", "Lnet/minecraft/client/multiplayer/WorldClient;");
@@ -572,6 +574,7 @@ struct StrayCache {
 			minecraft_getRenderViewEntity = Java::Env->GetMethodID(minecraft_class, "getRenderViewEntity", "()Lnet/minecraft/entity/Entity;");
 			minecraft_clickMouse = Java::Env->GetMethodID(minecraft_class, "clickMouse", "()V");
 			minecraft_getDebugFPS = Java::Env->GetMethodID(minecraft_class, "getDebugFPS", "()I");
+			minecraft_rightClick = Java::Env->GetMethodID(minecraft_class, "rightClickMouse", "()V");
 
 			minecraft_thePlayer = Java::Env->GetFieldID(minecraft_class, "thePlayer", "Lnet/minecraft/client/entity/EntityPlayerSP;");
 			minecraft_theWorld = Java::Env->GetFieldID(minecraft_class, "theWorld", "Lnet/minecraft/client/multiplayer/WorldClient;");

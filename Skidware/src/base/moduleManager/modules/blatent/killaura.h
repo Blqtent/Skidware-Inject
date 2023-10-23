@@ -36,6 +36,7 @@ public:
 	void onDisable();
 	void onUpdate(const EventUpdate e);
 	void RenderMenu();
+	void RenderUpdate();
 	float leftMaxCps = 14;
 	float leftMinCps = 8;
 	float range = 3.5;
@@ -49,6 +50,9 @@ public:
 	float currdistance;
 	const char* modes[3]{ "Legit", "Normal", "Silent" };
 	const char* targetPriorityList[3]{ "Distance", "Health", "Closest to Crosshair" };
+	const char* ab_modes[3]{ "Watchdog Semi", "Normal", "Packet"};
+	int ab_mode = 0;
+	CEntityPlayer target2;
 
 	//Killaura();
 private:

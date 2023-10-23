@@ -21,6 +21,7 @@ public:
         float opacityFadeFactor;
         float health;
         float maxHealth;
+        Vector3 pos;
     };
     std::vector<Data> renderData;
     
@@ -49,7 +50,7 @@ public:
     float FadeDistance = 3.0f;
 
     bool HealthBar = true;
-
+    bool targetHud = false;
 private:
     Esp();
 };
