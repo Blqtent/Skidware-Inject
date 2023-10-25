@@ -34,8 +34,6 @@ void Esp::onUpdate(const EventUpdate e)
 
 	CWorld* world = SDK::Minecraft->theWorld;
 
-	
-
 	Vector3 renderPos = CommonData::getInstance()->renderPos;
 	Vector3 pos = player->GetPos();
 
@@ -73,6 +71,7 @@ void Esp::onUpdate(const EventUpdate e)
 
 	for (CEntityPlayer entity : list)
 	{
+		if (!entity.isValid() || entity.isNULL()) continue;
 		if (Antibot::getInstance()->getToggle()) {
 			if (!entity.isValid()
 				|| entity.isNULL()

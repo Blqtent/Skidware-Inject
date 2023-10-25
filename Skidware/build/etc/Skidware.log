@@ -1,36 +1,28 @@
 ﻿  Scanning sources for module dependencies...
   killaura.cpp
 E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(101,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(113,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(159,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(190,44): warning C4305: 'argument': truncation from 'double' to 'const float'
-E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(195,44): warning C4305: 'argument': truncation from 'double' to 'const float'
-E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(222,45): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
-E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(228,13): warning C4244: 'initializing': conversion from '_Rep' to 'long', possible loss of data
+E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(98,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(110,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(156,17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(187,44): warning C4305: 'argument': truncation from 'double' to 'const float'
+E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(192,44): warning C4305: 'argument': truncation from 'double' to 'const float'
+E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(219,45): warning C4244: 'argument': conversion from 'double' to 'const float', possible loss of data
+E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(225,13): warning C4244: 'initializing': conversion from '_Rep' to 'long', possible loss of data
           with
           [
               _Rep=__int64
           ]
-E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(270,29): warning C4305: 'argument': truncation from 'double' to 'const float'
-E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(279,64): warning C4244: 'argument': conversion from 'float' to '_Ty', possible loss of data
+E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(267,29): warning C4305: 'argument': truncation from 'double' to 'const float'
+E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(276,64): warning C4244: 'argument': conversion from 'float' to '_Ty', possible loss of data
           with
           [
               _Ty=int
           ]
-E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(279,46): warning C4244: 'argument': conversion from 'float' to '_Ty', possible loss of data
+E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\blatent\killaura.cpp(276,46): warning C4244: 'argument': conversion from 'float' to '_Ty', possible loss of data
           with
           [
               _Ty=int
           ]
-  esp.cpp
-E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\commonData.h(72,1): warning C4305: 'initializing': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\visual\esp.cpp(102,14): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\visual\esp.cpp(122,26): warning C4305: '/=': truncation from 'double' to 'float'
-E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\visual\esp.cpp(256,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\visual\esp.cpp(273,15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\visual\esp.cpp(319,73): warning C4305: 'argument': truncation from '__int64' to 'int'
-E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\src\base\moduleManager\modules\visual\esp.cpp(319,29): warning C4309: 'argument': truncation of constant value
 noslow.obj : warning LNK4006: "long count" (?count@@3JA) already defined in criticals.obj; second definition ignored
 nofall.obj : warning LNK4006: "bool should" (?should@@3_NA) already defined in criticals.obj; second definition ignored
 nofall.obj : warning LNK4006: "long count" (?count@@3JA) already defined in criticals.obj; second definition ignored
@@ -92,9 +84,9 @@ timerhack.obj : error LNK2001: unresolved external symbol "private: static class
 java.obj : error LNK2001: unresolved external symbol "public: static enum HackState Hack::m_InitializationState" (?m_InitializationState@Hack@@2W4HackState@@A)
 E:\Repos\Skidware-Inject-main\Skidware-Inject\Skidware\build\Skidware 1.08.dll : warning LNK4088: image being generated due to /FORCE option; image may not run
   Generating code
-  2 of 4578 functions (<0.1%) were compiled, the rest were copied from previous compilation.
+  5 of 4578 functions ( 0.1%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    39 functions had inline decision re-evaluated but remain unchanged
+    45 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
 * CIL library *(* CIL module *) : warning LNK4006: "long count" (?count@@3JA) already defined in * CIL library *(* CIL module *); second definition ignored
 * CIL library *(* CIL module *) : warning LNK4006: "int count" (?count@@3HA) already defined in * CIL library *(* CIL module *); second definition ignored

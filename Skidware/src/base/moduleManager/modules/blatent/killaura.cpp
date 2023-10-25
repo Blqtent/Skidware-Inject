@@ -74,7 +74,7 @@ void Killaura::onUpdate(const EventUpdate e) {
 	for (CEntityPlayer player : list)
 	{
 
-		if (!player.isValid() || player.isNULL()) continue;
+		//if (!player.isValid() || player.isNULL()) continue;
 		if (Antibot::getInstance()->getToggle()) {
 			if (!player.isValid()
 				|| player.isNULL()
@@ -89,9 +89,6 @@ void Killaura::onUpdate(const EventUpdate e) {
 				|| player.GetName().contains("npc")
 				)
 				continue;
-		}
-		if (Teams::getInstance()->getToggle() && Teams::getInstance()->isTeam(player)  ) {
-			continue;
 		}
 
 		if (player.GetName().length() < 0) return;
@@ -293,9 +290,9 @@ void Killaura::RenderMenu()
 		ImGui::SliderFloat("Min CPS", &this->leftMinCps, 1, 20);
 		ImGui::SliderFloat("Max CPS", &this->leftMaxCps, 1, 20);
 		ImGui::SliderFloat("FOV", &this->fov, 1, 360);
-		/*if (leftMinCps > leftMaxCps) {
+		if (leftMinCps > leftMaxCps) {
 			leftMinCps = leftMaxCps;
-		}*/
+		}
 		Menu::DoToggleButtonStuff(2524, "Autoblock", &this->autoblock);
 		ImGui::Text("Autoblock Mode");
 		ImGui::Combo("AB", &ab_mode, Killaura::ab_modes, 3);
